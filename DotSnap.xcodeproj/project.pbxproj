@@ -1,0 +1,606 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		847835C517A0D2750050EBA6 /* DSPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 847835C417A0D2750050EBA6 /* DSPAppDelegate.m */; };
+		847835C817A0D3590050EBA6 /* DSPMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847835C717A0D3590050EBA6 /* DSPMainWindowController.m */; };
+		847835CB17A0D3650050EBA6 /* DSPMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847835CA17A0D3650050EBA6 /* DSPMainViewController.m */; };
+		847835D617A0DB670050EBA6 /* DSPMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 847835D517A0DB670050EBA6 /* DSPMainView.m */; };
+		847835E917A0E3D50050EBA6 /* ReactiveCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 847835E217A0E3AA0050EBA6 /* ReactiveCocoa.framework */; };
+		847835EA17A0E3E30050EBA6 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847835E217A0E3AA0050EBA6 /* ReactiveCocoa.framework */; };
+		847835EF17A0EABD0050EBA6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847835EE17A0EABD0050EBA6 /* QuartzCore.framework */; };
+		8478360817A0F5560050EBA6 /* DSPMainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478360717A0F5560050EBA6 /* DSPMainWindow.m */; };
+		8478361717A0F6A10050EBA6 /* JNWAnimatableWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478361617A0F6A10050EBA6 /* JNWAnimatableWindow.m */; };
+		8478361E17A1001F0050EBA6 /* DSPMainViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478361D17A1001F0050EBA6 /* DSPMainViewModel.m */; };
+		8478362C17A198860050EBA6 /* DSPPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478362B17A198860050EBA6 /* DSPPreferencesViewController.m */; };
+		8478363217A19D2B0050EBA6 /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8478363117A19D2B0050EBA6 /* Defaults.plist */; };
+		8478363517A19E410050EBA6 /* DSPDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478363417A19E410050EBA6 /* DSPDefaults.m */; };
+		8478364217A1FAE00050EBA6 /* DSPSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478364117A1FAE00050EBA6 /* DSPSwitch.m */; };
+		8478364917A205D50050EBA6 /* DSPLaunchServicesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478364817A205D50050EBA6 /* DSPLaunchServicesManager.m */; };
+		8478365D17A221490050EBA6 /* NSColor+DSPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478365C17A221490050EBA6 /* NSColor+DSPExtensions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		84FC869817A3191000955E40 /* DirectoryPickerArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC868D17A3191000955E40 /* DirectoryPickerArrow.png */; };
+		84FC869917A3191000955E40 /* DotSnapPreferencesLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC868E17A3191000955E40 /* DotSnapPreferencesLogo.png */; };
+		84FC869A17A3191000955E40 /* FilenameCheckmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC868F17A3191000955E40 /* FilenameCheckmark.png */; };
+		84FC869B17A3191000955E40 /* OptionsGear.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC869017A3191000955E40 /* OptionsGear.png */; };
+		84FC869C17A3191000955E40 /* OptionsGearWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC869117A3191000955E40 /* OptionsGearWhite.png */; };
+		84FC869D17A3191000955E40 /* Status.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC869217A3191000955E40 /* Status.png */; };
+		84FC869E17A3191000955E40 /* Status@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC869317A3191000955E40 /* Status@2x.png */; };
+		84FC869F17A3191000955E40 /* StatusHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC869417A3191000955E40 /* StatusHighlighted.png */; };
+		84FC86A017A3191000955E40 /* StatusHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC869517A3191000955E40 /* StatusHighlighted@2x.png */; };
+		84FC86A117A3191000955E40 /* SwitchCheckmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC869617A3191000955E40 /* SwitchCheckmark.png */; };
+		84FC86A217A3191000955E40 /* SwitchXmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC869717A3191000955E40 /* SwitchXmark.png */; };
+		DD4F7C0913C30F9F00825C6E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4F7C0813C30F9F00825C6E /* Cocoa.framework */; };
+		DD4F7C1513C30F9F00825C6E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4F7C1413C30F9F00825C6E /* main.m */; };
+		DD4F7C1F13C30F9F00825C6E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD4F7C1D13C30F9F00825C6E /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		847835E117A0E3AA0050EBA6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 847835D917A0E3AA0050EBA6 /* ReactiveCocoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 88037F8315056328001A5B19;
+			remoteInfo = ReactiveCocoa;
+		};
+		847835E317A0E3AA0050EBA6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 847835D917A0E3AA0050EBA6 /* ReactiveCocoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 88F440AB153DAC820097B4C3;
+			remoteInfo = "ReactiveCocoa-iOS";
+		};
+		847835E517A0E3AA0050EBA6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 847835D917A0E3AA0050EBA6 /* ReactiveCocoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 88CDF7DC15000FCF00163A9F;
+			remoteInfo = ReactiveCocoaTests;
+		};
+		847835E717A0E3CD0050EBA6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 847835D917A0E3AA0050EBA6 /* ReactiveCocoa.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 88037F8215056328001A5B19;
+			remoteInfo = ReactiveCocoa;
+		};
+		8478360E17A0F5560050EBA6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 847835D917A0E3AA0050EBA6 /* ReactiveCocoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5FAF5223174D4C2000CAC810;
+			remoteInfo = "ReactiveCocoaTests-iOS";
+		};
+		8478361017A0F5560050EBA6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 847835D917A0E3AA0050EBA6 /* ReactiveCocoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1860F412177C91B500C7B3C9;
+			remoteInfo = "ReactiveCocoa-iOS-UIKitTestHost";
+		};
+		8478361217A0F5560050EBA6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 847835D917A0E3AA0050EBA6 /* ReactiveCocoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1860F430177C91B500C7B3C9;
+			remoteInfo = "ReactiveCocoa-iOS-UIKitTestHostTests";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		84BA5AD317A0C3BE00A45952 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				847835E917A0E3D50050EBA6 /* ReactiveCocoa.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		847835C317A0D2750050EBA6 /* DSPAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPAppDelegate.h; sourceTree = "<group>"; };
+		847835C417A0D2750050EBA6 /* DSPAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPAppDelegate.m; sourceTree = "<group>"; };
+		847835C617A0D3590050EBA6 /* DSPMainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPMainWindowController.h; sourceTree = "<group>"; };
+		847835C717A0D3590050EBA6 /* DSPMainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPMainWindowController.m; sourceTree = "<group>"; };
+		847835C917A0D3650050EBA6 /* DSPMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPMainViewController.h; sourceTree = "<group>"; };
+		847835CA17A0D3650050EBA6 /* DSPMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPMainViewController.m; sourceTree = "<group>"; };
+		847835D417A0DB670050EBA6 /* DSPMainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPMainView.h; sourceTree = "<group>"; };
+		847835D517A0DB670050EBA6 /* DSPMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPMainView.m; sourceTree = "<group>"; };
+		847835D917A0E3AA0050EBA6 /* ReactiveCocoa.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactiveCocoa.xcodeproj; path = External/ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoa.xcodeproj; sourceTree = "<group>"; };
+		847835EE17A0EABD0050EBA6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		8478360617A0F5560050EBA6 /* DSPMainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPMainWindow.h; sourceTree = "<group>"; };
+		8478360717A0F5560050EBA6 /* DSPMainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPMainWindow.m; sourceTree = "<group>"; };
+		8478361517A0F6A10050EBA6 /* JNWAnimatableWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JNWAnimatableWindow.h; sourceTree = "<group>"; };
+		8478361617A0F6A10050EBA6 /* JNWAnimatableWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JNWAnimatableWindow.m; sourceTree = "<group>"; };
+		8478361C17A1001F0050EBA6 /* DSPMainViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPMainViewModel.h; sourceTree = "<group>"; };
+		8478361D17A1001F0050EBA6 /* DSPMainViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPMainViewModel.m; sourceTree = "<group>"; };
+		8478362A17A198860050EBA6 /* DSPPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPPreferencesViewController.h; sourceTree = "<group>"; };
+		8478362B17A198860050EBA6 /* DSPPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPPreferencesViewController.m; sourceTree = "<group>"; };
+		8478363117A19D2B0050EBA6 /* Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Defaults.plist; sourceTree = "<group>"; };
+		8478363317A19D8F0050EBA6 /* DSPDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPDefaults.h; sourceTree = "<group>"; };
+		8478363417A19E410050EBA6 /* DSPDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPDefaults.m; sourceTree = "<group>"; };
+		8478363817A1F93D0050EBA6 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		8478363C17A1F9AB0050EBA6 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		8478363E17A1F9B20050EBA6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		8478364017A1FAE00050EBA6 /* DSPSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPSwitch.h; sourceTree = "<group>"; };
+		8478364117A1FAE00050EBA6 /* DSPSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPSwitch.m; sourceTree = "<group>"; };
+		8478364717A205D50050EBA6 /* DSPLaunchServicesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPLaunchServicesManager.h; sourceTree = "<group>"; };
+		8478364817A205D50050EBA6 /* DSPLaunchServicesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPLaunchServicesManager.m; sourceTree = "<group>"; };
+		8478365B17A221490050EBA6 /* NSColor+DSPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+DSPExtensions.h"; sourceTree = "<group>"; };
+		8478365C17A221490050EBA6 /* NSColor+DSPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+DSPExtensions.m"; sourceTree = "<group>"; };
+		84FC868D17A3191000955E40 /* DirectoryPickerArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DirectoryPickerArrow.png; path = Artwork/DirectoryPickerArrow.png; sourceTree = "<group>"; };
+		84FC868E17A3191000955E40 /* DotSnapPreferencesLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DotSnapPreferencesLogo.png; path = Artwork/DotSnapPreferencesLogo.png; sourceTree = "<group>"; };
+		84FC868F17A3191000955E40 /* FilenameCheckmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = FilenameCheckmark.png; path = Artwork/FilenameCheckmark.png; sourceTree = "<group>"; };
+		84FC869017A3191000955E40 /* OptionsGear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = OptionsGear.png; path = Artwork/OptionsGear.png; sourceTree = "<group>"; };
+		84FC869117A3191000955E40 /* OptionsGearWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = OptionsGearWhite.png; path = Artwork/OptionsGearWhite.png; sourceTree = "<group>"; };
+		84FC869217A3191000955E40 /* Status.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Status.png; path = Artwork/Status.png; sourceTree = "<group>"; };
+		84FC869317A3191000955E40 /* Status@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Status@2x.png"; path = "Artwork/Status@2x.png"; sourceTree = "<group>"; };
+		84FC869417A3191000955E40 /* StatusHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = StatusHighlighted.png; path = Artwork/StatusHighlighted.png; sourceTree = "<group>"; };
+		84FC869517A3191000955E40 /* StatusHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "StatusHighlighted@2x.png"; path = "Artwork/StatusHighlighted@2x.png"; sourceTree = "<group>"; };
+		84FC869617A3191000955E40 /* SwitchCheckmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SwitchCheckmark.png; path = Artwork/SwitchCheckmark.png; sourceTree = "<group>"; };
+		84FC869717A3191000955E40 /* SwitchXmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SwitchXmark.png; path = Artwork/SwitchXmark.png; sourceTree = "<group>"; };
+		DD4F7C0413C30F9F00825C6E /* DotSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DotSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD4F7C0813C30F9F00825C6E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		DD4F7C0B13C30F9F00825C6E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		DD4F7C0C13C30F9F00825C6E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		DD4F7C0D13C30F9F00825C6E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		DD4F7C1013C30F9F00825C6E /* DotSnap-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DotSnap-Info.plist"; sourceTree = "<group>"; };
+		DD4F7C1413C30F9F00825C6E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DD4F7C1613C30F9F00825C6E /* DotSnap-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DotSnap-Prefix.pch"; sourceTree = "<group>"; };
+		DD4F7C1E13C30F9F00825C6E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DD4F7C0113C30F9F00825C6E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				847835EF17A0EABD0050EBA6 /* QuartzCore.framework in Frameworks */,
+				DD4F7C0913C30F9F00825C6E /* Cocoa.framework in Frameworks */,
+				847835EA17A0E3E30050EBA6 /* ReactiveCocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		847835DA17A0E3AA0050EBA6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				847835E217A0E3AA0050EBA6 /* ReactiveCocoa.framework */,
+				847835E417A0E3AA0050EBA6 /* libReactiveCocoa-iOS.a */,
+				847835E617A0E3AA0050EBA6 /* ReactiveCocoaTests.octest */,
+				8478360F17A0F5560050EBA6 /* ReactiveCocoaTests-iOS.octest */,
+				8478361117A0F5560050EBA6 /* ReactiveCocoa-iOS-UIKitTestHost.app */,
+				8478361317A0F5560050EBA6 /* ReactiveCocoa-iOS-UIKitTestHostTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8478361F17A18FEB0050EBA6 /* Main Window */ = {
+			isa = PBXGroup;
+			children = (
+				847835C617A0D3590050EBA6 /* DSPMainWindowController.h */,
+				847835C717A0D3590050EBA6 /* DSPMainWindowController.m */,
+				847835C917A0D3650050EBA6 /* DSPMainViewController.h */,
+				847835CA17A0D3650050EBA6 /* DSPMainViewController.m */,
+				8478360617A0F5560050EBA6 /* DSPMainWindow.h */,
+				8478360717A0F5560050EBA6 /* DSPMainWindow.m */,
+				847835D417A0DB670050EBA6 /* DSPMainView.h */,
+				847835D517A0DB670050EBA6 /* DSPMainView.m */,
+				8478361C17A1001F0050EBA6 /* DSPMainViewModel.h */,
+				8478361D17A1001F0050EBA6 /* DSPMainViewModel.m */,
+			);
+			name = "Main Window";
+			sourceTree = "<group>";
+		};
+		8478362017A18FF50050EBA6 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				8478362A17A198860050EBA6 /* DSPPreferencesViewController.h */,
+				8478362B17A198860050EBA6 /* DSPPreferencesViewController.m */,
+				8478364017A1FAE00050EBA6 /* DSPSwitch.h */,
+				8478364117A1FAE00050EBA6 /* DSPSwitch.m */,
+				8478364717A205D50050EBA6 /* DSPLaunchServicesManager.h */,
+				8478364817A205D50050EBA6 /* DSPLaunchServicesManager.m */,
+			);
+			name = Preferences;
+			sourceTree = "<group>";
+		};
+		8478363617A19FCE0050EBA6 /* JNWAnimatableWIndow */ = {
+			isa = PBXGroup;
+			children = (
+				8478361517A0F6A10050EBA6 /* JNWAnimatableWindow.h */,
+				8478361617A0F6A10050EBA6 /* JNWAnimatableWindow.m */,
+			);
+			name = JNWAnimatableWIndow;
+			sourceTree = "<group>";
+		};
+		8478363717A19FDB0050EBA6 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				8478363617A19FCE0050EBA6 /* JNWAnimatableWIndow */,
+				8478365B17A221490050EBA6 /* NSColor+DSPExtensions.h */,
+				8478365C17A221490050EBA6 /* NSColor+DSPExtensions.m */,
+			);
+			name = External;
+			sourceTree = "<group>";
+		};
+		DD4F7BF913C30F9F00825C6E = {
+			isa = PBXGroup;
+			children = (
+				847835D917A0E3AA0050EBA6 /* ReactiveCocoa.xcodeproj */,
+				DD4F7C0E13C30F9F00825C6E /* DotSnap */,
+				DD4F7C2813C3123E00825C6E /* User Interface */,
+				DD4F7C0713C30F9F00825C6E /* Frameworks */,
+				DD4F7C0513C30F9F00825C6E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DD4F7C0513C30F9F00825C6E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DD4F7C0413C30F9F00825C6E /* DotSnap.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DD4F7C0713C30F9F00825C6E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8478363E17A1F9B20050EBA6 /* CoreGraphics.framework */,
+				8478363C17A1F9AB0050EBA6 /* CoreServices.framework */,
+				8478363817A1F93D0050EBA6 /* CoreText.framework */,
+				847835EE17A0EABD0050EBA6 /* QuartzCore.framework */,
+				DD4F7C0B13C30F9F00825C6E /* AppKit.framework */,
+				DD4F7C0C13C30F9F00825C6E /* CoreData.framework */,
+				DD4F7C0D13C30F9F00825C6E /* Foundation.framework */,
+				DD4F7C0813C30F9F00825C6E /* Cocoa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DD4F7C0E13C30F9F00825C6E /* DotSnap */ = {
+			isa = PBXGroup;
+			children = (
+				847835C317A0D2750050EBA6 /* DSPAppDelegate.h */,
+				847835C417A0D2750050EBA6 /* DSPAppDelegate.m */,
+				8478362017A18FF50050EBA6 /* Preferences */,
+				8478361F17A18FEB0050EBA6 /* Main Window */,
+				8478363717A19FDB0050EBA6 /* External */,
+				DD4F7C0F13C30F9F00825C6E /* Supporting Files */,
+			);
+			path = DotSnap;
+			sourceTree = "<group>";
+		};
+		DD4F7C0F13C30F9F00825C6E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DD4F7C1413C30F9F00825C6E /* main.m */,
+				DD4F7C1613C30F9F00825C6E /* DotSnap-Prefix.pch */,
+				DD4F7C1013C30F9F00825C6E /* DotSnap-Info.plist */,
+				8478363317A19D8F0050EBA6 /* DSPDefaults.h */,
+				8478363417A19E410050EBA6 /* DSPDefaults.m */,
+				8478363117A19D2B0050EBA6 /* Defaults.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DD4F7C2813C3123E00825C6E /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				DD4F7C4813C322D800825C6E /* Graphics */,
+				DD4F7C2913C3124300825C6E /* XIBs */,
+			);
+			name = "User Interface";
+			sourceTree = "<group>";
+		};
+		DD4F7C2913C3124300825C6E /* XIBs */ = {
+			isa = PBXGroup;
+			children = (
+				DD4F7C1D13C30F9F00825C6E /* MainMenu.xib */,
+			);
+			name = XIBs;
+			sourceTree = "<group>";
+		};
+		DD4F7C4813C322D800825C6E /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				84FC868D17A3191000955E40 /* DirectoryPickerArrow.png */,
+				84FC868E17A3191000955E40 /* DotSnapPreferencesLogo.png */,
+				84FC868F17A3191000955E40 /* FilenameCheckmark.png */,
+				84FC869017A3191000955E40 /* OptionsGear.png */,
+				84FC869117A3191000955E40 /* OptionsGearWhite.png */,
+				84FC869217A3191000955E40 /* Status.png */,
+				84FC869317A3191000955E40 /* Status@2x.png */,
+				84FC869417A3191000955E40 /* StatusHighlighted.png */,
+				84FC869517A3191000955E40 /* StatusHighlighted@2x.png */,
+				84FC869617A3191000955E40 /* SwitchCheckmark.png */,
+				84FC869717A3191000955E40 /* SwitchXmark.png */,
+			);
+			name = Graphics;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DD4F7C0313C30F9F00825C6E /* DotSnap */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DD4F7C2213C30F9F00825C6E /* Build configuration list for PBXNativeTarget "DotSnap" */;
+			buildPhases = (
+				DD4F7C0013C30F9F00825C6E /* Sources */,
+				DD4F7C0113C30F9F00825C6E /* Frameworks */,
+				DD4F7C0213C30F9F00825C6E /* Resources */,
+				84BA5AD317A0C3BE00A45952 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				847835E817A0E3CD0050EBA6 /* PBXTargetDependency */,
+			);
+			name = DotSnap;
+			productName = DotSnap;
+			productReference = DD4F7C0413C30F9F00825C6E /* DotSnap.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DD4F7BFB13C30F9F00825C6E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = DSP;
+				LastUpgradeCheck = 0460;
+			};
+			buildConfigurationList = DD4F7BFE13C30F9F00825C6E /* Build configuration list for PBXProject "DotSnap" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = DD4F7BF913C30F9F00825C6E;
+			productRefGroup = DD4F7C0513C30F9F00825C6E /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 847835DA17A0E3AA0050EBA6 /* Products */;
+					ProjectRef = 847835D917A0E3AA0050EBA6 /* ReactiveCocoa.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				DD4F7C0313C30F9F00825C6E /* DotSnap */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		847835E217A0E3AA0050EBA6 /* ReactiveCocoa.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ReactiveCocoa.framework;
+			remoteRef = 847835E117A0E3AA0050EBA6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		847835E417A0E3AA0050EBA6 /* libReactiveCocoa-iOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libReactiveCocoa-iOS.a";
+			remoteRef = 847835E317A0E3AA0050EBA6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		847835E617A0E3AA0050EBA6 /* ReactiveCocoaTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ReactiveCocoaTests.octest;
+			remoteRef = 847835E517A0E3AA0050EBA6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8478360F17A0F5560050EBA6 /* ReactiveCocoaTests-iOS.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "ReactiveCocoaTests-iOS.octest";
+			remoteRef = 8478360E17A0F5560050EBA6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8478361117A0F5560050EBA6 /* ReactiveCocoa-iOS-UIKitTestHost.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "ReactiveCocoa-iOS-UIKitTestHost.app";
+			remoteRef = 8478361017A0F5560050EBA6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8478361317A0F5560050EBA6 /* ReactiveCocoa-iOS-UIKitTestHostTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "ReactiveCocoa-iOS-UIKitTestHostTests.octest";
+			remoteRef = 8478361217A0F5560050EBA6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DD4F7C0213C30F9F00825C6E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84FC869A17A3191000955E40 /* FilenameCheckmark.png in Resources */,
+				84FC869D17A3191000955E40 /* Status.png in Resources */,
+				DD4F7C1F13C30F9F00825C6E /* MainMenu.xib in Resources */,
+				84FC869917A3191000955E40 /* DotSnapPreferencesLogo.png in Resources */,
+				84FC869C17A3191000955E40 /* OptionsGearWhite.png in Resources */,
+				84FC86A117A3191000955E40 /* SwitchCheckmark.png in Resources */,
+				84FC869E17A3191000955E40 /* Status@2x.png in Resources */,
+				84FC86A217A3191000955E40 /* SwitchXmark.png in Resources */,
+				84FC86A017A3191000955E40 /* StatusHighlighted@2x.png in Resources */,
+				84FC869817A3191000955E40 /* DirectoryPickerArrow.png in Resources */,
+				84FC869F17A3191000955E40 /* StatusHighlighted.png in Resources */,
+				8478363217A19D2B0050EBA6 /* Defaults.plist in Resources */,
+				84FC869B17A3191000955E40 /* OptionsGear.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DD4F7C0013C30F9F00825C6E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD4F7C1513C30F9F00825C6E /* main.m in Sources */,
+				847835C517A0D2750050EBA6 /* DSPAppDelegate.m in Sources */,
+				847835C817A0D3590050EBA6 /* DSPMainWindowController.m in Sources */,
+				847835CB17A0D3650050EBA6 /* DSPMainViewController.m in Sources */,
+				847835D617A0DB670050EBA6 /* DSPMainView.m in Sources */,
+				8478360817A0F5560050EBA6 /* DSPMainWindow.m in Sources */,
+				8478361717A0F6A10050EBA6 /* JNWAnimatableWindow.m in Sources */,
+				8478361E17A1001F0050EBA6 /* DSPMainViewModel.m in Sources */,
+				8478362C17A198860050EBA6 /* DSPPreferencesViewController.m in Sources */,
+				8478363517A19E410050EBA6 /* DSPDefaults.m in Sources */,
+				8478364217A1FAE00050EBA6 /* DSPSwitch.m in Sources */,
+				8478364917A205D50050EBA6 /* DSPLaunchServicesManager.m in Sources */,
+				8478365D17A221490050EBA6 /* NSColor+DSPExtensions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		847835E817A0E3CD0050EBA6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ReactiveCocoa;
+			targetProxy = 847835E717A0E3CD0050EBA6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DD4F7C1D13C30F9F00825C6E /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DD4F7C1E13C30F9F00825C6E /* en */,
+			);
+			name = MainMenu.xib;
+			path = DotSnap;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DD4F7C2013C30F9F00825C6E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		DD4F7C2113C30F9F00825C6E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		DD4F7C2313C30F9F00825C6E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DotSnap/DotSnap-Prefix.pch";
+				INFOPLIST_FILE = "DotSnap/DotSnap-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = DotSnap;
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		DD4F7C2413C30F9F00825C6E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DotSnap/DotSnap-Prefix.pch";
+				INFOPLIST_FILE = "DotSnap/DotSnap-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = DotSnap;
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DD4F7BFE13C30F9F00825C6E /* Build configuration list for PBXProject "DotSnap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD4F7C2013C30F9F00825C6E /* Debug */,
+				DD4F7C2113C30F9F00825C6E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DD4F7C2213C30F9F00825C6E /* Build configuration list for PBXNativeTarget "DotSnap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD4F7C2313C30F9F00825C6E /* Debug */,
+				DD4F7C2413C30F9F00825C6E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DD4F7BFB13C30F9F00825C6E /* Project object */;
+}

@@ -1,0 +1,12 @@
+//
+// Prefix header for all source files of the 'Popup' target in the 'Popup' project
+//
+
+#ifdef __OBJC__
+	#import <Cocoa/Cocoa.h>
+	#import <QuartzCore/QuartzCore.h>
+	#import <ReactiveCocoa/ReactiveCocoa.h>
+	#import <ReactiveCocoa/EXTScope.h>
+	#import "NSColor+DSPExtensions.h"
+	#import "DSPDefaults.h"
+#endif
