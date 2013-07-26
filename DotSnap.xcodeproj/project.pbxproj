@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84600B4517A31CB500D3E8FE /* MAAttachedWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 84600B4417A31CB500D3E8FE /* MAAttachedWindow.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		847835C517A0D2750050EBA6 /* DSPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 847835C417A0D2750050EBA6 /* DSPAppDelegate.m */; };
 		847835C817A0D3590050EBA6 /* DSPMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847835C717A0D3590050EBA6 /* DSPMainWindowController.m */; };
 		847835CB17A0D3650050EBA6 /* DSPMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847835CA17A0D3650050EBA6 /* DSPMainViewController.m */; };
@@ -105,6 +106,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		84600B4317A31CB500D3E8FE /* MAAttachedWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAAttachedWindow.h; sourceTree = "<group>"; };
+		84600B4417A31CB500D3E8FE /* MAAttachedWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAAttachedWindow.m; sourceTree = "<group>"; };
 		847835C317A0D2750050EBA6 /* DSPAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPAppDelegate.h; sourceTree = "<group>"; };
 		847835C417A0D2750050EBA6 /* DSPAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPAppDelegate.m; sourceTree = "<group>"; };
 		847835C617A0D3590050EBA6 /* DSPMainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPMainWindowController.h; sourceTree = "<group>"; };
@@ -171,6 +174,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84600B4B17A31CB900D3E8FE /* MAAttachedWindow */ = {
+			isa = PBXGroup;
+			children = (
+				84600B4317A31CB500D3E8FE /* MAAttachedWindow.h */,
+				84600B4417A31CB500D3E8FE /* MAAttachedWindow.m */,
+			);
+			name = MAAttachedWindow;
+			sourceTree = "<group>";
+		};
 		847835DA17A0E3AA0050EBA6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +238,7 @@
 		8478363717A19FDB0050EBA6 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				84600B4B17A31CB900D3E8FE /* MAAttachedWindow */,
 				8478363617A19FCE0050EBA6 /* JNWAnimatableWIndow */,
 				8478365B17A221490050EBA6 /* NSColor+DSPExtensions.h */,
 				8478365C17A221490050EBA6 /* NSColor+DSPExtensions.m */,
@@ -464,6 +477,7 @@
 				8478361717A0F6A10050EBA6 /* JNWAnimatableWindow.m in Sources */,
 				8478361E17A1001F0050EBA6 /* DSPMainViewModel.m in Sources */,
 				8478362C17A198860050EBA6 /* DSPPreferencesViewController.m in Sources */,
+				84600B4517A31CB500D3E8FE /* MAAttachedWindow.m in Sources */,
 				8478363517A19E410050EBA6 /* DSPDefaults.m in Sources */,
 				8478364217A1FAE00050EBA6 /* DSPSwitch.m in Sources */,
 				8478364917A205D50050EBA6 /* DSPLaunchServicesManager.m in Sources */,
@@ -563,7 +577,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DotSnap/DotSnap-Prefix.pch";
 				INFOPLIST_FILE = "DotSnap/DotSnap-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = DotSnap;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
@@ -578,7 +592,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DotSnap/DotSnap-Prefix.pch";
 				INFOPLIST_FILE = "DotSnap/DotSnap-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = DotSnap;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;

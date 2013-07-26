@@ -18,10 +18,11 @@
 
 @implementation DSPPreferencesViewController
 
-- (id)initWithContentRect:(CGRect)rect {
+- (id)initWithContentRect:(CGRect)rect canFireSubject:(RACSubject *)canFireSubject {
 	self = [super init];
 	
 	_contentRect = rect;
+	_canFireSubject = canFireSubject;
 	
 	return self;
 }
@@ -86,26 +87,26 @@
 	logoLayer.frame = (CGRect){ .origin.x = NSMidX(_contentRect) - 32, .origin.y = NSHeight(_contentRect) - 98, .size = { 62, 62 } };
 	[view.layer addSublayer:logoLayer];
 	
-	NSButton *optionsButton = [[NSButton alloc]initWithFrame:(NSRect){ .origin.x = NSWidth(_contentRect) - 28, .origin.y = NSHeight(_contentRect) - 28, .size = { 15, 15 } }];
-	optionsButton.rac_command = RACCommand.command;
+	NSButton *optionsButton = [[NSButton alloc]initWithFrame:(NSRect){ .origin.x = NSWidth(_contentRect) - 46, .origin.y = NSHeight(_contentRect) - 32, .size = { 15, 15 } }];
+	optionsButton.rac_command = [RACCommand commandWithCanExecuteSignal:[self.canFireSubject map:^id(NSNumber *value) {
+		return @(!value.boolValue);
+	}]];
 	optionsButton.bordered = NO;
 	optionsButton.buttonType = NSMomentaryChangeButton;
 	optionsButton.image = [NSImage imageNamed:@"OptionsGearWhite"];
 	[optionsButton.rac_command subscribeNext:^(NSButton *_) {
 		[NSAnimationContext beginGrouping];
 		[CATransaction begin];
-		[CATransaction setCompletionBlock:^{
-			[view removeFromSuperview];
-		}];
 		[CATransaction setAnimationDuration:0.3];
 		[CATransaction setAnimationTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
 		
 		[view.animator setAlphaValue:0.f];
-		
+		[(DSPMainWindow *)view.window setFrame:(NSRect){ .origin.x = view.window.frame.origin.x, .origin.y = view.window.frame.origin.y + 130, .size = { 400, 225 } } display:YES animate:YES];
+
 		[CATransaction commit];
 		[NSAnimationContext endGrouping];
 		
-		[(DSPMainWindow *)view.window setFrame:(NSRect){ .origin.x = view.window.frame.origin.x, .origin.y = view.window.frame.origin.y + 140, .size = { 400, 205 } } withDuration:0.3f timing:nil];
+		[self.canFireSubject sendNext:@YES];
 	}];
 	[view addSubview:optionsButton];
 	

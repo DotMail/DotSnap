@@ -19,16 +19,20 @@
 - (id)init {
 	self = [super init];
 	
-	NSUInteger styleMask = NSClosableWindowMask;
-	self.window = [[DSPMainWindow alloc]initWithContentRect:(NSRect){ .origin.y = NSMaxY(NSScreen.mainScreen.frame) - 230, .size = { 400, 205 } } styleMask:styleMask backing:NSBackingStoreBuffered defer:YES];
+	self.viewController = [[DSPMainViewController alloc]initWithContentRect:(NSRect){ .size = { 400, 210 } }];
+	
+	self.window = [[DSPMainWindow alloc]initWithView:self.viewController.view attachedToPoint:(NSPoint){ } inWindow:nil onSide:MAPositionBottom atDistance:5.0];
+	self.window.cornerRadius = 0.f;
+	self.window.arrowHeight = 12.f;
+	self.window.borderWidth = 0.f;
+	self.window.borderColor = [NSColor colorWithCalibratedRed:0.260 green:0.663 blue:0.455 alpha:1.000];
+	self.window.backgroundColor = [NSColor colorWithCalibratedRed:0.260 green:0.663 blue:0.455 alpha:1.000];
+	self.window.arrowBaseWidth = 20.f;
 	self.window.menuBarIcon = [NSImage imageNamed:@"Status"];
     self.window.highlightedMenuBarIcon = [NSImage imageNamed:@"StatusHighlighted"];
     self.window.hasMenuBarIcon = YES;
     self.window.attachedToMenuBar = YES;
     self.window.isDetachable = YES;
-	
-	self.viewController = [[DSPMainViewController alloc]initWithContentRect:(NSRect){ .size = { 400, 205 } }];
-	[self.window.contentView addSubview:self.viewController.view];
 		
 	return self;
 }

@@ -6,10 +6,13 @@
 //
 //
 
+@class RACSubject;
+
 @interface DSPPreferencesViewController : NSViewController {
 	CGRect _contentRect;
 }
 
-- (id)initWithContentRect:(CGRect)rect;
+- (id)initWithContentRect:(CGRect)rect canFireSubject:(RACSubject *)canFireSubject;
+@property (nonatomic, weak) RACSubject *canFireSubject;
 
 @end

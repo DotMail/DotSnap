@@ -6,9 +6,9 @@
 //
 //
 
-#import "JNWAnimatableWindow.h"
+#import "MAAttachedWindow.h"
 
-@interface DSPMainWindow : JNWAnimatableWindow
+@interface DSPMainWindow : MAAttachedWindow
 
 @property (nonatomic, assign) BOOL isInOpenPanel;
 
