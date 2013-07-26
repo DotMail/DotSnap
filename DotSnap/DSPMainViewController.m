@@ -220,6 +220,9 @@
 		}
 		bself.viewModel.filename = filenameField.stringValue;
 	}];
+	
+	self.viewModel.filename = [NSUserDefaults.standardUserDefaults stringForKey:DSPDefaultFilenameTemplateKey];
+
 }
 
 - (NSOpenPanel *)openPanel {
