@@ -50,7 +50,6 @@ static CGFloat const DPSMenuBarWindowArrowWidth = 20.0;
             {
                 [[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowDidMoveNotification object:statusItemView];
             }
-            self.attachedToMenuBar = NO;
         }
     }
 }
@@ -74,10 +73,7 @@ static CGFloat const DPSMenuBarWindowArrowWidth = 20.0;
 
 - (void)makeKeyAndOrderFrontWithDuration:(CFTimeInterval)duration timing:(CAMediaTimingFunction *)timingFunction setup:(void (^)(CALayer *))setup animations:(void (^)(CALayer *))animations
 {
-    if (self.attachedToMenuBar)
-    {
-        [self setFrameOrigin:[self originForAttachedState]];
-    }
+	[self setFrameOrigin:[self originForAttachedState]];
 	[super makeKeyAndOrderFrontWithDuration:duration timing:timingFunction setup:setup animations:animations];
 }
 
@@ -89,9 +85,13 @@ static CGFloat const DPSMenuBarWindowArrowWidth = 20.0;
     return YES;
 }
 
+- (BOOL)canBecomeMainWindow {
+	return YES;
+}
+
 - (void)windowDidResignKey:(NSNotification *)aNotification
 {
-    if (self.attachedToMenuBar && !_isInOpenPanel)
+    if (!_isInOpenPanel)
     {
 		[self orderOutWithDuration:0.3 timing:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut] animations:^(CALayer *layer) {
 			// We can now basically whatever we want with this layer. Everything is already wrapped in a CATransaction so it is animated implicitly.
@@ -122,6 +122,54 @@ static CGFloat const DPSMenuBarWindowArrowWidth = 20.0;
     }
 }
 
+- (void)endEditingGracefully
+{
+	// Courtesy of Daniel Jalkut, modified slightly
+	// http://www.red-sweater.com/blog/229
+	
+	// Save the current first responder, respecting the fact
+	// that it might conceptually be the delegate of the
+	// field editor that is "first responder."
+	id oldFirstResponder = [self firstResponder];
+	if ((oldFirstResponder != nil) &&
+		[oldFirstResponder isKindOfClass:[NSText class]] &&
+		[oldFirstResponder isFieldEditor])
+	{
+		// A field editor's delegate is the view we're editing
+		oldFirstResponder = [oldFirstResponder delegate];
+		if ([oldFirstResponder isKindOfClass:[NSResponder class]] == NO)
+		{
+			// Eh...we'd better back off if
+			// this thing isn't a responder at all
+			oldFirstResponder = nil;
+		}
+	}
+	
+	// Gracefully end all editing in our window (from Erik Buck).
+	// This will cause the user's changes to be committed.
+	if ([self makeFirstResponder:self])
+	{
+		// All editing is now ended and delegate messages sent etc.
+	}
+	else
+	{
+		// For some reason the text object being edited will
+		// not resign first responder status so force an
+		// end to editing anyway
+		[self endEditingFor:nil];
+	}
+	
+	// If we had a first responder before, restore it
+	if (oldFirstResponder != nil)
+	{
+		[self makeFirstResponder:oldFirstResponder];
+	}
+}
+
+- (IBAction)clearFirstResponder:(id)sender {
+	[self performSelector:@selector(makeFirstResponder:) withObject:nil afterDelay:0];
+}
+
 @end
 
 @implementation DPSMenuBarWindowIconView
@@ -142,7 +190,7 @@ static CGFloat const DPSMenuBarWindowArrowWidth = 20.0;
 - (void)mouseDown:(NSEvent *)theEvent
 {
     self.highlighted = YES;
-    if ([self.menuBarWindow isMainWindow] || (self.menuBarWindow.isVisible && self.menuBarWindow.attachedToMenuBar))
+    if ([self.menuBarWindow isMainWindow] || self.menuBarWindow.isVisible)
     {
 		[self.menuBarWindow orderOutWithDuration:0.3 timing:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut] animations:^(CALayer *layer) {
 			// We can now basically whatever we want with this layer. Everything is already wrapped in a CATransaction so it is animated implicitly.

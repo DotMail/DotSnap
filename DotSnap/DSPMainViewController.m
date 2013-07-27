@@ -11,11 +11,15 @@
 #import "DSPMainView.h"
 #import "DSPMainWindow.h"
 #import "DSPMainViewModel.h"
+#import "DSPHistoryRowView.h"
+#import "DSPHistoryTableView.h"
 
 @interface DSPMainViewController ()
 @property (nonatomic, strong, readonly) DSPMainViewModel *viewModel;
 @property (nonatomic, strong) DSPPreferencesViewController *preferencesViewController;
 @property (nonatomic, strong) RACSubject *canFireSubject;
+@property (nonatomic, strong) NSTextField *filenameField;
+@property (nonatomic, copy) void (^carriageReturnBlock)();
 @end
 
 @implementation DSPMainViewController
@@ -89,27 +93,45 @@
 	changeFolderLabel.autoresizingMask = NSViewMinYMargin;
 	[view addSubview:changeFolderLabel];
 		
-	NSTextField *saveToLabel = [[NSTextField alloc]initWithFrame:(NSRect){ .origin.x = 96, .origin.y = NSHeight(_contentFrame) - 110, .size = { NSWidth(_contentFrame), 34 } }];
+	NSTextField *saveToLabel = [[NSTextField alloc]initWithFrame:(NSRect){ .origin.x = 96, .origin.y = NSHeight(_contentFrame) - 115, .size = { NSWidth(_contentFrame), 34 } }];
 	saveToLabel.bezeled = NO;
 	saveToLabel.editable = NO;
 	saveToLabel.drawsBackground = NO;
-	saveToLabel.font = [NSFont fontWithName:@"HelveticaNeue" size:12.f];
+	saveToLabel.font = [NSFont fontWithName:@"HelveticaNeue-Bold" size:10.f];
 	saveToLabel.textColor = [NSColor colorWithCalibratedRed:0.171 green:0.489 blue:0.326 alpha:1.000];
 	saveToLabel.focusRingType = NSFocusRingTypeNone;
 	NSString *desktopPath = [NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES) objectAtIndex:0];
 	self.viewModel.filepath = desktopPath;
-	saveToLabel.stringValue = [NSString stringWithFormat:@"Save To: %@", desktopPath];
+	saveToLabel.stringValue = [NSString stringWithFormat:@"SAVE TO: %@", desktopPath];
 	saveToLabel.autoresizingMask = NSViewMinYMargin;
 	[view addSubview:saveToLabel];
 	
-	NSTextField *filenameField = [[NSTextField alloc]initWithFrame:(NSRect){ .origin.x = 30, .origin.y = 12, .size = { NSWidth(_contentFrame), 34 } }];
-	filenameField.bezeled = NO;
-	filenameField.drawsBackground = NO;
-	filenameField.font = [NSFont fontWithName:@"HelveticaNeue" size:16.f];
-	filenameField.textColor = [NSColor colorWithCalibratedRed:0.437 green:0.517 blue:0.559 alpha:1.000];
-	filenameField.focusRingType = NSFocusRingTypeNone;
-	filenameField.autoresizingMask = NSViewMinYMargin;
-	[view addSubview:filenameField];
+	NSScrollView *scrollView = [[NSScrollView alloc] initWithFrame:(NSRect){ }];
+	scrollView.layer = CALayer.layer;
+	scrollView.wantsLayer = YES;
+	scrollView.verticalScrollElasticity = NSScrollElasticityNone;
+	DSPHistoryTableView *tableView = [[DSPHistoryTableView alloc] initWithFrame: scrollView.bounds];
+	[tableView setHeaderView:nil];
+	tableView.focusRingType = NSFocusRingTypeNone;
+	tableView.gridStyleMask = NSTableViewSolidHorizontalGridLineMask;
+	NSTableColumn *firstColumn  = [[NSTableColumn alloc] initWithIdentifier:@"firstColumn"];
+	firstColumn.editable = NO;
+	firstColumn.width = CGRectGetWidth(view.bounds);
+	[tableView addTableColumn:firstColumn];
+	tableView.delegate = self;
+	tableView.dataSource = self.viewModel;
+	scrollView.documentView = tableView;
+	[view addSubview:scrollView];
+	
+	_filenameField = [[NSTextField alloc]initWithFrame:(NSRect){ .origin.x = 30, .origin.y = 12, .size = { NSWidth(_contentFrame), 34 } }];
+	_filenameField.delegate = self;
+	_filenameField.bezeled = NO;
+	_filenameField.drawsBackground = NO;
+	_filenameField.font = [NSFont fontWithName:@"HelveticaNeue" size:16.f];
+	_filenameField.textColor = [NSColor colorWithCalibratedRed:0.437 green:0.517 blue:0.559 alpha:1.000];
+	_filenameField.focusRingType = NSFocusRingTypeNone;
+	_filenameField.autoresizingMask = NSViewMinYMargin;
+	[view addSubview:_filenameField];
 	
 	NSButton *directoryButton = [[NSButton alloc]initWithFrame:(NSRect){ .origin.x = 36, .origin.y = NSHeight(_contentFrame) - 96, .size = { 48, 48 } }];
 	directoryButton.rac_command = [RACCommand commandWithCanExecuteSignal:self.canFireSubject];
@@ -124,10 +146,10 @@
 				[NSFileManager.defaultManager fileExistsAtPath:urlString isDirectory:&isDir];
 				if (isDir) {
 					self.viewModel.filepath = urlString;
-					saveToLabel.stringValue = [NSString stringWithFormat:@"Save To: %@", urlString.stringByStandardizingPath.stringByAbbreviatingWithTildeInPath];
+					saveToLabel.stringValue = [NSString stringWithFormat:@"SAVE TO: %@", urlString.stringByStandardizingPath.stringByAbbreviatingWithTildeInPath];
 				} else {
 					self.viewModel.filepath = urlString.stringByDeletingLastPathComponent;
-					saveToLabel.stringValue = [NSString stringWithFormat:@"Save To: %@", urlString.stringByDeletingLastPathComponent.stringByStandardizingPath.stringByAbbreviatingWithTildeInPath];
+					saveToLabel.stringValue = [NSString stringWithFormat:@"SAVE TO: %@", urlString.stringByDeletingLastPathComponent.stringByStandardizingPath.stringByAbbreviatingWithTildeInPath];
 				}
 			}
 		}];
@@ -141,7 +163,7 @@
 	NSButton *optionsButton = [[NSButton alloc]initWithFrame:(NSRect){ .origin.x = NSWidth(_contentFrame) - 45, .origin.y = 24, .size = { 17, 17 } }];
 	optionsButton.rac_command = [RACCommand commandWithCanExecuteSignal:self.canFireSubject];
 	[optionsButton.rac_command subscribeNext:^(NSButton *_) {
-		[filenameField resignFirstResponder];
+		[_filenameField resignFirstResponder];
 		_preferencesViewController.view.alphaValue = 0.0f;
 	
 		[NSAnimationContext beginGrouping];
@@ -157,39 +179,55 @@
 	optionsButton.autoresizingMask = NSViewMinYMargin;
 	[view addSubview:optionsButton];
 	
-	NSScrollView *scrollView = ({
-		NSScrollView *scrollView = [[NSScrollView alloc] initWithFrame:view.bounds];
-		scrollView.hasVerticalScroller = YES;
-		[scrollView setAlphaValue:0.f];
-		NSTableView *tableView = [[NSTableView alloc] initWithFrame: scrollView.bounds];
-		[tableView setHeaderView:nil];
-		tableView.focusRingType = NSFocusRingTypeNone;
-		NSTableColumn *firstColumn  = [[NSTableColumn alloc] initWithIdentifier:@"firstColumn"];
-		firstColumn.editable = NO;
-		firstColumn.width = CGRectGetWidth(view.bounds);
-		[tableView  addTableColumn:firstColumn];
-		tableView.delegate = self.viewModel;
-		tableView.dataSource = self.viewModel;
-		scrollView.documentView = tableView;
-		[tableView.enclosingScrollView setDrawsBackground:NO];
-		scrollView;
-	});
+	NSBox *historySeparatorShadow = [[NSBox alloc]initWithFrame:(NSRect){ .origin.y = 2, .size = { NSWidth(_contentFrame), 2 } }];
+	historySeparatorShadow.autoresizingMask = NSViewWidthSizable | NSViewMinYMargin;
+	historySeparatorShadow.borderType = NSLineBorder;
+	historySeparatorShadow.borderColor = [NSColor colorWithCalibratedRed:0.794 green:0.840 blue:0.864 alpha:1.000];
+	historySeparatorShadow.fillColor = [NSColor colorWithCalibratedRed:0.794 green:0.840 blue:0.864 alpha:1.000];
+	historySeparatorShadow.borderWidth = 2.f;
+	historySeparatorShadow.boxType = NSBoxCustom;
+	historySeparatorShadow.alphaValue = 0.f;
+	[view addSubview:historySeparatorShadow];
 	
 	_preferencesViewController.view.alphaValue = 0.f;
 	[view addSubview:_preferencesViewController.view];
 	
 	self.view = view;
-	
-	filenameField.stringValue = [NSUserDefaults.standardUserDefaults stringForKey:DSPDefaultFilenameTemplateKey];
-	
-	[NSNotificationCenter.defaultCenter addObserverForName:NSControlTextDidEndEditingNotification object:filenameField queue:nil usingBlock:^(NSNotification *note) {
-		[filenameField resignFirstResponder];
-		[scrollView removeFromSuperview];
-		[self.viewModel addFilenameToHistory:filenameField.stringValue];
-		optionsButton.image = [NSImage imageNamed:@"FilenameCheckmark.png"];
-		[(DSPMainWindow *)view.window setFrame:(NSRect){ .origin.x = view.window.frame.origin.x, .origin.y = NSMaxY(view.window.screen.frame) - 244, .size = { 400, 224 } } display:YES animate:YES];
-		fieldBackground.backgroundColor = [NSColor colorWithCalibratedRed:0.850 green:0.888 blue:0.907 alpha:1.000];
 
+	@weakify(self);
+	[NSNotificationCenter.defaultCenter addObserverForName:NSControlTextDidChangeNotification object:_filenameField queue:nil usingBlock:^(NSNotification *note) {
+		@strongify(self);
+		NSRect rect = (NSRect){ .origin.x = view.window.frame.origin.x, .origin.y = NSMaxY(view.window.screen.frame) - 474, .size = { 400, 469 } };
+		if (!CGRectEqualToRect(rect, view.window.frame)) {
+			[view setNeedsDisplay:YES];
+			historySeparatorShadow.alphaValue = 1.f;
+			[scrollView.animator setFrame:(NSRect){ .origin.y = 4, .size = { 400, 246 } }];
+			[(DSPMainWindow *)view.window setFrame:rect display:YES animate:YES];
+			fieldBackground.backgroundColor = [NSColor whiteColor];
+		}
+		if (_filenameField.stringValue.length == 0) {
+			self.viewModel.filename = @"Screen Shot";
+		}
+		self.viewModel.filename = _filenameField.stringValue;
+	}];
+	
+	self.viewModel.filename = [NSUserDefaults.standardUserDefaults stringForKey:DSPDefaultFilenameTemplateKey];
+
+	self.carriageReturnBlock = ^{
+		@strongify(self);
+		[tableView reloadData];
+		
+		historySeparatorShadow.alphaValue = 0.f;
+
+		[self.filenameField resignFirstResponder];
+		
+		fieldBackground.backgroundColor = [NSColor colorWithCalibratedRed:0.850 green:0.888 blue:0.907 alpha:1.000];
+		
+		optionsButton.image = [NSImage imageNamed:@"FilenameCheckmark.png"];
+		
+		[scrollView.animator setFrame:(NSRect){ .origin.y = 4, .size = { 400, 0 } }];
+		[(DSPMainWindow *)view.window setFrame:(NSRect){ .origin.x = view.window.frame.origin.x, .origin.y = NSMaxY(view.window.screen.frame) - 244, .size = { 400, 224 } } display:YES animate:YES];
+		
 		double delayInSeconds = 0.5;
 		dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
 		dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
@@ -200,29 +238,21 @@
 			}];
 			
 			[optionsButton.animator setAlphaValue:0.f];
-			[scrollView.animator setAlphaValue:0.f];
 			
 			[NSAnimationContext endGrouping];
 		});
-	}];
-
-	__block typeof(self) bself = self;
-	[NSNotificationCenter.defaultCenter addObserverForName:NSControlTextDidChangeNotification object:filenameField queue:nil usingBlock:^(NSNotification *note) {
-		NSRect rect = (NSRect){ .origin.x = view.window.frame.origin.x, .origin.y = NSMaxY(view.window.screen.frame) - 474, .size = { 400, 450 } };
-		if (!CGRectEqualToRect(rect, view.window.frame)) {
-			[view addSubview:scrollView];
-			[view setNeedsDisplay:YES];
-			[(DSPMainWindow *)view.window setFrame:rect display:YES animate:YES];
-			fieldBackground.backgroundColor = [NSColor whiteColor];
-		}
-		if (filenameField.stringValue.length == 0) {
-			bself.viewModel.filename = @"Screen Shot";
-		}
-		bself.viewModel.filename = filenameField.stringValue;
-	}];
+	};
 	
-	self.viewModel.filename = [NSUserDefaults.standardUserDefaults stringForKey:DSPDefaultFilenameTemplateKey];
+	_filenameField.stringValue = [NSUserDefaults.standardUserDefaults stringForKey:DSPDefaultFilenameTemplateKey];
+}
 
+- (BOOL)control:(NSControl *)control textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector {
+	if (commandSelector == @selector(insertNewline:)) {
+		[self.viewModel addFilenameToHistory:self.filenameField.stringValue];
+		self.carriageReturnBlock();
+		return YES;
+	}
+	return NO;
 }
 
 - (NSOpenPanel *)openPanel {
@@ -236,6 +266,32 @@
 		[panel setMessage:@"Import one or more files or directories."];
 	}
 	return panel;
+}
+
+#pragma mark - NSTableViewDelegate
+
+- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
+	return 60.f;
+}
+
+- (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+	DSPHistoryRowView *tableCellView = (DSPHistoryRowView*)[tableView makeViewWithIdentifier:[tableColumn identifier] owner:self];
+	return tableCellView;
+}
+
+- (void)tableView:(NSTableView *)tableView didAddRowView:(DSPHistoryRowView *)rowView forRow:(NSInteger)row {
+	rowView.title = self.viewModel.filenameHistory[row];
+}
+
+- (NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row {
+	DSPHistoryRowView *rowView = [[DSPHistoryRowView alloc] initWithFrame:NSMakeRect(0, 0, NSWidth(_contentFrame), 110)];
+    return rowView;
+}
+
+- (void)tableViewSelectionDidChange:(NSNotification *)notification {
+	NSTableView *table = notification.object;
+	self.filenameField.stringValue = self.viewModel.filenameHistory[table.selectedRow];
+	self.carriageReturnBlock();
 }
 
 @end

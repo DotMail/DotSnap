@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		84600B4517A31CB500D3E8FE /* MAAttachedWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 84600B4417A31CB500D3E8FE /* MAAttachedWindow.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		84600B4E17A34A8400D3E8FE /* DSPHistoryRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84600B4D17A34A8400D3E8FE /* DSPHistoryRowView.m */; };
+		84600B5D17A354D300D3E8FE /* DSPHistoryTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84600B5C17A354D300D3E8FE /* DSPHistoryTableView.m */; };
 		847835C517A0D2750050EBA6 /* DSPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 847835C417A0D2750050EBA6 /* DSPAppDelegate.m */; };
 		847835C817A0D3590050EBA6 /* DSPMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847835C717A0D3590050EBA6 /* DSPMainWindowController.m */; };
 		847835CB17A0D3650050EBA6 /* DSPMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847835CA17A0D3650050EBA6 /* DSPMainViewController.m */; };
@@ -108,6 +110,10 @@
 /* Begin PBXFileReference section */
 		84600B4317A31CB500D3E8FE /* MAAttachedWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAAttachedWindow.h; sourceTree = "<group>"; };
 		84600B4417A31CB500D3E8FE /* MAAttachedWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAAttachedWindow.m; sourceTree = "<group>"; };
+		84600B4C17A34A8400D3E8FE /* DSPHistoryRowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPHistoryRowView.h; sourceTree = "<group>"; };
+		84600B4D17A34A8400D3E8FE /* DSPHistoryRowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPHistoryRowView.m; sourceTree = "<group>"; };
+		84600B5B17A354D300D3E8FE /* DSPHistoryTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPHistoryTableView.h; sourceTree = "<group>"; };
+		84600B5C17A354D300D3E8FE /* DSPHistoryTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPHistoryTableView.m; sourceTree = "<group>"; };
 		847835C317A0D2750050EBA6 /* DSPAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPAppDelegate.h; sourceTree = "<group>"; };
 		847835C417A0D2750050EBA6 /* DSPAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPAppDelegate.m; sourceTree = "<group>"; };
 		847835C617A0D3590050EBA6 /* DSPMainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPMainWindowController.h; sourceTree = "<group>"; };
@@ -183,6 +189,17 @@
 			name = MAAttachedWindow;
 			sourceTree = "<group>";
 		};
+		84600B4F17A34CB700D3E8FE /* History Table View */ = {
+			isa = PBXGroup;
+			children = (
+				84600B5B17A354D300D3E8FE /* DSPHistoryTableView.h */,
+				84600B5C17A354D300D3E8FE /* DSPHistoryTableView.m */,
+				84600B4C17A34A8400D3E8FE /* DSPHistoryRowView.h */,
+				84600B4D17A34A8400D3E8FE /* DSPHistoryRowView.m */,
+			);
+			name = "History Table View";
+			sourceTree = "<group>";
+		};
 		847835DA17A0E3AA0050EBA6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,14 +218,15 @@
 			children = (
 				847835C617A0D3590050EBA6 /* DSPMainWindowController.h */,
 				847835C717A0D3590050EBA6 /* DSPMainWindowController.m */,
-				847835C917A0D3650050EBA6 /* DSPMainViewController.h */,
-				847835CA17A0D3650050EBA6 /* DSPMainViewController.m */,
 				8478360617A0F5560050EBA6 /* DSPMainWindow.h */,
 				8478360717A0F5560050EBA6 /* DSPMainWindow.m */,
+				847835C917A0D3650050EBA6 /* DSPMainViewController.h */,
+				847835CA17A0D3650050EBA6 /* DSPMainViewController.m */,
 				847835D417A0DB670050EBA6 /* DSPMainView.h */,
 				847835D517A0DB670050EBA6 /* DSPMainView.m */,
 				8478361C17A1001F0050EBA6 /* DSPMainViewModel.h */,
 				8478361D17A1001F0050EBA6 /* DSPMainViewModel.m */,
+				84600B4F17A34CB700D3E8FE /* History Table View */,
 			);
 			name = "Main Window";
 			sourceTree = "<group>";
@@ -468,6 +486,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84600B4E17A34A8400D3E8FE /* DSPHistoryRowView.m in Sources */,
 				DD4F7C1513C30F9F00825C6E /* main.m in Sources */,
 				847835C517A0D2750050EBA6 /* DSPAppDelegate.m in Sources */,
 				847835C817A0D3590050EBA6 /* DSPMainWindowController.m in Sources */,
@@ -479,6 +498,7 @@
 				8478362C17A198860050EBA6 /* DSPPreferencesViewController.m in Sources */,
 				84600B4517A31CB500D3E8FE /* MAAttachedWindow.m in Sources */,
 				8478363517A19E410050EBA6 /* DSPDefaults.m in Sources */,
+				84600B5D17A354D300D3E8FE /* DSPHistoryTableView.m in Sources */,
 				8478364217A1FAE00050EBA6 /* DSPSwitch.m in Sources */,
 				8478364917A205D50050EBA6 /* DSPLaunchServicesManager.m in Sources */,
 				8478365D17A221490050EBA6 /* NSColor+DSPExtensions.m in Sources */,

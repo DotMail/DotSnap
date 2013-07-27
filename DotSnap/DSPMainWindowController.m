@@ -31,9 +31,8 @@
 	self.window.menuBarIcon = [NSImage imageNamed:@"Status"];
     self.window.highlightedMenuBarIcon = [NSImage imageNamed:@"StatusHighlighted"];
     self.window.hasMenuBarIcon = YES;
-    self.window.attachedToMenuBar = YES;
-    self.window.isDetachable = YES;
-		
+	self.window.acceptsMouseMovedEvents = YES;
+	
 	return self;
 }
 

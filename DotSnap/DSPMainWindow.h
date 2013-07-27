@@ -13,13 +13,13 @@
 @property (nonatomic, assign) BOOL isInOpenPanel;
 
 @property (nonatomic, assign) BOOL hasMenuBarIcon;
-@property (nonatomic, assign) BOOL attachedToMenuBar;
-@property (nonatomic, assign) BOOL hideWindowControlsWhenAttached;
-@property (nonatomic, assign) BOOL isDetachable;
 @property (assign) CGFloat snapDistance;
 @property (nonatomic, strong) NSImage *menuBarIcon;
 @property (nonatomic, strong) NSImage *highlightedMenuBarIcon;
 @property (readonly) NSStatusItem *statusItem;
+
+- (void)endEditingGracefully;
+
 @end
 
 @interface DPSMenuBarWindowIconView : NSView

@@ -7,6 +7,7 @@
 //
 
 #import "DSPMainViewModel.h"
+#import "DSPHistoryRowView.h"
 
 static NSUInteger const DPSUniqueFilenameDepthLimit = 500;
 
@@ -45,11 +46,7 @@ static NSUInteger const DPSUniqueFilenameDepthLimit = 500;
 		[self.filenameHistory removeObjectAtIndex:(self.filenameHistory.count - 1)];
 	}
 	[self.filenameHistory insertObject:filename atIndex:0];
-}
-
-- (void)dealloc {
 	[NSUserDefaults.standardUserDefaults setObject:self.filenameHistory forKey:DPSFilenameHistoryKey];
-	[NSUserDefaults.standardUserDefaults synchronize];
 }
 
 + (NSDateFormatter *)dateFormatter {
@@ -92,12 +89,6 @@ static NSString *DPSUniqueFilenameForDirectory(NSString *relativePath, NSString 
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
 	return [self.filenameHistory objectAtIndex:row];
-}
-
-#pragma mark - NSTableViewDelegate
-
-- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
-	return 90.f;
 }
 
 @end
