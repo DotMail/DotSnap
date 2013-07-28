@@ -30,7 +30,15 @@
 		84BC7E5C17A4D1D00091C0DB /* dotsnapp_appicon_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E5817A4D1D00091C0DB /* dotsnapp_appicon_normal@2x.png */; };
 		84BC7E5D17A4D1D00091C0DB /* dotsnapp_appicon_white_active.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E5917A4D1D00091C0DB /* dotsnapp_appicon_white_active.png */; };
 		84BC7E5E17A4D1D00091C0DB /* dotsnapp_appicon_white_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E5A17A4D1D00091C0DB /* dotsnapp_appicon_white_active@2x.png */; };
-		84FC869817A3191000955E40 /* DirectoryPickerArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC868D17A3191000955E40 /* DirectoryPickerArrow.png */; };
+		84BC7E6717A4D8820091C0DB /* Browse_Arrow_Hover.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E5F17A4D8820091C0DB /* Browse_Arrow_Hover.png */; };
+		84BC7E6817A4D8820091C0DB /* Browse_Arrow_Hover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E6017A4D8820091C0DB /* Browse_Arrow_Hover@2x.png */; };
+		84BC7E6917A4D8820091C0DB /* Browse_Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E6117A4D8820091C0DB /* Browse_Arrow.png */; };
+		84BC7E6A17A4D8820091C0DB /* Browse_Arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E6217A4D8820091C0DB /* Browse_Arrow@2x.png */; };
+		84BC7E6B17A4D8820091C0DB /* BrowseCircle_hover.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E6317A4D8820091C0DB /* BrowseCircle_hover.png */; };
+		84BC7E6C17A4D8820091C0DB /* BrowseCircle_hover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E6417A4D8820091C0DB /* BrowseCircle_hover@2x.png */; };
+		84BC7E6D17A4D8820091C0DB /* BrowseCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E6517A4D8820091C0DB /* BrowseCircle.png */; };
+		84BC7E6E17A4D8820091C0DB /* BrowseCircle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E6617A4D8820091C0DB /* BrowseCircle@2x.png */; };
+		84BC7E7117A4D8BA0091C0DB /* DSPDirectoryPickerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BC7E7017A4D8BA0091C0DB /* DSPDirectoryPickerButton.m */; };
 		84FC869917A3191000955E40 /* DotSnapPreferencesLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC868E17A3191000955E40 /* DotSnapPreferencesLogo.png */; };
 		84FC869A17A3191000955E40 /* FilenameCheckmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC868F17A3191000955E40 /* FilenameCheckmark.png */; };
 		84FC869B17A3191000955E40 /* OptionsGear.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC869017A3191000955E40 /* OptionsGear.png */; };
@@ -148,7 +156,16 @@
 		84BC7E5817A4D1D00091C0DB /* dotsnapp_appicon_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dotsnapp_appicon_normal@2x.png"; path = "Artwork/dotsnapp_appicon_normal@2x.png"; sourceTree = "<group>"; };
 		84BC7E5917A4D1D00091C0DB /* dotsnapp_appicon_white_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dotsnapp_appicon_white_active.png; path = Artwork/dotsnapp_appicon_white_active.png; sourceTree = "<group>"; };
 		84BC7E5A17A4D1D00091C0DB /* dotsnapp_appicon_white_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dotsnapp_appicon_white_active@2x.png"; path = "Artwork/dotsnapp_appicon_white_active@2x.png"; sourceTree = "<group>"; };
-		84FC868D17A3191000955E40 /* DirectoryPickerArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DirectoryPickerArrow.png; path = Artwork/DirectoryPickerArrow.png; sourceTree = "<group>"; };
+		84BC7E5F17A4D8820091C0DB /* Browse_Arrow_Hover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Browse_Arrow_Hover.png; path = Artwork/Browse_Arrow_Hover.png; sourceTree = "<group>"; };
+		84BC7E6017A4D8820091C0DB /* Browse_Arrow_Hover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Browse_Arrow_Hover@2x.png"; path = "Artwork/Browse_Arrow_Hover@2x.png"; sourceTree = "<group>"; };
+		84BC7E6117A4D8820091C0DB /* Browse_Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Browse_Arrow.png; path = Artwork/Browse_Arrow.png; sourceTree = "<group>"; };
+		84BC7E6217A4D8820091C0DB /* Browse_Arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Browse_Arrow@2x.png"; path = "Artwork/Browse_Arrow@2x.png"; sourceTree = "<group>"; };
+		84BC7E6317A4D8820091C0DB /* BrowseCircle_hover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BrowseCircle_hover.png; path = Artwork/BrowseCircle_hover.png; sourceTree = "<group>"; };
+		84BC7E6417A4D8820091C0DB /* BrowseCircle_hover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BrowseCircle_hover@2x.png"; path = "Artwork/BrowseCircle_hover@2x.png"; sourceTree = "<group>"; };
+		84BC7E6517A4D8820091C0DB /* BrowseCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BrowseCircle.png; path = Artwork/BrowseCircle.png; sourceTree = "<group>"; };
+		84BC7E6617A4D8820091C0DB /* BrowseCircle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BrowseCircle@2x.png"; path = "Artwork/BrowseCircle@2x.png"; sourceTree = "<group>"; };
+		84BC7E6F17A4D8BA0091C0DB /* DSPDirectoryPickerButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPDirectoryPickerButton.h; sourceTree = "<group>"; };
+		84BC7E7017A4D8BA0091C0DB /* DSPDirectoryPickerButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPDirectoryPickerButton.m; sourceTree = "<group>"; };
 		84FC868E17A3191000955E40 /* DotSnapPreferencesLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DotSnapPreferencesLogo.png; path = Artwork/DotSnapPreferencesLogo.png; sourceTree = "<group>"; };
 		84FC868F17A3191000955E40 /* FilenameCheckmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = FilenameCheckmark.png; path = Artwork/FilenameCheckmark.png; sourceTree = "<group>"; };
 		84FC869017A3191000955E40 /* OptionsGear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = OptionsGear.png; path = Artwork/OptionsGear.png; sourceTree = "<group>"; };
@@ -226,6 +243,8 @@
 				847835D517A0DB670050EBA6 /* DSPMainView.m */,
 				8478361C17A1001F0050EBA6 /* DSPMainViewModel.h */,
 				8478361D17A1001F0050EBA6 /* DSPMainViewModel.m */,
+				84BC7E6F17A4D8BA0091C0DB /* DSPDirectoryPickerButton.h */,
+				84BC7E7017A4D8BA0091C0DB /* DSPDirectoryPickerButton.m */,
 				84600B4F17A34CB700D3E8FE /* History Table View */,
 			);
 			name = "Main Window";
@@ -348,7 +367,14 @@
 				84BC7E5817A4D1D00091C0DB /* dotsnapp_appicon_normal@2x.png */,
 				84BC7E5917A4D1D00091C0DB /* dotsnapp_appicon_white_active.png */,
 				84BC7E5A17A4D1D00091C0DB /* dotsnapp_appicon_white_active@2x.png */,
-				84FC868D17A3191000955E40 /* DirectoryPickerArrow.png */,
+				84BC7E5F17A4D8820091C0DB /* Browse_Arrow_Hover.png */,
+				84BC7E6017A4D8820091C0DB /* Browse_Arrow_Hover@2x.png */,
+				84BC7E6117A4D8820091C0DB /* Browse_Arrow.png */,
+				84BC7E6217A4D8820091C0DB /* Browse_Arrow@2x.png */,
+				84BC7E6317A4D8820091C0DB /* BrowseCircle_hover.png */,
+				84BC7E6417A4D8820091C0DB /* BrowseCircle_hover@2x.png */,
+				84BC7E6517A4D8820091C0DB /* BrowseCircle.png */,
+				84BC7E6617A4D8820091C0DB /* BrowseCircle@2x.png */,
 				84FC868E17A3191000955E40 /* DotSnapPreferencesLogo.png */,
 				84FC868F17A3191000955E40 /* FilenameCheckmark.png */,
 				84FC869017A3191000955E40 /* OptionsGear.png */,
@@ -466,16 +492,23 @@
 				84FC869A17A3191000955E40 /* FilenameCheckmark.png in Resources */,
 				DD4F7C1F13C30F9F00825C6E /* MainMenu.xib in Resources */,
 				84FC869917A3191000955E40 /* DotSnapPreferencesLogo.png in Resources */,
+				84BC7E6D17A4D8820091C0DB /* BrowseCircle.png in Resources */,
 				84FC869C17A3191000955E40 /* OptionsGearWhite.png in Resources */,
 				84BC7E5B17A4D1D00091C0DB /* dotsnapp_appicon_normal.png in Resources */,
 				84FC86A117A3191000955E40 /* SwitchCheckmark.png in Resources */,
+				84BC7E6817A4D8820091C0DB /* Browse_Arrow_Hover@2x.png in Resources */,
 				84BC7E5C17A4D1D00091C0DB /* dotsnapp_appicon_normal@2x.png in Resources */,
 				84BC7E5D17A4D1D00091C0DB /* dotsnapp_appicon_white_active.png in Resources */,
 				84BC7E5E17A4D1D00091C0DB /* dotsnapp_appicon_white_active@2x.png in Resources */,
 				84FC86A217A3191000955E40 /* SwitchXmark.png in Resources */,
-				84FC869817A3191000955E40 /* DirectoryPickerArrow.png in Resources */,
+				84BC7E6717A4D8820091C0DB /* Browse_Arrow_Hover.png in Resources */,
+				84BC7E6A17A4D8820091C0DB /* Browse_Arrow@2x.png in Resources */,
+				84BC7E6C17A4D8820091C0DB /* BrowseCircle_hover@2x.png in Resources */,
+				84BC7E6E17A4D8820091C0DB /* BrowseCircle@2x.png in Resources */,
 				8478363217A19D2B0050EBA6 /* Defaults.plist in Resources */,
 				84FC869B17A3191000955E40 /* OptionsGear.png in Resources */,
+				84BC7E6B17A4D8820091C0DB /* BrowseCircle_hover.png in Resources */,
+				84BC7E6917A4D8820091C0DB /* Browse_Arrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,6 +523,7 @@
 				DD4F7C1513C30F9F00825C6E /* main.m in Sources */,
 				847835C517A0D2750050EBA6 /* DSPAppDelegate.m in Sources */,
 				847835C817A0D3590050EBA6 /* DSPMainWindowController.m in Sources */,
+				84BC7E7117A4D8BA0091C0DB /* DSPDirectoryPickerButton.m in Sources */,
 				847835CB17A0D3650050EBA6 /* DSPMainViewController.m in Sources */,
 				847835D617A0DB670050EBA6 /* DSPMainView.m in Sources */,
 				8478360817A0F5560050EBA6 /* DSPMainWindow.m in Sources */,

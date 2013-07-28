@@ -6,13 +6,14 @@
 //
 //
 
-#import "DSPMainViewController.h"
-#import "DSPPreferencesViewController.h"
 #import "DSPMainView.h"
 #import "DSPMainWindow.h"
 #import "DSPMainViewModel.h"
 #import "DSPHistoryRowView.h"
 #import "DSPHistoryTableView.h"
+#import "DSPMainViewController.h"
+#import "DSPDirectoryPickerButton.h"
+#import "DSPPreferencesViewController.h"
 
 @interface DSPMainViewController ()
 @property (nonatomic, strong, readonly) DSPMainViewModel *viewModel;
@@ -133,7 +134,7 @@
 	_filenameField.autoresizingMask = NSViewMinYMargin;
 	[view addSubview:_filenameField];
 	
-	NSButton *directoryButton = [[NSButton alloc]initWithFrame:(NSRect){ .origin.x = 36, .origin.y = NSHeight(_contentFrame) - 96, .size = { 48, 48 } }];
+	DSPDirectoryPickerButton *directoryButton = [[DSPDirectoryPickerButton alloc]initWithFrame:(NSRect){ .origin.x = 36, .origin.y = NSHeight(_contentFrame) - 96, .size = { 48, 48 } }];
 	directoryButton.rac_command = [RACCommand commandWithCanExecuteSignal:self.canFireSubject];
 	[directoryButton.rac_command subscribeNext:^(NSButton *_) {
 		((DSPMainWindow *)view.window).isInOpenPanel = YES;
@@ -154,10 +155,6 @@
 			}
 		}];
 	}];
-	directoryButton.autoresizingMask = NSViewMinYMargin;
-	directoryButton.bordered = NO;
-	directoryButton.buttonType = NSMomentaryChangeButton;
-	directoryButton.image = [NSImage imageNamed:@"DirectoryPickerArrow"];
 	[view addSubview:directoryButton];
 
 	NSButton *optionsButton = [[NSButton alloc]initWithFrame:(NSRect){ .origin.x = NSWidth(_contentFrame) - 45, .origin.y = 24, .size = { 17, 17 } }];
