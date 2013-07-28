@@ -49,6 +49,9 @@
     return self;
 }
 
+- (void)resetCursorRects {
+	[self addCursorRect:self.bounds cursor:NSCursor.pointingHandCursor];
+}
 
 - (void)ensureTrackingArea {
     if (trackingArea == nil) {

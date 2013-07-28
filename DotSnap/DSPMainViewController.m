@@ -22,6 +22,7 @@
 @property (nonatomic, strong) RACSubject *canFireSubject;
 @property (nonatomic, strong) NSTextField *filenameField;
 @property (nonatomic, copy) void (^carriageReturnBlock)();
+@property (nonatomic, copy) void (^mouseDownBlock)(NSEvent *event);
 @end
 
 @implementation DSPMainViewController
@@ -133,6 +134,7 @@
 	_filenameField.textColor = [NSColor colorWithCalibratedRed:0.437 green:0.517 blue:0.559 alpha:1.000];
 	_filenameField.focusRingType = NSFocusRingTypeNone;
 	_filenameField.autoresizingMask = NSViewMinYMargin;
+	_filenameField.enabled = NO;
 	[view addSubview:_filenameField];
 	
 	DSPDirectoryPickerButton *directoryButton = [[DSPDirectoryPickerButton alloc]initWithFrame:(NSRect){ .origin.x = 36, .origin.y = NSHeight(_contentFrame) - 96, .size = { 48, 48 } }];
@@ -214,7 +216,8 @@
 		historySeparatorShadow.alphaValue = 0.f;
 
 		[self.filenameField resignFirstResponder];
-		
+		self.filenameField.enabled = NO;
+
 		fieldBackground.backgroundColor = [NSColor colorWithCalibratedRed:0.850 green:0.888 blue:0.907 alpha:1.000];
 		
 		optionsButton.image = [NSImage imageNamed:@"FilenameCheckmark.png"];
@@ -235,6 +238,26 @@
 			
 			[NSAnimationContext endGrouping];
 		});
+	};
+	
+	self.mouseDownBlock = ^ (NSEvent *theEvent) {
+		@strongify(self);
+		if (CGRectContainsPoint(fieldBackground.frame, [theEvent locationInWindow])) {
+			self.filenameField.enabled = YES;
+			[self.filenameField becomeFirstResponder];
+			[NSNotificationCenter.defaultCenter postNotificationName:NSControlTextDidChangeNotification object:self.filenameField];
+		} else {
+			self.filenameField.enabled = NO;
+			[self.filenameField resignFirstResponder];
+			
+			historySeparatorShadow.alphaValue = 0.f;
+			fieldBackground.backgroundColor = [NSColor colorWithCalibratedRed:0.850 green:0.888 blue:0.907 alpha:1.000];
+			
+			if (!CGRectEqualToRect(scrollView.frame, (NSRect){ .origin.y = 4, .size = { 400, 0 } })) {
+				[scrollView.animator setFrame:(NSRect){ .origin.y = 4, .size = { 400, 0 } }];
+				[(DSPMainWindow *)view.window setFrame:(NSRect){ .origin.x = view.window.frame.origin.x, .origin.y = NSMaxY(view.window.screen.frame) - 244, .size = { 400, 224 } } display:YES animate:YES];
+			}
+		}
 	};
 	
 	_filenameField.stringValue = [NSUserDefaults.standardUserDefaults stringForKey:DSPDefaultFilenameTemplateKey];
@@ -262,6 +285,10 @@
 	return panel;
 }
 
+- (void)mouseDown:(NSEvent *)theEvent {
+	[super mouseDown:theEvent];
+	self.mouseDownBlock(theEvent);
+}
 #pragma mark - NSTableViewDelegate
 
 - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {

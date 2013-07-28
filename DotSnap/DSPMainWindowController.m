@@ -19,8 +19,9 @@
 - (id)init {
 	self = [super init];
 	
-	self.viewController = [[DSPMainViewController alloc]initWithContentRect:(NSRect){ .size = { 400, 210 } }];
-	
+	_viewController = [[DSPMainViewController alloc]initWithContentRect:(NSRect){ .size = { 400, 210 } }];
+	[self setNextResponder:_viewController];
+
 	self.window = [[DSPMainWindow alloc]initWithView:self.viewController.view attachedToPoint:(NSPoint){ } inWindow:nil onSide:MAPositionBottom atDistance:5.0];
 	self.window.cornerRadius = 0.f;
 	self.window.arrowHeight = 12.f;
@@ -38,6 +39,13 @@
 
 - (DSPMainWindow *)window {
 	return (DSPMainWindow *)[super window];
+}
+
+- (BOOL)validateProposedFirstResponder:(NSResponder *)responder forEvent:(NSEvent *)event {
+	if ([responder isKindOfClass:NSTextField.class] && !event) {
+		return NO;
+	}
+	return [super validateProposedFirstResponder:responder forEvent:event];
 }
 
 @end
