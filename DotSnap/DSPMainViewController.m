@@ -71,11 +71,11 @@
 	separatorShadow.boxType = NSBoxCustom;
 	[view addSubview:separatorShadow];
 	
-	NSBox *underSeparatorShadow = [[NSBox alloc]initWithFrame:(NSRect){ .origin.y = 2, .size = { NSWidth(_contentFrame), 2 } }];
-	underSeparatorShadow.autoresizingMask = NSViewWidthSizable | NSViewMinYMargin;
+	NSBox *underSeparatorShadow = [[NSBox alloc]initWithFrame:(NSRect){ .origin.y = 0, .size = { NSWidth(_contentFrame), 2 } }];
+	underSeparatorShadow.autoresizingMask = NSViewWidthSizable | NSViewMaxYMargin;
 	underSeparatorShadow.borderType = NSLineBorder;
-	underSeparatorShadow.borderColor = [NSColor colorWithCalibratedRed:0.159 green:0.468 blue:0.307 alpha:1.000];
-	underSeparatorShadow.fillColor = [NSColor colorWithCalibratedRed:0.159 green:0.468 blue:0.307 alpha:1.000];
+	underSeparatorShadow.borderColor = [NSColor colorWithCalibratedRed:0.168 green:0.434 blue:0.300 alpha:1.000];
+	underSeparatorShadow.fillColor = [NSColor colorWithCalibratedRed:0.181 green:0.455 blue:0.315 alpha:1.000];
 	underSeparatorShadow.borderWidth = 2.f;
 	underSeparatorShadow.boxType = NSBoxCustom;
 	[view addSubview:underSeparatorShadow];
