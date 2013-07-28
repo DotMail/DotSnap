@@ -8,6 +8,7 @@
 
 #import "DSPMainView.h"
 #import "DSPMainWindow.h"
+#import "DSPPNGFormatter.h"
 #import "DSPMainViewModel.h"
 #import "DSPHistoryRowView.h"
 #import "DSPHistoryTableView.h"
@@ -152,6 +153,7 @@
 	_filenameField.enabled = NO;
 	[_filenameField.cell setScrollable:YES];
 	[_filenameField.cell setLineBreakMode:NSLineBreakByClipping];
+	[_filenameField.cell setFormatter:[DSPPNGFormatter new]];
 	[view addSubview:_filenameField];
 	
 	DSPDirectoryPickerButton *directoryButton = [[DSPDirectoryPickerButton alloc]initWithFrame:(NSRect){ .origin.x = 36, .origin.y = NSHeight(_contentFrame) - 96, .size = { 48, 48 } }];

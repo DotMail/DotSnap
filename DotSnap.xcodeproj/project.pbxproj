@@ -12,6 +12,7 @@
 		8405D58017A5A8D700D7990E /* SettingsWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 8405D57E17A5A8D700D7990E /* SettingsWhite.png */; };
 		8405D58117A5A8D700D7990E /* SettingsWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8405D57F17A5A8D700D7990E /* SettingsWhite@2x.png */; };
 		8405D58417A5C4D500D7990E /* DSPPreferencesWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 8405D58317A5C4D500D7990E /* DSPPreferencesWindow.m */; };
+		8405D58717A5D60000D7990E /* DSPPNGFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8405D58617A5D60000D7990E /* DSPPNGFormatter.m */; };
 		84600B4517A31CB500D3E8FE /* MAAttachedWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 84600B4417A31CB500D3E8FE /* MAAttachedWindow.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		84600B4E17A34A8400D3E8FE /* DSPHistoryRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84600B4D17A34A8400D3E8FE /* DSPHistoryRowView.m */; };
 		84600B5D17A354D300D3E8FE /* DSPHistoryTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84600B5C17A354D300D3E8FE /* DSPHistoryTableView.m */; };
@@ -129,6 +130,8 @@
 		8405D57F17A5A8D700D7990E /* SettingsWhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SettingsWhite@2x.png"; path = "Artwork/SettingsWhite@2x.png"; sourceTree = "<group>"; };
 		8405D58217A5C4D500D7990E /* DSPPreferencesWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPPreferencesWindow.h; sourceTree = "<group>"; };
 		8405D58317A5C4D500D7990E /* DSPPreferencesWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPPreferencesWindow.m; sourceTree = "<group>"; };
+		8405D58517A5D60000D7990E /* DSPPNGFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPPNGFormatter.h; sourceTree = "<group>"; };
+		8405D58617A5D60000D7990E /* DSPPNGFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPPNGFormatter.m; sourceTree = "<group>"; };
 		84600B4317A31CB500D3E8FE /* MAAttachedWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAAttachedWindow.h; sourceTree = "<group>"; };
 		84600B4417A31CB500D3E8FE /* MAAttachedWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAAttachedWindow.m; sourceTree = "<group>"; };
 		84600B4C17A34A8400D3E8FE /* DSPHistoryRowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPHistoryRowView.h; sourceTree = "<group>"; };
@@ -255,6 +258,8 @@
 				8478360717A0F5560050EBA6 /* DSPMainWindow.m */,
 				847835C917A0D3650050EBA6 /* DSPMainViewController.h */,
 				847835CA17A0D3650050EBA6 /* DSPMainViewController.m */,
+				8405D58517A5D60000D7990E /* DSPPNGFormatter.h */,
+				8405D58617A5D60000D7990E /* DSPPNGFormatter.m */,
 				847835D417A0DB670050EBA6 /* DSPMainView.h */,
 				847835D517A0DB670050EBA6 /* DSPMainView.m */,
 				8478361C17A1001F0050EBA6 /* DSPMainViewModel.h */,
@@ -553,6 +558,7 @@
 				84600B4E17A34A8400D3E8FE /* DSPHistoryRowView.m in Sources */,
 				DD4F7C1513C30F9F00825C6E /* main.m in Sources */,
 				847835C517A0D2750050EBA6 /* DSPAppDelegate.m in Sources */,
+				8405D58717A5D60000D7990E /* DSPPNGFormatter.m in Sources */,
 				847835C817A0D3590050EBA6 /* DSPMainWindowController.m in Sources */,
 				84BC7E7117A4D8BA0091C0DB /* DSPDirectoryPickerButton.m in Sources */,
 				847835CB17A0D3650050EBA6 /* DSPMainViewController.m in Sources */,
