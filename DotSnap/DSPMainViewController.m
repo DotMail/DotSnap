@@ -100,7 +100,7 @@
 	saveToLabel.bezeled = NO;
 	saveToLabel.editable = NO;
 	saveToLabel.drawsBackground = NO;
-	saveToLabel.font = [NSFont fontWithName:@"HelveticaNeue-Bold" size:10.f];
+	saveToLabel.font = [NSFont fontWithName:@"HelveticaNeue-Bold" size:11.f];
 	saveToLabel.textColor = [NSColor colorWithCalibratedRed:0.171 green:0.489 blue:0.326 alpha:1.000];
 	saveToLabel.focusRingType = NSFocusRingTypeNone;
 	NSString *desktopPath = [NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES) objectAtIndex:0];
@@ -109,7 +109,7 @@
 	saveToLabel.autoresizingMask = NSViewMinYMargin;
 	[view addSubview:saveToLabel];
 	
-	NSScrollView *scrollView = [[NSScrollView alloc] initWithFrame:(NSRect){ }];
+	NSScrollView *scrollView = [[NSScrollView alloc] initWithFrame:(NSRect){ .origin.y = -270, .size = { 400, 246 } }];
 	scrollView.layer = CALayer.layer;
 	scrollView.wantsLayer = YES;
 	scrollView.verticalScrollElasticity = NSScrollElasticityNone;
@@ -222,7 +222,7 @@
 		
 		optionsButton.image = [NSImage imageNamed:@"FilenameCheckmark.png"];
 		
-		[scrollView.animator setFrame:(NSRect){ .origin.y = 4, .size = { 400, 0 } }];
+		[scrollView.animator setFrame:(NSRect){ .origin.y = -270, .size = { 400, 246 } }];
 		[(DSPMainWindow *)view.window setFrame:(NSRect){ .origin.x = view.window.frame.origin.x, .origin.y = NSMaxY(view.window.screen.frame) - 244, .size = { 400, 224 } } display:YES animate:YES];
 		
 		double delayInSeconds = 0.5;
@@ -253,8 +253,8 @@
 			historySeparatorShadow.alphaValue = 0.f;
 			fieldBackground.backgroundColor = [NSColor colorWithCalibratedRed:0.850 green:0.888 blue:0.907 alpha:1.000];
 			
-			if (!CGRectEqualToRect(scrollView.frame, (NSRect){ .origin.y = 4, .size = { 400, 0 } })) {
-				[scrollView.animator setFrame:(NSRect){ .origin.y = 4, .size = { 400, 0 } }];
+			if (!CGRectEqualToRect(scrollView.frame, (NSRect){ .origin.y = -270, .size = { 400, 246 } })) {
+				[scrollView.animator setFrame:(NSRect){ .origin.y = -270, .size = { 400, 246 } }];
 				[(DSPMainWindow *)view.window setFrame:(NSRect){ .origin.x = view.window.frame.origin.x, .origin.y = NSMaxY(view.window.screen.frame) - 244, .size = { 400, 224 } } display:YES animate:YES];
 			}
 		}
