@@ -9,7 +9,8 @@
 #import "DSPSpinningSettingsButton.h"
 
 @interface DSPSpinningSettingsButton ()
-@property (nonatomic, copy) void(^redrawBlock)(BOOL highlighted, BOOL hovering, NSEvent *event);
+@property (nonatomic, copy) void (^redrawBlock)(BOOL highlighted, BOOL hovering, NSEvent *event);
+@property (nonatomic, copy) void (^spinOutBlock)();
 @end
 
 @implementation DSPSpinningSettingsButton {
@@ -46,9 +47,40 @@
 		}
 	};
 	
+	@weakify(self);
+	self.spinOutBlock = ^{
+		@strongify(self);
+		CABasicAnimation *spinningAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+		spinningAnimation.toValue = @(M_PI);
+		spinningAnimation.duration = 0.5;
+		
+		CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+		opacityAnimation.toValue = @0;
+		opacityAnimation.duration = 0.6;
+		spinningAnimation.delegate = self;
+
+		[[self rac_signalForSelector:@selector(animationDidStop:finished:)]subscribeNext:^(id x) {
+			gearLayer.contents = [NSImage imageNamed:@"checkmark"];
+			double delayInSeconds = 0.5;
+			dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+			dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+				gearLayer.contents = [NSImage imageNamed:@"Settings_Normal"];
+			});
+		}];
+		[gearLayer addAnimation:spinningAnimation forKey:nil];
+		[gearLayer addAnimation:opacityAnimation forKey:nil];
+	};
+	
     return self;
 }
 
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
+	
+}
+
+- (void)spinOut {
+	self.spinOutBlock();
+}
 
 - (void)ensureTrackingArea {
     if (trackingArea == nil) {

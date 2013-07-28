@@ -168,6 +168,7 @@
 	
 		[NSAnimationContext beginGrouping];
 		[_preferencesViewController.view.animator setAlphaValue:1.f];
+		[scrollView.animator setFrame:(NSRect){ .origin.y = -350, .size = { 400, 246 } }];
 		[(DSPMainWindow *)view.window setFrame:(NSRect){ .origin.x = view.window.frame.origin.x, .origin.y = NSMaxY(view.window.screen.frame) - 374, .size = { 400, 350 } } display:YES animate:YES];
 
 		[NSAnimationContext endGrouping];
@@ -219,25 +220,11 @@
 		self.filenameField.enabled = NO;
 
 		fieldBackground.backgroundColor = [NSColor colorWithCalibratedRed:0.850 green:0.888 blue:0.907 alpha:1.000];
-		
-		optionsButton.image = [NSImage imageNamed:@"FilenameCheckmark.png"];
-		
+		[optionsButton spinOut];
+
 		[scrollView.animator setFrame:(NSRect){ .origin.y = -270, .size = { 400, 246 } }];
 		[(DSPMainWindow *)view.window setFrame:(NSRect){ .origin.x = view.window.frame.origin.x, .origin.y = NSMaxY(view.window.screen.frame) - 244, .size = { 400, 224 } } display:YES animate:YES];
 		
-		double delayInSeconds = 0.5;
-		dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-		dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-			[NSAnimationContext beginGrouping];
-			[[NSAnimationContext currentContext]setCompletionHandler:^{
-				optionsButton.image = [NSImage imageNamed:@"OptionsGear"];
-				[optionsButton.animator setAlphaValue:1.f];
-			}];
-			
-			[optionsButton.animator setAlphaValue:0.f];
-			
-			[NSAnimationContext endGrouping];
-		});
 	};
 	
 	self.mouseDownBlock = ^ (NSEvent *theEvent) {

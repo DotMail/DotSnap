@@ -10,4 +10,6 @@
 
 @interface DSPSpinningSettingsButton : NSButton
 
+- (void)spinOut;
+
 @end
