@@ -11,6 +11,7 @@
 #import "DSPMainViewModel.h"
 #import "DSPHistoryRowView.h"
 #import "DSPHistoryTableView.h"
+#import "DSPPreferencesWindow.h"
 #import "DSPMainViewController.h"
 #import "DSPDirectoryPickerButton.h"
 #import "DSPSpinningSettingsButton.h"
@@ -19,10 +20,12 @@
 @interface DSPMainViewController ()
 @property (nonatomic, strong, readonly) DSPMainViewModel *viewModel;
 @property (nonatomic, strong) DSPPreferencesViewController *preferencesViewController;
+@property (nonatomic, strong) DSPPreferencesWindow *preferencesWindow;
 @property (nonatomic, strong) RACSubject *canFireSubject;
 @property (nonatomic, strong) NSTextField *filenameField;
 @property (nonatomic, copy) void (^carriageReturnBlock)();
 @property (nonatomic, copy) void (^mouseDownBlock)(NSEvent *event);
+@property (nonatomic, copy) void (^mouseEnteredBlock)(NSEvent *event, BOOL entered);
 @end
 
 @implementation DSPMainViewController
@@ -33,7 +36,10 @@
 	_contentFrame = rect;
 	_viewModel = [DSPMainViewModel new];
 	_canFireSubject = [RACSubject subject];
+	
 	_preferencesViewController = [[DSPPreferencesViewController alloc]initWithContentRect:(CGRect){ .size = { 400, 350 } } canFireSubject:_canFireSubject];
+	_preferencesWindow = [[DSPPreferencesWindow alloc]initWithView:self.preferencesViewController.view attachedToPoint:(NSPoint){ } onSide:MAPositionBottom];
+	
 	[_canFireSubject sendNext:@YES];
 	
 	return self;
@@ -43,6 +49,11 @@
 	DSPMainView *view = [[DSPMainView alloc]initWithFrame:_contentFrame];
 	view.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
 	view.backgroundColor = [NSColor colorWithCalibratedRed:0.260 green:0.663 blue:0.455 alpha:1.000];
+	view.layer.masksToBounds = YES;
+	
+	DSPBackgroundView *backgroundView = [[DSPBackgroundView alloc]initWithFrame:(NSRect){ .origin.y = 60, .size = { NSWidth(_contentFrame), 150 } }];
+	backgroundView.autoresizingMask = NSViewMinYMargin;
+	[view addSubview:backgroundView];
 	
 	NSBox *windowShadow = [[NSBox alloc]initWithFrame:(NSRect){ .origin.y = NSHeight(_contentFrame) - 2, .size = { (NSWidth(_contentFrame)/2) - 10, 2 } }];
 	windowShadow.autoresizingMask = NSViewWidthSizable | NSViewMinYMargin;
@@ -130,7 +141,7 @@
 	scrollView.documentView = tableView;
 	[view addSubview:scrollView];
 	
-	_filenameField = [[NSTextField alloc]initWithFrame:(NSRect){ .origin.x = 30, .origin.y = 12, .size = { NSWidth(_contentFrame), 34 } }];
+	_filenameField = [[NSTextField alloc]initWithFrame:(NSRect){ .origin.x = 30, .origin.y = 8, .size = { NSWidth(_contentFrame), 34 } }];
 	_filenameField.delegate = self;
 	_filenameField.bezeled = NO;
 	_filenameField.drawsBackground = NO;
@@ -169,19 +180,9 @@
 	DSPSpinningSettingsButton *optionsButton = [[DSPSpinningSettingsButton alloc]initWithFrame:(NSRect){ .origin.x = NSWidth(_contentFrame) - 45, .origin.y = 24, .size = { 17, 17 } } style:0];
 	optionsButton.rac_command = [RACCommand commandWithCanExecuteSignal:self.canFireSubject];
 	[optionsButton.rac_command subscribeNext:^(NSButton *_) {
-		[_filenameField resignFirstResponder];
-		_preferencesViewController.view.alphaValue = 0.0f;
-	
-		[NSAnimationContext beginGrouping];
-		[_preferencesViewController.view.animator setAlphaValue:1.f];
-		[scrollView.animator setFrame:(NSRect){ .origin.y = -350, .size = { 400, 246 } }];
-		[(DSPMainWindow *)view.window setFrame:(NSRect){ .origin.x = view.window.frame.origin.x, .origin.y = NSMaxY(view.window.screen.frame) - 374, .size = { 400, 350 } } display:YES animate:YES];
-
-		[NSAnimationContext endGrouping];
-		
-		self.filenameField.enabled = NO;
-		[self.filenameField resignFirstResponder];
-		
+		[(DSPMainWindow *)view.window setIsFlipping:YES];
+		[(DSPMainWindow *)view.window flipToShowWindow:self.preferencesWindow forward:NO];
+		[(DSPMainWindow *)view.window setIsFlipping:NO];
 		[self.canFireSubject sendNext:@NO];
 	}];
 	[view addSubview:optionsButton];
@@ -195,16 +196,13 @@
 	historySeparatorShadow.boxType = NSBoxCustom;
 	historySeparatorShadow.alphaValue = 0.f;
 	[view addSubview:historySeparatorShadow];
-	
-	_preferencesViewController.view.alphaValue = 0.f;
-	[view addSubview:_preferencesViewController.view];
-	
+		
 	self.view = view;
 
 	@weakify(self);
 	[NSNotificationCenter.defaultCenter addObserverForName:NSControlTextDidChangeNotification object:_filenameField queue:nil usingBlock:^(NSNotification *note) {
 		@strongify(self);
-		NSRect rect = (NSRect){ .origin.x = view.window.frame.origin.x, .origin.y = NSMaxY(view.window.screen.frame) - 474, .size = { 400, 469 } };
+		NSRect rect = (NSRect){ .origin.x = view.window.frame.origin.x, .origin.y = NSMaxY(view.window.screen.frame) - 492, .size = { 400, 469 } };
 		if (!CGRectEqualToRect(rect, view.window.frame)) {
 			[view setNeedsDisplay:YES];
 			historySeparatorShadow.alphaValue = 0.f;
@@ -231,12 +229,11 @@
 		self.filenameField.enabled = NO;
 
 		fieldBackground.backgroundColor = [NSColor colorWithCalibratedRed:0.850 green:0.888 blue:0.907 alpha:1.000];
+		fieldBackground.layer.borderColor = [NSColor colorWithCalibratedRed:0.850 green:0.888 blue:0.907 alpha:1.000].CGColor;
 		[optionsButton spinOut];
 
 		[scrollView.animator setFrame:(NSRect){ .origin.y = -270, .size = { 400, 246 } }];
 		[(DSPMainWindow *)view.window setFrame:(NSRect){ .origin.x = view.window.frame.origin.x, .origin.y = NSMaxY(view.window.screen.frame) - 244, .size = { 400, 224 } } display:YES animate:YES];
-		fieldBackground.layer.borderColor = [NSColor whiteColor].CGColor;
-
 	};
 	
 	self.mouseDownBlock = ^ (NSEvent *theEvent) {
@@ -246,6 +243,7 @@
 			[self.filenameField becomeFirstResponder];
 			[NSNotificationCenter.defaultCenter postNotificationName:NSControlTextDidChangeNotification object:self.filenameField];
 		} else {
+			
 			self.filenameField.enabled = NO;
 			[self.filenameField resignFirstResponder];
 			
@@ -253,12 +251,25 @@
 			fieldBackground.backgroundColor = [NSColor colorWithCalibratedRed:0.850 green:0.888 blue:0.907 alpha:1.000];
 			fieldBackground.layer.borderColor = [NSColor colorWithCalibratedRed:0.850 green:0.888 blue:0.907 alpha:1.000].CGColor;
 
+			if (CGRectContainsPoint(backgroundView.frame, [theEvent locationInWindow])) {
+				[directoryButton.rac_command performSelector:@selector(execute:) withObject:@0 afterDelay:0.3];
+			}
+			
 			if (!CGRectEqualToRect(scrollView.frame, (NSRect){ .origin.y = -270, .size = { 400, 246 } })) {
 				[scrollView.animator setFrame:(NSRect){ .origin.y = -270, .size = { 400, 246 } }];
-				[(DSPMainWindow *)view.window setFrame:(NSRect){ .origin.x = view.window.frame.origin.x, .origin.y = NSMaxY(view.window.screen.frame) - 244, .size = { 400, 224 } } display:YES animate:YES];
+				[(DSPMainWindow *)view.window setFrame:(NSRect){ .origin.x = view.window.frame.origin.x, .origin.y = NSMaxY(view.window.screen.frame) - 246, .size = { 400, 224 } } display:YES animate:YES];
 			}
 		}
 	};
+	
+	self.mouseEnteredBlock = ^ (NSEvent *theEvent, BOOL entered) {
+		if (entered) {
+			[directoryButton mouseEntered:theEvent];
+		} else {
+			[directoryButton mouseExited:theEvent];
+		}
+	};
+	
 	
 	_filenameField.stringValue = [NSUserDefaults.standardUserDefaults stringForKey:DSPDefaultFilenameTemplateKey];
 }
@@ -270,6 +281,10 @@
 		return YES;
 	}
 	return NO;
+}
+
+- (void)controlTextDidChange:(NSNotification *)obj {
+	
 }
 
 - (NSOpenPanel *)openPanel {
@@ -287,9 +302,15 @@
 
 - (void)mouseDown:(NSEvent *)theEvent {
 	[super mouseDown:theEvent];
-	if (self.preferencesViewController.view.alphaValue == 0) {
-		self.mouseDownBlock(theEvent);
-	}
+	self.mouseDownBlock(theEvent);
+}
+
+- (void)mouseEntered:(NSEvent *)theEvent {
+	self.mouseEnteredBlock(theEvent, YES);
+}
+
+- (void)mouseExited:(NSEvent *)theEvent {
+	self.mouseEnteredBlock(theEvent, NO);
 }
 
 #pragma mark - NSTableViewDelegate

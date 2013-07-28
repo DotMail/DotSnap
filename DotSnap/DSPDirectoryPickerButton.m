@@ -12,9 +12,7 @@
 @property (nonatomic, copy) void(^redrawBlock)(BOOL highlighted, BOOL hovering, NSEvent *event);
 @end
 
-@implementation DSPDirectoryPickerButton {
-	NSTrackingArea *trackingArea;
-}
+@implementation DSPDirectoryPickerButton
 
 - (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
@@ -44,9 +42,6 @@
 			CABasicAnimation *spinningAnimation = [CABasicAnimation animationWithKeyPath:@"transform.x"];
 			spinningAnimation.toValue = @170;
 			spinningAnimation.duration = 0.5;
-			
-			
-			
 		} else {
 			browseCircleLayer.contents = [NSImage imageNamed:@"BrowseCircle"];
 			arrowLayer.contents = [NSImage imageNamed:@"Browse_Arrow"];
@@ -58,20 +53,6 @@
 
 - (void)resetCursorRects {
 	[self addCursorRect:self.bounds cursor:NSCursor.pointingHandCursor];
-}
-
-- (void)ensureTrackingArea {
-    if (trackingArea == nil) {
-        trackingArea = [[NSTrackingArea alloc] initWithRect:NSZeroRect options:NSTrackingInVisibleRect | NSTrackingActiveAlways | NSTrackingMouseEnteredAndExited owner:self userInfo:nil];
-    }
-}
-
-- (void)updateTrackingAreas {
-    [super updateTrackingAreas];
-    [self ensureTrackingArea];
-    if (![[self trackingAreas] containsObject:trackingArea]) {
-        [self addTrackingArea:trackingArea];
-    }
 }
 
 - (void)mouseEntered:(NSEvent *)theEvent {

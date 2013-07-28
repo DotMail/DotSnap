@@ -11,6 +11,7 @@
 		8405D56217A4F1C700D7990E /* checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8405D56017A4F1C700D7990E /* checkmark@2x.png */; };
 		8405D58017A5A8D700D7990E /* SettingsWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 8405D57E17A5A8D700D7990E /* SettingsWhite.png */; };
 		8405D58117A5A8D700D7990E /* SettingsWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8405D57F17A5A8D700D7990E /* SettingsWhite@2x.png */; };
+		8405D58417A5C4D500D7990E /* DSPPreferencesWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 8405D58317A5C4D500D7990E /* DSPPreferencesWindow.m */; };
 		84600B4517A31CB500D3E8FE /* MAAttachedWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 84600B4417A31CB500D3E8FE /* MAAttachedWindow.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		84600B4E17A34A8400D3E8FE /* DSPHistoryRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84600B4D17A34A8400D3E8FE /* DSPHistoryRowView.m */; };
 		84600B5D17A354D300D3E8FE /* DSPHistoryTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84600B5C17A354D300D3E8FE /* DSPHistoryTableView.m */; };
@@ -126,6 +127,8 @@
 		8405D56017A4F1C700D7990E /* checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "checkmark@2x.png"; path = "Artwork/checkmark@2x.png"; sourceTree = "<group>"; };
 		8405D57E17A5A8D700D7990E /* SettingsWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SettingsWhite.png; path = Artwork/SettingsWhite.png; sourceTree = "<group>"; };
 		8405D57F17A5A8D700D7990E /* SettingsWhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SettingsWhite@2x.png"; path = "Artwork/SettingsWhite@2x.png"; sourceTree = "<group>"; };
+		8405D58217A5C4D500D7990E /* DSPPreferencesWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPPreferencesWindow.h; sourceTree = "<group>"; };
+		8405D58317A5C4D500D7990E /* DSPPreferencesWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPPreferencesWindow.m; sourceTree = "<group>"; };
 		84600B4317A31CB500D3E8FE /* MAAttachedWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAAttachedWindow.h; sourceTree = "<group>"; };
 		84600B4417A31CB500D3E8FE /* MAAttachedWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAAttachedWindow.m; sourceTree = "<group>"; };
 		84600B4C17A34A8400D3E8FE /* DSPHistoryRowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPHistoryRowView.h; sourceTree = "<group>"; };
@@ -268,6 +271,8 @@
 		8478362017A18FF50050EBA6 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
+				8405D58217A5C4D500D7990E /* DSPPreferencesWindow.h */,
+				8405D58317A5C4D500D7990E /* DSPPreferencesWindow.m */,
 				8478362A17A198860050EBA6 /* DSPPreferencesViewController.h */,
 				8478362B17A198860050EBA6 /* DSPPreferencesViewController.m */,
 				8478364017A1FAE00050EBA6 /* DSPSwitch.h */,
@@ -544,6 +549,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8405D58417A5C4D500D7990E /* DSPPreferencesWindow.m in Sources */,
 				84600B4E17A34A8400D3E8FE /* DSPHistoryRowView.m in Sources */,
 				DD4F7C1513C30F9F00825C6E /* main.m in Sources */,
 				847835C517A0D2750050EBA6 /* DSPAppDelegate.m in Sources */,

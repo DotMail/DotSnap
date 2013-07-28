@@ -65,7 +65,6 @@
         [self setAlphaValue:1.0];
         [self setOpaque:NO];
         [self setHasShadow:YES];
-        [self useOptimizedDrawing:YES];
         
         // Set up some sensible defaults for display.
         _MABackgroundColor = [MAATTACHEDWINDOW_DEFAULT_BACKGROUND_COLOR copy];
@@ -426,15 +425,12 @@
         default:
             break; // won't happen, but this satisfies gcc with -Wall
     }
-    
-    // Reconfigure window and view frames appropriately.
-    [self setFrame:contentRect display:YES];
-    [_view setFrame:_viewFrame];
 }
 
 - (void)setFrame:(NSRect)frameRect display:(BOOL)displayFlag animate:(BOOL)animateFlag {
 	_resizing = YES;
 	[super setFrame:frameRect display:displayFlag animate:animateFlag];
+	[self _updateGeometryAnimated];
 	[self _updateBackground];
 	_resizing = NO;
 }
