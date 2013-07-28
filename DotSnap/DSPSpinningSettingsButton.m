@@ -66,6 +66,12 @@
 		spinningAnimation.toValue = @(M_PI);
 		spinningAnimation.duration = 0.5;
 		
+		CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+		scaleAnimation.toValue = @0;
+		scaleAnimation.duration = 0.5;
+		scaleAnimation.removedOnCompletion = NO;
+		scaleAnimation.fillMode = kCAFillModeForwards;
+		
 		CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
 		opacityAnimation.toValue = @0;
 		opacityAnimation.duration = 0.6;
@@ -73,6 +79,19 @@
 
 		[[self rac_signalForSelector:@selector(animationDidStop:finished:)]subscribeNext:^(id x) {
 			gearLayer.contents = [NSImage imageNamed:@"checkmark"];
+			CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+			scaleAnimation.toValue = @1;
+			scaleAnimation.duration = 0.3;
+			scaleAnimation.removedOnCompletion = NO;
+			scaleAnimation.fillMode = kCAFillModeForwards;
+			
+			CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+			opacityAnimation.toValue = @1;
+			opacityAnimation.duration = 0.4;
+			
+			[gearLayer addAnimation:scaleAnimation forKey:nil];
+			[gearLayer addAnimation:opacityAnimation forKey:nil];
+
 			double delayInSeconds = 0.5;
 			dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
 			dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
@@ -85,6 +104,7 @@
 		}];
 		[gearLayer addAnimation:spinningAnimation forKey:nil];
 		[gearLayer addAnimation:opacityAnimation forKey:nil];
+		[gearLayer addAnimation:scaleAnimation forKey:nil];
 	};
 	
     return self;

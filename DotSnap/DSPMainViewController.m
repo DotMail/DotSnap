@@ -141,7 +141,7 @@
 	scrollView.documentView = tableView;
 	[view addSubview:scrollView];
 	
-	_filenameField = [[NSTextField alloc]initWithFrame:(NSRect){ .origin.x = 30, .origin.y = 8, .size = { NSWidth(_contentFrame), 34 } }];
+	_filenameField = [[NSTextField alloc]initWithFrame:(NSRect){ .origin.x = 30, .origin.y = 10, .size = { NSWidth(_contentFrame) - 84, 34 } }];
 	_filenameField.delegate = self;
 	_filenameField.bezeled = NO;
 	_filenameField.drawsBackground = NO;
@@ -150,8 +150,8 @@
 	_filenameField.focusRingType = NSFocusRingTypeNone;
 	_filenameField.autoresizingMask = NSViewMinYMargin;
 	_filenameField.enabled = NO;
-	[_filenameField.cell setUsesSingleLineMode:YES];
-	[_filenameField.cell setWraps:YES];
+	[_filenameField.cell setScrollable:YES];
+	[_filenameField.cell setLineBreakMode:NSLineBreakByClipping];
 	[view addSubview:_filenameField];
 	
 	DSPDirectoryPickerButton *directoryButton = [[DSPDirectoryPickerButton alloc]initWithFrame:(NSRect){ .origin.x = 36, .origin.y = NSHeight(_contentFrame) - 96, .size = { 48, 48 } }];
