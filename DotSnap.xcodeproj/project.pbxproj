@@ -26,15 +26,15 @@
 		8478364217A1FAE00050EBA6 /* DSPSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478364117A1FAE00050EBA6 /* DSPSwitch.m */; };
 		8478364917A205D50050EBA6 /* DSPLaunchServicesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478364817A205D50050EBA6 /* DSPLaunchServicesManager.m */; };
 		8478365D17A221490050EBA6 /* NSColor+DSPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478365C17A221490050EBA6 /* NSColor+DSPExtensions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		84BC7E5B17A4D1D00091C0DB /* dotsnapp_appicon_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E5717A4D1D00091C0DB /* dotsnapp_appicon_normal.png */; };
+		84BC7E5C17A4D1D00091C0DB /* dotsnapp_appicon_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E5817A4D1D00091C0DB /* dotsnapp_appicon_normal@2x.png */; };
+		84BC7E5D17A4D1D00091C0DB /* dotsnapp_appicon_white_active.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E5917A4D1D00091C0DB /* dotsnapp_appicon_white_active.png */; };
+		84BC7E5E17A4D1D00091C0DB /* dotsnapp_appicon_white_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E5A17A4D1D00091C0DB /* dotsnapp_appicon_white_active@2x.png */; };
 		84FC869817A3191000955E40 /* DirectoryPickerArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC868D17A3191000955E40 /* DirectoryPickerArrow.png */; };
 		84FC869917A3191000955E40 /* DotSnapPreferencesLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC868E17A3191000955E40 /* DotSnapPreferencesLogo.png */; };
 		84FC869A17A3191000955E40 /* FilenameCheckmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC868F17A3191000955E40 /* FilenameCheckmark.png */; };
 		84FC869B17A3191000955E40 /* OptionsGear.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC869017A3191000955E40 /* OptionsGear.png */; };
 		84FC869C17A3191000955E40 /* OptionsGearWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC869117A3191000955E40 /* OptionsGearWhite.png */; };
-		84FC869D17A3191000955E40 /* Status.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC869217A3191000955E40 /* Status.png */; };
-		84FC869E17A3191000955E40 /* Status@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC869317A3191000955E40 /* Status@2x.png */; };
-		84FC869F17A3191000955E40 /* StatusHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC869417A3191000955E40 /* StatusHighlighted.png */; };
-		84FC86A017A3191000955E40 /* StatusHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC869517A3191000955E40 /* StatusHighlighted@2x.png */; };
 		84FC86A117A3191000955E40 /* SwitchCheckmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC869617A3191000955E40 /* SwitchCheckmark.png */; };
 		84FC86A217A3191000955E40 /* SwitchXmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC869717A3191000955E40 /* SwitchXmark.png */; };
 		DD4F7C0913C30F9F00825C6E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4F7C0813C30F9F00825C6E /* Cocoa.framework */; };
@@ -144,15 +144,15 @@
 		8478364817A205D50050EBA6 /* DSPLaunchServicesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPLaunchServicesManager.m; sourceTree = "<group>"; };
 		8478365B17A221490050EBA6 /* NSColor+DSPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+DSPExtensions.h"; sourceTree = "<group>"; };
 		8478365C17A221490050EBA6 /* NSColor+DSPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+DSPExtensions.m"; sourceTree = "<group>"; };
+		84BC7E5717A4D1D00091C0DB /* dotsnapp_appicon_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dotsnapp_appicon_normal.png; path = Artwork/dotsnapp_appicon_normal.png; sourceTree = "<group>"; };
+		84BC7E5817A4D1D00091C0DB /* dotsnapp_appicon_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dotsnapp_appicon_normal@2x.png"; path = "Artwork/dotsnapp_appicon_normal@2x.png"; sourceTree = "<group>"; };
+		84BC7E5917A4D1D00091C0DB /* dotsnapp_appicon_white_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dotsnapp_appicon_white_active.png; path = Artwork/dotsnapp_appicon_white_active.png; sourceTree = "<group>"; };
+		84BC7E5A17A4D1D00091C0DB /* dotsnapp_appicon_white_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dotsnapp_appicon_white_active@2x.png"; path = "Artwork/dotsnapp_appicon_white_active@2x.png"; sourceTree = "<group>"; };
 		84FC868D17A3191000955E40 /* DirectoryPickerArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DirectoryPickerArrow.png; path = Artwork/DirectoryPickerArrow.png; sourceTree = "<group>"; };
 		84FC868E17A3191000955E40 /* DotSnapPreferencesLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DotSnapPreferencesLogo.png; path = Artwork/DotSnapPreferencesLogo.png; sourceTree = "<group>"; };
 		84FC868F17A3191000955E40 /* FilenameCheckmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = FilenameCheckmark.png; path = Artwork/FilenameCheckmark.png; sourceTree = "<group>"; };
 		84FC869017A3191000955E40 /* OptionsGear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = OptionsGear.png; path = Artwork/OptionsGear.png; sourceTree = "<group>"; };
 		84FC869117A3191000955E40 /* OptionsGearWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = OptionsGearWhite.png; path = Artwork/OptionsGearWhite.png; sourceTree = "<group>"; };
-		84FC869217A3191000955E40 /* Status.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Status.png; path = Artwork/Status.png; sourceTree = "<group>"; };
-		84FC869317A3191000955E40 /* Status@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Status@2x.png"; path = "Artwork/Status@2x.png"; sourceTree = "<group>"; };
-		84FC869417A3191000955E40 /* StatusHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = StatusHighlighted.png; path = Artwork/StatusHighlighted.png; sourceTree = "<group>"; };
-		84FC869517A3191000955E40 /* StatusHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "StatusHighlighted@2x.png"; path = "Artwork/StatusHighlighted@2x.png"; sourceTree = "<group>"; };
 		84FC869617A3191000955E40 /* SwitchCheckmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SwitchCheckmark.png; path = Artwork/SwitchCheckmark.png; sourceTree = "<group>"; };
 		84FC869717A3191000955E40 /* SwitchXmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SwitchXmark.png; path = Artwork/SwitchXmark.png; sourceTree = "<group>"; };
 		DD4F7C0413C30F9F00825C6E /* DotSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DotSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -344,15 +344,15 @@
 		DD4F7C4813C322D800825C6E /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				84BC7E5717A4D1D00091C0DB /* dotsnapp_appicon_normal.png */,
+				84BC7E5817A4D1D00091C0DB /* dotsnapp_appicon_normal@2x.png */,
+				84BC7E5917A4D1D00091C0DB /* dotsnapp_appicon_white_active.png */,
+				84BC7E5A17A4D1D00091C0DB /* dotsnapp_appicon_white_active@2x.png */,
 				84FC868D17A3191000955E40 /* DirectoryPickerArrow.png */,
 				84FC868E17A3191000955E40 /* DotSnapPreferencesLogo.png */,
 				84FC868F17A3191000955E40 /* FilenameCheckmark.png */,
 				84FC869017A3191000955E40 /* OptionsGear.png */,
 				84FC869117A3191000955E40 /* OptionsGearWhite.png */,
-				84FC869217A3191000955E40 /* Status.png */,
-				84FC869317A3191000955E40 /* Status@2x.png */,
-				84FC869417A3191000955E40 /* StatusHighlighted.png */,
-				84FC869517A3191000955E40 /* StatusHighlighted@2x.png */,
 				84FC869617A3191000955E40 /* SwitchCheckmark.png */,
 				84FC869717A3191000955E40 /* SwitchXmark.png */,
 			);
@@ -464,16 +464,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				84FC869A17A3191000955E40 /* FilenameCheckmark.png in Resources */,
-				84FC869D17A3191000955E40 /* Status.png in Resources */,
 				DD4F7C1F13C30F9F00825C6E /* MainMenu.xib in Resources */,
 				84FC869917A3191000955E40 /* DotSnapPreferencesLogo.png in Resources */,
 				84FC869C17A3191000955E40 /* OptionsGearWhite.png in Resources */,
+				84BC7E5B17A4D1D00091C0DB /* dotsnapp_appicon_normal.png in Resources */,
 				84FC86A117A3191000955E40 /* SwitchCheckmark.png in Resources */,
-				84FC869E17A3191000955E40 /* Status@2x.png in Resources */,
+				84BC7E5C17A4D1D00091C0DB /* dotsnapp_appicon_normal@2x.png in Resources */,
+				84BC7E5D17A4D1D00091C0DB /* dotsnapp_appicon_white_active.png in Resources */,
+				84BC7E5E17A4D1D00091C0DB /* dotsnapp_appicon_white_active@2x.png in Resources */,
 				84FC86A217A3191000955E40 /* SwitchXmark.png in Resources */,
-				84FC86A017A3191000955E40 /* StatusHighlighted@2x.png in Resources */,
 				84FC869817A3191000955E40 /* DirectoryPickerArrow.png in Resources */,
-				84FC869F17A3191000955E40 /* StatusHighlighted.png in Resources */,
 				8478363217A19D2B0050EBA6 /* Defaults.plist in Resources */,
 				84FC869B17A3191000955E40 /* OptionsGear.png in Resources */,
 			);

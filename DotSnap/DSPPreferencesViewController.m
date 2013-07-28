@@ -87,7 +87,7 @@
 	logoLayer.frame = (CGRect){ .origin.x = NSMidX(_contentRect) - 32, .origin.y = NSHeight(_contentRect) - 98, .size = { 62, 62 } };
 	[view.layer addSublayer:logoLayer];
 	
-	NSButton *optionsButton = [[NSButton alloc]initWithFrame:(NSRect){ .origin.x = NSWidth(_contentRect) - 46, .origin.y = NSHeight(_contentRect) - 32, .size = { 15, 15 } }];
+	NSButton *optionsButton = [[NSButton alloc]initWithFrame:(NSRect){ .origin.x = NSWidth(_contentRect) - 28, .origin.y = NSHeight(_contentRect) - 42, .size = { 15, 15 } }];
 	optionsButton.rac_command = [RACCommand commandWithCanExecuteSignal:[self.canFireSubject map:^id(NSNumber *value) {
 		return @(!value.boolValue);
 	}]];
@@ -114,9 +114,9 @@
 	gistTextLayer.frame = (NSRect){ .origin = { 68, NSHeight(_contentRect) - 175 }, .size.width = NSWidth(_contentRect) - 136, .size.height = 62 };
 	gistTextLayer.foregroundColor = NSColor.whiteColor.CGColor;
 	gistTextLayer.font = CTFontCreateWithName(CFSTR("HelveticaNeue"), 14.f, NULL);
-	gistTextLayer.fontSize = 20.f;
+	gistTextLayer.fontSize = 14.f;
 	gistTextLayer.alignmentMode = @"center";
-	gistTextLayer.string = @".Snap is brought to you by";
+	gistTextLayer.string = @".Snap is brought to you by \n Thomas Ragger, Tobias van Schneider, and Robert Widmann";
 	[view.layer addSublayer:gistTextLayer];
 	
 	DSPSwitch *firstSwitch = [[DSPSwitch alloc]initWithFrame:(NSRect){ .origin.x = NSWidth(_contentRect) - 120, .origin.y = 116, .size = { 80, 30 } }];

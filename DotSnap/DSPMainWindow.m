@@ -238,9 +238,9 @@ static CGFloat const DPSMenuBarWindowArrowWidth = 20.0;
     if (self.menuBarWindow && self.menuBarWindow.menuBarIcon)
     {
         NSRect rect = NSMakeRect([self bounds].origin.x + 3,
-                                 [self bounds].origin.y,
+                                 [self bounds].origin.y + 4,
                                  [self bounds].size.width - 6,
-                                 [self bounds].size.height);
+                                 [self bounds].size.height - 6);
         
         if (self.highlighted && self.menuBarWindow.highlightedMenuBarIcon)
         {
