@@ -13,6 +13,7 @@
 #import "DSPHistoryTableView.h"
 #import "DSPMainViewController.h"
 #import "DSPDirectoryPickerButton.h"
+#import "DSPSpinningSettingsButton.h"
 #import "DSPPreferencesViewController.h"
 
 @interface DSPMainViewController ()
@@ -157,7 +158,7 @@
 	}];
 	[view addSubview:directoryButton];
 
-	NSButton *optionsButton = [[NSButton alloc]initWithFrame:(NSRect){ .origin.x = NSWidth(_contentFrame) - 45, .origin.y = 24, .size = { 17, 17 } }];
+	DSPSpinningSettingsButton *optionsButton = [[DSPSpinningSettingsButton alloc]initWithFrame:(NSRect){ .origin.x = NSWidth(_contentFrame) - 45, .origin.y = 24, .size = { 17, 17 } }];
 	optionsButton.rac_command = [RACCommand commandWithCanExecuteSignal:self.canFireSubject];
 	[optionsButton.rac_command subscribeNext:^(NSButton *_) {
 		[_filenameField resignFirstResponder];
@@ -170,10 +171,6 @@
 		[NSAnimationContext endGrouping];
 		[self.canFireSubject sendNext:@NO];
 	}];
-	optionsButton.bordered = NO;
-	optionsButton.buttonType = NSMomentaryChangeButton;
-	optionsButton.image = [NSImage imageNamed:@"OptionsGear"];
-	optionsButton.autoresizingMask = NSViewMinYMargin;
 	[view addSubview:optionsButton];
 	
 	NSBox *historySeparatorShadow = [[NSBox alloc]initWithFrame:(NSRect){ .origin.y = 2, .size = { NSWidth(_contentFrame), 2 } }];
