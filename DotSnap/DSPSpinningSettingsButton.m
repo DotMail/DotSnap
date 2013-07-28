@@ -72,8 +72,4 @@
 	self.redrawBlock(NO, NO, theEvent);
 }
 
-- (void)mouseDown:(NSEvent *)theEvent {
-	
-}
-
 @end
