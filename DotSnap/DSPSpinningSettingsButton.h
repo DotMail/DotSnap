@@ -8,7 +8,14 @@
 
 #import <Cocoa/Cocoa.h>
 
+typedef NS_ENUM(NSUInteger, DSPSpinningSettingsButtonStyle) {
+	DSPSpinningSettingsButtonStyleGrey = 0,
+	DSPSpinningSettingsButtonStyleWhite = 1
+};
+
 @interface DSPSpinningSettingsButton : NSButton
+
+- (id)initWithFrame:(NSRect)frameRect style:(DSPSpinningSettingsButtonStyle)style;
 
 - (void)spinOut;
 

@@ -5,9 +5,11 @@
 	<key>DSPDefaultFilenameTemplate</key>
 	<string>MyScreenShotName</string>
 	<key>DSPLoadDotSnapAtStart</key>
-	<false/>
+	<true/>
 	<key>DSPAddsTimestamp</key>
 	<false/>
+	<key>DSPAutosaveInputField</key>
+	<true/>
 	<key>DPSFilenameHistory</key>
 	<array>
 		<string> </string>

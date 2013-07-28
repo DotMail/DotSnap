@@ -15,6 +15,7 @@
 @end
 
 @implementation DSPSwitch {
+	NSTrackingArea *trackingArea;
 	BOOL _isTracking;
 	BOOL _hasMoved;
 	CGFloat _oldX;
@@ -71,6 +72,27 @@
 	[self.switchCover addSublayer:topShadowLayer];
 	
     return self;
+}
+
+- (void)ensureTrackingArea {
+    if (trackingArea == nil) {
+        trackingArea = [[NSTrackingArea alloc] initWithRect:NSZeroRect options:NSTrackingInVisibleRect | NSTrackingActiveAlways | NSTrackingMouseEnteredAndExited owner:self userInfo:nil];
+    }
+}
+
+- (void)updateTrackingAreas {
+    [super updateTrackingAreas];
+    [self ensureTrackingArea];
+    if (![[self trackingAreas] containsObject:trackingArea]) {
+        [self addTrackingArea:trackingArea];
+    }
+}
+
+- (void)mouseEntered:(NSEvent *)theEvent {
+	if (CGRectContainsPoint(self.switchCover.bounds, [self.switchCover convertPoint:[theEvent locationInWindow] fromLayer:self.superview.layer])) {
+		_isTracking = YES;
+		_oldX = [self.switchCover convertPoint:[theEvent locationInWindow] fromLayer:self.superview.layer].x;
+	}
 }
 
 - (void)mouseDown:(NSEvent *)theEvent {

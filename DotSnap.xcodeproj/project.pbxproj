@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8405D56117A4F1C700D7990E /* checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 8405D55F17A4F1C700D7990E /* checkmark.png */; };
 		8405D56217A4F1C700D7990E /* checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8405D56017A4F1C700D7990E /* checkmark@2x.png */; };
+		8405D58017A5A8D700D7990E /* SettingsWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 8405D57E17A5A8D700D7990E /* SettingsWhite.png */; };
+		8405D58117A5A8D700D7990E /* SettingsWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8405D57F17A5A8D700D7990E /* SettingsWhite@2x.png */; };
 		84600B4517A31CB500D3E8FE /* MAAttachedWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 84600B4417A31CB500D3E8FE /* MAAttachedWindow.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		84600B4E17A34A8400D3E8FE /* DSPHistoryRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84600B4D17A34A8400D3E8FE /* DSPHistoryRowView.m */; };
 		84600B5D17A354D300D3E8FE /* DSPHistoryTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84600B5C17A354D300D3E8FE /* DSPHistoryTableView.m */; };
@@ -47,7 +49,6 @@
 		84BC7E7917A4DC750091C0DB /* Settings_Normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E7517A4DC750091C0DB /* Settings_Normal@2x.png */; };
 		84BC7E7C17A4DC9E0091C0DB /* DSPSpinningSettingsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BC7E7B17A4DC9E0091C0DB /* DSPSpinningSettingsButton.m */; };
 		84FC869917A3191000955E40 /* DotSnapPreferencesLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC868E17A3191000955E40 /* DotSnapPreferencesLogo.png */; };
-		84FC869C17A3191000955E40 /* OptionsGearWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC869117A3191000955E40 /* OptionsGearWhite.png */; };
 		84FC86A117A3191000955E40 /* SwitchCheckmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC869617A3191000955E40 /* SwitchCheckmark.png */; };
 		84FC86A217A3191000955E40 /* SwitchXmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC869717A3191000955E40 /* SwitchXmark.png */; };
 		DD4F7C0913C30F9F00825C6E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4F7C0813C30F9F00825C6E /* Cocoa.framework */; };
@@ -123,6 +124,8 @@
 /* Begin PBXFileReference section */
 		8405D55F17A4F1C700D7990E /* checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = checkmark.png; path = Artwork/checkmark.png; sourceTree = "<group>"; };
 		8405D56017A4F1C700D7990E /* checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "checkmark@2x.png"; path = "Artwork/checkmark@2x.png"; sourceTree = "<group>"; };
+		8405D57E17A5A8D700D7990E /* SettingsWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SettingsWhite.png; path = Artwork/SettingsWhite.png; sourceTree = "<group>"; };
+		8405D57F17A5A8D700D7990E /* SettingsWhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SettingsWhite@2x.png"; path = "Artwork/SettingsWhite@2x.png"; sourceTree = "<group>"; };
 		84600B4317A31CB500D3E8FE /* MAAttachedWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAAttachedWindow.h; sourceTree = "<group>"; };
 		84600B4417A31CB500D3E8FE /* MAAttachedWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAAttachedWindow.m; sourceTree = "<group>"; };
 		84600B4C17A34A8400D3E8FE /* DSPHistoryRowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPHistoryRowView.h; sourceTree = "<group>"; };
@@ -180,7 +183,6 @@
 		84BC7E7A17A4DC9E0091C0DB /* DSPSpinningSettingsButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPSpinningSettingsButton.h; sourceTree = "<group>"; };
 		84BC7E7B17A4DC9E0091C0DB /* DSPSpinningSettingsButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPSpinningSettingsButton.m; sourceTree = "<group>"; };
 		84FC868E17A3191000955E40 /* DotSnapPreferencesLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DotSnapPreferencesLogo.png; path = Artwork/DotSnapPreferencesLogo.png; sourceTree = "<group>"; };
-		84FC869117A3191000955E40 /* OptionsGearWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = OptionsGearWhite.png; path = Artwork/OptionsGearWhite.png; sourceTree = "<group>"; };
 		84FC869617A3191000955E40 /* SwitchCheckmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SwitchCheckmark.png; path = Artwork/SwitchCheckmark.png; sourceTree = "<group>"; };
 		84FC869717A3191000955E40 /* SwitchXmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SwitchXmark.png; path = Artwork/SwitchXmark.png; sourceTree = "<group>"; };
 		DD4F7C0413C30F9F00825C6E /* DotSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DotSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -391,7 +393,8 @@
 				84BC7E6517A4D8820091C0DB /* BrowseCircle.png */,
 				84BC7E6617A4D8820091C0DB /* BrowseCircle@2x.png */,
 				84FC868E17A3191000955E40 /* DotSnapPreferencesLogo.png */,
-				84FC869117A3191000955E40 /* OptionsGearWhite.png */,
+				8405D57E17A5A8D700D7990E /* SettingsWhite.png */,
+				8405D57F17A5A8D700D7990E /* SettingsWhite@2x.png */,
 				84BC7E7217A4DC750091C0DB /* Settings_DarkHover.png */,
 				84BC7E7317A4DC750091C0DB /* Settings_DarkHover@2x.png */,
 				84BC7E7417A4DC750091C0DB /* Settings_Normal.png */,
@@ -508,9 +511,9 @@
 			files = (
 				DD4F7C1F13C30F9F00825C6E /* MainMenu.xib in Resources */,
 				84BC7E7717A4DC750091C0DB /* Settings_DarkHover@2x.png in Resources */,
+				8405D58017A5A8D700D7990E /* SettingsWhite.png in Resources */,
 				84FC869917A3191000955E40 /* DotSnapPreferencesLogo.png in Resources */,
 				84BC7E6D17A4D8820091C0DB /* BrowseCircle.png in Resources */,
-				84FC869C17A3191000955E40 /* OptionsGearWhite.png in Resources */,
 				84BC7E5B17A4D1D00091C0DB /* dotsnapp_appicon_normal.png in Resources */,
 				84BC7E7917A4DC750091C0DB /* Settings_Normal@2x.png in Resources */,
 				84BC7E7817A4DC750091C0DB /* Settings_Normal.png in Resources */,
@@ -524,6 +527,7 @@
 				84FC86A217A3191000955E40 /* SwitchXmark.png in Resources */,
 				84BC7E6717A4D8820091C0DB /* Browse_Arrow_Hover.png in Resources */,
 				84BC7E6A17A4D8820091C0DB /* Browse_Arrow@2x.png in Resources */,
+				8405D58117A5A8D700D7990E /* SettingsWhite@2x.png in Resources */,
 				84BC7E6C17A4D8820091C0DB /* BrowseCircle_hover@2x.png in Resources */,
 				84BC7E6E17A4D8820091C0DB /* BrowseCircle@2x.png in Resources */,
 				8478363217A19D2B0050EBA6 /* Defaults.plist in Resources */,

@@ -11,6 +11,7 @@
 #import "DSPSwitch.h"
 #import "DSPMainWindow.h"
 #import "DSPLaunchServicesManager.h"
+#import "DSPSpinningSettingsButton.h"
 
 @interface DSPPreferencesViewController ()
 
@@ -40,7 +41,7 @@
 	addTimestampLabel.bezeled = NO;
 	addTimestampLabel.editable = NO;
 	addTimestampLabel.drawsBackground = NO;
-	addTimestampLabel.font = [NSFont fontWithName:@"HelveticaNeue" size:18.f];
+	addTimestampLabel.font = [NSFont fontWithName:@"HelveticaNeue-Medium" size:18.f];
 	addTimestampLabel.textColor = [NSColor colorWithCalibratedRed:0.160 green:0.181 blue:0.215 alpha:1.000];
 	addTimestampLabel.focusRingType = NSFocusRingTypeNone;
 	addTimestampLabel.stringValue = @"Add Timestamp";
@@ -58,7 +59,7 @@
 	loadDotsnapAtStartLabel.bezeled = NO;
 	loadDotsnapAtStartLabel.editable = NO;
 	loadDotsnapAtStartLabel.drawsBackground = NO;
-	loadDotsnapAtStartLabel.font = [NSFont fontWithName:@"HelveticaNeue" size:18.f];
+	loadDotsnapAtStartLabel.font = [NSFont fontWithName:@"HelveticaNeue-Medium" size:18.f];
 	loadDotsnapAtStartLabel.textColor = [NSColor colorWithCalibratedRed:0.160 green:0.181 blue:0.215 alpha:1.000];
 	loadDotsnapAtStartLabel.focusRingType = NSFocusRingTypeNone;
 	loadDotsnapAtStartLabel.stringValue = @"Load DotSnap on start";
@@ -76,10 +77,10 @@
 	whateverLabel.bezeled = NO;
 	whateverLabel.editable = NO;
 	whateverLabel.drawsBackground = NO;
-	whateverLabel.font = [NSFont fontWithName:@"HelveticaNeue" size:18.f];
+	whateverLabel.font = [NSFont fontWithName:@"HelveticaNeue-Medium" size:18.f];
 	whateverLabel.textColor = [NSColor colorWithCalibratedRed:0.160 green:0.181 blue:0.215 alpha:1.000];
 	whateverLabel.focusRingType = NSFocusRingTypeNone;
-	whateverLabel.stringValue = @"Whatever";
+	whateverLabel.stringValue = @"Autosave Input";
 	[view addSubview:whateverLabel];
 	
 	CALayer *logoLayer = CALayer.layer;
@@ -87,13 +88,15 @@
 	logoLayer.frame = (CGRect){ .origin.x = NSMidX(_contentRect) - 32, .origin.y = NSHeight(_contentRect) - 98, .size = { 62, 62 } };
 	[view.layer addSublayer:logoLayer];
 	
-	NSButton *optionsButton = [[NSButton alloc]initWithFrame:(NSRect){ .origin.x = NSWidth(_contentRect) - 28, .origin.y = NSHeight(_contentRect) - 42, .size = { 15, 15 } }];
+	DSPSpinningSettingsButton *optionsButton = [[DSPSpinningSettingsButton alloc]initWithFrame:(NSRect){ .origin.x = NSWidth(_contentRect) - 28, .origin.y = NSHeight(_contentRect) - 170, .size = { 17, 17 } } style:1];
 	optionsButton.rac_command = [RACCommand commandWithCanExecuteSignal:[self.canFireSubject map:^id(NSNumber *value) {
 		return @(!value.boolValue);
 	}]];
+	
 	optionsButton.bordered = NO;
 	optionsButton.buttonType = NSMomentaryChangeButton;
 	optionsButton.image = [NSImage imageNamed:@"OptionsGearWhite"];
+	
 	[optionsButton.rac_command subscribeNext:^(NSButton *_) {
 		[NSAnimationContext beginGrouping];
 		[CATransaction begin];
@@ -116,7 +119,7 @@
 	gistTextLayer.font = CTFontCreateWithName(CFSTR("HelveticaNeue"), 14.f, NULL);
 	gistTextLayer.fontSize = 14.f;
 	gistTextLayer.alignmentMode = @"center";
-	gistTextLayer.string = @".Snap is brought to you by \n Thomas Ragger, Tobias van Schneider, and Robert Widmann";
+	gistTextLayer.string = @".Snap is brought to you by \n Robert Widmann and Tobias van Schneider";
 	[view.layer addSublayer:gistTextLayer];
 	
 	DSPSwitch *firstSwitch = [[DSPSwitch alloc]initWithFrame:(NSRect){ .origin.x = NSWidth(_contentRect) - 120, .origin.y = 116, .size = { 80, 30 } }];
@@ -139,6 +142,10 @@
 	[view addSubview:secondSwitch];
 	
 	DSPSwitch *thirdSwitch = [[DSPSwitch alloc]initWithFrame:(NSRect){ .origin.x = NSWidth(_contentRect) - 120, .origin.y = 14, .size = { 80, 30 } }];
+	thirdSwitch.on = [NSUserDefaults.standardUserDefaults boolForKey:DSPAutosaveInputFieldKey];
+	[[RACObserve(thirdSwitch,on) skip:1] subscribeNext:^(NSNumber *v) {
+		[NSUserDefaults.standardUserDefaults setBool:v.boolValue forKey:DSPAutosaveInputFieldKey];
+	}];
 	[view addSubview:thirdSwitch];
 	
 	self.view = view;

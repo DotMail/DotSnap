@@ -17,14 +17,18 @@
 	NSTrackingArea *trackingArea;
 }
 
-- (id)initWithFrame:(NSRect)frame {
-    self = [super initWithFrame:frame];
+- (id)initWithFrame:(NSRect)frameRect style:(DSPSpinningSettingsButtonStyle)style {
+    self = [super initWithFrame:frameRect];
 	
 	self.layer = CALayer.layer;
 	self.wantsLayer = YES;
 	
 	CALayer *gearLayer = CALayer.layer;
-	gearLayer.contents = [NSImage imageNamed:@"Settings_Normal"];
+	if (style == DSPSpinningSettingsButtonStyleGrey) {
+		gearLayer.contents = [NSImage imageNamed:@"Settings_Normal"];
+	} else {
+		gearLayer.contents = [NSImage imageNamed:@"SettingsWhite"];
+	}
 	gearLayer.frame = self.bounds;
 	[self.layer addSublayer:gearLayer];
 	
@@ -34,7 +38,11 @@
 	
 	self.redrawBlock = ^(BOOL highlighted, BOOL hovering, NSEvent *event) {
 		if (hovering) {
-			gearLayer.contents = [NSImage imageNamed:@"Settings_DarkHover"];
+			if (style == DSPSpinningSettingsButtonStyleGrey) {
+				gearLayer.contents = [NSImage imageNamed:@"Settings_DarkHover"];
+			} else {
+				gearLayer.contents = [NSImage imageNamed:@"Settings_Normal"];
+			}
 			[CATransaction setDisableActions:YES];
 			CABasicAnimation *spinningAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
 			spinningAnimation.toValue = @(M_PI);
@@ -43,7 +51,11 @@
 			[gearLayer addAnimation:spinningAnimation forKey:nil];
 		} else {
 			[gearLayer removeAllAnimations];
-			gearLayer.contents = [NSImage imageNamed:@"Settings_Normal"];
+			if (style == DSPSpinningSettingsButtonStyleGrey) {
+				gearLayer.contents = [NSImage imageNamed:@"Settings_Normal"];
+			} else {
+				gearLayer.contents = [NSImage imageNamed:@"SettingsWhite"];
+			}
 		}
 	};
 	
@@ -64,7 +76,11 @@
 			double delayInSeconds = 0.5;
 			dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
 			dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-				gearLayer.contents = [NSImage imageNamed:@"Settings_Normal"];
+				if (style == DSPSpinningSettingsButtonStyleGrey) {
+					gearLayer.contents = [NSImage imageNamed:@"Settings_Normal"];
+				} else {
+					gearLayer.contents = [NSImage imageNamed:@"SettingsWhite"];
+				}
 			});
 		}];
 		[gearLayer addAnimation:spinningAnimation forKey:nil];
@@ -76,6 +92,10 @@
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
 	
+}
+
+- (void)resetCursorRects {
+	[self addCursorRect:self.bounds cursor:NSCursor.pointingHandCursor];
 }
 
 - (void)spinOut {
