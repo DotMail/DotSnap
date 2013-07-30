@@ -32,7 +32,7 @@ static NSUInteger const DPSUniqueFilenameDepthLimit = 500;
 			NSString *screenShotPath = [item valueForAttribute:NSMetadataItemPathKey];
 			NSURL *oldURL = [NSURL fileURLWithPath:screenShotPath];
 			
-			NSURL *newURL = [NSURL fileURLWithPath:DPSUniqueFilenameForDirectory(self.filepath, self.filename, [NSUserDefaults.standardUserDefaults boolForKey:DSPAddsTimestampKey])];
+			NSURL *newURL = [NSURL fileURLWithPath:DPSUniqueFilenameForDirectory(self.filepath, self.filename.stringByDeletingPathExtension, [NSUserDefaults.standardUserDefaults boolForKey:DSPAddsTimestampKey])];
 			[[NSFileManager defaultManager] moveItemAtURL:oldURL toURL:newURL error:nil];
 		}
 	}];

@@ -13,6 +13,9 @@
 }
 
 - (id)initWithContentRect:(CGRect)rect canFireSubject:(RACSubject *)canFireSubject;
+- (void)orderOut;
+
 @property (nonatomic, weak) RACSubject *canFireSubject;
+@property (nonatomic, weak) NSWindow *presentingWindow;
 
 @end

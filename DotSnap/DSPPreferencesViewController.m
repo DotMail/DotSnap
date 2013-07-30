@@ -12,6 +12,7 @@
 #import "DSPMainWindow.h"
 #import "DSPLaunchServicesManager.h"
 #import "DSPSpinningSettingsButton.h"
+#import "LIFlipEffect.h"
 
 @interface DSPPreferencesViewController ()
 
@@ -98,16 +99,7 @@
 	optionsButton.image = [NSImage imageNamed:@"OptionsGearWhite"];
 	
 	[optionsButton.rac_command subscribeNext:^(NSButton *_) {
-		[NSAnimationContext beginGrouping];
-		[CATransaction begin];
-		[CATransaction setAnimationDuration:0.3];
-		[CATransaction setAnimationTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
-		
-		[view.animator setAlphaValue:0.f];
-		[(DSPMainWindow *)view.window setFrame:(NSRect){ .origin.x = view.window.frame.origin.x, .origin.y = view.window.frame.origin.y + 130, .size = { 400, 225 } } display:YES animate:YES];
-
-		[CATransaction commit];
-		[NSAnimationContext endGrouping];
+		[[[LIFlipEffect alloc] initFromWindow:view.window toWindow:self.presentingWindow] run];
 		
 		[self.canFireSubject sendNext:@YES];
 	}];
@@ -151,5 +143,8 @@
 	self.view = view;
 }
 
+- (void)orderOut {
+	[self.canFireSubject sendNext:@YES];
+}
 
 @end

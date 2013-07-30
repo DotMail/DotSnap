@@ -17,6 +17,7 @@
 #import "DSPDirectoryPickerButton.h"
 #import "DSPSpinningSettingsButton.h"
 #import "DSPPreferencesViewController.h"
+#import "LIFlipEffect.h"
 
 @interface DSPMainViewController ()
 @property (nonatomic, strong, readonly) DSPMainViewModel *viewModel;
@@ -183,7 +184,8 @@
 	optionsButton.rac_command = [RACCommand commandWithCanExecuteSignal:self.canFireSubject];
 	[optionsButton.rac_command subscribeNext:^(NSButton *_) {
 		[(DSPMainWindow *)view.window setIsFlipping:YES];
-		[(DSPMainWindow *)view.window flipToShowWindow:self.preferencesWindow forward:NO];
+		self.preferencesViewController.presentingWindow = view.window;
+		[[[LIFlipEffect alloc] initFromWindow:view.window toWindow:self.preferencesWindow] run];
 		[(DSPMainWindow *)view.window setIsFlipping:NO];
 		[self.canFireSubject sendNext:@NO];
 	}];
@@ -204,11 +206,11 @@
 	@weakify(self);
 	[NSNotificationCenter.defaultCenter addObserverForName:NSControlTextDidChangeNotification object:_filenameField queue:nil usingBlock:^(NSNotification *note) {
 		@strongify(self);
-		NSRect rect = (NSRect){ .origin.x = view.window.frame.origin.x, .origin.y = NSMaxY(view.window.screen.frame) - 492, .size = { 400, 469 } };
+		NSRect rect = (NSRect){ .origin.x = view.window.frame.origin.x, .origin.y = NSMaxY(view.window.screen.frame) - 492, .size = { 400, 470 } };
 		if (!CGRectEqualToRect(rect, view.window.frame)) {
 			[view setNeedsDisplay:YES];
 			historySeparatorShadow.alphaValue = 0.f;
-			[scrollView.animator setFrame:(NSRect){ .origin.y = 5, .size = { 400, 246 } }];
+			[scrollView.animator setFrame:(NSRect){ .origin.y = 6, .size = { 400, 246 } }];
 			[(DSPMainWindow *)view.window setFrame:rect display:YES animate:YES];
 			fieldBackground.backgroundColor = [NSColor whiteColor];
 			fieldBackground.layer.borderColor = [NSColor colorWithCalibratedRed:0.794 green:0.840 blue:0.864 alpha:1.000].CGColor;
@@ -240,7 +242,7 @@
 	
 	self.mouseDownBlock = ^ (NSEvent *theEvent) {
 		@strongify(self);
-		if (CGRectContainsPoint(fieldBackground.frame, [theEvent locationInWindow])) {
+		if (CGRectContainsPoint(fieldBackground.frame, [theEvent locationInWindow]) && !CGRectContainsPoint(optionsButton.frame, [theEvent locationInWindow])) {
 			self.filenameField.enabled = YES;
 			[self.filenameField becomeFirstResponder];
 			[NSNotificationCenter.defaultCenter postNotificationName:NSControlTextDidChangeNotification object:self.filenameField];

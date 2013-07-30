@@ -23,12 +23,12 @@
 	self.borderColor = [NSColor colorWithCalibratedRed:0.260 green:0.663 blue:0.455 alpha:1.000];
 	self.backgroundColor = [NSColor colorWithCalibratedRed:0.260 green:0.663 blue:0.455 alpha:1.000];
 	self.arrowBaseWidth = 20.f;
-	self.menuBarIcon = [NSImage imageNamed:@"dotsnapp_appicon_normal"];
-    self.highlightedMenuBarIcon = [NSImage imageNamed:@"dotsnapp_appicon_white_active"];
-    self.hasMenuBarIcon = YES;
-	self.acceptsMouseMovedEvents = YES;
 	
 	return self;
+}
+
+- (void)orderOutWithDuration:(CFTimeInterval)duration timing:(CAMediaTimingFunction *)timingFunction animations:(void (^)(CALayer *))animations {
+	[super orderOutWithDuration:duration timing:timingFunction animations:animations];
 }
 
 @end

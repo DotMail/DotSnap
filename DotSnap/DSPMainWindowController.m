@@ -26,8 +26,7 @@
 	self.window.cornerRadius = 0.f;
 	self.window.arrowHeight = 12.f;
 	self.window.borderWidth = 0.f;
-	self.window.borderColor = [NSColor colorWithCalibratedRed:0.260 green:0.663 blue:0.455 alpha:1.000];
-	self.window.backgroundColor = [NSColor colorWithCalibratedRed:0.260 green:0.663 blue:0.455 alpha:1.000];
+	self.window.backgroundColor = [NSColor colorWithCalibratedRed:0.260 green:0.663 blue:0.455 alpha:0.5];
 	self.window.arrowBaseWidth = 20.f;
 	self.window.menuBarIcon = [NSImage imageNamed:@"dotsnapp_appicon_normal"];
     self.window.highlightedMenuBarIcon = [NSImage imageNamed:@"dotsnapp_appicon_white_active"];

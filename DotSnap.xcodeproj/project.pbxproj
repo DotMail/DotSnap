@@ -13,6 +13,8 @@
 		8405D58117A5A8D700D7990E /* SettingsWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8405D57F17A5A8D700D7990E /* SettingsWhite@2x.png */; };
 		8405D58417A5C4D500D7990E /* DSPPreferencesWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 8405D58317A5C4D500D7990E /* DSPPreferencesWindow.m */; };
 		8405D58717A5D60000D7990E /* DSPPNGFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8405D58617A5D60000D7990E /* DSPPNGFormatter.m */; };
+		8405D58C17A5E06D00D7990E /* LIEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 8405D58917A5E06D00D7990E /* LIEffect.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8405D58D17A5E06D00D7990E /* LIFlipEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 8405D58B17A5E06D00D7990E /* LIFlipEffect.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		84600B4517A31CB500D3E8FE /* MAAttachedWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 84600B4417A31CB500D3E8FE /* MAAttachedWindow.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		84600B4E17A34A8400D3E8FE /* DSPHistoryRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84600B4D17A34A8400D3E8FE /* DSPHistoryRowView.m */; };
 		84600B5D17A354D300D3E8FE /* DSPHistoryTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84600B5C17A354D300D3E8FE /* DSPHistoryTableView.m */; };
@@ -20,7 +22,6 @@
 		847835C817A0D3590050EBA6 /* DSPMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847835C717A0D3590050EBA6 /* DSPMainWindowController.m */; };
 		847835CB17A0D3650050EBA6 /* DSPMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847835CA17A0D3650050EBA6 /* DSPMainViewController.m */; };
 		847835D617A0DB670050EBA6 /* DSPMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 847835D517A0DB670050EBA6 /* DSPMainView.m */; };
-		847835E917A0E3D50050EBA6 /* ReactiveCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 847835E217A0E3AA0050EBA6 /* ReactiveCocoa.framework */; };
 		847835EA17A0E3E30050EBA6 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847835E217A0E3AA0050EBA6 /* ReactiveCocoa.framework */; };
 		847835EF17A0EABD0050EBA6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847835EE17A0EABD0050EBA6 /* QuartzCore.framework */; };
 		8478360817A0F5560050EBA6 /* DSPMainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478360717A0F5560050EBA6 /* DSPMainWindow.m */; };
@@ -50,6 +51,7 @@
 		84BC7E7817A4DC750091C0DB /* Settings_Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E7417A4DC750091C0DB /* Settings_Normal.png */; };
 		84BC7E7917A4DC750091C0DB /* Settings_Normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E7517A4DC750091C0DB /* Settings_Normal@2x.png */; };
 		84BC7E7C17A4DC9E0091C0DB /* DSPSpinningSettingsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BC7E7B17A4DC9E0091C0DB /* DSPSpinningSettingsButton.m */; };
+		84D11E5117A769650053890B /* ReactiveCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 847835E217A0E3AA0050EBA6 /* ReactiveCocoa.framework */; };
 		84FC869917A3191000955E40 /* DotSnapPreferencesLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC868E17A3191000955E40 /* DotSnapPreferencesLogo.png */; };
 		84FC86A117A3191000955E40 /* SwitchCheckmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC869617A3191000955E40 /* SwitchCheckmark.png */; };
 		84FC86A217A3191000955E40 /* SwitchXmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FC869717A3191000955E40 /* SwitchXmark.png */; };
@@ -117,7 +119,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				847835E917A0E3D50050EBA6 /* ReactiveCocoa.framework in CopyFiles */,
+				84D11E5117A769650053890B /* ReactiveCocoa.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +134,10 @@
 		8405D58317A5C4D500D7990E /* DSPPreferencesWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPPreferencesWindow.m; sourceTree = "<group>"; };
 		8405D58517A5D60000D7990E /* DSPPNGFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPPNGFormatter.h; sourceTree = "<group>"; };
 		8405D58617A5D60000D7990E /* DSPPNGFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPPNGFormatter.m; sourceTree = "<group>"; };
+		8405D58817A5E06D00D7990E /* LIEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LIEffect.h; path = "../../../Downloads/LIFlipEffect-master/LIEffect.h"; sourceTree = "<group>"; };
+		8405D58917A5E06D00D7990E /* LIEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LIEffect.m; path = "../../../Downloads/LIFlipEffect-master/LIEffect.m"; sourceTree = "<group>"; };
+		8405D58A17A5E06D00D7990E /* LIFlipEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LIFlipEffect.h; path = "../../../Downloads/LIFlipEffect-master/LIFlipEffect.h"; sourceTree = "<group>"; };
+		8405D58B17A5E06D00D7990E /* LIFlipEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LIFlipEffect.m; path = "../../../Downloads/LIFlipEffect-master/LIFlipEffect.m"; sourceTree = "<group>"; };
 		84600B4317A31CB500D3E8FE /* MAAttachedWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAAttachedWindow.h; sourceTree = "<group>"; };
 		84600B4417A31CB500D3E8FE /* MAAttachedWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAAttachedWindow.m; sourceTree = "<group>"; };
 		84600B4C17A34A8400D3E8FE /* DSPHistoryRowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPHistoryRowView.h; sourceTree = "<group>"; };
@@ -300,6 +306,10 @@
 		8478363717A19FDB0050EBA6 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				8405D58817A5E06D00D7990E /* LIEffect.h */,
+				8405D58917A5E06D00D7990E /* LIEffect.m */,
+				8405D58A17A5E06D00D7990E /* LIFlipEffect.h */,
+				8405D58B17A5E06D00D7990E /* LIFlipEffect.m */,
 				84600B4B17A31CB900D3E8FE /* MAAttachedWindow */,
 				8478363617A19FCE0050EBA6 /* JNWAnimatableWIndow */,
 				8478365B17A221490050EBA6 /* NSColor+DSPExtensions.h */,
@@ -573,6 +583,8 @@
 				84600B5D17A354D300D3E8FE /* DSPHistoryTableView.m in Sources */,
 				8478364217A1FAE00050EBA6 /* DSPSwitch.m in Sources */,
 				8478364917A205D50050EBA6 /* DSPLaunchServicesManager.m in Sources */,
+				8405D58D17A5E06D00D7990E /* LIFlipEffect.m in Sources */,
+				8405D58C17A5E06D00D7990E /* LIEffect.m in Sources */,
 				8478365D17A221490050EBA6 /* NSColor+DSPExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -666,10 +678,12 @@
 			buildSettings = {
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer: Robert Widmann (MJPWE9M54S)";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DotSnap/DotSnap-Prefix.pch";
 				INFOPLIST_FILE = "DotSnap/DotSnap-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = DotSnap;
 				SDKROOT = macosx;
@@ -682,10 +696,12 @@
 			buildSettings = {
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer: Robert Widmann (MJPWE9M54S)";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DotSnap/DotSnap-Prefix.pch";
 				INFOPLIST_FILE = "DotSnap/DotSnap-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = DotSnap;
 				SDKROOT = macosx;
