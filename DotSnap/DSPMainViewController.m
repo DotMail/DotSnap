@@ -23,7 +23,6 @@
 @property (nonatomic, strong, readonly) DSPMainViewModel *viewModel;
 @property (nonatomic, strong) DSPPreferencesViewController *preferencesViewController;
 @property (nonatomic, strong) DSPPreferencesWindow *preferencesWindow;
-@property (nonatomic, strong) RACSubject *canFireSubject;
 @property (nonatomic, strong) NSTextField *filenameField;
 @property (nonatomic, copy) void (^carriageReturnBlock)();
 @property (nonatomic, copy) void (^mouseDownBlock)(NSEvent *event);
@@ -37,12 +36,10 @@
 	
 	_contentFrame = rect;
 	_viewModel = [DSPMainViewModel new];
-	_canFireSubject = [RACSubject subject];
 	
-	_preferencesViewController = [[DSPPreferencesViewController alloc]initWithContentRect:(CGRect){ .size = { 400, 350 } } canFireSubject:_canFireSubject];
+	_preferencesViewController = [[DSPPreferencesViewController alloc]initWithContentRect:(CGRect){ .size = { 400, 350 } }];
 	_preferencesWindow = [[DSPPreferencesWindow alloc]initWithView:self.preferencesViewController.view attachedToPoint:(NSPoint){ } onSide:MAPositionBottom];
 	
-	[_canFireSubject sendNext:@YES];
 	
 	return self;
 }
@@ -158,7 +155,7 @@
 	[view addSubview:_filenameField];
 	
 	DSPDirectoryPickerButton *directoryButton = [[DSPDirectoryPickerButton alloc]initWithFrame:(NSRect){ .origin.x = 36, .origin.y = NSHeight(_contentFrame) - 96, .size = { 48, 48 } }];
-	directoryButton.rac_command = [RACCommand commandWithCanExecuteSignal:self.canFireSubject];
+	directoryButton.rac_command = [RACCommand command];
 	[directoryButton.rac_command subscribeNext:^(NSButton *_) {
 		((DSPMainWindow *)view.window).isInOpenPanel = YES;
 		[self.openPanel beginSheetModalForWindow:view.window completionHandler:^(NSInteger result){
@@ -181,13 +178,12 @@
 	[view addSubview:directoryButton];
 
 	DSPSpinningSettingsButton *optionsButton = [[DSPSpinningSettingsButton alloc]initWithFrame:(NSRect){ .origin.x = NSWidth(_contentFrame) - 45, .origin.y = 24, .size = { 17, 17 } } style:0];
-	optionsButton.rac_command = [RACCommand commandWithCanExecuteSignal:self.canFireSubject];
+	optionsButton.rac_command = [RACCommand command];
 	[optionsButton.rac_command subscribeNext:^(NSButton *_) {
 		[(DSPMainWindow *)view.window setIsFlipping:YES];
 		self.preferencesViewController.presentingWindow = view.window;
 		[[[LIFlipEffect alloc] initFromWindow:view.window toWindow:self.preferencesWindow] run];
 		[(DSPMainWindow *)view.window setIsFlipping:NO];
-		[self.canFireSubject sendNext:@NO];
 	}];
 	[view addSubview:optionsButton];
 	

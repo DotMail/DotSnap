@@ -10,7 +10,7 @@
 
 #if MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_6
 static NSString * const kLSSharedFileListLoginItemHidden = @"com.apple.loginitem.HideOnLaunch";
-#endif  // MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_6
+#endif
 
 @interface DSPLaunchServicesManager ()
 @property (nonatomic, copy) NSString *bundlePath;
@@ -47,7 +47,6 @@ static NSString * const kLSSharedFileListLoginItemHidden = @"com.apple.loginitem
 			CFRelease(item);
 		}
 	}
-	
 	CFRelease(loginItems);
 }
 

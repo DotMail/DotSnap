@@ -20,11 +20,10 @@
 
 @implementation DSPPreferencesViewController
 
-- (id)initWithContentRect:(CGRect)rect canFireSubject:(RACSubject *)canFireSubject {
+- (id)initWithContentRect:(CGRect)rect {
 	self = [super init];
 	
 	_contentRect = rect;
-	_canFireSubject = canFireSubject;
 	
 	return self;
 }
@@ -90,18 +89,13 @@
 	[view.layer addSublayer:logoLayer];
 	
 	DSPSpinningSettingsButton *optionsButton = [[DSPSpinningSettingsButton alloc]initWithFrame:(NSRect){ .origin.x = NSWidth(_contentRect) - 28, .origin.y = NSHeight(_contentRect) - 170, .size = { 17, 17 } } style:1];
-	optionsButton.rac_command = [RACCommand commandWithCanExecuteSignal:[self.canFireSubject map:^id(NSNumber *value) {
-		return @(!value.boolValue);
-	}]];
-	
+	optionsButton.rac_command = [RACCommand command];
 	optionsButton.bordered = NO;
 	optionsButton.buttonType = NSMomentaryChangeButton;
 	optionsButton.image = [NSImage imageNamed:@"OptionsGearWhite"];
 	
 	[optionsButton.rac_command subscribeNext:^(NSButton *_) {
 		[[[LIFlipEffect alloc] initFromWindow:view.window toWindow:self.presentingWindow] run];
-		
-		[self.canFireSubject sendNext:@YES];
 	}];
 	[view addSubview:optionsButton];
 	
@@ -141,10 +135,6 @@
 	[view addSubview:thirdSwitch];
 	
 	self.view = view;
-}
-
-- (void)orderOut {
-	[self.canFireSubject sendNext:@YES];
 }
 
 @end
