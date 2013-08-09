@@ -28,11 +28,11 @@ static NSUInteger JNWAnimatableWindowOpenTransactions = 0;
 // These are attempts at determining the default shadow settings on a normal window. These
 // aren't perfect, but since NSWindow actually uses CGS functions to set the window I am not
 // entirely sure there's a way to translate the actual shadow values to these values.
-static const CGFloat JNWAnimatableWindowShadowOpacity = 0.58f;
-static const CGSize JNWAnimatableWindowShadowOffset = (CGSize){ 0, -30 };
-static const CGFloat JNWAnimatableWindowShadowRadius = 19.f;
-static const CGFloat JNWAnimatableWindowShadowHorizontalOutset = 7.f;
-static const CGFloat JNWAnimatableWindowShadowTopOffset = 14.f;
+static const CGFloat JNWAnimatableWindowShadowOpacity = 0.25f;
+static const CGSize JNWAnimatableWindowShadowOffset = (CGSize){ 0, -8 };
+static const CGFloat JNWAnimatableWindowShadowRadius = 2.f;
+static const CGFloat JNWAnimatableWindowShadowHorizontalOutset = 2.f;
+static const CGFloat JNWAnimatableWindowShadowTopOffset = -15.f;
 
 // Use an ease-in-out timing function if none are specified.
 #define JNWAnimatableWindowDefaultAnimationCurve kCAMediaTimingFunctionEaseInEaseOut
