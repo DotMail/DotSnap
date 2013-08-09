@@ -24,10 +24,10 @@ static NSUInteger const DPSUniqueFilenameDepthLimit = 500;
 	_filenameHistory = [NSUserDefaults.standardUserDefaults arrayForKey:DPSFilenameHistoryKey].mutableCopy;
 	
 	_screenshotQuery = [[NSMetadataQuery alloc] init];
-    [_screenshotQuery setPredicate:[NSPredicate predicateWithFormat:@"kMDItemIsScreenCapture = 1"]];
-    [_screenshotQuery startQuery];
+	[_screenshotQuery setPredicate:[NSPredicate predicateWithFormat:@"kMDItemIsScreenCapture = 1"]];
+	[_screenshotQuery startQuery];
 	
-    [NSNotificationCenter.defaultCenter addObserverForName:NSMetadataQueryDidUpdateNotification object:_screenshotQuery queue:nil usingBlock:^(NSNotification *note) {
+	[NSNotificationCenter.defaultCenter addObserverForName:NSMetadataQueryDidUpdateNotification object:_screenshotQuery queue:nil usingBlock:^(NSNotification *note) {
 		for (NSMetadataItem *item in [note.userInfo objectForKey:(NSString *)kMDQueryUpdateAddedItems]) {
 			NSString *screenShotPath = [item valueForAttribute:NSMetadataItemPathKey];
 			NSURL *oldURL = [NSURL fileURLWithPath:screenShotPath];
@@ -36,7 +36,7 @@ static NSUInteger const DPSUniqueFilenameDepthLimit = 500;
 			[[NSFileManager defaultManager] moveItemAtURL:oldURL toURL:newURL error:nil];
 		}
 	}];
-    
+	
 	
 	return self;
 }
@@ -50,13 +50,13 @@ static NSUInteger const DPSUniqueFilenameDepthLimit = 500;
 }
 
 + (NSDateFormatter *)dateFormatter {
-    static NSDateFormatter *dateFormatter = nil;
+	static NSDateFormatter *dateFormatter = nil;
 	if (dateFormatter == nil) {
 		dateFormatter = [[NSDateFormatter alloc] init];
 		dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
 		dateFormatter.dateFormat = @" yyyy-MM-dd 'at' HH.mm.ss a";
 	}
-    return dateFormatter;
+	return dateFormatter;
 }
 
 static NSString *DPSUniqueFilenameForDirectory(NSString *relativePath, NSString *filename, BOOL timestamp) {

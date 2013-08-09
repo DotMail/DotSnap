@@ -11,13 +11,13 @@
 @implementation DSPMainView
 
 - (id)initWithFrame:(NSRect)frame {
-    self = [super initWithFrame:frame];
+	self = [super initWithFrame:frame];
 
 	self.layer = CALayer.layer;
 	self.layer.doubleSided = YES;
-    self.wantsLayer = YES;
+	self.wantsLayer = YES;
 	
-    return self;
+	return self;
 }
 
 - (void)setBackgroundColor:(NSColor *)backgroundColor {
@@ -32,11 +32,11 @@
 }
 
 - (id)initWithFrame:(NSRect)frame {
-    self = [super initWithFrame:frame];
+	self = [super initWithFrame:frame];
 	
 	self.backgroundColor = [NSColor colorWithCalibratedRed:0.260 green:0.663 blue:0.455 alpha:1.000];
 	
-    return self;
+	return self;
 }
 
 - (void)mouseEntered:(NSEvent *)theEvent {
@@ -50,17 +50,17 @@
 }
 
 - (void)ensureTrackingArea {
-    if (trackingArea == nil) {
-        trackingArea = [[NSTrackingArea alloc] initWithRect:NSZeroRect options:NSTrackingInVisibleRect | NSTrackingActiveAlways | NSTrackingMouseEnteredAndExited owner:self userInfo:nil];
-    }
+	if (trackingArea == nil) {
+		trackingArea = [[NSTrackingArea alloc] initWithRect:NSZeroRect options:NSTrackingInVisibleRect | NSTrackingActiveAlways | NSTrackingMouseEnteredAndExited owner:self userInfo:nil];
+	}
 }
 
 - (void)updateTrackingAreas {
-    [super updateTrackingAreas];
-    [self ensureTrackingArea];
-    if (![[self trackingAreas] containsObject:trackingArea]) {
-        [self addTrackingArea:trackingArea];
-    }
+	[super updateTrackingAreas];
+	[self ensureTrackingArea];
+	if (![[self trackingAreas] containsObject:trackingArea]) {
+		[self addTrackingArea:trackingArea];
+	}
 }
 
 @end

@@ -11,11 +11,11 @@
 @implementation DSPHistoryTableView
 
 - (id)initWithFrame:(NSRect)frame {
-    self = [super initWithFrame:frame];
+	self = [super initWithFrame:frame];
 
 	self.selectionHighlightStyle = NSTableViewSelectionHighlightStyleNone;
 	
-    return self;
+	return self;
 }
 
 

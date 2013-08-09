@@ -23,7 +23,7 @@
 }
 
 - (id)initWithFrame:(NSRect)frame {
-    self = [super initWithFrame:frame];
+	self = [super initWithFrame:frame];
 	
 	self.on = YES;
 	
@@ -71,21 +71,21 @@
 	topShadowLayer.backgroundColor = [NSColor colorWithCalibratedRed:0.762 green:0.821 blue:0.849 alpha:1.000].CGColor;
 	[self.switchCover addSublayer:topShadowLayer];
 	
-    return self;
+	return self;
 }
 
 - (void)ensureTrackingArea {
-    if (trackingArea == nil) {
-        trackingArea = [[NSTrackingArea alloc] initWithRect:NSZeroRect options:NSTrackingInVisibleRect | NSTrackingActiveAlways | NSTrackingMouseEnteredAndExited owner:self userInfo:nil];
-    }
+	if (trackingArea == nil) {
+		trackingArea = [[NSTrackingArea alloc] initWithRect:NSZeroRect options:NSTrackingInVisibleRect | NSTrackingActiveAlways | NSTrackingMouseEnteredAndExited owner:self userInfo:nil];
+	}
 }
 
 - (void)updateTrackingAreas {
-    [super updateTrackingAreas];
-    [self ensureTrackingArea];
-    if (![[self trackingAreas] containsObject:trackingArea]) {
-        [self addTrackingArea:trackingArea];
-    }
+	[super updateTrackingAreas];
+	[self ensureTrackingArea];
+	if (![[self trackingAreas] containsObject:trackingArea]) {
+		[self addTrackingArea:trackingArea];
+	}
 }
 
 - (void)mouseEntered:(NSEvent *)theEvent {

@@ -15,7 +15,7 @@
 @implementation DSPPreferencesWindow
 
 - (MAAttachedWindow *)initWithView:(NSView *)view attachedToPoint:(NSPoint)point {
-    self = [super initWithView:view attachedToPoint:point];
+	self = [super initWithView:view attachedToPoint:point];
 	
 	self.cornerRadius = 0.f;
 	self.arrowHeight = 12.f;

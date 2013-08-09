@@ -18,7 +18,7 @@
 }
 
 - (id)initWithFrame:(NSRect)frameRect style:(DSPSpinningSettingsButtonStyle)style {
-    self = [super initWithFrame:frameRect];
+	self = [super initWithFrame:frameRect];
 	
 	self.layer = CALayer.layer;
 	self.wantsLayer = YES;
@@ -87,7 +87,7 @@
 		[gearLayer addAnimation:opacityAnimation forKey:nil];
 	};
 	
-    return self;
+	return self;
 }
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
@@ -103,17 +103,17 @@
 }
 
 - (void)ensureTrackingArea {
-    if (trackingArea == nil) {
-        trackingArea = [[NSTrackingArea alloc] initWithRect:NSZeroRect options:NSTrackingInVisibleRect | NSTrackingActiveAlways | NSTrackingMouseEnteredAndExited owner:self userInfo:nil];
-    }
+	if (trackingArea == nil) {
+		trackingArea = [[NSTrackingArea alloc] initWithRect:NSZeroRect options:NSTrackingInVisibleRect | NSTrackingActiveAlways | NSTrackingMouseEnteredAndExited owner:self userInfo:nil];
+	}
 }
 
 - (void)updateTrackingAreas {
-    [super updateTrackingAreas];
-    [self ensureTrackingArea];
-    if (![[self trackingAreas] containsObject:trackingArea]) {
-        [self addTrackingArea:trackingArea];
-    }
+	[super updateTrackingAreas];
+	[self ensureTrackingArea];
+	if (![[self trackingAreas] containsObject:trackingArea]) {
+		[self addTrackingArea:trackingArea];
+	}
 }
 
 - (void)mouseEntered:(NSEvent *)theEvent {

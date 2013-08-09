@@ -56,26 +56,27 @@
 }
 
 - (void)drawSeparatorInRect:(NSRect)dirtyRect {
-    NSRect drawingRect = [self frame];
-    drawingRect.origin.y = drawingRect.size.height - 1.0;
-    drawingRect.size.height = 1.0;
+	NSRect drawingRect = [self frame];
+	drawingRect.origin.y = drawingRect.size.height - 1.0;
+	drawingRect.size.height = 1.0;
 
-    [[NSColor colorWithCalibratedRed:0.766 green:0.807 blue:0.830 alpha:1.000] set];
-    NSRectFill(drawingRect);
+	[[NSColor colorWithCalibratedRed:0.766 green:0.807 blue:0.830 alpha:1.000] set];
+	NSRectFill(drawingRect);
 }
 
 - (void)ensureTrackingArea {
-    if (trackingArea == nil) {
-        trackingArea = [[NSTrackingArea alloc] initWithRect:NSZeroRect options:NSTrackingInVisibleRect | NSTrackingActiveAlways | NSTrackingMouseEnteredAndExited owner:self userInfo:nil];
-    }
+	if (trackingArea == nil) {
+		
+		trackingArea = [[NSTrackingArea alloc] initWithRect:NSZeroRect options:NSTrackingInVisibleRect | NSTrackingActiveAlways | NSTrackingMouseEnteredAndExited owner:self userInfo:nil];
+	}
 }
 
 - (void)updateTrackingAreas {
-    [super updateTrackingAreas];
-    [self ensureTrackingArea];
-    if (![[self trackingAreas] containsObject:trackingArea]) {
-        [self addTrackingArea:trackingArea];
-    }
+	[super updateTrackingAreas];
+	[self ensureTrackingArea];
+	if (![[self trackingAreas] containsObject:trackingArea]) {
+		[self addTrackingArea:trackingArea];
+	}
 }
 
 - (void)mouseEntered:(NSEvent *)theEvent {

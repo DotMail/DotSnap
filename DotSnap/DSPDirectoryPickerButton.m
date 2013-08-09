@@ -15,7 +15,7 @@
 @implementation DSPDirectoryPickerButton
 
 - (id)initWithFrame:(NSRect)frame {
-    self = [super initWithFrame:frame];
+	self = [super initWithFrame:frame];
   
 	self.layer = CALayer.layer;
 	self.wantsLayer = YES;
@@ -48,7 +48,7 @@
 		}
 	};
 	
-    return self;
+	return self;
 }
 
 - (void)resetCursorRects {

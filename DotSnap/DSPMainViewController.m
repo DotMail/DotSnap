@@ -330,7 +330,7 @@
 
 - (NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row {
 	DSPHistoryRowView *rowView = [[DSPHistoryRowView alloc] initWithFrame:NSMakeRect(0, 0, NSWidth(_contentFrame), 110)];
-    return rowView;
+	return rowView;
 }
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
