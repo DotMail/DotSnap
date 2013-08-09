@@ -104,6 +104,10 @@
 	tableView.headerView = nil;
 	tableView.focusRingType = NSFocusRingTypeNone;
 	tableView.gridStyleMask = NSTableViewSolidHorizontalGridLineMask;
+	NSTableColumn *firstColumn  = [[NSTableColumn alloc] initWithIdentifier:@"firstColumn"];
+	firstColumn.editable = NO;
+	firstColumn.width = CGRectGetWidth(view.bounds);
+	[tableView addTableColumn:firstColumn];
 	tableView.delegate = self;
 	tableView.dataSource = self.viewModel;
 	scrollView.documentView = tableView;
