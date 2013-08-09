@@ -32,11 +32,7 @@ static NSMenu *contextMenu(id delegate) {
 - (MAAttachedWindow *)initWithView:(NSView *)view attachedToPoint:(NSPoint)point inWindow:(NSWindow *)window onSide:(MAWindowPosition)side atDistance:(float)distance {
 	self = [super initWithView:view attachedToPoint:point inWindow:window onSide:side atDistance:distance];
 
-	NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-	[center addObserver:self
-			   selector:@selector(windowDidResignKey:)
-				   name:NSWindowDidResignKeyNotification
-				 object:self];
+	[NSNotificationCenter.defaultCenter addObserver:self selector:@selector(windowDidResignKey:) name:NSWindowDidResignKeyNotification object:self];
 
 	return self;
 }
@@ -83,17 +79,14 @@ static NSMenu *contextMenu(id delegate) {
 	}
 }
 
-- (void)makeKeyAndOrderFrontWithDuration:(CFTimeInterval)duration timing:(CAMediaTimingFunction *)timingFunction setup:(void (^)(CALayer *))setup animations:(void (^)(CALayer *))animations
-{
+- (void)makeKeyAndOrderFrontWithDuration:(CFTimeInterval)duration timing:(CAMediaTimingFunction *)timingFunction setup:(void (^)(CALayer *))setup animations:(void (^)(CALayer *))animations {
 	[self setFrameOrigin:[self originForAttachedState]];
 	[super makeKeyAndOrderFrontWithDuration:duration timing:timingFunction setup:setup animations:animations];
 }
 
-
 #pragma mark - Active/key events
 
-- (BOOL)canBecomeKeyWindow
-{
+- (BOOL)canBecomeKeyWindow {
 	return YES;
 }
 
@@ -101,13 +94,9 @@ static NSMenu *contextMenu(id delegate) {
 	return YES;
 }
 
-- (void)windowDidResignKey:(NSNotification *)aNotification
-{
-	if (!_isInOpenPanel && !_isFlipping)
-	{
+- (void)windowDidResignKey:(NSNotification *)aNotification {
+	if (!_isInOpenPanel && !_isFlipping) {
 		[self orderOutWithDuration:0.3 timing:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut] animations:^(CALayer *layer) {
-			// We can now basically whatever we want with this layer. Everything is already wrapped in a CATransaction so it is animated implicitly.
-			// To change the duration and other properties, just modify the current context. It will apply to the animation.
 			layer.transform = CATransform3DMakeTranslation(0.f, -50.f, 0.f);
 			layer.opacity = 0.f;
 		}];
@@ -115,18 +104,15 @@ static NSMenu *contextMenu(id delegate) {
 }
 
 
-- (void)setMenuBarIcon:(NSImage *)image
-{
+- (void)setMenuBarIcon:(NSImage *)image {
 	_menuBarIcon = image;
-	if (statusItemView)
-	{
+	if (statusItemView) {
 		[statusItemView setFrameSize:NSMakeSize(image.size.width + 6, statusItemView.frame.size.height)];
 		[statusItemView setNeedsDisplay:YES];
 	}
 }
 
-- (void)setHighlightedMenuBarIcon:(NSImage *)image
-{
+- (void)setHighlightedMenuBarIcon:(NSImage *)image {
 	_highlightedMenuBarIcon = image;
 	if (statusItemView)
 	{
@@ -208,9 +194,14 @@ static NSMenu *contextMenu(id delegate) {
 		return;
 	}
 	
-	if ([[NSApp keyWindow] isMainWindow] || [NSApp keyWindow].isVisible)
-	{
+	if (([NSApp keyWindow].isMainWindow || [NSApp keyWindow].isVisible) && !self.menuBarWindow.isInOpenPanel) {
 		[(DSPMainWindow *)[NSApp keyWindow] orderOutWithDuration:0.3 timing:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut] animations:^(CALayer *layer) {
+			layer.transform = CATransform3DMakeTranslation(0.f, -50.f, 0.f);
+			layer.opacity = 0.f;
+		}];
+	} else if (self.menuBarWindow.isInOpenPanel) {
+		[NSApp endSheet:self.menuBarWindow.attachedSheet];
+		[self.menuBarWindow orderOutWithDuration:0.3 timing:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut] animations:^(CALayer *layer) {
 			layer.transform = CATransform3DMakeTranslation(0.f, -50.f, 0.f);
 			layer.opacity = 0.f;
 		}];

@@ -255,8 +255,17 @@
 		[panel setBecomesKeyOnlyIfNeeded:YES];
 		[panel setCanCreateDirectories:YES];
 		[panel setMessage:@"Import one or more files or directories."];
+		[NSNotificationCenter.defaultCenter addObserver:self selector:@selector(windowDidResignKey:) name:NSWindowDidResignKeyNotification object:panel];
 	}
 	return panel;
+}
+
+- (void)windowDidResignKey:(NSNotification *)aNotification {
+	[NSApp endSheet:self.openPanel];
+	[(DSPMainWindow *)self.view.window orderOutWithDuration:0.3 timing:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut] animations:^(CALayer *layer) {
+		layer.transform = CATransform3DMakeTranslation(0.f, -50.f, 0.f);
+		layer.opacity = 0.f;
+	}];
 }
 
 - (void)mouseDown:(NSEvent *)theEvent {
