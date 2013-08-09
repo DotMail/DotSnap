@@ -12,6 +12,7 @@
 #import "DSPMainWindow.h"
 #import "DSPLaunchServicesManager.h"
 #import "DSPSpinningSettingsButton.h"
+#import "DSPGlowingNameButton.h"
 #import "LIFlipEffect.h"
 
 @interface DSPPreferencesViewController ()
@@ -33,11 +34,11 @@
 	view.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
 	view.backgroundColor = [NSColor colorWithCalibratedRed:0.260 green:0.663 blue:0.455 alpha:1.000];
 	
-	DSPMainView *fieldBackground = [[DSPMainView alloc]initWithFrame:(NSRect){ .origin.y = 4, .size = { NSWidth(_contentRect), 150 } }];
+	DSPMainView *fieldBackground = [[DSPMainView alloc]initWithFrame:(NSRect){ .origin.y = 4, .size = { NSWidth(_contentRect), 166 } }];
 	fieldBackground.backgroundColor = [NSColor colorWithCalibratedRed:0.850 green:0.888 blue:0.907 alpha:1.000];
 	[view addSubview:fieldBackground];
 
-	NSTextField *addTimestampLabel = [[NSTextField alloc]initWithFrame:(NSRect){ .origin.x = 24, .origin.y = 106, .size = { NSWidth(_contentRect), 36 } }];
+	NSTextField *addTimestampLabel = [[NSTextField alloc]initWithFrame:(NSRect){ .origin.x = 22, .origin.y = 116, .size = { NSWidth(_contentRect), 36 } }];
 	addTimestampLabel.bezeled = NO;
 	addTimestampLabel.editable = NO;
 	addTimestampLabel.drawsBackground = NO;
@@ -47,7 +48,7 @@
 	addTimestampLabel.stringValue = @"Add Timestamp";
 	[view addSubview:addTimestampLabel];
 	
-	NSBox *separatorShadow = [[NSBox alloc]initWithFrame:(NSRect){ .origin.y = 104, .size = { NSWidth(_contentRect), 1 } }];
+	NSBox *separatorShadow = [[NSBox alloc]initWithFrame:(NSRect){ .origin.y = 114, .size = { NSWidth(_contentRect), 1 } }];
 	separatorShadow.borderType = NSLineBorder;
 	separatorShadow.borderColor = [NSColor colorWithCalibratedRed:0.753 green:0.821 blue:0.849 alpha:1.000];
 	separatorShadow.fillColor = [NSColor colorWithCalibratedRed:0.753 green:0.821 blue:0.849 alpha:1.000];
@@ -55,7 +56,7 @@
 	separatorShadow.boxType = NSBoxCustom;
 	[view addSubview:separatorShadow];
 	
-	NSTextField *loadDotsnapAtStartLabel = [[NSTextField alloc]initWithFrame:(NSRect){ .origin.x = 24, .origin.y = 54, .size = { NSWidth(_contentRect), 36 } }];
+	NSTextField *loadDotsnapAtStartLabel = [[NSTextField alloc]initWithFrame:(NSRect){ .origin.x = 22, .origin.y = 62, .size = { NSWidth(_contentRect), 36 } }];
 	loadDotsnapAtStartLabel.bezeled = NO;
 	loadDotsnapAtStartLabel.editable = NO;
 	loadDotsnapAtStartLabel.drawsBackground = NO;
@@ -65,7 +66,7 @@
 	loadDotsnapAtStartLabel.stringValue = @"Load DotSnap on start";
 	[view addSubview:loadDotsnapAtStartLabel];
 	
-	NSBox *separatorShadow2 = [[NSBox alloc]initWithFrame:(NSRect){ .origin.y = 52, .size = { NSWidth(_contentRect), 1 } }];
+	NSBox *separatorShadow2 = [[NSBox alloc]initWithFrame:(NSRect){ .origin.y = 56, .size = { NSWidth(_contentRect), 1 } }];
 	separatorShadow2.borderType = NSLineBorder;
 	separatorShadow2.borderColor = [NSColor colorWithCalibratedRed:0.753 green:0.821 blue:0.849 alpha:1.000];
 	separatorShadow2.fillColor = [NSColor colorWithCalibratedRed:0.753 green:0.821 blue:0.849 alpha:1.000];
@@ -73,7 +74,7 @@
 	separatorShadow2.boxType = NSBoxCustom;
 	[view addSubview:separatorShadow2];
 
-	NSTextField *whateverLabel = [[NSTextField alloc]initWithFrame:(NSRect){ .origin.x = 24, .origin.y = 4, .size = { NSWidth(_contentRect), 36 } }];
+	NSTextField *whateverLabel = [[NSTextField alloc]initWithFrame:(NSRect){ .origin.x = 22, .origin.y = 8, .size = { NSWidth(_contentRect), 36 } }];
 	whateverLabel.bezeled = NO;
 	whateverLabel.editable = NO;
 	whateverLabel.drawsBackground = NO;
@@ -85,7 +86,7 @@
 	
 	CALayer *logoLayer = CALayer.layer;
 	logoLayer.contents = [NSImage imageNamed:@"DotSnapPreferencesLogo"];
-	logoLayer.frame = (CGRect){ .origin.x = NSMidX(_contentRect) - 32, .origin.y = NSHeight(_contentRect) - 98, .size = { 62, 62 } };
+	logoLayer.frame = (CGRect){ .origin.x = NSMidX(_contentRect) - 32, .origin.y = NSHeight(_contentRect) - 100, .size = { 62, 62 } };
 	[view.layer addSublayer:logoLayer];
 	
 	DSPSpinningSettingsButton *optionsButton = [[DSPSpinningSettingsButton alloc]initWithFrame:(NSRect){ .origin.x = NSWidth(_contentRect) - 28, .origin.y = NSHeight(_contentRect) - 28, .size = { 17, 17 } } style:1];
@@ -99,23 +100,47 @@
 	}];
 	[view addSubview:optionsButton];
 	
+	DSPGlowingNameButton *dotsnapNameButton = [[DSPGlowingNameButton alloc]initWithFrame:(NSRect){ .origin = { 114, NSHeight(_contentRect) - 144 }, .size.width =  72, .size.height = 24 } name:@".Snap"];
+	dotsnapNameButton.target = self;
+	dotsnapNameButton.action = @selector(openDotSnap:);
+	[view addSubview:dotsnapNameButton];
+	
 	CATextLayer *gistTextLayer = [[CATextLayer alloc]init];
-	gistTextLayer.frame = (NSRect){ .origin = { 68, NSHeight(_contentRect) - 175 }, .size.width = NSWidth(_contentRect) - 136, .size.height = 62 };
+	gistTextLayer.frame = (NSRect){ .origin = { 36, NSHeight(_contentRect) - 144 }, .size.width = NSWidth(_contentRect) - 72, .size.height = 24 };
 	gistTextLayer.foregroundColor = NSColor.whiteColor.CGColor;
-	gistTextLayer.font = CTFontCreateWithName(CFSTR("HelveticaNeue"), 14.f, NULL);
-	gistTextLayer.fontSize = 14.f;
+	gistTextLayer.font = CTFontCreateWithName(CFSTR("HelveticaNeue"), 18.f, NULL);
+	gistTextLayer.fontSize = 18.f;
 	gistTextLayer.alignmentMode = @"center";
-	gistTextLayer.string = @".Snap is brought to you by \n Robert Widmann and Tobias van Schneider";
+	gistTextLayer.string = @".Snap is brought to you by";
 	[view.layer addSublayer:gistTextLayer];
 	
-	DSPSwitch *firstSwitch = [[DSPSwitch alloc]initWithFrame:(NSRect){ .origin.x = NSWidth(_contentRect) - 120, .origin.y = 116, .size = { 80, 30 } }];
+	DSPGlowingNameButton *codafiNameButton = [[DSPGlowingNameButton alloc]initWithFrame:(NSRect){ .origin = { 88, NSHeight(_contentRect) - 165 }, .size.width =  72, .size.height = 24 } name:@"CodaFi"];
+	codafiNameButton.target = self;
+	codafiNameButton.action = @selector(openCodafi:);
+	[view addSubview:codafiNameButton];
+	
+	CATextLayer *andTextLayer = [[CATextLayer alloc]init];
+	andTextLayer.frame = (NSRect){ .origin = { 152, NSHeight(_contentRect) - 165 }, .size.width = 36, .size.height = 24 };
+	andTextLayer.foregroundColor = NSColor.whiteColor.CGColor;
+	andTextLayer.font = CTFontCreateWithName(CFSTR("HelveticaNeue"), 18.f, NULL);
+	andTextLayer.fontSize = 18.f;
+	andTextLayer.alignmentMode = @"left";
+	andTextLayer.string = @"and";
+	[view.layer addSublayer:andTextLayer];
+	
+	DSPGlowingNameButton *tobiasNameButton = [[DSPGlowingNameButton alloc]initWithFrame:(NSRect){ .origin = { 186, NSHeight(_contentRect) - 165 }, .size.width =  200, .size.height = 24 } name:@"Tobias van Schneider"];
+	tobiasNameButton.target = self;
+	tobiasNameButton.action = @selector(openVanSchneider:);
+	[view addSubview:tobiasNameButton];
+	
+	DSPSwitch *firstSwitch = [[DSPSwitch alloc]initWithFrame:(NSRect){ .origin.x = NSWidth(_contentRect) - 102, .origin.y = 128, .size = { 80, 30 } }];
 	firstSwitch.on = [NSUserDefaults.standardUserDefaults boolForKey:DSPAddsTimestampKey];
 	[[RACObserve(firstSwitch,on) skip:1] subscribeNext:^(NSNumber *v) {
 		[NSUserDefaults.standardUserDefaults setBool:v.boolValue forKey:DSPAddsTimestampKey];
 	}];
 	[view addSubview:firstSwitch];
 	
-	DSPSwitch *secondSwitch = [[DSPSwitch alloc]initWithFrame:(NSRect){ .origin.x = NSWidth(_contentRect) - 120, .origin.y = 64, .size = { 80, 30 } }];
+	DSPSwitch *secondSwitch = [[DSPSwitch alloc]initWithFrame:(NSRect){ .origin.x = NSWidth(_contentRect) - 102, .origin.y = 72, .size = { 80, 30 } }];
 	secondSwitch.on = [NSUserDefaults.standardUserDefaults boolForKey:DSPLoadDotSnapAtStartKey];
 	[[RACObserve(secondSwitch,on) skip:1] subscribeNext:^(NSNumber *v) {
 		if (v.boolValue) {
@@ -127,7 +152,7 @@
 	}];
 	[view addSubview:secondSwitch];
 	
-	DSPSwitch *thirdSwitch = [[DSPSwitch alloc]initWithFrame:(NSRect){ .origin.x = NSWidth(_contentRect) - 120, .origin.y = 14, .size = { 80, 30 } }];
+	DSPSwitch *thirdSwitch = [[DSPSwitch alloc]initWithFrame:(NSRect){ .origin.x = NSWidth(_contentRect) - 102, .origin.y = 16, .size = { 80, 30 } }];
 	thirdSwitch.on = [NSUserDefaults.standardUserDefaults boolForKey:DSPAutosaveInputFieldKey];
 	[[RACObserve(thirdSwitch,on) skip:1] subscribeNext:^(NSNumber *v) {
 		[NSUserDefaults.standardUserDefaults setBool:v.boolValue forKey:DSPAutosaveInputFieldKey];
@@ -135,6 +160,18 @@
 	[view addSubview:thirdSwitch];
 	
 	self.view = view;
+}
+
+- (void)openCodafi:(id)sender {
+	[NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:@"https://github.com/CodaFi"]];
+}
+
+- (void)openVanSchneider:(id)sender {
+	[NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:@"http://www.vanschneider.com/"]];
+}
+
+- (void)openDotSnap:(id)semder {
+	[NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:@"http://www.dotsnapapp.com/"]];
 }
 
 @end

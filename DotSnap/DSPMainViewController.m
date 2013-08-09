@@ -39,7 +39,7 @@
 	_contentFrame = rect;
 	_viewModel = [DSPMainViewModel new];
 	
-	_preferencesViewController = [[DSPPreferencesViewController alloc]initWithContentRect:(CGRect){ .size = { 400, 350 } }];
+	_preferencesViewController = [[DSPPreferencesViewController alloc]initWithContentRect:(CGRect){ .size = { 442, 382 } }];
 	_preferencesWindow = [[DSPPreferencesWindow alloc]initWithView:self.preferencesViewController.view attachedToPoint:(NSPoint){ } onSide:MAPositionBottom];
 	
 	_historySubject = [RACSubject subject];
