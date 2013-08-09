@@ -15,6 +15,9 @@
 		8405D58717A5D60000D7990E /* DSPPNGFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8405D58617A5D60000D7990E /* DSPPNGFormatter.m */; };
 		8405D58C17A5E06D00D7990E /* LIEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 8405D58917A5E06D00D7990E /* LIEffect.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8405D58D17A5E06D00D7990E /* LIFlipEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 8405D58B17A5E06D00D7990E /* LIFlipEffect.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		842B007717B47AEC00EB9672 /* DSPShadowBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 842B007617B47AEC00EB9672 /* DSPShadowBox.m */; };
+		842B007F17B47B6900EB9672 /* DSPLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 842B007E17B47B6900EB9672 /* DSPLabel.m */; };
+		842B008217B47C0C00EB9672 /* DSPFilenameTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 842B008117B47C0C00EB9672 /* DSPFilenameTextField.m */; };
 		84600B4517A31CB500D3E8FE /* MAAttachedWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 84600B4417A31CB500D3E8FE /* MAAttachedWindow.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		84600B4E17A34A8400D3E8FE /* DSPHistoryRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84600B4D17A34A8400D3E8FE /* DSPHistoryRowView.m */; };
 		84600B5D17A354D300D3E8FE /* DSPHistoryTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84600B5C17A354D300D3E8FE /* DSPHistoryTableView.m */; };
@@ -138,6 +141,12 @@
 		8405D58917A5E06D00D7990E /* LIEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LIEffect.m; path = "../../../Downloads/LIFlipEffect-master/LIEffect.m"; sourceTree = "<group>"; };
 		8405D58A17A5E06D00D7990E /* LIFlipEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LIFlipEffect.h; path = "../../../Downloads/LIFlipEffect-master/LIFlipEffect.h"; sourceTree = "<group>"; };
 		8405D58B17A5E06D00D7990E /* LIFlipEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LIFlipEffect.m; path = "../../../Downloads/LIFlipEffect-master/LIFlipEffect.m"; sourceTree = "<group>"; };
+		842B007517B47AEC00EB9672 /* DSPShadowBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPShadowBox.h; sourceTree = "<group>"; };
+		842B007617B47AEC00EB9672 /* DSPShadowBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPShadowBox.m; sourceTree = "<group>"; };
+		842B007D17B47B6900EB9672 /* DSPLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPLabel.h; sourceTree = "<group>"; };
+		842B007E17B47B6900EB9672 /* DSPLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPLabel.m; sourceTree = "<group>"; };
+		842B008017B47C0C00EB9672 /* DSPFilenameTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPFilenameTextField.h; sourceTree = "<group>"; };
+		842B008117B47C0C00EB9672 /* DSPFilenameTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPFilenameTextField.m; sourceTree = "<group>"; };
 		84600B4317A31CB500D3E8FE /* MAAttachedWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAAttachedWindow.h; sourceTree = "<group>"; };
 		84600B4417A31CB500D3E8FE /* MAAttachedWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAAttachedWindow.m; sourceTree = "<group>"; };
 		84600B4C17A34A8400D3E8FE /* DSPHistoryRowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPHistoryRowView.h; sourceTree = "<group>"; };
@@ -222,6 +231,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		842B008317B47F1A00EB9672 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				842B007517B47AEC00EB9672 /* DSPShadowBox.h */,
+				842B007617B47AEC00EB9672 /* DSPShadowBox.m */,
+				8478364017A1FAE00050EBA6 /* DSPSwitch.h */,
+				8478364117A1FAE00050EBA6 /* DSPSwitch.m */,
+				842B007D17B47B6900EB9672 /* DSPLabel.h */,
+				842B007E17B47B6900EB9672 /* DSPLabel.m */,
+				842B008017B47C0C00EB9672 /* DSPFilenameTextField.h */,
+				842B008117B47C0C00EB9672 /* DSPFilenameTextField.m */,
+				8405D58517A5D60000D7990E /* DSPPNGFormatter.h */,
+				8405D58617A5D60000D7990E /* DSPPNGFormatter.m */,
+				84BC7E6F17A4D8BA0091C0DB /* DSPDirectoryPickerButton.h */,
+				84BC7E7017A4D8BA0091C0DB /* DSPDirectoryPickerButton.m */,
+				84BC7E7A17A4DC9E0091C0DB /* DSPSpinningSettingsButton.h */,
+				84BC7E7B17A4DC9E0091C0DB /* DSPSpinningSettingsButton.m */,
+				84600B5B17A354D300D3E8FE /* DSPHistoryTableView.h */,
+				84600B5C17A354D300D3E8FE /* DSPHistoryTableView.m */,
+				84600B4C17A34A8400D3E8FE /* DSPHistoryRowView.h */,
+				84600B4D17A34A8400D3E8FE /* DSPHistoryRowView.m */,
+			);
+			name = Controls;
+			sourceTree = "<group>";
+		};
 		84600B4B17A31CB900D3E8FE /* MAAttachedWindow */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,17 +263,6 @@
 				84600B4417A31CB500D3E8FE /* MAAttachedWindow.m */,
 			);
 			name = MAAttachedWindow;
-			sourceTree = "<group>";
-		};
-		84600B4F17A34CB700D3E8FE /* History Table View */ = {
-			isa = PBXGroup;
-			children = (
-				84600B5B17A354D300D3E8FE /* DSPHistoryTableView.h */,
-				84600B5C17A354D300D3E8FE /* DSPHistoryTableView.m */,
-				84600B4C17A34A8400D3E8FE /* DSPHistoryRowView.h */,
-				84600B4D17A34A8400D3E8FE /* DSPHistoryRowView.m */,
-			);
-			name = "History Table View";
 			sourceTree = "<group>";
 		};
 		847835DA17A0E3AA0050EBA6 /* Products */ = {
@@ -264,17 +287,11 @@
 				8478360717A0F5560050EBA6 /* DSPMainWindow.m */,
 				847835C917A0D3650050EBA6 /* DSPMainViewController.h */,
 				847835CA17A0D3650050EBA6 /* DSPMainViewController.m */,
-				8405D58517A5D60000D7990E /* DSPPNGFormatter.h */,
-				8405D58617A5D60000D7990E /* DSPPNGFormatter.m */,
 				847835D417A0DB670050EBA6 /* DSPMainView.h */,
 				847835D517A0DB670050EBA6 /* DSPMainView.m */,
 				8478361C17A1001F0050EBA6 /* DSPMainViewModel.h */,
 				8478361D17A1001F0050EBA6 /* DSPMainViewModel.m */,
-				84BC7E6F17A4D8BA0091C0DB /* DSPDirectoryPickerButton.h */,
-				84BC7E7017A4D8BA0091C0DB /* DSPDirectoryPickerButton.m */,
-				84BC7E7A17A4DC9E0091C0DB /* DSPSpinningSettingsButton.h */,
-				84BC7E7B17A4DC9E0091C0DB /* DSPSpinningSettingsButton.m */,
-				84600B4F17A34CB700D3E8FE /* History Table View */,
+				842B008317B47F1A00EB9672 /* Controls */,
 			);
 			name = "Main Window";
 			sourceTree = "<group>";
@@ -286,8 +303,6 @@
 				8405D58317A5C4D500D7990E /* DSPPreferencesWindow.m */,
 				8478362A17A198860050EBA6 /* DSPPreferencesViewController.h */,
 				8478362B17A198860050EBA6 /* DSPPreferencesViewController.m */,
-				8478364017A1FAE00050EBA6 /* DSPSwitch.h */,
-				8478364117A1FAE00050EBA6 /* DSPSwitch.m */,
 				8478364717A205D50050EBA6 /* DSPLaunchServicesManager.h */,
 				8478364817A205D50050EBA6 /* DSPLaunchServicesManager.m */,
 			);
@@ -573,13 +588,16 @@
 				84BC7E7117A4D8BA0091C0DB /* DSPDirectoryPickerButton.m in Sources */,
 				847835CB17A0D3650050EBA6 /* DSPMainViewController.m in Sources */,
 				847835D617A0DB670050EBA6 /* DSPMainView.m in Sources */,
+				842B007717B47AEC00EB9672 /* DSPShadowBox.m in Sources */,
 				8478360817A0F5560050EBA6 /* DSPMainWindow.m in Sources */,
 				84BC7E7C17A4DC9E0091C0DB /* DSPSpinningSettingsButton.m in Sources */,
+				842B007F17B47B6900EB9672 /* DSPLabel.m in Sources */,
 				8478361717A0F6A10050EBA6 /* JNWAnimatableWindow.m in Sources */,
 				8478361E17A1001F0050EBA6 /* DSPMainViewModel.m in Sources */,
 				8478362C17A198860050EBA6 /* DSPPreferencesViewController.m in Sources */,
 				84600B4517A31CB500D3E8FE /* MAAttachedWindow.m in Sources */,
 				8478363517A19E410050EBA6 /* DSPDefaults.m in Sources */,
+				842B008217B47C0C00EB9672 /* DSPFilenameTextField.m in Sources */,
 				84600B5D17A354D300D3E8FE /* DSPHistoryTableView.m in Sources */,
 				8478364217A1FAE00050EBA6 /* DSPSwitch.m in Sources */,
 				8478364917A205D50050EBA6 /* DSPLaunchServicesManager.m in Sources */,

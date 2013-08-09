@@ -6,12 +6,14 @@
 //
 //
 
+#import "DSPLabel.h"
 #import "DSPMainView.h"
+#import "DSPShadowBox.h"
 #import "DSPMainWindow.h"
-#import "DSPPNGFormatter.h"
 #import "DSPMainViewModel.h"
 #import "DSPHistoryRowView.h"
 #import "DSPHistoryTableView.h"
+#import "DSPFilenameTextField.h"
 #import "DSPPreferencesWindow.h"
 #import "DSPMainViewController.h"
 #import "DSPDirectoryPickerButton.h"
@@ -23,10 +25,10 @@
 @property (nonatomic, strong, readonly) DSPMainViewModel *viewModel;
 @property (nonatomic, strong) DSPPreferencesViewController *preferencesViewController;
 @property (nonatomic, strong) DSPPreferencesWindow *preferencesWindow;
-@property (nonatomic, strong) NSTextField *filenameField;
 @property (nonatomic, copy) void (^carriageReturnBlock)();
 @property (nonatomic, copy) void (^mouseDownBlock)(NSEvent *event);
 @property (nonatomic, copy) void (^mouseEnteredBlock)(NSEvent *event, BOOL entered);
+@property (nonatomic, strong) RACSubject *historySubject;
 @end
 
 @implementation DSPMainViewController
@@ -40,6 +42,7 @@
 	_preferencesViewController = [[DSPPreferencesViewController alloc]initWithContentRect:(CGRect){ .size = { 400, 350 } }];
 	_preferencesWindow = [[DSPPreferencesWindow alloc]initWithView:self.preferencesViewController.view attachedToPoint:(NSPoint){ } onSide:MAPositionBottom];
 	
+	_historySubject = [RACSubject subject];
 	
 	return self;
 }
@@ -54,40 +57,20 @@
 	backgroundView.autoresizingMask = NSViewMinYMargin;
 	[view addSubview:backgroundView];
 	
-	NSBox *windowShadow = [[NSBox alloc]initWithFrame:(NSRect){ .origin.y = NSHeight(_contentFrame) - 2, .size = { (NSWidth(_contentFrame)/2) - 10, 2 } }];
-	windowShadow.autoresizingMask = NSViewWidthSizable | NSViewMinYMargin;
-	windowShadow.borderType = NSLineBorder;
-	windowShadow.borderColor = [NSColor colorWithCalibratedRed:0.361 green:0.787 blue:0.568 alpha:1.000];
-	windowShadow.fillColor = [NSColor colorWithCalibratedRed:0.361 green:0.787 blue:0.568 alpha:1.000];
-	windowShadow.borderWidth = 2.f;
-	windowShadow.boxType = NSBoxCustom;
+	DSPShadowBox *windowShadow = [[DSPShadowBox alloc]initWithFrame:(NSRect){ .origin.y = NSHeight(_contentFrame) - 2, .size = { (NSWidth(_contentFrame)/2) - 10, 2 } }];
 	[view addSubview:windowShadow];
 	
-	NSBox *windowShadow2 = [[NSBox alloc]initWithFrame:(NSRect){ .origin.x = (NSWidth(_contentFrame)/2) + 10, .origin.y = NSHeight(_contentFrame) - 2, .size = { (NSWidth(_contentFrame)/2) - 10, 2 } }];
-	windowShadow2.autoresizingMask = NSViewWidthSizable | NSViewMinYMargin;
-	windowShadow2.borderType = NSLineBorder;
-	windowShadow2.borderColor = [NSColor colorWithCalibratedRed:0.361 green:0.787 blue:0.568 alpha:1.000];
-	windowShadow2.fillColor = [NSColor colorWithCalibratedRed:0.361 green:0.787 blue:0.568 alpha:1.000];
-	windowShadow2.borderWidth = 2.f;
-	windowShadow2.boxType = NSBoxCustom;
+	DSPShadowBox *windowShadow2 = [[DSPShadowBox alloc]initWithFrame:(NSRect){ .origin.x = (NSWidth(_contentFrame)/2) + 10, .origin.y = NSHeight(_contentFrame) - 2, .size = { (NSWidth(_contentFrame)/2) - 10, 2 } }];
 	[view addSubview:windowShadow2];
 	
-	NSBox *separatorShadow = [[NSBox alloc]initWithFrame:(NSRect){ .origin.y = NSHeight(_contentFrame) - 146, .size = { NSWidth(_contentFrame), 2 } }];
-	separatorShadow.autoresizingMask = NSViewWidthSizable | NSViewMinYMargin;
-	separatorShadow.borderType = NSLineBorder;
+	DSPShadowBox *separatorShadow = [[DSPShadowBox alloc]initWithFrame:(NSRect){ .origin.y = NSHeight(_contentFrame) - 146, .size = { NSWidth(_contentFrame), 2 } }];
 	separatorShadow.borderColor = [NSColor colorWithCalibratedRed:0.159 green:0.468 blue:0.307 alpha:1.000];
 	separatorShadow.fillColor = [NSColor colorWithCalibratedRed:0.159 green:0.468 blue:0.307 alpha:1.000];
-	separatorShadow.borderWidth = 2.f;
-	separatorShadow.boxType = NSBoxCustom;
 	[view addSubview:separatorShadow];
 	
-	NSBox *underSeparatorShadow = [[NSBox alloc]initWithFrame:(NSRect){ .origin.y = 0, .size = { NSWidth(_contentFrame), 2 } }];
-	underSeparatorShadow.autoresizingMask = NSViewWidthSizable | NSViewMaxYMargin;
-	underSeparatorShadow.borderType = NSLineBorder;
+	DSPShadowBox *underSeparatorShadow = [[DSPShadowBox alloc]initWithFrame:(NSRect){ .origin.y = 0, .size = { NSWidth(_contentFrame), 2 } }];
 	underSeparatorShadow.borderColor = [NSColor colorWithCalibratedRed:0.168 green:0.434 blue:0.300 alpha:1.000];
 	underSeparatorShadow.fillColor = [NSColor colorWithCalibratedRed:0.181 green:0.455 blue:0.315 alpha:1.000];
-	underSeparatorShadow.borderWidth = 2.f;
-	underSeparatorShadow.boxType = NSBoxCustom;
 	[view addSubview:underSeparatorShadow];
 	
 	DSPMainView *fieldBackground = [[DSPMainView alloc]initWithFrame:(NSRect){ .origin.y = 4, .size = { NSWidth(_contentFrame), 60 } }];
@@ -99,28 +82,18 @@
 	fieldBackground.autoresizingMask = NSViewMinYMargin;
 	[view addSubview:fieldBackground];
 	
-	NSTextField *changeFolderLabel = [[NSTextField alloc]initWithFrame:(NSRect){ .origin.x = 96, .origin.y = NSHeight(_contentFrame) - 80, .size = { NSWidth(_contentFrame), 36 } }];
-	changeFolderLabel.bezeled = NO;
-	changeFolderLabel.editable = NO;
-	changeFolderLabel.drawsBackground = NO;
-	changeFolderLabel.font = [NSFont fontWithName:@"HelveticaNeue" size:30.f];
-	changeFolderLabel.textColor = [NSColor whiteColor];
-	changeFolderLabel.focusRingType = NSFocusRingTypeNone;
-	changeFolderLabel.stringValue = @"Change Folder";
+	DSPLabel *changeFolderLabel = [[DSPLabel alloc]initWithFrame:(NSRect){ .origin.x = 96, .origin.y = NSHeight(_contentFrame) - 80, .size = { NSWidth(_contentFrame), 36 } }];
 	changeFolderLabel.autoresizingMask = NSViewMinYMargin;
+	changeFolderLabel.stringValue = @"Change Folder";
 	[view addSubview:changeFolderLabel];
 		
-	NSTextField *saveToLabel = [[NSTextField alloc]initWithFrame:(NSRect){ .origin.x = 96, .origin.y = NSHeight(_contentFrame) - 115, .size = { NSWidth(_contentFrame), 34 } }];
-	saveToLabel.bezeled = NO;
-	saveToLabel.editable = NO;
-	saveToLabel.drawsBackground = NO;
+	DSPLabel *saveToLabel = [[DSPLabel alloc]initWithFrame:(NSRect){ .origin.x = 96, .origin.y = NSHeight(_contentFrame) - 115, .size = { NSWidth(_contentFrame), 34 } }];
+	saveToLabel.autoresizingMask = NSViewMinYMargin;
 	saveToLabel.font = [NSFont fontWithName:@"HelveticaNeue-Bold" size:11.f];
 	saveToLabel.textColor = [NSColor colorWithCalibratedRed:0.171 green:0.489 blue:0.326 alpha:1.000];
-	saveToLabel.focusRingType = NSFocusRingTypeNone;
 	NSString *desktopPath = [NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES) objectAtIndex:0];
 	self.viewModel.filepath = desktopPath;
 	saveToLabel.stringValue = [NSString stringWithFormat:@"SAVE TO: %@", desktopPath];
-	saveToLabel.autoresizingMask = NSViewMinYMargin;
 	[view addSubview:saveToLabel];
 	
 	NSScrollView *scrollView = [[NSScrollView alloc] initWithFrame:(NSRect){ .origin.y = -270, .size = { 400, 246 } }];
@@ -128,31 +101,17 @@
 	scrollView.wantsLayer = YES;
 	scrollView.verticalScrollElasticity = NSScrollElasticityNone;
 	DSPHistoryTableView *tableView = [[DSPHistoryTableView alloc] initWithFrame: scrollView.bounds];
-	[tableView setHeaderView:nil];
+	tableView.headerView = nil;
 	tableView.focusRingType = NSFocusRingTypeNone;
 	tableView.gridStyleMask = NSTableViewSolidHorizontalGridLineMask;
-	NSTableColumn *firstColumn  = [[NSTableColumn alloc] initWithIdentifier:@"firstColumn"];
-	firstColumn.editable = NO;
-	firstColumn.width = CGRectGetWidth(view.bounds);
-	[tableView addTableColumn:firstColumn];
 	tableView.delegate = self;
 	tableView.dataSource = self.viewModel;
 	scrollView.documentView = tableView;
 	[view addSubview:scrollView];
 	
-	_filenameField = [[NSTextField alloc]initWithFrame:(NSRect){ .origin.x = 30, .origin.y = 10, .size = { NSWidth(_contentFrame) - 84, 34 } }];
-	_filenameField.delegate = self;
-	_filenameField.bezeled = NO;
-	_filenameField.drawsBackground = NO;
-	_filenameField.font = [NSFont fontWithName:@"HelveticaNeue" size:16.f];
-	_filenameField.textColor = [NSColor colorWithCalibratedRed:0.437 green:0.517 blue:0.559 alpha:1.000];
-	_filenameField.focusRingType = NSFocusRingTypeNone;
-	_filenameField.autoresizingMask = NSViewMinYMargin;
-	_filenameField.enabled = NO;
-	[_filenameField.cell setScrollable:YES];
-	[_filenameField.cell setLineBreakMode:NSLineBreakByClipping];
-	[_filenameField.cell setFormatter:[DSPPNGFormatter new]];
-	[view addSubview:_filenameField];
+	DSPFilenameTextField *filenameField = [[DSPFilenameTextField alloc]initWithFrame:(NSRect){ .origin.x = 30, .origin.y = 10, .size = { NSWidth(_contentFrame) - 84, 34 } }];
+	filenameField.delegate = self;
+	[view addSubview:filenameField];
 	
 	DSPDirectoryPickerButton *directoryButton = [[DSPDirectoryPickerButton alloc]initWithFrame:(NSRect){ .origin.x = 36, .origin.y = NSHeight(_contentFrame) - 96, .size = { 48, 48 } }];
 	directoryButton.rac_command = [RACCommand command];
@@ -187,20 +146,16 @@
 	}];
 	[view addSubview:optionsButton];
 	
-	NSBox *historySeparatorShadow = [[NSBox alloc]initWithFrame:(NSRect){ .origin.y = 2, .size = { NSWidth(_contentFrame), 2 } }];
-	historySeparatorShadow.autoresizingMask = NSViewWidthSizable | NSViewMinYMargin;
-	historySeparatorShadow.borderType = NSLineBorder;
+	DSPShadowBox *historySeparatorShadow = [[DSPShadowBox alloc]initWithFrame:(NSRect){ .origin.y = 2, .size = { NSWidth(_contentFrame), 2 } }];
 	historySeparatorShadow.borderColor = [NSColor colorWithCalibratedRed:0.794 green:0.840 blue:0.864 alpha:1.000];
 	historySeparatorShadow.fillColor = [NSColor colorWithCalibratedRed:0.794 green:0.840 blue:0.864 alpha:1.000];
-	historySeparatorShadow.borderWidth = 2.f;
-	historySeparatorShadow.boxType = NSBoxCustom;
 	historySeparatorShadow.alphaValue = 0.f;
 	[view addSubview:historySeparatorShadow];
 		
 	self.view = view;
 
 	@weakify(self);
-	[NSNotificationCenter.defaultCenter addObserverForName:NSControlTextDidChangeNotification object:_filenameField queue:nil usingBlock:^(NSNotification *note) {
+	[NSNotificationCenter.defaultCenter addObserverForName:NSControlTextDidChangeNotification object:filenameField queue:nil usingBlock:^(NSNotification *note) {
 		@strongify(self);
 		NSRect rect = (NSRect){ .origin.x = view.window.frame.origin.x, .origin.y = NSMaxY(view.window.screen.frame) - 492, .size = { 400, 470 } };
 		if (!CGRectEqualToRect(rect, view.window.frame)) {
@@ -211,22 +166,19 @@
 			fieldBackground.backgroundColor = [NSColor whiteColor];
 			fieldBackground.layer.borderColor = [NSColor colorWithCalibratedRed:0.794 green:0.840 blue:0.864 alpha:1.000].CGColor;
 		}
-		if (_filenameField.stringValue.length == 0) {
+		if (filenameField.stringValue.length == 0) {
 			self.viewModel.filename = @"Screen Shot";
 		}
-		self.viewModel.filename = _filenameField.stringValue;
+		self.viewModel.filename = filenameField.stringValue;
 	}];
 	
-	self.viewModel.filename = [NSUserDefaults.standardUserDefaults stringForKey:DSPDefaultFilenameTemplateKey];
-
 	self.carriageReturnBlock = ^{
-		@strongify(self);
 		[tableView reloadData];
 		
 		historySeparatorShadow.alphaValue = 1.f;
 
-		[self.filenameField resignFirstResponder];
-		self.filenameField.enabled = NO;
+		[filenameField resignFirstResponder];
+		filenameField.enabled = NO;
 
 		fieldBackground.backgroundColor = [NSColor colorWithCalibratedRed:0.850 green:0.888 blue:0.907 alpha:1.000];
 		fieldBackground.layer.borderColor = [NSColor colorWithCalibratedRed:0.850 green:0.888 blue:0.907 alpha:1.000].CGColor;
@@ -237,15 +189,14 @@
 	};
 	
 	self.mouseDownBlock = ^ (NSEvent *theEvent) {
-		@strongify(self);
 		if (CGRectContainsPoint(fieldBackground.frame, [theEvent locationInWindow]) && !CGRectContainsPoint(optionsButton.frame, [theEvent locationInWindow])) {
-			self.filenameField.enabled = YES;
-			[self.filenameField becomeFirstResponder];
-			[NSNotificationCenter.defaultCenter postNotificationName:NSControlTextDidChangeNotification object:self.filenameField];
+			filenameField.enabled = YES;
+			[filenameField becomeFirstResponder];
+			[NSNotificationCenter.defaultCenter postNotificationName:NSControlTextDidChangeNotification object:filenameField];
 		} else {
 			
-			self.filenameField.enabled = NO;
-			[self.filenameField resignFirstResponder];
+			filenameField.enabled = NO;
+			[filenameField resignFirstResponder];
 			
 			historySeparatorShadow.alphaValue = 0.f;
 			fieldBackground.backgroundColor = [NSColor colorWithCalibratedRed:0.850 green:0.888 blue:0.907 alpha:1.000];
@@ -270,14 +221,18 @@
 		}
 	};
 	
-	
-	_filenameField.stringValue = [NSUserDefaults.standardUserDefaults stringForKey:DSPDefaultFilenameTemplateKey];
+	self.viewModel.filename = [NSUserDefaults.standardUserDefaults stringForKey:DSPDefaultFilenameTemplateKey];
+	[filenameField rac_liftSelector:@selector(setStringValue:) withSignals:self.historySubject, nil];
+	[_historySubject sendNext:[NSUserDefaults.standardUserDefaults stringForKey:DSPDefaultFilenameTemplateKey]];
 }
 
 - (BOOL)control:(NSControl *)control textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector {
 	if (commandSelector == @selector(insertNewline:)) {
-		[self.viewModel addFilenameToHistory:self.filenameField.stringValue];
+		[self.viewModel addFilenameToHistory:textView.string];
 		self.carriageReturnBlock();
+		return YES;
+	} else if (commandSelector == @selector(cancelOperation:)) {
+		self.mouseDownBlock(nil);
 		return YES;
 	}
 	return NO;
@@ -335,7 +290,7 @@
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
 	NSTableView *table = notification.object;
-	self.filenameField.stringValue = self.viewModel.filenameHistory[table.selectedRow];
+	[self.historySubject sendNext:self.viewModel.filenameHistory[table.selectedRow]];
 	self.carriageReturnBlock();
 }
 
