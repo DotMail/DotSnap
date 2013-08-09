@@ -13,6 +13,18 @@ static CGFloat const DPSMenuBarWindowTitleBarHeight = 0.0;
 static CGFloat const DPSMenuBarWindowArrowHeight = 10.0;
 static CGFloat const DPSMenuBarWindowArrowWidth = 20.0;
 
+static NSMenu *contextMenu(id delegate) {
+	static NSMenu *fileMenu = nil;
+	if (fileMenu == nil) {
+		fileMenu = [[NSMenu alloc] init];
+		NSMenuItem *quitMenuItem = [[NSMenuItem alloc] initWithTitle:@"Quit DotSnap" action:@selector(terminate:) keyEquivalent:@""];
+		[quitMenuItem setTarget:NSApp];
+		[fileMenu addItem:quitMenuItem];
+	}
+	fileMenu.delegate = delegate;
+	return fileMenu;
+}
+
 @implementation DSPMainWindow {
 	DPSMenuBarWindowIconView *statusItemView;
 }
@@ -172,113 +184,70 @@ static CGFloat const DPSMenuBarWindowArrowWidth = 20.0;
 
 @end
 
-@implementation DPSMenuBarWindowIconView
-
-@synthesize menuBarWindow;
-@synthesize highlighted;
+@implementation DPSMenuBarWindowIconView 
 
 #pragma mark - Highlighting
 
-- (void)setHighlighted:(BOOL)flag
-{
-	highlighted = flag;
+- (void)setHighlighted:(BOOL)flag {
+	_highlighted = flag;
 	[self setNeedsDisplay:YES];
 }
 
 #pragma mark - Mouse events
 
-- (void)mouseDown:(NSEvent *)theEvent
-{
+- (void)mouseDown:(NSEvent *)theEvent {
 	self.highlighted = YES;
 	if ((theEvent.modifierFlags & NSAlternateKeyMask) == NSAlternateKeyMask) {
 		if ([NSApp keyWindow].isVisible) {
 			[(DSPMainWindow *)[NSApp keyWindow] orderOutWithDuration:0.3 timing:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut] animations:^(CALayer *layer) {
-				// We can now basically whatever we want with this layer. Everything is already wrapped in a CATransaction so it is animated implicitly.
-				// To change the duration and other properties, just modify the current context. It will apply to the animation.
 				layer.transform = CATransform3DMakeTranslation(0.f, -50.f, 0.f);
 				layer.opacity = 0.f;
 			}];
 		}
-		[self.menuBarWindow.statusItem popUpStatusItemMenu:contextMenu()];
+		[self.menuBarWindow.statusItem popUpStatusItemMenu:contextMenu(self)];
 		return;
 	}
+	
 	if ([[NSApp keyWindow] isMainWindow] || [NSApp keyWindow].isVisible)
 	{
 		[(DSPMainWindow *)[NSApp keyWindow] orderOutWithDuration:0.3 timing:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut] animations:^(CALayer *layer) {
-			// We can now basically whatever we want with this layer. Everything is already wrapped in a CATransaction so it is animated implicitly.
-			// To change the duration and other properties, just modify the current context. It will apply to the animation.
 			layer.transform = CATransform3DMakeTranslation(0.f, -50.f, 0.f);
 			layer.opacity = 0.f;
 		}];
-	}
-	else
-	{
+	} else {
 		[NSApp activateIgnoringOtherApps:YES];
 		[self.menuBarWindow makeKeyAndOrderFrontWithDuration:0.3 timing:nil setup:^(CALayer *layer) {
-			// Anything done in this setup block is performed without any animation.
-			// The layer will not be visible during this time so now is our chance to set initial
-			// values for opacity, transform, etc.
 			layer.transform = CATransform3DMakeTranslation(0.f, -50., 0.f);
 			layer.opacity = 0.f;
 		} animations:^(CALayer *layer) {
-			
-			// Now we're actually animating. In order to make the transition as seamless as possible,
-			// we want to set the final values to their original states, so that when the fake window
-			// is removed there will be no discernible jump to that state.
-			//
-			// To change the default timing and duration, just wrap the animations in an NSAnimationContext.
 			layer.transform = CATransform3DIdentity;
 			layer.opacity = 1.f;
 		}];
 	}
 }
 
-- (void)mouseUp:(NSEvent *)theEvent
-{
+- (void)mouseUp:(NSEvent *)theEvent {
 	self.highlighted = NO;
 }
 
-static NSMenu *contextMenu() {
-	static NSMenu *fileMenu = nil;
-	if (fileMenu == nil) {
-		fileMenu = [[NSMenu alloc] init];
-		NSMenuItem *quitMenuItem = [[NSMenuItem alloc] initWithTitle:@"Quit DotSnap" action:@selector(terminate:) keyEquivalent:@""];
-		[quitMenuItem setTarget:NSApp];
-		[fileMenu addItem:quitMenuItem];
-	}
-	return fileMenu;
+- (void)menuDidClose:(NSMenu *)menu {
+	self.highlighted = NO;
 }
-
 
 #pragma mark - Drawing
 
-- (void)drawRect:(NSRect)dirtyRect
-{
-	if (self.highlighted)
-	{
-		[[NSColor selectedMenuItemColor] set];
-		NSRectFill([self bounds]);
+- (void)drawRect:(NSRect)dirtyRect {
+	NSRect b = self.bounds;
+	if (self.highlighted) {
+		[NSColor.selectedMenuItemColor set];
+		NSRectFill(b);
 	}
-	if (self.menuBarWindow && self.menuBarWindow.menuBarIcon)
-	{
-		NSRect rect = NSMakeRect([self bounds].origin.x + 3,
-								 [self bounds].origin.y + 4,
-								 [self bounds].size.width - 6,
-								 [self bounds].size.height - 6);
-		
-		if (self.highlighted && self.menuBarWindow.highlightedMenuBarIcon)
-		{
-			[self.menuBarWindow.highlightedMenuBarIcon drawInRect:rect
-														 fromRect:NSZeroRect
-														operation:NSCompositeSourceOver
-														 fraction:1.0];
-		}
-		else
-		{
-			[self.menuBarWindow.menuBarIcon drawInRect:rect
-											  fromRect:NSZeroRect
-											 operation:NSCompositeSourceOver
-											  fraction:1.0];
+	if (self.menuBarWindow && self.menuBarWindow.menuBarIcon) {
+		NSRect rect = (NSRect){ .origin = { NSMinX(b) + 3, NSMinY(b) + 4 }, .size = { NSWidth(b) - 6, NSHeight(b) - 6 } };
+		if (self.highlighted && self.menuBarWindow.highlightedMenuBarIcon) {
+			[self.menuBarWindow.highlightedMenuBarIcon drawInRect:rect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+		} else {
+			[self.menuBarWindow.menuBarIcon drawInRect:rect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
 		}
 	}
 }

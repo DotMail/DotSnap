@@ -23,7 +23,7 @@
 
 @end
 
-@interface DPSMenuBarWindowIconView : NSView
+@interface DPSMenuBarWindowIconView : NSView <NSMenuDelegate>
 
 @property (assign) DSPMainWindow *menuBarWindow;
 @property (nonatomic) BOOL highlighted;
