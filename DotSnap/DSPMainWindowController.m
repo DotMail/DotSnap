@@ -28,8 +28,8 @@
 	self.window.borderWidth = 0.f;
 	self.window.backgroundColor = [NSColor colorWithCalibratedRed:0.260 green:0.663 blue:0.455 alpha:1.0];
 	self.window.arrowBaseWidth = 20.f;
-	self.window.menuBarIcon = [NSImage imageNamed:@"dotsnapp_appicon_normal"];
-	self.window.highlightedMenuBarIcon = [NSImage imageNamed:@"dotsnapp_appicon_white_active"];
+	self.window.menuBarIcon = [NSImage imageNamed:@"MenubarIcon"];
+	self.window.highlightedMenuBarIcon = [NSImage imageNamed:@"MenubarIcon_Highlighted"];
 	self.window.hasMenuBarIcon = YES;
 	self.window.acceptsMouseMovedEvents = YES;
 	

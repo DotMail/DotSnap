@@ -16,7 +16,6 @@
 
 - (id)initWithFrame:(NSRect)frame {
 	self = [super initWithFrame:frame];
-  
 	self.layer = CALayer.layer;
 	self.wantsLayer = YES;
 	
@@ -36,7 +35,7 @@
 	
 	self.redrawBlock = ^(BOOL highlighted, BOOL hovering, NSEvent *event) {
 		if (hovering) {
-			browseCircleLayer.contents = [NSImage imageNamed:@"BrowseCircle_hover"];
+			browseCircleLayer.contents = [NSImage imageNamed:@"BrowseCircle_Hover"];
 			arrowLayer.contents = [NSImage imageNamed:@"Browse_Arrow_Hover"];
 			
 			CABasicAnimation *spinningAnimation = [CABasicAnimation animationWithKeyPath:@"transform.x"];
