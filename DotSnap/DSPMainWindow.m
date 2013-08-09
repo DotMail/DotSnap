@@ -191,12 +191,20 @@ static CGFloat const DPSMenuBarWindowArrowWidth = 20.0;
 {
 	self.highlighted = YES;
 	if ((theEvent.modifierFlags & NSAlternateKeyMask) == NSAlternateKeyMask) {
+		if ([NSApp keyWindow].isVisible) {
+			[(DSPMainWindow *)[NSApp keyWindow] orderOutWithDuration:0.3 timing:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut] animations:^(CALayer *layer) {
+				// We can now basically whatever we want with this layer. Everything is already wrapped in a CATransaction so it is animated implicitly.
+				// To change the duration and other properties, just modify the current context. It will apply to the animation.
+				layer.transform = CATransform3DMakeTranslation(0.f, -50.f, 0.f);
+				layer.opacity = 0.f;
+			}];
+		}
 		[self.menuBarWindow.statusItem popUpStatusItemMenu:contextMenu()];
 		return;
 	}
-	if ([self.menuBarWindow isMainWindow] || self.menuBarWindow.isVisible)
+	if ([[NSApp keyWindow] isMainWindow] || [NSApp keyWindow].isVisible)
 	{
-		[self.menuBarWindow orderOutWithDuration:0.3 timing:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut] animations:^(CALayer *layer) {
+		[(DSPMainWindow *)[NSApp keyWindow] orderOutWithDuration:0.3 timing:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut] animations:^(CALayer *layer) {
 			// We can now basically whatever we want with this layer. Everything is already wrapped in a CATransaction so it is animated implicitly.
 			// To change the duration and other properties, just modify the current context. It will apply to the animation.
 			layer.transform = CATransform3DMakeTranslation(0.f, -50.f, 0.f);
