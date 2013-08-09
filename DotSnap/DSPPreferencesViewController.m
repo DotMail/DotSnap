@@ -88,7 +88,7 @@
 	logoLayer.frame = (CGRect){ .origin.x = NSMidX(_contentRect) - 32, .origin.y = NSHeight(_contentRect) - 98, .size = { 62, 62 } };
 	[view.layer addSublayer:logoLayer];
 	
-	DSPSpinningSettingsButton *optionsButton = [[DSPSpinningSettingsButton alloc]initWithFrame:(NSRect){ .origin.x = NSWidth(_contentRect) - 28, .origin.y = NSHeight(_contentRect) - 170, .size = { 17, 17 } } style:1];
+	DSPSpinningSettingsButton *optionsButton = [[DSPSpinningSettingsButton alloc]initWithFrame:(NSRect){ .origin.x = NSWidth(_contentRect) - 28, .origin.y = NSHeight(_contentRect) - 28, .size = { 17, 17 } } style:1];
 	optionsButton.rac_command = [RACCommand command];
 	optionsButton.bordered = NO;
 	optionsButton.buttonType = NSMomentaryChangeButton;
