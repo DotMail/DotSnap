@@ -46,11 +46,11 @@
 	_highlighted = highlighted;
 	if (highlighted) {
 		self.textField.textColor = [NSColor colorWithCalibratedRed:0.160 green:0.181 blue:0.215 alpha:1.000];
-		[[self.textField animator]setFrame:(NSRect){ .origin.x = 45, .origin.y = 16, .size = { NSWidth(self.bounds), 34 } }];
+		[self.textField.animator setFrame:(NSRect){ .origin.x = 45, .origin.y = 16, .size = { NSWidth(self.bounds), 34 } }];
 		[self setNeedsDisplay:YES];
 	} else {
 		self.textField.textColor = [NSColor colorWithCalibratedRed:0.437 green:0.517 blue:0.559 alpha:1.000];
-		[[self.textField animator]setFrame:(NSRect){ .origin.x = 30, .origin.y = 16, .size = { NSWidth(self.bounds), 34 } }];
+		[self.textField.animator setFrame:(NSRect){ .origin.x = 30, .origin.y = 16, .size = { NSWidth(self.bounds), 34 } }];
 		[self setNeedsDisplay:YES];
 	}
 }
@@ -65,8 +65,7 @@
 }
 
 - (void)ensureTrackingArea {
-	if (trackingArea == nil) {
-		
+	if (!trackingArea) {
 		trackingArea = [[NSTrackingArea alloc] initWithRect:NSZeroRect options:NSTrackingInVisibleRect | NSTrackingActiveAlways | NSTrackingMouseEnteredAndExited owner:self userInfo:nil];
 	}
 }

@@ -33,7 +33,7 @@
 	self.wantsLayer = YES;
 	
 	self.offLayer = CALayer.layer;
-	self.offLayer.backgroundColor = [NSColor colorWithCalibratedRed:0.788 green:0.253 blue:0.258 alpha:1.000].CGColor;
+	self.offLayer.backgroundColor = [NSColor colorWithCalibratedRed:0.788 green:0.253 blue:0.258 alpha:1.000].dsp_CGColor;
 	self.offLayer.frame = (NSRect){ .size = { CGRectGetWidth(frame)/2, CGRectGetHeight(frame) } };
 	self.offLayer.cornerRadius = 4.f;
 	self.offLayer.opacity = 0.f;
@@ -45,7 +45,7 @@
 	[self.offLayer addSublayer:xLayer];
 	
 	self.onLayer = CALayer.layer;
-	self.onLayer.backgroundColor = [NSColor colorWithCalibratedRed:0.532 green:0.753 blue:0.647 alpha:1.000].CGColor;
+	self.onLayer.backgroundColor = [NSColor colorWithCalibratedRed:0.532 green:0.753 blue:0.647 alpha:1.000].dsp_CGColor;
 	self.onLayer.frame = (NSRect){ .origin.x = CGRectGetWidth(frame)/2, .size = { CGRectGetWidth(frame)/2, CGRectGetHeight(frame) } };
 	self.onLayer.cornerRadius = 4.f;
 	[self.layer addSublayer:self.onLayer];
@@ -56,19 +56,19 @@
 	[self.onLayer addSublayer:checkLayer];
 	
 	self.switchCover = CALayer.layer;
-	self.switchCover.backgroundColor = [NSColor colorWithCalibratedRed:0.730 green:0.793 blue:0.825 alpha:1.000].CGColor;
+	self.switchCover.backgroundColor = [NSColor colorWithCalibratedRed:0.730 green:0.793 blue:0.825 alpha:1.000].dsp_CGColor;
 	self.switchCover.frame = (NSRect){ .size = { CGRectGetWidth(frame)/2, CGRectGetHeight(frame) } };
 	self.switchCover.cornerRadius = 4.f;
 	[self.layer addSublayer:self.switchCover];
 	
 	CALayer *shadowLayer = CALayer.layer;
 	shadowLayer.frame = (NSRect){ .size = { CGRectGetWidth(frame), 2 } };
-	shadowLayer.backgroundColor = [NSColor colorWithCalibratedRed:0.575 green:0.665 blue:0.709 alpha:1.000].CGColor;
+	shadowLayer.backgroundColor = [NSColor colorWithCalibratedRed:0.575 green:0.665 blue:0.709 alpha:1.000].dsp_CGColor;
 	[self.layer addSublayer:shadowLayer];
 	
 	CALayer *topShadowLayer = CALayer.layer;
 	topShadowLayer.frame = (NSRect){ .origin.y = CGRectGetHeight(frame) - 2, .size = { (CGRectGetWidth(frame)/2) + 1, 3 } };
-	topShadowLayer.backgroundColor = [NSColor colorWithCalibratedRed:0.762 green:0.821 blue:0.849 alpha:1.000].CGColor;
+	topShadowLayer.backgroundColor = [NSColor colorWithCalibratedRed:0.762 green:0.821 blue:0.849 alpha:1.000].dsp_CGColor;
 	[self.switchCover addSublayer:topShadowLayer];
 	
 	return self;

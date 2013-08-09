@@ -6,8 +6,6 @@
 //
 //
 
-#import <Cocoa/Cocoa.h>
-
 @interface DSPHistoryRowView : NSTableRowView
 
 @property (nonatomic, copy) NSString *title;

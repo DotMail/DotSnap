@@ -25,7 +25,7 @@
 	CTFontRef font = CTFontCreateWithName(CFSTR("HelveticaNeue"), 18.f, NULL);
 	CATextLayer *nameLayer = CATextLayer.layer;
 	nameLayer.frame = self.bounds;
-	nameLayer.foregroundColor = [NSColor colorWithCalibratedRed:0.136 green:0.407 blue:0.264 alpha:1.000].CGColor;
+	nameLayer.foregroundColor = [NSColor colorWithCalibratedRed:0.136 green:0.407 blue:0.264 alpha:1.000].dsp_CGColor;
 	nameLayer.font = font;
 	nameLayer.fontSize = 18.f;
 	nameLayer.alignmentMode = @"left";
@@ -38,9 +38,9 @@
 	
 	self.redrawBlock = ^(BOOL highlighted, BOOL hovering, NSEvent *event) {
 		if (hovering) {
-			nameLayer.foregroundColor = NSColor.whiteColor.CGColor;
+			nameLayer.foregroundColor = NSColor.whiteColor.dsp_CGColor;
 		} else {
-			nameLayer.foregroundColor = [NSColor colorWithCalibratedRed:0.136 green:0.407 blue:0.264 alpha:1.000].CGColor;
+			nameLayer.foregroundColor = [NSColor colorWithCalibratedRed:0.136 green:0.407 blue:0.264 alpha:1.000].dsp_CGColor;
 
 		}
 	};
@@ -51,7 +51,7 @@
 }
 
 - (void)ensureTrackingArea {
-	if (trackingArea == nil) {
+	if (!trackingArea) {
 		trackingArea = [[NSTrackingArea alloc] initWithRect:NSZeroRect options:NSTrackingInVisibleRect | NSTrackingActiveAlways | NSTrackingMouseEnteredAndExited owner:self userInfo:nil];
 	}
 }
@@ -59,7 +59,7 @@
 - (void)updateTrackingAreas {
 	[super updateTrackingAreas];
 	[self ensureTrackingArea];
-	if (![[self trackingAreas] containsObject:trackingArea]) {
+	if (![self.trackingAreas containsObject:trackingArea]) {
 		[self addTrackingArea:trackingArea];
 	}
 }

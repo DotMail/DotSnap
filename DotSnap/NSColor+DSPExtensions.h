@@ -6,20 +6,16 @@
 //
 //
 
-#if MAC_OS_X_VERSION_MIN_REQUIRED > MAC_OS_X_VERSION_10_8
-
-@interface NSColor (CGColor)
+@interface NSColor (DSPCGColor)
 
 //
 // The Quartz color reference that corresponds to the receiver's color.
 //
-@property (nonatomic, readonly) CGColorRef CGColor;
+@property (nonatomic, readonly) CGColorRef dsp_CGColor;
 
 //
 // Converts a Quartz color reference to its NSColor equivalent.
 //
-+ (NSColor *)colorWithCGColor:(CGColorRef)color;
++ (NSColor *)dsp_colorWithCGColor:(CGColorRef)color;
 
 @end
-
-#endif

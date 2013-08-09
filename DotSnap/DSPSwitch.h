@@ -6,8 +6,6 @@
 //
 //
 
-#import <Cocoa/Cocoa.h>
-
 @interface DSPSwitch : NSControl
 
 - (id)initWithFrame:(NSRect)frameRect;

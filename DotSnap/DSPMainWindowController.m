@@ -22,7 +22,7 @@
 	_viewController = [[DSPMainViewController alloc]initWithContentRect:(NSRect){ .size = { 400, 210 } }];
 	[self setNextResponder:_viewController];
 
-	self.window = [[DSPMainWindow alloc]initWithView:self.viewController.view attachedToPoint:(NSPoint){ } inWindow:nil onSide:MAPositionBottom atDistance:5.0];
+	self.window = [[DSPMainWindow alloc]initWithView:self.viewController.view attachedToPoint:(NSPoint){ } inWindow:nil onSide:MAPositionBottom atDistance:5.0 mainWindow:YES];
 	self.window.cornerRadius = 0.f;
 	self.window.arrowHeight = 12.f;
 	self.window.borderWidth = 0.f;
@@ -30,7 +30,6 @@
 	self.window.arrowBaseWidth = 20.f;
 	self.window.menuBarIcon = [NSImage imageNamed:@"MenubarIcon"];
 	self.window.highlightedMenuBarIcon = [NSImage imageNamed:@"MenubarIcon_Highlighted"];
-	self.window.hasMenuBarIcon = YES;
 	self.window.acceptsMouseMovedEvents = YES;
 	
 	return self;

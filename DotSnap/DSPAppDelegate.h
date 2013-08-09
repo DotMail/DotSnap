@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DSPAppDelegate : NSObject <NSApplicationDelegate, NSMetadataQueryDelegate>
+@interface DSPAppDelegate : NSObject <NSApplicationDelegate>
 
 @end

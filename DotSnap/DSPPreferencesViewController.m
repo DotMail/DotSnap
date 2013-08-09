@@ -13,6 +13,8 @@
 #import "DSPLaunchServicesManager.h"
 #import "DSPSpinningSettingsButton.h"
 #import "DSPGlowingNameButton.h"
+#import "DSPShadowBox.h"
+#import "DSPLabel.h"
 #import "LIFlipEffect.h"
 
 @interface DSPPreferencesViewController ()
@@ -38,51 +40,33 @@
 	fieldBackground.backgroundColor = [NSColor colorWithCalibratedRed:0.850 green:0.888 blue:0.907 alpha:1.000];
 	[view addSubview:fieldBackground];
 
-	NSTextField *addTimestampLabel = [[NSTextField alloc]initWithFrame:(NSRect){ .origin.x = 22, .origin.y = 116, .size = { NSWidth(_contentRect), 36 } }];
-	addTimestampLabel.bezeled = NO;
-	addTimestampLabel.editable = NO;
-	addTimestampLabel.drawsBackground = NO;
+	DSPLabel *addTimestampLabel = [[DSPLabel alloc]initWithFrame:(NSRect){ .origin.x = 22, .origin.y = 116, .size = { NSWidth(_contentRect), 36 } }];
 	addTimestampLabel.font = [NSFont fontWithName:@"HelveticaNeue-Medium" size:18.f];
 	addTimestampLabel.textColor = [NSColor colorWithCalibratedRed:0.160 green:0.181 blue:0.215 alpha:1.000];
-	addTimestampLabel.focusRingType = NSFocusRingTypeNone;
 	addTimestampLabel.stringValue = @"Add Timestamp";
 	[view addSubview:addTimestampLabel];
 	
-	NSBox *separatorShadow = [[NSBox alloc]initWithFrame:(NSRect){ .origin.y = 114, .size = { NSWidth(_contentRect), 1 } }];
-	separatorShadow.borderType = NSLineBorder;
+	DSPShadowBox *separatorShadow = [[DSPShadowBox alloc]initWithFrame:(NSRect){ .origin.y = 114, .size = { NSWidth(_contentRect), 1 } }];
 	separatorShadow.borderColor = [NSColor colorWithCalibratedRed:0.753 green:0.821 blue:0.849 alpha:1.000];
 	separatorShadow.fillColor = [NSColor colorWithCalibratedRed:0.753 green:0.821 blue:0.849 alpha:1.000];
-	separatorShadow.borderWidth = 1.f;
-	separatorShadow.boxType = NSBoxCustom;
 	[view addSubview:separatorShadow];
 	
-	NSTextField *loadDotsnapAtStartLabel = [[NSTextField alloc]initWithFrame:(NSRect){ .origin.x = 22, .origin.y = 62, .size = { NSWidth(_contentRect), 36 } }];
-	loadDotsnapAtStartLabel.bezeled = NO;
-	loadDotsnapAtStartLabel.editable = NO;
-	loadDotsnapAtStartLabel.drawsBackground = NO;
+	DSPLabel *loadDotsnapAtStartLabel = [[DSPLabel alloc]initWithFrame:(NSRect){ .origin.x = 22, .origin.y = 62, .size = { NSWidth(_contentRect), 36 } }];
 	loadDotsnapAtStartLabel.font = [NSFont fontWithName:@"HelveticaNeue-Medium" size:18.f];
 	loadDotsnapAtStartLabel.textColor = [NSColor colorWithCalibratedRed:0.160 green:0.181 blue:0.215 alpha:1.000];
-	loadDotsnapAtStartLabel.focusRingType = NSFocusRingTypeNone;
 	loadDotsnapAtStartLabel.stringValue = @"Load DotSnap on start";
 	[view addSubview:loadDotsnapAtStartLabel];
 	
-	NSBox *separatorShadow2 = [[NSBox alloc]initWithFrame:(NSRect){ .origin.y = 56, .size = { NSWidth(_contentRect), 1 } }];
-	separatorShadow2.borderType = NSLineBorder;
+	DSPShadowBox *separatorShadow2 = [[DSPShadowBox alloc]initWithFrame:(NSRect){ .origin.y = 56, .size = { NSWidth(_contentRect), 1 } }];
 	separatorShadow2.borderColor = [NSColor colorWithCalibratedRed:0.753 green:0.821 blue:0.849 alpha:1.000];
 	separatorShadow2.fillColor = [NSColor colorWithCalibratedRed:0.753 green:0.821 blue:0.849 alpha:1.000];
-	separatorShadow2.borderWidth = 1.f;
-	separatorShadow2.boxType = NSBoxCustom;
 	[view addSubview:separatorShadow2];
 
-	NSTextField *whateverLabel = [[NSTextField alloc]initWithFrame:(NSRect){ .origin.x = 22, .origin.y = 8, .size = { NSWidth(_contentRect), 36 } }];
-	whateverLabel.bezeled = NO;
-	whateverLabel.editable = NO;
-	whateverLabel.drawsBackground = NO;
-	whateverLabel.font = [NSFont fontWithName:@"HelveticaNeue-Medium" size:18.f];
-	whateverLabel.textColor = [NSColor colorWithCalibratedRed:0.160 green:0.181 blue:0.215 alpha:1.000];
-	whateverLabel.focusRingType = NSFocusRingTypeNone;
-	whateverLabel.stringValue = @"Autosave Input";
-	[view addSubview:whateverLabel];
+	DSPLabel *autosaveInputLabel = [[DSPLabel alloc]initWithFrame:(NSRect){ .origin.x = 22, .origin.y = 8, .size = { NSWidth(_contentRect), 36 } }];
+	autosaveInputLabel.font = [NSFont fontWithName:@"HelveticaNeue-Medium" size:18.f];
+	autosaveInputLabel.textColor = [NSColor colorWithCalibratedRed:0.160 green:0.181 blue:0.215 alpha:1.000];
+	autosaveInputLabel.stringValue = @"Autosave Input";
+	[view addSubview:autosaveInputLabel];
 	
 	CALayer *logoLayer = CALayer.layer;
 	logoLayer.contents = [NSImage imageNamed:@"DotSnapPreferencesLogo"];
@@ -107,7 +91,7 @@
 	
 	CATextLayer *gistTextLayer = [[CATextLayer alloc]init];
 	gistTextLayer.frame = (NSRect){ .origin = { 36, NSHeight(_contentRect) - 144 }, .size.width = NSWidth(_contentRect) - 72, .size.height = 24 };
-	gistTextLayer.foregroundColor = NSColor.whiteColor.CGColor;
+	gistTextLayer.foregroundColor = NSColor.whiteColor.dsp_CGColor;
 	gistTextLayer.font = CTFontCreateWithName(CFSTR("HelveticaNeue"), 18.f, NULL);
 	gistTextLayer.fontSize = 18.f;
 	gistTextLayer.alignmentMode = @"center";
@@ -121,7 +105,7 @@
 	
 	CATextLayer *andTextLayer = [[CATextLayer alloc]init];
 	andTextLayer.frame = (NSRect){ .origin = { 152, NSHeight(_contentRect) - 165 }, .size.width = 36, .size.height = 24 };
-	andTextLayer.foregroundColor = NSColor.whiteColor.CGColor;
+	andTextLayer.foregroundColor = NSColor.whiteColor.dsp_CGColor;
 	andTextLayer.font = CTFontCreateWithName(CFSTR("HelveticaNeue"), 18.f, NULL);
 	andTextLayer.fontSize = 18.f;
 	andTextLayer.alignmentMode = @"left";

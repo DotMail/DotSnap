@@ -23,7 +23,7 @@ DOTSNAP_EXPORT NSString *const DSPLoadDotSnapAtStartKey;
 
 DOTSNAP_EXPORT NSString *const DSPAddsTimestampKey;
 
-DOTSNAP_EXPORT NSString *const DPSFilenameHistoryKey;
+DOTSNAP_EXPORT NSString *const DSPFilenameHistoryKey;
 
 DOTSNAP_EXPORT NSString *const DSPAutosaveInputFieldKey;
 

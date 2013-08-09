@@ -22,6 +22,7 @@
 		842B009517B58C3A00EB9672 /* BrowseCircle_Hover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B009117B58C0000EB9672 /* BrowseCircle_Hover@2x.png */; };
 		842B009A17B58D5F00EB9672 /* Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B009617B58D3D00EB9672 /* Checkmark.png */; };
 		842B009B17B58D5F00EB9672 /* Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B009717B58D3D00EB9672 /* Checkmark@2x.png */; };
+		842B009E17B5915900EB9672 /* DSPMenuBarWindowIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 842B009D17B5915900EB9672 /* DSPMenuBarWindowIconView.m */; };
 		84600B4517A31CB500D3E8FE /* MAAttachedWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 84600B4417A31CB500D3E8FE /* MAAttachedWindow.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		84600B4E17A34A8400D3E8FE /* DSPHistoryRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84600B4D17A34A8400D3E8FE /* DSPHistoryRowView.m */; };
 		84600B5D17A354D300D3E8FE /* DSPHistoryTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84600B5C17A354D300D3E8FE /* DSPHistoryTableView.m */; };
@@ -154,6 +155,8 @@
 		842B009117B58C0000EB9672 /* BrowseCircle_Hover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BrowseCircle_Hover@2x.png"; path = "Artwork/BrowseCircle_Hover@2x.png"; sourceTree = "<group>"; };
 		842B009617B58D3D00EB9672 /* Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Checkmark.png; path = Artwork/Checkmark.png; sourceTree = "<group>"; };
 		842B009717B58D3D00EB9672 /* Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Checkmark@2x.png"; path = "Artwork/Checkmark@2x.png"; sourceTree = "<group>"; };
+		842B009C17B5915900EB9672 /* DSPMenuBarWindowIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPMenuBarWindowIconView.h; sourceTree = "<group>"; };
+		842B009D17B5915900EB9672 /* DSPMenuBarWindowIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPMenuBarWindowIconView.m; sourceTree = "<group>"; };
 		84600B4317A31CB500D3E8FE /* MAAttachedWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAAttachedWindow.h; sourceTree = "<group>"; };
 		84600B4417A31CB500D3E8FE /* MAAttachedWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAAttachedWindow.m; sourceTree = "<group>"; };
 		84600B4C17A34A8400D3E8FE /* DSPHistoryRowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPHistoryRowView.h; sourceTree = "<group>"; };
@@ -175,12 +178,12 @@
 		8478361517A0F6A10050EBA6 /* JNWAnimatableWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JNWAnimatableWindow.h; sourceTree = "<group>"; };
 		8478361617A0F6A10050EBA6 /* JNWAnimatableWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JNWAnimatableWindow.m; sourceTree = "<group>"; };
 		8478361C17A1001F0050EBA6 /* DSPMainViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPMainViewModel.h; sourceTree = "<group>"; };
-		8478361D17A1001F0050EBA6 /* DSPMainViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPMainViewModel.m; sourceTree = "<group>"; };
+		8478361D17A1001F0050EBA6 /* DSPMainViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DSPMainViewModel.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		8478362A17A198860050EBA6 /* DSPPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPPreferencesViewController.h; sourceTree = "<group>"; };
 		8478362B17A198860050EBA6 /* DSPPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPPreferencesViewController.m; sourceTree = "<group>"; };
 		8478363117A19D2B0050EBA6 /* Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Defaults.plist; sourceTree = "<group>"; };
-		8478363317A19D8F0050EBA6 /* DSPDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPDefaults.h; sourceTree = "<group>"; };
-		8478363417A19E410050EBA6 /* DSPDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPDefaults.m; sourceTree = "<group>"; };
+		8478363317A19D8F0050EBA6 /* DSPDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DSPDefaults.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		8478363417A19E410050EBA6 /* DSPDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DSPDefaults.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		8478363817A1F93D0050EBA6 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		8478363C17A1F9AB0050EBA6 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		8478363E17A1F9B20050EBA6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -243,18 +246,20 @@
 				84BC7E7017A4D8BA0091C0DB /* DSPDirectoryPickerButton.m */,
 				842B008017B47C0C00EB9672 /* DSPFilenameTextField.h */,
 				842B008117B47C0C00EB9672 /* DSPFilenameTextField.m */,
+				842B008917B489A600EB9672 /* DSPGlowingNameButton.h */,
+				842B008A17B489A600EB9672 /* DSPGlowingNameButton.m */,
 				84600B4C17A34A8400D3E8FE /* DSPHistoryRowView.h */,
 				84600B4D17A34A8400D3E8FE /* DSPHistoryRowView.m */,
 				84600B5B17A354D300D3E8FE /* DSPHistoryTableView.h */,
 				84600B5C17A354D300D3E8FE /* DSPHistoryTableView.m */,
 				842B007D17B47B6900EB9672 /* DSPLabel.h */,
 				842B007E17B47B6900EB9672 /* DSPLabel.m */,
+				842B009C17B5915900EB9672 /* DSPMenuBarWindowIconView.h */,
+				842B009D17B5915900EB9672 /* DSPMenuBarWindowIconView.m */,
 				8405D58517A5D60000D7990E /* DSPPNGFormatter.h */,
 				8405D58617A5D60000D7990E /* DSPPNGFormatter.m */,
 				842B007517B47AEC00EB9672 /* DSPShadowBox.h */,
 				842B007617B47AEC00EB9672 /* DSPShadowBox.m */,
-				842B008917B489A600EB9672 /* DSPGlowingNameButton.h */,
-				842B008A17B489A600EB9672 /* DSPGlowingNameButton.m */,
 				84BC7E7A17A4DC9E0091C0DB /* DSPSpinningSettingsButton.h */,
 				84BC7E7B17A4DC9E0091C0DB /* DSPSpinningSettingsButton.m */,
 				8478364017A1FAE00050EBA6 /* DSPSwitch.h */,
@@ -607,6 +612,7 @@
 				84BC7E7C17A4DC9E0091C0DB /* DSPSpinningSettingsButton.m in Sources */,
 				842B007F17B47B6900EB9672 /* DSPLabel.m in Sources */,
 				8478361717A0F6A10050EBA6 /* JNWAnimatableWindow.m in Sources */,
+				842B009E17B5915900EB9672 /* DSPMenuBarWindowIconView.m in Sources */,
 				8478361E17A1001F0050EBA6 /* DSPMainViewModel.m in Sources */,
 				8478362C17A198860050EBA6 /* DSPPreferencesViewController.m in Sources */,
 				84600B4517A31CB500D3E8FE /* MAAttachedWindow.m in Sources */,

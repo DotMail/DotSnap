@@ -10,22 +10,14 @@
 
 @interface DSPMainWindow : MAAttachedWindow
 
+- (instancetype)initWithView:(NSView *)view attachedToPoint:(NSPoint)point inWindow:(NSWindow *)window onSide:(MAWindowPosition)side atDistance:(float)distance mainWindow:(BOOL)flag;
+
 @property (nonatomic, assign) BOOL isInOpenPanel;
 @property (nonatomic, assign) BOOL isFlipping;
 
-@property (nonatomic, assign) BOOL hasMenuBarIcon;
 @property (assign) CGFloat snapDistance;
 @property (nonatomic, strong) NSImage *menuBarIcon;
 @property (nonatomic, strong) NSImage *highlightedMenuBarIcon;
 @property (readonly) NSStatusItem *statusItem;
-
-- (void)endEditingGracefully;
-
-@end
-
-@interface DPSMenuBarWindowIconView : NSView <NSMenuDelegate>
-
-@property (assign) DSPMainWindow *menuBarWindow;
-@property (nonatomic) BOOL highlighted;
 
 @end

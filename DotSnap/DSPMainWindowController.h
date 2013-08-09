@@ -6,8 +6,6 @@
 //
 //
 
-#import <Cocoa/Cocoa.h>
-
 @class DSPMainWindow;
 
 @interface DSPMainWindowController : NSWindowController

@@ -21,7 +21,7 @@
 }
 
 - (void)setBackgroundColor:(NSColor *)backgroundColor {
-	self.layer.backgroundColor = backgroundColor.CGColor;
+	self.layer.backgroundColor = backgroundColor.dsp_CGColor;
 	[self.layer setNeedsDisplay];
 }
 
@@ -50,7 +50,7 @@
 }
 
 - (void)ensureTrackingArea {
-	if (trackingArea == nil) {
+	if (!trackingArea) {
 		trackingArea = [[NSTrackingArea alloc] initWithRect:NSZeroRect options:NSTrackingInVisibleRect | NSTrackingActiveAlways | NSTrackingMouseEnteredAndExited owner:self userInfo:nil];
 	}
 }

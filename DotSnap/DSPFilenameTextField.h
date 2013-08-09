@@ -6,8 +6,6 @@
 //
 //
 
-#import <Cocoa/Cocoa.h>
-
 @interface DSPFilenameTextField : NSTextField
 
 @end

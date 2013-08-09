@@ -18,10 +18,12 @@ static NSUInteger const DPSUniqueFilenameDepthLimit = 500;
 
 @implementation DSPMainViewModel
 
+#pragma mark - Lifecycle
+
 - (id)init {
 	self = [super init];
 	
-	_filenameHistory = [NSUserDefaults.standardUserDefaults arrayForKey:DPSFilenameHistoryKey].mutableCopy;
+	_filenameHistory = [NSUserDefaults.standardUserDefaults arrayForKey:DSPFilenameHistoryKey].mutableCopy;
 	
 	_screenshotQuery = [[NSMetadataQuery alloc] init];
 	[_screenshotQuery setPredicate:[NSPredicate predicateWithFormat:@"kMDItemIsScreenCapture = 1"]];
@@ -33,10 +35,9 @@ static NSUInteger const DPSUniqueFilenameDepthLimit = 500;
 			NSURL *oldURL = [NSURL fileURLWithPath:screenShotPath];
 			
 			NSURL *newURL = [NSURL fileURLWithPath:DPSUniqueFilenameForDirectory(self.filepath, self.filename.stringByDeletingPathExtension, [NSUserDefaults.standardUserDefaults boolForKey:DSPAddsTimestampKey])];
-			[[NSFileManager defaultManager] moveItemAtURL:oldURL toURL:newURL error:nil];
+			[NSFileManager.defaultManager moveItemAtURL:oldURL toURL:newURL error:nil];
 		}
 	}];
-	
 	
 	return self;
 }
@@ -46,12 +47,24 @@ static NSUInteger const DPSUniqueFilenameDepthLimit = 500;
 		[self.filenameHistory removeObjectAtIndex:(self.filenameHistory.count - 1)];
 	}
 	[self.filenameHistory insertObject:filename atIndex:0];
-	[NSUserDefaults.standardUserDefaults setObject:self.filenameHistory forKey:DPSFilenameHistoryKey];
+	[NSUserDefaults.standardUserDefaults setObject:self.filenameHistory forKey:DSPFilenameHistoryKey];
 }
+
+#pragma mark - NSTableViewDatasource
+
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
+	return self.filenameHistory.count;
+}
+
+- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+	return [self.filenameHistory objectAtIndex:row];
+}
+
+#pragma mark - Internal
 
 + (NSDateFormatter *)dateFormatter {
 	static NSDateFormatter *dateFormatter = nil;
-	if (dateFormatter == nil) {
+	if (!dateFormatter) {
 		dateFormatter = [[NSDateFormatter alloc] init];
 		dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
 		dateFormatter.dateFormat = @" yyyy-MM-dd 'at' HH.mm.ss a";
@@ -79,16 +92,6 @@ static NSString *DPSUniqueFilenameForDirectory(NSString *relativePath, NSString 
 		}
 	}
 	return [relativePath stringByAppendingPathComponent:retVal];
-}
-
-#pragma mark - NSTableViewDatasource
-
-- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-	return self.filenameHistory.count;
-}
-
-- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-	return [self.filenameHistory objectAtIndex:row];
 }
 
 @end

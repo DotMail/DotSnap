@@ -6,8 +6,6 @@
 //
 //
 
-#import <Cocoa/Cocoa.h>
-
 @interface DSPGlowingNameButton : NSButton
 
 - (id)initWithFrame:(NSRect)frameRect name:(NSString *)name;

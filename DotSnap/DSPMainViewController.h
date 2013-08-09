@@ -6,8 +6,6 @@
 //
 //
 
-#import <Cocoa/Cocoa.h>
-
 @interface DSPMainViewController : NSViewController <NSTableViewDelegate, NSTextFieldDelegate> {
 	CGRect _contentFrame;
 }

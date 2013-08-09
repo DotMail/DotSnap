@@ -31,7 +31,11 @@
 @property (nonatomic, strong) RACSubject *historySubject;
 @end
 
-@implementation DSPMainViewController
+@implementation DSPMainViewController {
+	BOOL _exemptOpenPanelCancellation;
+}
+
+#pragma mark - Lifecycle
 
 - (id)initWithContentRect:(CGRect)rect {
 	self = [super init];
@@ -76,7 +80,7 @@
 	DSPMainView *fieldBackground = [[DSPMainView alloc]initWithFrame:(NSRect){ .origin.y = 4, .size = { NSWidth(_contentFrame), 60 } }];
 	fieldBackground.layer = CALayer.layer;
 	fieldBackground.wantsLayer = YES;
-	fieldBackground.layer.borderColor = [NSColor colorWithCalibratedRed:0.794 green:0.840 blue:0.864 alpha:1.000].CGColor;
+	fieldBackground.layer.borderColor = [NSColor colorWithCalibratedRed:0.794 green:0.840 blue:0.864 alpha:1.000].dsp_CGColor;
 	fieldBackground.layer.borderWidth = 2.f;
 	fieldBackground.backgroundColor = [NSColor colorWithCalibratedRed:0.850 green:0.888 blue:0.907 alpha:1.000];
 	fieldBackground.autoresizingMask = NSViewMinYMargin;
@@ -135,6 +139,8 @@
 					self.viewModel.filepath = urlString.stringByDeletingLastPathComponent;
 					saveToLabel.stringValue = [NSString stringWithFormat:@"SAVE TO: %@", urlString.stringByDeletingLastPathComponent.stringByStandardizingPath.stringByAbbreviatingWithTildeInPath];
 				}
+			} else {
+				_exemptOpenPanelCancellation = YES;
 			}
 		}];
 	}];
@@ -168,7 +174,7 @@
 			[scrollView.animator setFrame:(NSRect){ .origin.y = 6, .size = { 400, 246 } }];
 			[(DSPMainWindow *)view.window setFrame:rect display:YES animate:YES];
 			fieldBackground.backgroundColor = [NSColor whiteColor];
-			fieldBackground.layer.borderColor = [NSColor colorWithCalibratedRed:0.794 green:0.840 blue:0.864 alpha:1.000].CGColor;
+			fieldBackground.layer.borderColor = [NSColor colorWithCalibratedRed:0.794 green:0.840 blue:0.864 alpha:1.000].dsp_CGColor;
 		}
 		if (filenameField.stringValue.length == 0) {
 			self.viewModel.filename = @"Screen Shot";
@@ -185,7 +191,7 @@
 		filenameField.enabled = NO;
 
 		fieldBackground.backgroundColor = [NSColor colorWithCalibratedRed:0.850 green:0.888 blue:0.907 alpha:1.000];
-		fieldBackground.layer.borderColor = [NSColor colorWithCalibratedRed:0.850 green:0.888 blue:0.907 alpha:1.000].CGColor;
+		fieldBackground.layer.borderColor = [NSColor colorWithCalibratedRed:0.850 green:0.888 blue:0.907 alpha:1.000].dsp_CGColor;
 		[optionsButton spinOut];
 
 		[scrollView.animator setFrame:(NSRect){ .origin.y = -270, .size = { 400, 246 } }];
@@ -204,7 +210,7 @@
 			
 			historySeparatorShadow.alphaValue = 0.f;
 			fieldBackground.backgroundColor = [NSColor colorWithCalibratedRed:0.850 green:0.888 blue:0.907 alpha:1.000];
-			fieldBackground.layer.borderColor = [NSColor colorWithCalibratedRed:0.850 green:0.888 blue:0.907 alpha:1.000].CGColor;
+			fieldBackground.layer.borderColor = [NSColor colorWithCalibratedRed:0.850 green:0.888 blue:0.907 alpha:1.000].dsp_CGColor;
 
 			if (CGRectContainsPoint(backgroundView.frame, [theEvent locationInWindow])) {
 				[directoryButton.rac_command performSelector:@selector(execute:) withObject:@0 afterDelay:0.3];
@@ -230,6 +236,34 @@
 	[_historySubject sendNext:[NSUserDefaults.standardUserDefaults stringForKey:DSPDefaultFilenameTemplateKey]];
 }
 
+#pragma mark - Event Handling
+
+- (void)mouseDown:(NSEvent *)theEvent {
+	[super mouseDown:theEvent];
+	self.mouseDownBlock(theEvent);
+}
+
+- (void)mouseEntered:(NSEvent *)theEvent {
+	self.mouseEnteredBlock(theEvent, YES);
+}
+
+- (void)mouseExited:(NSEvent *)theEvent {
+	self.mouseEnteredBlock(theEvent, NO);
+}
+
+- (void)windowDidResignKey:(NSNotification *)aNotification {
+	if (!_exemptOpenPanelCancellation) {
+		[NSApp endSheet:self.openPanel];
+		[(DSPMainWindow *)self.view.window orderOutWithDuration:0.3 timing:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut] animations:^(CALayer *layer) {
+			layer.transform = CATransform3DMakeTranslation(0.f, -50.f, 0.f);
+			layer.opacity = 0.f;
+		}];
+	}
+	_exemptOpenPanelCancellation = NO;
+}
+
+#pragma mark - NSControlTextEditingDelegate
+
 - (BOOL)control:(NSControl *)control textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector {
 	if (commandSelector == @selector(insertNewline:)) {
 		[self.viewModel addFilenameToHistory:textView.string];
@@ -244,41 +278,6 @@
 
 - (void)controlTextDidChange:(NSNotification *)obj {
 	
-}
-
-- (NSOpenPanel *)openPanel {
-	static NSOpenPanel *panel;
-	if (panel == nil) {
-		panel = [NSOpenPanel openPanel];
-		[panel setCanChooseDirectories:YES];
-		[panel setAllowsMultipleSelection:NO];
-		[panel setBecomesKeyOnlyIfNeeded:YES];
-		[panel setCanCreateDirectories:YES];
-		[panel setMessage:@"Import one or more files or directories."];
-		[NSNotificationCenter.defaultCenter addObserver:self selector:@selector(windowDidResignKey:) name:NSWindowDidResignKeyNotification object:panel];
-	}
-	return panel;
-}
-
-- (void)windowDidResignKey:(NSNotification *)aNotification {
-	[NSApp endSheet:self.openPanel];
-	[(DSPMainWindow *)self.view.window orderOutWithDuration:0.3 timing:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut] animations:^(CALayer *layer) {
-		layer.transform = CATransform3DMakeTranslation(0.f, -50.f, 0.f);
-		layer.opacity = 0.f;
-	}];
-}
-
-- (void)mouseDown:(NSEvent *)theEvent {
-	[super mouseDown:theEvent];
-	self.mouseDownBlock(theEvent);
-}
-
-- (void)mouseEntered:(NSEvent *)theEvent {
-	self.mouseEnteredBlock(theEvent, YES);
-}
-
-- (void)mouseExited:(NSEvent *)theEvent {
-	self.mouseEnteredBlock(theEvent, NO);
 }
 
 #pragma mark - NSTableViewDelegate
@@ -305,6 +304,22 @@
 	NSTableView *table = notification.object;
 	[self.historySubject sendNext:self.viewModel.filenameHistory[table.selectedRow]];
 	self.carriageReturnBlock();
+}
+
+#pragma mark - Overrides
+
+- (NSOpenPanel *)openPanel {
+	static NSOpenPanel *panel;
+	if (!panel) {
+		panel = [NSOpenPanel openPanel];
+		panel.canChooseDirectories = YES;
+		panel.allowsMultipleSelection = NO;
+		panel.becomesKeyOnlyIfNeeded = YES;
+		panel.canCreateDirectories = YES;
+		panel.message = @"Import one or more files or directories.";
+		[NSNotificationCenter.defaultCenter addObserver:self selector:@selector(windowDidResignKey:) name:NSWindowDidResignKeyNotification object:panel];
+	}
+	return panel;
 }
 
 @end

@@ -14,6 +14,6 @@ NSString *const DSPLoadDotSnapAtStartKey = @"DSPLoadDotSnapAtStart";
 
 NSString *const DSPAddsTimestampKey = @"DSPAddsTimestamp";
 
-NSString *const DPSFilenameHistoryKey = @"DPSFilenameHistory";
+NSString *const DSPFilenameHistoryKey = @"DSPFilenameHistory";
 
 NSString *const DSPAutosaveInputFieldKey = @"DSPAutosaveInputField";

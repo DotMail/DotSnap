@@ -27,8 +27,4 @@
 	return self;
 }
 
-- (void)orderOutWithDuration:(CFTimeInterval)duration timing:(CAMediaTimingFunction *)timingFunction animations:(void (^)(CALayer *))animations {
-	[super orderOutWithDuration:duration timing:timingFunction animations:animations];
-}
-
 @end

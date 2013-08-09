@@ -7,76 +7,51 @@
 //
 
 #import "DSPMainWindow.h"
+#import "DSPMenuBarWindowIconView.h"
 #import <objc/runtime.h>
 
 static CGFloat const DPSMenuBarWindowTitleBarHeight = 0.0;
 static CGFloat const DPSMenuBarWindowArrowHeight = 10.0;
 static CGFloat const DPSMenuBarWindowArrowWidth = 20.0;
 
-static NSMenu *contextMenu(id delegate) {
-	static NSMenu *fileMenu = nil;
-	if (fileMenu == nil) {
-		fileMenu = [[NSMenu alloc] init];
-		NSMenuItem *quitMenuItem = [[NSMenuItem alloc] initWithTitle:@"Quit DotSnap" action:@selector(terminate:) keyEquivalent:@""];
-		[quitMenuItem setTarget:NSApp];
-		[fileMenu addItem:quitMenuItem];
-	}
-	fileMenu.delegate = delegate;
-	return fileMenu;
-}
-
 @implementation DSPMainWindow {
-	DPSMenuBarWindowIconView *statusItemView;
+	DSPMenuBarWindowIconView *statusItemView;
 }
 
-- (MAAttachedWindow *)initWithView:(NSView *)view attachedToPoint:(NSPoint)point inWindow:(NSWindow *)window onSide:(MAWindowPosition)side atDistance:(float)distance {
+#pragma mark - Lifecycle
+
+- (instancetype)initWithView:(NSView *)view attachedToPoint:(NSPoint)point inWindow:(NSWindow *)window onSide:(MAWindowPosition)side atDistance:(float)distance mainWindow:(BOOL)flag {
 	self = [super initWithView:view attachedToPoint:point inWindow:window onSide:side atDistance:distance];
 
-	[NSNotificationCenter.defaultCenter addObserver:self selector:@selector(windowDidResignKey:) name:NSWindowDidResignKeyNotification object:self];
+	if (flag) {
+		_statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
+		CGFloat thickness = [[NSStatusBar systemStatusBar] thickness];
+		statusItemView = [[DSPMenuBarWindowIconView alloc] initWithFrame:NSMakeRect(0, 0, (self.menuBarIcon ? self.menuBarIcon.size.width : thickness) + 6, thickness)];
+		statusItemView.menuBarWindow = self;
+		_statusItem.view = statusItemView;
+		[NSNotificationCenter.defaultCenter addObserverForName:NSWindowDidMoveNotification object:_statusItem.view.window queue:nil usingBlock:^(NSNotification *note) {
+			self.frameOrigin = self.originForAttachedState;
+		}];
+		[NSNotificationCenter.defaultCenter addObserverForName:NSWindowDidResignKeyNotification object:self queue:nil usingBlock:^(NSNotification *note) {
+			if (!_isInOpenPanel && !_isFlipping) {
+				[self orderOutWithDuration:0.3 timing:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut] animations:^(CALayer *layer) {
+					layer.transform = CATransform3DMakeTranslation(0.f, -50.f, 0.f);
+					layer.opacity = 0.f;
+				}];
+			}
+		}];
+	}
 
 	return self;
 }
 
-- (void)setHasMenuBarIcon:(BOOL)flag
-{
-	if (_hasMenuBarIcon != flag)
-	{
-		_hasMenuBarIcon = flag;
-		if (flag)
-		{
-			// Create the status item
-			_statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
-			CGFloat thickness = [[NSStatusBar systemStatusBar] thickness];
-			statusItemView = [[DPSMenuBarWindowIconView alloc] initWithFrame:NSMakeRect(0, 0, (self.menuBarIcon ? self.menuBarIcon.size.width : thickness) + 6, thickness)];
-			statusItemView.menuBarWindow = self;
-			_statusItem.view = statusItemView;
-//            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusItemViewDidMove:) name:NSWindowDidMoveNotification object:statusItem.view.window];
-		}
-		else
-		{
-			if (statusItemView)
-			{
-				[[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowDidMoveNotification object:statusItemView];
-			}
-		}
+- (NSPoint)originForAttachedState {
+	if (statusItemView) {
+		NSRect statusItemFrame = statusItemView.window.frame;
+		NSPoint midPoint = (NSPoint){ NSMidX(statusItemFrame), NSMinY(statusItemFrame) };
+		return (NSPoint){ midPoint.x - (NSWidth(self.frame) / 2), midPoint.y - NSHeight(self.frame) };
 	}
-}
-
-
-- (NSPoint)originForAttachedState
-{
-	if (statusItemView)
-	{
-		NSRect statusItemFrame = [[statusItemView window] frame];
-		NSPoint midPoint = NSMakePoint(NSMidX(statusItemFrame),
-									   NSMinY(statusItemFrame));
-		return NSMakePoint(midPoint.x - (self.frame.size.width / 2),
-						   midPoint.y - self.frame.size.height);
-	}
-	else
-	{
-		return NSZeroPoint;
-	}
+	return NSZeroPoint;
 }
 
 - (void)makeKeyAndOrderFrontWithDuration:(CFTimeInterval)duration timing:(CAMediaTimingFunction *)timingFunction setup:(void (^)(CALayer *))setup animations:(void (^)(CALayer *))animations {
@@ -94,16 +69,6 @@ static NSMenu *contextMenu(id delegate) {
 	return YES;
 }
 
-- (void)windowDidResignKey:(NSNotification *)aNotification {
-	if (!_isInOpenPanel && !_isFlipping) {
-		[self orderOutWithDuration:0.3 timing:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut] animations:^(CALayer *layer) {
-			layer.transform = CATransform3DMakeTranslation(0.f, -50.f, 0.f);
-			layer.opacity = 0.f;
-		}];
-	}
-}
-
-
 - (void)setMenuBarIcon:(NSImage *)image {
 	_menuBarIcon = image;
 	if (statusItemView) {
@@ -117,129 +82,6 @@ static NSMenu *contextMenu(id delegate) {
 	if (statusItemView)
 	{
 		[statusItemView setNeedsDisplay:YES];
-	}
-}
-
-- (void)endEditingGracefully
-{
-	// Courtesy of Daniel Jalkut, modified slightly
-	// http://www.red-sweater.com/blog/229
-	
-	// Save the current first responder, respecting the fact
-	// that it might conceptually be the delegate of the
-	// field editor that is "first responder."
-	id oldFirstResponder = [self firstResponder];
-	if ((oldFirstResponder != nil) &&
-		[oldFirstResponder isKindOfClass:[NSText class]] &&
-		[oldFirstResponder isFieldEditor])
-	{
-		// A field editor's delegate is the view we're editing
-		oldFirstResponder = [oldFirstResponder delegate];
-		if ([oldFirstResponder isKindOfClass:[NSResponder class]] == NO)
-		{
-			// Eh...we'd better back off if
-			// this thing isn't a responder at all
-			oldFirstResponder = nil;
-		}
-	}
-	
-	// Gracefully end all editing in our window (from Erik Buck).
-	// This will cause the user's changes to be committed.
-	if ([self makeFirstResponder:self])
-	{
-		// All editing is now ended and delegate messages sent etc.
-	}
-	else
-	{
-		// For some reason the text object being edited will
-		// not resign first responder status so force an
-		// end to editing anyway
-		[self endEditingFor:nil];
-	}
-	
-	// If we had a first responder before, restore it
-	if (oldFirstResponder != nil)
-	{
-		[self makeFirstResponder:oldFirstResponder];
-	}
-}
-
-- (IBAction)clearFirstResponder:(id)sender {
-	[self performSelector:@selector(makeFirstResponder:) withObject:nil afterDelay:0];
-}
-
-@end
-
-@implementation DPSMenuBarWindowIconView 
-
-#pragma mark - Highlighting
-
-- (void)setHighlighted:(BOOL)flag {
-	_highlighted = flag;
-	[self setNeedsDisplay:YES];
-}
-
-#pragma mark - Mouse events
-
-- (void)mouseDown:(NSEvent *)theEvent {
-	self.highlighted = YES;
-	if ((theEvent.modifierFlags & NSAlternateKeyMask) == NSAlternateKeyMask) {
-		if ([NSApp keyWindow].isVisible) {
-			[(DSPMainWindow *)[NSApp keyWindow] orderOutWithDuration:0.3 timing:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut] animations:^(CALayer *layer) {
-				layer.transform = CATransform3DMakeTranslation(0.f, -50.f, 0.f);
-				layer.opacity = 0.f;
-			}];
-		}
-		[self.menuBarWindow.statusItem popUpStatusItemMenu:contextMenu(self)];
-		return;
-	}
-	
-	if (([NSApp keyWindow].isMainWindow || [NSApp keyWindow].isVisible) && !self.menuBarWindow.isInOpenPanel) {
-		[(DSPMainWindow *)[NSApp keyWindow] orderOutWithDuration:0.3 timing:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut] animations:^(CALayer *layer) {
-			layer.transform = CATransform3DMakeTranslation(0.f, -50.f, 0.f);
-			layer.opacity = 0.f;
-		}];
-	} else if (self.menuBarWindow.isInOpenPanel) {
-		[NSApp endSheet:self.menuBarWindow.attachedSheet];
-		[self.menuBarWindow orderOutWithDuration:0.3 timing:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut] animations:^(CALayer *layer) {
-			layer.transform = CATransform3DMakeTranslation(0.f, -50.f, 0.f);
-			layer.opacity = 0.f;
-		}];
-	} else {
-		[NSApp activateIgnoringOtherApps:YES];
-		[self.menuBarWindow makeKeyAndOrderFrontWithDuration:0.3 timing:nil setup:^(CALayer *layer) {
-			layer.transform = CATransform3DMakeTranslation(0.f, -50., 0.f);
-			layer.opacity = 0.f;
-		} animations:^(CALayer *layer) {
-			layer.transform = CATransform3DIdentity;
-			layer.opacity = 1.f;
-		}];
-	}
-}
-
-- (void)mouseUp:(NSEvent *)theEvent {
-	self.highlighted = NO;
-}
-
-- (void)menuDidClose:(NSMenu *)menu {
-	self.highlighted = NO;
-}
-
-#pragma mark - Drawing
-
-- (void)drawRect:(NSRect)dirtyRect {
-	NSRect b = self.bounds;
-	if (self.highlighted) {
-		[NSColor.selectedMenuItemColor set];
-		NSRectFill(b);
-	}
-	if (self.menuBarWindow && self.menuBarWindow.menuBarIcon) {
-		NSRect rect = (NSRect){ .origin = { NSMinX(b) + 3, NSMinY(b) + 4 }, .size = { NSWidth(b) - 6, NSHeight(b) - 6 } };
-		if (self.highlighted && self.menuBarWindow.highlightedMenuBarIcon) {
-			[self.menuBarWindow.highlightedMenuBarIcon drawInRect:rect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
-		} else {
-			[self.menuBarWindow.menuBarIcon drawInRect:rect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
-		}
 	}
 }
 

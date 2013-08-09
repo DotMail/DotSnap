@@ -8,12 +8,9 @@
 
 #import "NSColor+DSPExtensions.h"
 
-#if MAC_OS_X_VERSION_MIN_REQUIRED > MAC_OS_X_VERSION_10_8
-
 @implementation NSColor (CGColor)
 
-- (CGColorRef)CGColor
-{
+- (CGColorRef)dsp_CGColor {
     const NSInteger numberOfComponents = [self numberOfComponents];
     CGFloat components[numberOfComponents];
     CGColorSpaceRef colorSpace = [[self colorSpace] CGColorSpace];
@@ -23,12 +20,9 @@
     return (CGColorRef)[(id)CGColorCreate(colorSpace, components) autorelease];
 }
 
-+ (NSColor *)colorWithCGColor:(CGColorRef)CGColor
-{
++ (NSColor *)dsp_colorWithCGColor:(CGColorRef)CGColor {
     if (CGColor == NULL) return nil;
     return [NSColor colorWithCIColor:[CIColor colorWithCGColor:CGColor]];
 }
 
 @end
-
-#endif
