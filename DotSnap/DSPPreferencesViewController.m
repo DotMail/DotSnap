@@ -111,7 +111,7 @@
 	gistTextLayer.font = CTFontCreateWithName(CFSTR("HelveticaNeue"), 18.f, NULL);
 	gistTextLayer.fontSize = 18.f;
 	gistTextLayer.alignmentMode = @"center";
-	gistTextLayer.string = @".Snap is brought to you by";
+	gistTextLayer.string = @"          is brought to you by";
 	[view.layer addSublayer:gistTextLayer];
 	
 	DSPGlowingNameButton *codafiNameButton = [[DSPGlowingNameButton alloc]initWithFrame:(NSRect){ .origin = { 88, NSHeight(_contentRect) - 165 }, .size.width =  72, .size.height = 24 } name:@"CodaFi"];
