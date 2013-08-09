@@ -470,6 +470,11 @@
 			attributes = {
 				CLASSPREFIX = DSP;
 				LastUpgradeCheck = 0500;
+				TargetAttributes = {
+					DD4F7C0313C30F9F00825C6E = {
+						DevelopmentTeam = JMX758PAJB;
+					};
+				};
 			};
 			buildConfigurationList = DD4F7BFE13C30F9F00825C6E /* Build configuration list for PBXProject "DotSnap" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -695,7 +700,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer: Robert Widmann (MJPWE9M54S)";
+				CODE_SIGN_IDENTITY = "Mac Developer: Tobias Schneider (C3E8NN4T3G)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer: Tobias Schneider (C3E8NN4T3G)";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DotSnap/DotSnap-Prefix.pch";
@@ -703,6 +709,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = DotSnap;
+				PROVISIONING_PROFILE = "8EDF29FF-643C-4E33-9431-AF41AFA3E48F";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
@@ -712,7 +719,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer: Robert Widmann (MJPWE9M54S)";
+				CODE_SIGN_IDENTITY = "Mac Developer: Tobias Schneider (C3E8NN4T3G)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer: Tobias Schneider (C3E8NN4T3G)";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DotSnap/DotSnap-Prefix.pch";
@@ -720,6 +728,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = DotSnap;
+				PROVISIONING_PROFILE = "8EDF29FF-643C-4E33-9431-AF41AFA3E48F";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
