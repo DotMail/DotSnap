@@ -69,7 +69,7 @@
 	[view addSubview:autosaveInputLabel];
 	
 	CALayer *logoLayer = CALayer.layer;
-	logoLayer.contents = [NSImage imageNamed:@"DotSnapPreferencesLogo"];
+	logoLayer.contents = [NSImage imageNamed:@"PreferencesLogo"];
 	logoLayer.frame = (CGRect){ .origin.x = NSMidX(_contentRect) - 32, .origin.y = NSHeight(_contentRect) - 100, .size = { 62, 62 } };
 	[view.layer addSublayer:logoLayer];
 	

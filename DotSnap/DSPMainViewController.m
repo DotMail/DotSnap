@@ -101,6 +101,7 @@
 	[view addSubview:saveToLabel];
 	
 	NSScrollView *scrollView = [[NSScrollView alloc] initWithFrame:(NSRect){ .origin.y = -270, .size = { 400, 246 } }];
+	scrollView.autoresizingMask = NSViewMinYMargin;
 	scrollView.layer = CALayer.layer;
 	scrollView.wantsLayer = YES;
 	scrollView.verticalScrollElasticity = NSScrollElasticityNone;
@@ -116,7 +117,9 @@
 	tableView.dataSource = self.viewModel;
 	scrollView.documentView = tableView;
 	[view addSubview:scrollView];
-	
+	[scrollView setFrame:(NSRect){ .origin.y = 0, .size = { 400, 44 } }];
+	[scrollView setAlphaValue:0.f];
+
 	DSPFilenameTextField *filenameField = [[DSPFilenameTextField alloc]initWithFrame:(NSRect){ .origin.x = 30, .origin.y = 10, .size = { NSWidth(_contentFrame) - 84, 34 } }];
 	filenameField.delegate = self;
 	[view addSubview:filenameField];
@@ -167,14 +170,19 @@
 	@weakify(self);
 	[NSNotificationCenter.defaultCenter addObserverForName:NSControlTextDidChangeNotification object:filenameField queue:nil usingBlock:^(NSNotification *note) {
 		@strongify(self);
-		NSRect rect = (NSRect){ .origin.x = view.window.frame.origin.x, .origin.y = NSMaxY(view.window.screen.frame) - 492, .size = { 400, 470 } };
-		if (!CGRectEqualToRect(rect, view.window.frame)) {
+		if (!CGRectEqualToRect(scrollView.frame, (NSRect){ .origin.y = 6, .size = { 400, 246 } })) {
 			[view setNeedsDisplay:YES];
 			historySeparatorShadow.alphaValue = 0.f;
-			[scrollView.animator setFrame:(NSRect){ .origin.y = 6, .size = { 400, 246 } }];
-			[(DSPMainWindow *)view.window setFrame:rect display:YES animate:YES];
 			fieldBackground.backgroundColor = [NSColor whiteColor];
 			fieldBackground.layer.borderColor = [NSColor colorWithCalibratedRed:0.794 green:0.840 blue:0.864 alpha:1.000].dsp_CGColor;
+			
+			NSRect rect = (NSRect){ .origin.x = view.window.frame.origin.x, .origin.y = NSMaxY(view.window.screen.frame) - 492, .size = { 400, 470 } };
+			[(DSPMainWindow *)view.window setFrame:rect display:YES animate:NO];
+			
+			[NSAnimationContext beginGrouping];
+			[scrollView.animator setFrame:(NSRect){ .origin.y = 6, .size = { 400, 246 } }];
+			[scrollView.animator setAlphaValue:1.f];
+			[NSAnimationContext endGrouping];
 		}
 		if (filenameField.stringValue.length == 0) {
 			self.viewModel.filename = @"Screen Shot";
@@ -194,8 +202,13 @@
 		fieldBackground.layer.borderColor = [NSColor colorWithCalibratedRed:0.850 green:0.888 blue:0.907 alpha:1.000].dsp_CGColor;
 		[optionsButton spinOut];
 
-		[scrollView.animator setFrame:(NSRect){ .origin.y = -270, .size = { 400, 246 } }];
-		[(DSPMainWindow *)view.window setFrame:(NSRect){ .origin.x = view.window.frame.origin.x, .origin.y = NSMaxY(view.window.screen.frame) - 244, .size = { 400, 224 } } display:YES animate:YES];
+		[NSAnimationContext beginGrouping];
+		[scrollView.animator setFrame:(NSRect){ .origin.y = 0, .size = { 400, 44 } }];
+		[scrollView.animator setAlphaValue:0.f];
+		[NSAnimationContext.currentContext setCompletionHandler:^{
+			[(DSPMainWindow *)view.window setFrame:(NSRect){ .origin.x = view.window.frame.origin.x, .origin.y = NSMaxY(view.window.screen.frame) - 246, .size = { 400, 224 } } display:YES animate:NO];
+		}];
+		[NSAnimationContext endGrouping];
 	};
 	
 	self.mouseDownBlock = ^ (NSEvent *theEvent) {
@@ -204,7 +217,6 @@
 			[filenameField becomeFirstResponder];
 			[NSNotificationCenter.defaultCenter postNotificationName:NSControlTextDidChangeNotification object:filenameField];
 		} else {
-			
 			filenameField.enabled = NO;
 			[filenameField resignFirstResponder];
 			
@@ -216,9 +228,15 @@
 				[directoryButton.rac_command performSelector:@selector(execute:) withObject:@0 afterDelay:0.3];
 			}
 			
-			if (!CGRectEqualToRect(scrollView.frame, (NSRect){ .origin.y = -270, .size = { 400, 246 } })) {
-				[scrollView.animator setFrame:(NSRect){ .origin.y = -270, .size = { 400, 246 } }];
-				[(DSPMainWindow *)view.window setFrame:(NSRect){ .origin.x = view.window.frame.origin.x, .origin.y = NSMaxY(view.window.screen.frame) - 246, .size = { 400, 224 } } display:YES animate:YES];
+			if (!CGRectEqualToRect(scrollView.frame, (NSRect){ .origin.y = 0, .size = { 400, 44 } })) {
+				
+				[NSAnimationContext beginGrouping];
+				[scrollView.animator setFrame:(NSRect){ .origin.y = 0, .size = { 400, 44 } }];
+				[scrollView.animator setAlphaValue:0.f];
+				[NSAnimationContext.currentContext setCompletionHandler:^{
+					[(DSPMainWindow *)view.window setFrame:(NSRect){ .origin.x = view.window.frame.origin.x, .origin.y = NSMaxY(view.window.screen.frame) - 246, .size = { 400, 224 } } display:YES animate:NO];
+				}];
+				[NSAnimationContext endGrouping];
 			}
 		}
 	};
