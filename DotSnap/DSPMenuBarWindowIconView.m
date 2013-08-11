@@ -68,6 +68,17 @@ static NSMenu *contextMenu(id delegate) {
 	}
 }
 
+- (void)rightMouseDown:(NSEvent *)theEvent{
+	self.highlighted = YES;
+	if ([NSApp keyWindow].isVisible) {
+		[(DSPMainWindow *)[NSApp keyWindow] orderOutWithDuration:0.3 timing:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut] animations:^(CALayer *layer) {
+			layer.transform = CATransform3DMakeTranslation(0.f, -50.f, 0.f);
+			layer.opacity = 0.f;
+		}];
+	}
+	[self.menuBarWindow.statusItem popUpStatusItemMenu:contextMenu(self)];
+}
+
 - (void)mouseUp:(NSEvent *)theEvent {
 	self.highlighted = NO;
 }
