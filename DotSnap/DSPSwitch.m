@@ -20,6 +20,7 @@
 	BOOL _hasMoved;
 	CGFloat _oldX;
 	CGFloat _deltaX;
+	BOOL _pushedClosedHandCursor;
 }
 
 - (id)initWithFrame:(NSRect)frame {
@@ -95,6 +96,10 @@
 
 - (void)mouseDragged:(NSEvent *)theEvent {
 	if (_isTracking) {
+		if (!_pushedClosedHandCursor) {
+			_pushedClosedHandCursor = YES;
+			[NSCursor.closedHandCursor push];
+		}
 		_hasMoved = YES;
 		CGRect frame = self.switchCover.frame;
 		_deltaX	= _oldX - [self.switchCover convertPoint:[theEvent locationInWindow] fromLayer:self.superview.layer].x;
@@ -117,6 +122,10 @@
 		[self setOn:!(_deltaX <= 0) animated:YES];
 	} else if (!_hasMoved) {
 		[self setOn:!self.on animated:YES];
+	}
+	if (_pushedClosedHandCursor) {
+		_pushedClosedHandCursor = NO;
+		[NSCursor.currentCursor pop];
 	}
 	_isTracking = NO;
 	_hasMoved = NO;
@@ -146,6 +155,10 @@
 	[self willChangeValueForKey:@"on"];
 	_on = on;
 	[self didChangeValueForKey:@"on"];
+}
+
+- (void)resetCursorRects {
+	[self addCursorRect:self.bounds cursor:NSCursor.pointingHandCursor];
 }
 
 @end
