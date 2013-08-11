@@ -33,27 +33,15 @@
 	self.wantsLayer = YES;
 	
 	self.offLayer = CALayer.layer;
-	self.offLayer.backgroundColor = [NSColor colorWithCalibratedRed:0.788 green:0.253 blue:0.258 alpha:1.000].dsp_CGColor;
+	self.offLayer.contents = [NSImage imageNamed:@"SwitchXMark"];
 	self.offLayer.frame = (NSRect){ .size = { CGRectGetWidth(frame)/2, CGRectGetHeight(frame) } };
-	self.offLayer.cornerRadius = 4.f;
 	self.offLayer.opacity = 0.f;
 	[self.layer addSublayer:self.offLayer];
 	
-	CALayer *xLayer = CALayer.layer;
-	xLayer.contents = [NSImage imageNamed:@"SwitchXmark"];
-	xLayer.frame = (NSRect){ .origin = { 14, 9 }, .size = { 13, 13 } };
-	[self.offLayer addSublayer:xLayer];
-	
 	self.onLayer = CALayer.layer;
-	self.onLayer.backgroundColor = [NSColor colorWithCalibratedRed:0.532 green:0.753 blue:0.647 alpha:1.000].dsp_CGColor;
+	self.onLayer.contents = [NSImage imageNamed:@"SwitchCheckmark"];
 	self.onLayer.frame = (NSRect){ .origin.x = CGRectGetWidth(frame)/2, .size = { CGRectGetWidth(frame)/2, CGRectGetHeight(frame) } };
-	self.onLayer.cornerRadius = 4.f;
 	[self.layer addSublayer:self.onLayer];
-	
-	CALayer *checkLayer = CALayer.layer;
-	checkLayer.contents = [NSImage imageNamed:@"SwitchCheckmark"];
-	checkLayer.frame = (NSRect){ .origin = { 13, 9 }, .size = { 12, 13 } };
-	[self.onLayer addSublayer:checkLayer];
 	
 	self.switchCover = CALayer.layer;
 	self.switchCover.backgroundColor = [NSColor colorWithCalibratedRed:0.730 green:0.793 blue:0.825 alpha:1.000].dsp_CGColor;
@@ -127,6 +115,8 @@
 		[self setOn:!self.on animated:YES];
 	} else if (_isTracking && _hasMoved) {
 		[self setOn:!(_deltaX <= 0) animated:YES];
+	} else if (!_hasMoved) {
+		[self setOn:!self.on animated:YES];
 	}
 	_isTracking = NO;
 	_hasMoved = NO;
