@@ -26,8 +26,9 @@ static NSUInteger const DPSUniqueFilenameDepthLimit = 500;
 	_filenameHistory = [NSUserDefaults.standardUserDefaults arrayForKey:DSPFilenameHistoryKey].mutableCopy;
 	
 	_screenshotQuery = [[NSMetadataQuery alloc] init];
-	[_screenshotQuery setPredicate:[NSPredicate predicateWithFormat:@"kMDItemIsScreenCapture = 1"]];
-	[_screenshotQuery startQuery];
+	_screenshotQuery.predicate = [NSPredicate predicateWithFormat:@"kMDItemIsScreenCapture = 1"];
+	NSString *desktopPath = [NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+	_screenshotQuery.searchScopes = @[ [NSURL fileURLWithPath:desktopPath] ];
 	
 	[NSNotificationCenter.defaultCenter addObserverForName:NSMetadataQueryDidUpdateNotification object:_screenshotQuery queue:nil usingBlock:^(NSNotification *note) {
 		for (NSMetadataItem *item in [note.userInfo objectForKey:(NSString *)kMDQueryUpdateAddedItems]) {
@@ -38,6 +39,8 @@ static NSUInteger const DPSUniqueFilenameDepthLimit = 500;
 			[NSFileManager.defaultManager moveItemAtURL:oldURL toURL:newURL error:nil];
 		}
 	}];
+	
+	[_screenshotQuery startQuery];
 	
 	return self;
 }
