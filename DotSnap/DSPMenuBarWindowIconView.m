@@ -34,7 +34,7 @@ static NSMenu *contextMenu(id delegate) {
 
 - (void)mouseDown:(NSEvent *)theEvent {
 	self.highlighted = YES;
-	if ((theEvent.modifierFlags & NSAlternateKeyMask) == NSAlternateKeyMask) {
+	if ((theEvent.modifierFlags & NSControlKeyMask) == NSControlKeyMask) {
 		if ([NSApp keyWindow].isVisible) {
 			[(DSPMainWindow *)[NSApp keyWindow] orderOutWithDuration:0.3 timing:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut] animations:^(CALayer *layer) {
 				layer.transform = CATransform3DMakeTranslation(0.f, -50.f, 0.f);
