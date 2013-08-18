@@ -17,6 +17,7 @@
 - (id)initWithFrame:(NSRect)frame {
 	self = [super initWithFrame:frame];
 	self.layer = CALayer.layer;
+	self.layer.masksToBounds = YES;
 	self.wantsLayer = YES;
 	
 	CALayer *browseCircleLayer = CALayer.layer;
@@ -29,6 +30,12 @@
 	arrowLayer.frame = self.bounds;
 	[self.layer addSublayer:arrowLayer];
 	
+	CALayer *hoverArrowLayer = CALayer.layer;
+	hoverArrowLayer.contents = [NSImage imageNamed:@"Browse_Arrow_Hover"];
+	hoverArrowLayer.frame = self.bounds;
+	hoverArrowLayer.frame = CGRectOffset(hoverArrowLayer.frame, -(NSWidth(browseCircleLayer.frame)/2) - 10, 0);
+	[self.layer addSublayer:hoverArrowLayer];
+	
 	self.autoresizingMask = NSViewMinYMargin;
 	self.bordered = NO;
 	self.buttonType = NSMomentaryChangeButton;
@@ -37,9 +44,14 @@
 		if (hovering) {
 			browseCircleLayer.contents = [NSImage imageNamed:@"BrowseCircle_Hover"];
 			arrowLayer.contents = [NSImage imageNamed:@"Browse_Arrow_Hover"];
+			arrowLayer.frame = CGRectOffset(arrowLayer.frame, NSWidth(browseCircleLayer.frame)/2 + 10, 0);
+			hoverArrowLayer.frame = CGRectOffset(hoverArrowLayer.frame, NSWidth(browseCircleLayer.frame)/2 + 10, 0);
 		} else {
 			browseCircleLayer.contents = [NSImage imageNamed:@"BrowseCircle"];
 			arrowLayer.contents = [NSImage imageNamed:@"Browse_Arrow"];
+			arrowLayer.frame = CGRectOffset(arrowLayer.frame, -(NSWidth(browseCircleLayer.frame)/2) - 10, 0);
+			hoverArrowLayer.frame = CGRectOffset(hoverArrowLayer.frame, -(NSWidth(browseCircleLayer.frame)/2) - 10, 0);
+
 		}
 	};
 	
