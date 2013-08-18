@@ -84,6 +84,27 @@
 	underSeparatorShadow.fillColor = [NSColor colorWithCalibratedRed:0.181 green:0.455 blue:0.315 alpha:1.000];
 	[view addSubview:underSeparatorShadow];
 	
+	NSScrollView *scrollView = [[NSScrollView alloc] initWithFrame:(NSRect){ .origin.y = -270, .size = { 400, 246 } }];
+	scrollView.autoresizingMask = NSViewMinYMargin;
+	scrollView.layer = CALayer.layer;
+	scrollView.wantsLayer = YES;
+	scrollView.verticalScrollElasticity = NSScrollElasticityNone;
+	DSPHistoryTableView *tableView = [[DSPHistoryTableView alloc] initWithFrame: scrollView.bounds];
+	tableView.headerView = nil;
+	tableView.focusRingType = NSFocusRingTypeNone;
+	tableView.gridStyleMask = NSTableViewSolidHorizontalGridLineMask;
+	NSTableColumn *firstColumn  = [[NSTableColumn alloc] initWithIdentifier:@"firstColumn"];
+	firstColumn.editable = NO;
+	firstColumn.width = CGRectGetWidth(view.bounds);
+	[tableView addTableColumn:firstColumn];
+	tableView.delegate = self;
+	tableView.dataSource = self.viewModel;
+	scrollView.documentView = tableView;
+	tableView.enabled = NO;
+	[scrollView setFrame:(NSRect){ .origin.y = 0, .size = { 400, 44 } }];
+	[scrollView setAlphaValue:0.f];
+	[view addSubview:scrollView];
+	
 	DSPBackgroundView *fieldBackground = [[DSPBackgroundView alloc]initWithFrame:(NSRect){ .origin.y = -12, .size = { NSWidth(_contentFrame), 60 } }];
 	fieldBackground.layer = CALayer.layer;
 	fieldBackground.wantsLayer = YES;
@@ -106,27 +127,6 @@
 	self.viewModel.filepath = desktopPath;
 	saveToLabel.stringValue = [NSString stringWithFormat:@"SAVE TO: %@", desktopPath];
 	[backgroundView addSubview:saveToLabel];
-	
-	NSScrollView *scrollView = [[NSScrollView alloc] initWithFrame:(NSRect){ .origin.y = -270, .size = { 400, 246 } }];
-	scrollView.autoresizingMask = NSViewMinYMargin;
-	scrollView.layer = CALayer.layer;
-	scrollView.wantsLayer = YES;
-	scrollView.verticalScrollElasticity = NSScrollElasticityNone;
-	DSPHistoryTableView *tableView = [[DSPHistoryTableView alloc] initWithFrame: scrollView.bounds];
-	tableView.headerView = nil;
-	tableView.focusRingType = NSFocusRingTypeNone;
-	tableView.gridStyleMask = NSTableViewSolidHorizontalGridLineMask;
-	NSTableColumn *firstColumn  = [[NSTableColumn alloc] initWithIdentifier:@"firstColumn"];
-	firstColumn.editable = NO;
-	firstColumn.width = CGRectGetWidth(view.bounds);
-	[tableView addTableColumn:firstColumn];
-	tableView.delegate = self;
-	tableView.dataSource = self.viewModel;
-	scrollView.documentView = tableView;
-	tableView.enabled = NO;
-	[scrollView setFrame:(NSRect){ .origin.y = 0, .size = { 400, 44 } }];
-	[scrollView setAlphaValue:0.f];
-	[view addSubview:scrollView];
 
 	DSPFilenameTextField *filenameField = [[DSPFilenameTextField alloc]initWithFrame:(NSRect){ .origin.x = 30, .origin.y = -5, .size = { NSWidth(_contentFrame) - 84, 34 } }];
 	filenameField.delegate = self;
@@ -190,7 +190,7 @@
 			
 			NSRect scrollViewFrame = (NSRect){ .origin.y = NSMinY(fieldBackground.frame) - (60 * self.viewModel.filenameHistory.count), .size = { 400, (60 * self.viewModel.filenameHistory.count) } };
 			[scrollView.animator setFrame:scrollViewFrame];
-			[scrollView.animator setAlphaValue:1.f];
+			[scrollView.animator setAlphaValue:self.viewModel.filenameHistory.count ? 1.f : 0.f];
 			[NSAnimationContext.currentContext setCompletionHandler:^{
 				NSRect rect = (NSRect){ .size = { 400, 214 + (60 * self.viewModel.filenameHistory.count) } };
 				rect.origin = [(DSPMainWindow *)view.window originForNewFrame:rect];
@@ -250,10 +250,10 @@
 				[directoryButton.rac_command performSelector:@selector(execute:) withObject:@0 afterDelay:0.3];
 			}
 			
-			if (!CGRectEqualToRect(scrollView.frame, (NSRect){ .origin.y = 0, .size = { 400, 44 } })) {
+			if (!CGRectEqualToRect(scrollView.frame, (NSRect){ .origin.y = NSMinY(fieldBackground.frame) - 44, .size = { 400, 44 } })) {
 				
 				[NSAnimationContext beginGrouping];
-				[scrollView.animator setFrame:(NSRect){ .origin.y = 0, .size = { 400, 44 } }];
+				[scrollView.animator setFrame:(NSRect){ .origin.y = NSMinY(fieldBackground.frame) - 44, .size = { 400, 44 } }];
 				[scrollView.animator setAlphaValue:0.f];
 //				[NSAnimationContext.currentContext setCompletionHandler:^{
 					NSRect rect = (NSRect){ .size = { 400, 214 } };
@@ -308,14 +308,14 @@
 
 - (BOOL)control:(NSControl *)control textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector {
 	if (commandSelector == @selector(insertNewline:)) {
-		[self.viewModel addFilenameToHistory:textView.string];
+		[self.viewModel addFilenameToHistory:textView.string.length ? textView.string : @"Screen Shot"];
 		self.carriageReturnBlock();
 		return YES;
 	} else if (commandSelector == @selector(cancelOperation:)) {
 		self.mouseDownBlock(nil);
 		return YES;
 	}
-	return NO;
+	return YES;
 }
 
 - (void)controlTextDidChange:(NSNotification *)obj {
