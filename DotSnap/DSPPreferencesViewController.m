@@ -16,13 +16,16 @@
 #import "DSPGlowingNameButton.h"
 #import "DSPPreferencesShadowBox.h"
 #import "DSPLabel.h"
+#import "DSPLogoButton.h"
 #import "LIFlipEffect.h"
 
 @interface DSPPreferencesViewController ()
 
 @end
 
-@implementation DSPPreferencesViewController
+@implementation DSPPreferencesViewController {
+	BOOL _showingVersion;
+}
 
 - (id)initWithContentRect:(CGRect)rect {
 	self = [super init];
@@ -68,11 +71,35 @@
 	autosaveInputLabel.stringValue = @"Autosave Input";
 	[view addSubview:autosaveInputLabel];
 	
-	CALayer *logoLayer = CALayer.layer;
-	logoLayer.contents = [NSImage imageNamed:@"PreferencesLogo"];
-	logoLayer.frame = (CGRect){ .origin.x = NSMidX(_contentRect) - 32, .origin.y = NSHeight(_contentRect) - 100, .size = { 62, 62 } };
-	[view.layer addSublayer:logoLayer];
+	CATextLayer *versionTextLayer = [[CATextLayer alloc]init];
+	versionTextLayer.frame = (NSRect){ NSMidX(_contentRect) - 100, .origin.y = NSHeight(_contentRect) - 104, .size.width = 200, .size.height = 24 };
+	versionTextLayer.foregroundColor = [NSColor colorWithCalibratedRed:0.136 green:0.407 blue:0.264 alpha:1.000].dsp_CGColor;
+	versionTextLayer.font = CTFontCreateWithName(CFSTR("HelveticaNeue"), 16.f, NULL);
+	versionTextLayer.fontSize = 16.f;
+	versionTextLayer.alignmentMode = @"center";
+	versionTextLayer.string = [NSString stringWithFormat:@"Version %@", [NSBundle.mainBundle.infoDictionary objectForKey:@"CFBundleShortVersionString"]];
+	versionTextLayer.opacity = 0.f;
+	[view.layer addSublayer:versionTextLayer];
 	
+	DSPLogoButton *logoButton = [[DSPLogoButton alloc]initWithFrame:(CGRect){ .origin.x = NSMidX(_contentRect) - 32, .origin.y = NSHeight(_contentRect) - 100, .size = { 62, 62 } }];
+	[logoButton.rac_command subscribeNext:^(id x) {
+		if (!_showingVersion) {
+			[NSAnimationContext beginGrouping];
+			[NSAnimationContext.currentContext setDuration:0.5];
+			[logoButton.animator setFrame:NSOffsetRect(logoButton.frame, 0, 20)];
+			versionTextLayer.opacity = 1.f;
+			[NSAnimationContext endGrouping];
+		} else {
+			[NSAnimationContext beginGrouping];
+			[NSAnimationContext.currentContext setDuration:0.5];
+			[logoButton.animator setFrame:NSOffsetRect(logoButton.frame, 0, -20)];
+			versionTextLayer.opacity = 0.f;
+			[NSAnimationContext endGrouping];
+		}
+		_showingVersion = !_showingVersion;
+	}];
+	[view addSubview:logoButton];
+
 	DSPSpinningSettingsButton *optionsButton = [[DSPSpinningSettingsButton alloc]initWithFrame:(NSRect){ .origin.x = NSWidth(_contentRect) - 28, .origin.y = NSHeight(_contentRect) - 38, .size = { 17, 17 } } style:1];
 	optionsButton.rac_command = [RACCommand command];
 	optionsButton.bordered = NO;
