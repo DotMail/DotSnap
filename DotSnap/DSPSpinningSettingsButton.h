@@ -14,7 +14,6 @@ typedef NS_ENUM(NSUInteger, DSPSpinningSettingsButtonStyle) {
 @interface DSPSpinningSettingsButton : NSButton
 
 - (id)initWithFrame:(NSRect)frameRect style:(DSPSpinningSettingsButtonStyle)style;
-
 - (void)spinOut;
 
 @end

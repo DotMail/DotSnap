@@ -48,6 +48,7 @@
 		8478364217A1FAE00050EBA6 /* DSPSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478364117A1FAE00050EBA6 /* DSPSwitch.m */; };
 		8478364917A205D50050EBA6 /* DSPLaunchServicesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478364817A205D50050EBA6 /* DSPLaunchServicesManager.m */; };
 		8478365D17A221490050EBA6 /* NSColor+DSPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478365C17A221490050EBA6 /* NSColor+DSPExtensions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		84955B7D17C1425B00095106 /* DSPLogoButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84955B7C17C1425B00095106 /* DSPLogoButton.m */; };
 		84BC7E5B17A4D1D00091C0DB /* MenubarIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E5717A4D1D00091C0DB /* MenubarIcon.png */; };
 		84BC7E5C17A4D1D00091C0DB /* MenubarIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E5817A4D1D00091C0DB /* MenubarIcon@2x.png */; };
 		84BC7E5D17A4D1D00091C0DB /* MenubarIcon_Highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E5917A4D1D00091C0DB /* MenubarIcon_Highlighted.png */; };
@@ -209,6 +210,8 @@
 		8478364817A205D50050EBA6 /* DSPLaunchServicesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPLaunchServicesManager.m; sourceTree = "<group>"; };
 		8478365B17A221490050EBA6 /* NSColor+DSPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+DSPExtensions.h"; sourceTree = "<group>"; };
 		8478365C17A221490050EBA6 /* NSColor+DSPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+DSPExtensions.m"; sourceTree = "<group>"; };
+		84955B7B17C1425B00095106 /* DSPLogoButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPLogoButton.h; sourceTree = "<group>"; };
+		84955B7C17C1425B00095106 /* DSPLogoButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPLogoButton.m; sourceTree = "<group>"; };
 		84BC7E5717A4D1D00091C0DB /* MenubarIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MenubarIcon.png; path = Artwork/MenubarIcon.png; sourceTree = "<group>"; };
 		84BC7E5817A4D1D00091C0DB /* MenubarIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MenubarIcon@2x.png"; path = "Artwork/MenubarIcon@2x.png"; sourceTree = "<group>"; };
 		84BC7E5917A4D1D00091C0DB /* MenubarIcon_Highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MenubarIcon_Highlighted.png; path = Artwork/MenubarIcon_Highlighted.png; sourceTree = "<group>"; };
@@ -267,6 +270,8 @@
 				842B008117B47C0C00EB9672 /* DSPFilenameTextField.m */,
 				842B008917B489A600EB9672 /* DSPGlowingNameButton.h */,
 				842B008A17B489A600EB9672 /* DSPGlowingNameButton.m */,
+				84955B7B17C1425B00095106 /* DSPLogoButton.h */,
+				84955B7C17C1425B00095106 /* DSPLogoButton.m */,
 				84600B4C17A34A8400D3E8FE /* DSPHistoryRowView.h */,
 				84600B4D17A34A8400D3E8FE /* DSPHistoryRowView.m */,
 				84600B5B17A354D300D3E8FE /* DSPHistoryTableView.h */,
@@ -326,7 +331,6 @@
 				842B028917B8256800EB9672 /* DSPBackgroundView.m */,
 				8478361C17A1001F0050EBA6 /* DSPMainViewModel.h */,
 				8478361D17A1001F0050EBA6 /* DSPMainViewModel.m */,
-				842B008317B47F1A00EB9672 /* Controls */,
 			);
 			name = "Main Window";
 			sourceTree = "<group>";
@@ -419,6 +423,7 @@
 				847835C417A0D2750050EBA6 /* DSPAppDelegate.m */,
 				8478362017A18FF50050EBA6 /* Preferences */,
 				8478361F17A18FEB0050EBA6 /* Main Window */,
+				842B008317B47F1A00EB9672 /* Controls */,
 				8478363717A19FDB0050EBA6 /* External */,
 				DD4F7C0F13C30F9F00825C6E /* Supporting Files */,
 			);
@@ -647,6 +652,7 @@
 				DD4F7C1513C30F9F00825C6E /* main.m in Sources */,
 				847835C517A0D2750050EBA6 /* DSPAppDelegate.m in Sources */,
 				8405D58717A5D60000D7990E /* DSPPNGFormatter.m in Sources */,
+				84955B7D17C1425B00095106 /* DSPLogoButton.m in Sources */,
 				847835C817A0D3590050EBA6 /* DSPMainWindowController.m in Sources */,
 				84BC7E7117A4D8BA0091C0DB /* DSPDirectoryPickerButton.m in Sources */,
 				847835CB17A0D3650050EBA6 /* DSPMainViewController.m in Sources */,

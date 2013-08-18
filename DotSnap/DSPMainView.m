@@ -34,7 +34,7 @@
 	
 	BOOL shouldDisplayWindow = NO;
 
-	[[NSImage imageNamed:@"TopPartArrow"]drawAtPoint:NSMakePoint((NSWidth(self.bounds) - 400)/2, NSHeight(self.bounds) - 10) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.f];
+	[[NSImage imageNamed:@"TopPartArrow"]drawAtPoint:NSMakePoint(((NSWidth(self.bounds) - 400)/2) - 6, NSHeight(self.bounds) - 10) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.f];
 	
 	if (shouldDisplayWindow) {
 		shouldDisplayWindow = (showingPentagon == YES);

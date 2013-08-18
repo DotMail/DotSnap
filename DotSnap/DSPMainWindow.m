@@ -50,7 +50,7 @@ static CGFloat const DPSMenuBarWindowArrowWidth = 20.0;
 	if (statusItemView) {
 		NSRect statusItemFrame = statusItemView.window.frame;
 		NSPoint midPoint = (NSPoint){ NSMidX(statusItemFrame), NSMinY(statusItemFrame) };
-		return (NSPoint){ midPoint.x - (NSWidth(self.frame) / 2) - 5, midPoint.y - NSHeight(self.frame) + ((_resized) ? -2 : 10) };
+		return (NSPoint){ midPoint.x - (NSWidth(self.frame) / 2) + 1, midPoint.y - NSHeight(self.frame) + ((_resized) ? -2 : 10) };
 	}
 	return NSZeroPoint;
 }
@@ -59,7 +59,7 @@ static CGFloat const DPSMenuBarWindowArrowWidth = 20.0;
 	if (statusItemView) {
 		NSRect statusItemFrame = statusItemView.window.frame;
 		NSPoint midPoint = (NSPoint){ NSMidX(statusItemFrame), NSMinY(statusItemFrame) };
-		return (NSPoint){ midPoint.x - (NSWidth(rect) / 2) - 5, midPoint.y - NSHeight(rect) - 2 };
+		return (NSPoint){ midPoint.x - (NSWidth(rect) / 2) + 1, midPoint.y - NSHeight(rect) - 2 };
 	}
 	return NSZeroPoint;
 }
