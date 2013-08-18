@@ -11,11 +11,6 @@
 	<key>DSPAutosaveInputField</key>
 	<true/>
 	<key>DSPFilenameHistory</key>
-	<array>
-		<string> </string>
-		<string> </string>
-		<string> </string>
-		<string> </string>
-	</array>
+	<array/>
 </dict>
 </plist>

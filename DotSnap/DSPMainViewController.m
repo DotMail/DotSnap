@@ -124,9 +124,9 @@
 	tableView.dataSource = self.viewModel;
 	scrollView.documentView = tableView;
 	tableView.enabled = NO;
-	[view addSubview:scrollView];
 	[scrollView setFrame:(NSRect){ .origin.y = 0, .size = { 400, 44 } }];
 	[scrollView setAlphaValue:0.f];
+	[view addSubview:scrollView];
 
 	DSPFilenameTextField *filenameField = [[DSPFilenameTextField alloc]initWithFrame:(NSRect){ .origin.x = 30, .origin.y = -5, .size = { NSWidth(_contentFrame) - 84, 34 } }];
 	filenameField.delegate = self;
@@ -179,19 +179,20 @@
 	@weakify(self);
 	[NSNotificationCenter.defaultCenter addObserverForName:NSControlTextDidChangeNotification object:filenameField queue:nil usingBlock:^(NSNotification *note) {
 		@strongify(self);
-		if (!CGSizeEqualToSize(view.window.frame.size, (CGSize){ 400, 460 })) {
-			[view setNeedsDisplay:YES];
-			historySeparatorShadow.alphaValue = 0.f;
-			fieldBackground.backgroundColor = [NSColor whiteColor];
-			fieldBackground.layer.borderColor = [NSColor colorWithCalibratedRed:0.794 green:0.840 blue:0.864 alpha:1.000].dsp_CGColor;
-			
+		historySeparatorShadow.alphaValue = 0.f;
+		fieldBackground.backgroundColor = [NSColor whiteColor];
+		fieldBackground.layer.borderColor = [NSColor colorWithCalibratedRed:0.794 green:0.840 blue:0.864 alpha:1.000].dsp_CGColor;
+		
+		if (!CGSizeEqualToSize(view.window.frame.size, (CGSize){ 400, (self.viewModel.filenameHistory.count ? 214 : 224) + (60 * self.viewModel.filenameHistory.count) })) {
 			[scrollView.documentView setEnabled:YES];
 			
 			[NSAnimationContext beginGrouping];
-			[scrollView.animator setFrame:(NSRect){ .origin.y = -242, .size = { 400, 248 } }];
+			
+			NSRect scrollViewFrame = (NSRect){ .origin.y = NSMinY(fieldBackground.frame) - (60 * self.viewModel.filenameHistory.count), .size = { 400, (60 * self.viewModel.filenameHistory.count) } };
+			[scrollView.animator setFrame:scrollViewFrame];
 			[scrollView.animator setAlphaValue:1.f];
 			[NSAnimationContext.currentContext setCompletionHandler:^{
-				NSRect rect = (NSRect){ .size = { 400, 460 } };
+				NSRect rect = (NSRect){ .size = { 400, 214 + (60 * self.viewModel.filenameHistory.count) } };
 				rect.origin = [(DSPMainWindow *)view.window originForNewFrame:rect];
 				[(DSPMainWindow *)view.window setFrame:rect display:YES animate:YES];
 				_exemptFlagForAnimation = YES;

@@ -47,9 +47,9 @@ static NSUInteger const DPSUniqueFilenameDepthLimit = 500;
 
 - (void)addFilenameToHistory:(NSString *)filename {
 	if (self.filenameHistory.count == 5) {
-		[self.filenameHistory removeObjectAtIndex:(self.filenameHistory.count - 1)];
+		[self.filenameHistory removeLastObject];
 	}
-	[self.filenameHistory insertObject:filename atIndex:0];
+	[self.filenameHistory insertObject:filename.copy atIndex:0];
 	[NSUserDefaults.standardUserDefaults setObject:self.filenameHistory forKey:DSPFilenameHistoryKey];
 }
 
