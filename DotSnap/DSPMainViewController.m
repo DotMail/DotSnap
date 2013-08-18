@@ -315,7 +315,7 @@
 		self.mouseDownBlock(nil);
 		return YES;
 	}
-	return YES;
+	return NO;
 }
 
 - (void)controlTextDidChange:(NSNotification *)obj {
