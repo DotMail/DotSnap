@@ -22,6 +22,15 @@
 #import "DSPPreferencesViewController.h"
 #import "LIFlipEffect.h"
 
+static NSString *DSPScrubString(NSString *string) {
+	NSString *cleanedString = string.stringByStandardizingPath.stringByAbbreviatingWithTildeInPath;
+	if (cleanedString.pathComponents.count >= 3) {
+		cleanedString = [[cleanedString.pathComponents objectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 3)]]componentsJoinedByString:@"/"];
+	}
+	
+	return cleanedString;
+}
+
 @interface DSPMainViewController ()
 @property (nonatomic, strong, readonly) DSPMainViewModel *viewModel;
 @property (nonatomic, strong) DSPPreferencesViewController *preferencesViewController;
@@ -125,7 +134,7 @@
 	saveToLabel.textColor = [NSColor colorWithCalibratedRed:0.171 green:0.489 blue:0.326 alpha:1.000];
 	NSString *desktopPath = [NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES) objectAtIndex:0];
 	self.viewModel.filepath = desktopPath;
-	saveToLabel.stringValue = [NSString stringWithFormat:@"SAVE TO: %@", desktopPath];
+	saveToLabel.stringValue = [NSString stringWithFormat:@"SAVE TO: %@", DSPScrubString(desktopPath)];
 	[backgroundView addSubview:saveToLabel];
 
 	DSPFilenameTextField *filenameField = [[DSPFilenameTextField alloc]initWithFrame:(NSRect){ .origin.x = 30, .origin.y = -5, .size = { NSWidth(_contentFrame) - 84, 34 } }];
@@ -136,6 +145,7 @@
 	directoryButton.rac_command = [RACCommand command];
 	[directoryButton.rac_command subscribeNext:^(NSButton *_) {
 		((DSPMainWindow *)view.window).isInOpenPanel = YES;
+		_exemptFlagForAnimation = YES;
 		[self.openPanel beginSheetModalForWindow:view.window completionHandler:^(NSInteger result){
 			((DSPMainWindow *)view.window).isInOpenPanel = NO;
 			if (result == NSFileHandlingPanelOKButton) {
@@ -145,10 +155,10 @@
 				[NSFileManager.defaultManager fileExistsAtPath:urlString isDirectory:&isDir];
 				if (isDir) {
 					self.viewModel.filepath = urlString;
-					saveToLabel.stringValue = [NSString stringWithFormat:@"SAVE TO: %@", urlString.stringByStandardizingPath.stringByAbbreviatingWithTildeInPath];
+					saveToLabel.stringValue = [NSString stringWithFormat:@"SAVE TO: %@", DSPScrubString(urlString)];
 				} else {
 					self.viewModel.filepath = urlString.stringByDeletingLastPathComponent;
-					saveToLabel.stringValue = [NSString stringWithFormat:@"SAVE TO: %@", urlString.stringByDeletingLastPathComponent.stringByStandardizingPath.stringByAbbreviatingWithTildeInPath];
+					saveToLabel.stringValue = [NSString stringWithFormat:@"SAVE TO: %@", DSPScrubString(urlString)];
 				}
 			} else {
 				_exemptOpenPanelCancellation = YES;
@@ -354,9 +364,7 @@
 		panel = [NSOpenPanel openPanel];
 		panel.canChooseDirectories = YES;
 		panel.allowsMultipleSelection = NO;
-		panel.becomesKeyOnlyIfNeeded = YES;
 		panel.canCreateDirectories = YES;
-		panel.message = @"Import one or more files or directories.";
 		[NSNotificationCenter.defaultCenter addObserver:self selector:@selector(windowDidResignKey:) name:NSWindowDidResignKeyNotification object:panel];
 	}
 	return panel;

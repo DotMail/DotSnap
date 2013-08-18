@@ -236,6 +236,7 @@
 		84D3475717BC96CB0060A937 /* DSPPreferencesFieldBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPPreferencesFieldBackgroundView.m; sourceTree = "<group>"; };
 		84D3475B17BD3D1E0060A937 /* TopPartArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TopPartArrow.png; path = Artwork/TopPartArrow.png; sourceTree = "<group>"; };
 		84D3475C17BD3D1E0060A937 /* TopPartArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TopPartArrow@2x.png"; path = "Artwork/TopPartArrow@2x.png"; sourceTree = "<group>"; };
+		84EC512417C181500043D1C8 /* DotSnap.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = DotSnap.entitlements; sourceTree = "<group>"; };
 		DD4F7C0413C30F9F00825C6E /* DotSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DotSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD4F7C0813C30F9F00825C6E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		DD4F7C0B13C30F9F00825C6E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -436,6 +437,7 @@
 				DD4F7C1413C30F9F00825C6E /* main.m */,
 				DD4F7C1613C30F9F00825C6E /* DotSnap-Prefix.pch */,
 				DD4F7C1013C30F9F00825C6E /* DotSnap-Info.plist */,
+				84EC512417C181500043D1C8 /* DotSnap.entitlements */,
 				8478363317A19D8F0050EBA6 /* DSPDefaults.h */,
 				8478363417A19E410050EBA6 /* DSPDefaults.m */,
 				8478363117A19D2B0050EBA6 /* Defaults.plist */,
@@ -528,7 +530,12 @@
 				LastUpgradeCheck = 0500;
 				TargetAttributes = {
 					DD4F7C0313C30F9F00825C6E = {
-						DevelopmentTeam = Z8TA3775D8;
+						DevelopmentTeam = JMX758PAJB;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -768,7 +775,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer: Tobias Schneider (C3E8NN4T3G)";
+				CODE_SIGN_ENTITLEMENTS = DotSnap/DotSnap.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer: Tobias Schneider (C3E8NN4T3G)";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -788,7 +796,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer: Tobias Schneider (C3E8NN4T3G)";
+				CODE_SIGN_ENTITLEMENTS = DotSnap/DotSnap.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer: Tobias Schneider (C3E8NN4T3G)";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

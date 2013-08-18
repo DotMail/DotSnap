@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSImage *highlightedMenuBarIcon;
 @property (readonly) NSStatusItem *statusItem;
 
+- (NSPoint)originForAttachedState;
 - (NSPoint)originForNewFrame:(NSRect)rect;
 
 @end
