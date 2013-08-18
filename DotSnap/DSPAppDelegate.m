@@ -17,6 +17,7 @@
 
 + (void)load {
 	[NSUserDefaults.standardUserDefaults registerDefaults:[NSDictionary dictionaryWithContentsOfFile:[NSBundle.mainBundle pathForResource:@"Defaults" ofType:@"plist"]]];
+	[NSUserDefaults resetStandardUserDefaults];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {

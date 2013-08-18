@@ -37,10 +37,6 @@
 		if (hovering) {
 			browseCircleLayer.contents = [NSImage imageNamed:@"BrowseCircle_Hover"];
 			arrowLayer.contents = [NSImage imageNamed:@"Browse_Arrow_Hover"];
-			
-			CABasicAnimation *spinningAnimation = [CABasicAnimation animationWithKeyPath:@"transform.x"];
-			spinningAnimation.toValue = @170;
-			spinningAnimation.duration = 0.5;
 		} else {
 			browseCircleLayer.contents = [NSImage imageNamed:@"BrowseCircle"];
 			arrowLayer.contents = [NSImage imageNamed:@"Browse_Arrow"];

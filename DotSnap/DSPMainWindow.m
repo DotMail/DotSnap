@@ -16,6 +16,7 @@ static CGFloat const DPSMenuBarWindowArrowWidth = 20.0;
 
 @implementation DSPMainWindow {
 	DSPMenuBarWindowIconView *statusItemView;
+	BOOL _resized;
 }
 
 #pragma mark - Lifecycle
@@ -49,7 +50,16 @@ static CGFloat const DPSMenuBarWindowArrowWidth = 20.0;
 	if (statusItemView) {
 		NSRect statusItemFrame = statusItemView.window.frame;
 		NSPoint midPoint = (NSPoint){ NSMidX(statusItemFrame), NSMinY(statusItemFrame) };
-		return (NSPoint){ midPoint.x - (NSWidth(self.frame) / 2), midPoint.y - NSHeight(self.frame) };
+		return (NSPoint){ midPoint.x - (NSWidth(self.frame) / 2) - 5, midPoint.y - NSHeight(self.frame) + ((_resized) ? -2 : 10) };
+	}
+	return NSZeroPoint;
+}
+
+- (NSPoint)originForNewFrame:(NSRect)rect {
+	if (statusItemView) {
+		NSRect statusItemFrame = statusItemView.window.frame;
+		NSPoint midPoint = (NSPoint){ NSMidX(statusItemFrame), NSMinY(statusItemFrame) };
+		return (NSPoint){ midPoint.x - (NSWidth(rect) / 2) - 5, midPoint.y - NSHeight(rect) - 2 };
 	}
 	return NSZeroPoint;
 }
@@ -57,6 +67,14 @@ static CGFloat const DPSMenuBarWindowArrowWidth = 20.0;
 - (void)makeKeyAndOrderFrontWithDuration:(CFTimeInterval)duration timing:(CAMediaTimingFunction *)timingFunction setup:(void (^)(CALayer *))setup animations:(void (^)(CALayer *))animations {
 	[self setFrameOrigin:[self originForAttachedState]];
 	[super makeKeyAndOrderFrontWithDuration:duration timing:timingFunction setup:setup animations:animations];
+}
+
+- (void)setFrame:(NSRect)frameRect display:(BOOL)displayFlag animate:(BOOL)animateFlag {
+	if (!_resized && animateFlag) {
+		_resized = YES;
+	}
+	[super setFrame:frameRect display:displayFlag animate:animateFlag];
+	[self setFrameOrigin:[self originForAttachedState]];
 }
 
 #pragma mark - Active/key events

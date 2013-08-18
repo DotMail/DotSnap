@@ -7,9 +7,7 @@
 //
 
 @interface DSPMainView : NSView
-@property (nonatomic, strong) NSColor *backgroundColor;
-@end
 
-@interface DSPBackgroundView : DSPMainView
-@end
+@property (nonatomic, readonly) CGRect contentRect;
 
+@end

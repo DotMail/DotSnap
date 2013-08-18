@@ -12,6 +12,7 @@
 #import "DSPMainWindow.h"
 #import "DSPMainViewModel.h"
 #import "DSPHistoryRowView.h"
+#import "DSPBackgroundView.h"
 #import "DSPHistoryTableView.h"
 #import "DSPFilenameTextField.h"
 #import "DSPPreferencesWindow.h"
@@ -33,6 +34,7 @@
 
 @implementation DSPMainViewController {
 	BOOL _exemptOpenPanelCancellation;
+	BOOL _exemptFlagForAnimation;
 }
 
 #pragma mark - Lifecycle
@@ -43,7 +45,7 @@
 	_contentFrame = rect;
 	_viewModel = [DSPMainViewModel new];
 	
-	_preferencesViewController = [[DSPPreferencesViewController alloc]initWithContentRect:(CGRect){ .size = { 442, 382 } }];
+	_preferencesViewController = [[DSPPreferencesViewController alloc]initWithContentRect:(CGRect){ .size = { 442, 372 } }];
 	_preferencesWindow = [[DSPPreferencesWindow alloc]initWithView:self.preferencesViewController.view attachedToPoint:(NSPoint){ } onSide:MAPositionBottom];
 	
 	_historySubject = [RACSubject subject];
@@ -52,32 +54,37 @@
 }
 
 - (void)loadView {
-	DSPMainView *view = [[DSPMainView alloc]initWithFrame:_contentFrame];
+	DSPMainView *realView = [[DSPMainView alloc]initWithFrame:_contentFrame];
+	realView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
+		
+	DSPBackgroundView *view = [[DSPBackgroundView alloc]initWithFrame:realView.contentRect];
 	view.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
 	view.backgroundColor = [NSColor colorWithCalibratedRed:0.260 green:0.663 blue:0.455 alpha:1.000];
-	view.layer.masksToBounds = YES;
+	[realView addSubview:view];
 	
-	DSPBackgroundView *backgroundView = [[DSPBackgroundView alloc]initWithFrame:(NSRect){ .origin.y = 60, .size = { NSWidth(_contentFrame), 150 } }];
+	DSPBackgroundTrackingView *backgroundView = [[DSPBackgroundTrackingView alloc]initWithFrame:(NSRect){ .origin.y = 36, .size = { NSWidth(_contentFrame), 150 } }];
+	backgroundView.backgroundColor = [NSColor colorWithCalibratedRed:0.260 green:0.663 blue:0.455 alpha:1.000];
 	backgroundView.autoresizingMask = NSViewMinYMargin;
 	[view addSubview:backgroundView];
-	
+
 	DSPShadowBox *windowShadow = [[DSPShadowBox alloc]initWithFrame:(NSRect){ .origin.y = NSHeight(_contentFrame) - 2, .size = { (NSWidth(_contentFrame)/2) - 10, 2 } }];
 	[view addSubview:windowShadow];
 	
 	DSPShadowBox *windowShadow2 = [[DSPShadowBox alloc]initWithFrame:(NSRect){ .origin.x = (NSWidth(_contentFrame)/2) + 10, .origin.y = NSHeight(_contentFrame) - 2, .size = { (NSWidth(_contentFrame)/2) - 10, 2 } }];
 	[view addSubview:windowShadow2];
-	
-	DSPShadowBox *separatorShadow = [[DSPShadowBox alloc]initWithFrame:(NSRect){ .origin.y = NSHeight(_contentFrame) - 146, .size = { NSWidth(_contentFrame), 2 } }];
+
+	DSPShadowBox *separatorShadow = [[DSPShadowBox alloc]initWithFrame:(NSRect){ .origin.y = NSHeight(view.frame) - 138, .size = { NSWidth(_contentFrame), 2 } }];
 	separatorShadow.borderColor = [NSColor colorWithCalibratedRed:0.159 green:0.468 blue:0.307 alpha:1.000];
 	separatorShadow.fillColor = [NSColor colorWithCalibratedRed:0.159 green:0.468 blue:0.307 alpha:1.000];
 	[view addSubview:separatorShadow];
 	
 	DSPShadowBox *underSeparatorShadow = [[DSPShadowBox alloc]initWithFrame:(NSRect){ .origin.y = 0, .size = { NSWidth(_contentFrame), 2 } }];
+	underSeparatorShadow.autoresizingMask = NSViewMaxYMargin;
 	underSeparatorShadow.borderColor = [NSColor colorWithCalibratedRed:0.168 green:0.434 blue:0.300 alpha:1.000];
 	underSeparatorShadow.fillColor = [NSColor colorWithCalibratedRed:0.181 green:0.455 blue:0.315 alpha:1.000];
 	[view addSubview:underSeparatorShadow];
 	
-	DSPMainView *fieldBackground = [[DSPMainView alloc]initWithFrame:(NSRect){ .origin.y = 4, .size = { NSWidth(_contentFrame), 60 } }];
+	DSPBackgroundView *fieldBackground = [[DSPBackgroundView alloc]initWithFrame:(NSRect){ .origin.y = -12, .size = { NSWidth(_contentFrame), 60 } }];
 	fieldBackground.layer = CALayer.layer;
 	fieldBackground.wantsLayer = YES;
 	fieldBackground.layer.borderColor = [NSColor colorWithCalibratedRed:0.794 green:0.840 blue:0.864 alpha:1.000].dsp_CGColor;
@@ -86,19 +93,19 @@
 	fieldBackground.autoresizingMask = NSViewMinYMargin;
 	[view addSubview:fieldBackground];
 	
-	DSPLabel *changeFolderLabel = [[DSPLabel alloc]initWithFrame:(NSRect){ .origin.x = 96, .origin.y = NSHeight(_contentFrame) - 80, .size = { NSWidth(_contentFrame), 36 } }];
+	DSPLabel *changeFolderLabel = [[DSPLabel alloc]initWithFrame:(NSRect){ .origin.x = 96, .origin.y = NSHeight(backgroundView.frame) - 80, .size = { NSWidth(_contentFrame), 36 } }];
 	changeFolderLabel.autoresizingMask = NSViewMinYMargin;
 	changeFolderLabel.stringValue = @"Change Folder";
-	[view addSubview:changeFolderLabel];
+	[backgroundView addSubview:changeFolderLabel];
 		
-	DSPLabel *saveToLabel = [[DSPLabel alloc]initWithFrame:(NSRect){ .origin.x = 96, .origin.y = NSHeight(_contentFrame) - 115, .size = { NSWidth(_contentFrame), 34 } }];
+	DSPLabel *saveToLabel = [[DSPLabel alloc]initWithFrame:(NSRect){ .origin.x = 96, .origin.y = NSHeight(backgroundView.frame) - 115, .size = { NSWidth(_contentFrame), 34 } }];
 	saveToLabel.autoresizingMask = NSViewMinYMargin;
 	saveToLabel.font = [NSFont fontWithName:@"HelveticaNeue-Bold" size:11.f];
 	saveToLabel.textColor = [NSColor colorWithCalibratedRed:0.171 green:0.489 blue:0.326 alpha:1.000];
 	NSString *desktopPath = [NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES) objectAtIndex:0];
 	self.viewModel.filepath = desktopPath;
 	saveToLabel.stringValue = [NSString stringWithFormat:@"SAVE TO: %@", desktopPath];
-	[view addSubview:saveToLabel];
+	[backgroundView addSubview:saveToLabel];
 	
 	NSScrollView *scrollView = [[NSScrollView alloc] initWithFrame:(NSRect){ .origin.y = -270, .size = { 400, 246 } }];
 	scrollView.autoresizingMask = NSViewMinYMargin;
@@ -116,15 +123,16 @@
 	tableView.delegate = self;
 	tableView.dataSource = self.viewModel;
 	scrollView.documentView = tableView;
+	tableView.enabled = NO;
 	[view addSubview:scrollView];
 	[scrollView setFrame:(NSRect){ .origin.y = 0, .size = { 400, 44 } }];
 	[scrollView setAlphaValue:0.f];
 
-	DSPFilenameTextField *filenameField = [[DSPFilenameTextField alloc]initWithFrame:(NSRect){ .origin.x = 30, .origin.y = 10, .size = { NSWidth(_contentFrame) - 84, 34 } }];
+	DSPFilenameTextField *filenameField = [[DSPFilenameTextField alloc]initWithFrame:(NSRect){ .origin.x = 30, .origin.y = -5, .size = { NSWidth(_contentFrame) - 84, 34 } }];
 	filenameField.delegate = self;
 	[view addSubview:filenameField];
 	
-	DSPDirectoryPickerButton *directoryButton = [[DSPDirectoryPickerButton alloc]initWithFrame:(NSRect){ .origin.x = 36, .origin.y = NSHeight(_contentFrame) - 96, .size = { 48, 48 } }];
+	DSPDirectoryPickerButton *directoryButton = [[DSPDirectoryPickerButton alloc]initWithFrame:(NSRect){ .origin.x = 36, .origin.y = NSHeight(backgroundView.frame) - 96, .size = { 48, 48 } }];
 	directoryButton.rac_command = [RACCommand command];
 	[directoryButton.rac_command subscribeNext:^(NSButton *_) {
 		((DSPMainWindow *)view.window).isInOpenPanel = YES;
@@ -147,41 +155,48 @@
 			}
 		}];
 	}];
-	[view addSubview:directoryButton];
+	[backgroundView addSubview:directoryButton];
 
-	DSPSpinningSettingsButton *optionsButton = [[DSPSpinningSettingsButton alloc]initWithFrame:(NSRect){ .origin.x = NSWidth(_contentFrame) - 45, .origin.y = 24, .size = { 17, 17 } } style:0];
+	DSPSpinningSettingsButton *optionsButton = [[DSPSpinningSettingsButton alloc]initWithFrame:(NSRect){ .origin.x = NSWidth(_contentFrame) - 45, .origin.y = 8, .size = { 17, 17 } } style:0];
 	optionsButton.rac_command = [RACCommand command];
 	[optionsButton.rac_command subscribeNext:^(NSButton *_) {
 		[(DSPMainWindow *)view.window setIsFlipping:YES];
 		self.preferencesViewController.presentingWindow = view.window;
-		[[[LIFlipEffect alloc] initFromWindow:view.window toWindow:self.preferencesWindow] run];
+		self.preferencesViewController.exemptForAnimation = _exemptFlagForAnimation;
+		[[[LIFlipEffect alloc] initFromWindow:view.window toWindow:self.preferencesWindow flag:_exemptFlagForAnimation] run];
 		[(DSPMainWindow *)view.window setIsFlipping:NO];
 	}];
 	[view addSubview:optionsButton];
 	
-	DSPShadowBox *historySeparatorShadow = [[DSPShadowBox alloc]initWithFrame:(NSRect){ .origin.y = 2, .size = { NSWidth(_contentFrame), 2 } }];
+	DSPShadowBox *historySeparatorShadow = [[DSPShadowBox alloc]initWithFrame:(NSRect){ .origin.y = -12, .size = { NSWidth(_contentFrame), 2 } }];
 	historySeparatorShadow.borderColor = [NSColor colorWithCalibratedRed:0.794 green:0.840 blue:0.864 alpha:1.000];
 	historySeparatorShadow.fillColor = [NSColor colorWithCalibratedRed:0.794 green:0.840 blue:0.864 alpha:1.000];
 	historySeparatorShadow.alphaValue = 0.f;
 	[view addSubview:historySeparatorShadow];
 		
-	self.view = view;
+	self.view = realView;
 
 	@weakify(self);
 	[NSNotificationCenter.defaultCenter addObserverForName:NSControlTextDidChangeNotification object:filenameField queue:nil usingBlock:^(NSNotification *note) {
 		@strongify(self);
-		if (!CGRectEqualToRect(scrollView.frame, (NSRect){ .origin.y = 6, .size = { 400, 246 } })) {
+		if (!CGSizeEqualToSize(view.window.frame.size, (CGSize){ 400, 460 })) {
 			[view setNeedsDisplay:YES];
 			historySeparatorShadow.alphaValue = 0.f;
 			fieldBackground.backgroundColor = [NSColor whiteColor];
 			fieldBackground.layer.borderColor = [NSColor colorWithCalibratedRed:0.794 green:0.840 blue:0.864 alpha:1.000].dsp_CGColor;
 			
-			NSRect rect = (NSRect){ .origin.x = view.window.frame.origin.x, .origin.y = NSMaxY(view.window.screen.frame) - 492, .size = { 400, 470 } };
-			[(DSPMainWindow *)view.window setFrame:rect display:YES animate:NO];
+			[scrollView.documentView setEnabled:YES];
 			
 			[NSAnimationContext beginGrouping];
-			[scrollView.animator setFrame:(NSRect){ .origin.y = 6, .size = { 400, 246 } }];
+			[scrollView.animator setFrame:(NSRect){ .origin.y = -242, .size = { 400, 248 } }];
 			[scrollView.animator setAlphaValue:1.f];
+			[NSAnimationContext.currentContext setCompletionHandler:^{
+				NSRect rect = (NSRect){ .size = { 400, 460 } };
+				rect.origin = [(DSPMainWindow *)view.window originForNewFrame:rect];
+				[(DSPMainWindow *)view.window setFrame:rect display:YES animate:YES];
+				_exemptFlagForAnimation = YES;
+		
+			}];
 			[NSAnimationContext endGrouping];
 		}
 		if (filenameField.stringValue.length == 0) {
@@ -202,16 +217,20 @@
 		fieldBackground.layer.borderColor = [NSColor colorWithCalibratedRed:0.850 green:0.888 blue:0.907 alpha:1.000].dsp_CGColor;
 		[optionsButton spinOut];
 
+		[scrollView.documentView setEnabled:NO];
+		
 		[NSAnimationContext beginGrouping];
 		[scrollView.animator setFrame:(NSRect){ .origin.y = 0, .size = { 400, 44 } }];
 		[scrollView.animator setAlphaValue:0.f];
-		[NSAnimationContext.currentContext setCompletionHandler:^{
-			[(DSPMainWindow *)view.window setFrame:(NSRect){ .origin.x = view.window.frame.origin.x, .origin.y = NSMaxY(view.window.screen.frame) - 246, .size = { 400, 224 } } display:YES animate:NO];
-		}];
+//		[NSAnimationContext.currentContext setCompletionHandler:^{
+			NSRect rect = (NSRect){ .size = { 400, 214 } };
+			rect.origin = [(DSPMainWindow *)view.window originForNewFrame:rect];
+			[(DSPMainWindow *)view.window setFrame:rect display:YES animate:YES];
+//		}];
 		[NSAnimationContext endGrouping];
 	};
 	
-	self.mouseDownBlock = ^ (NSEvent *theEvent) {
+	self.mouseDownBlock = ^(NSEvent *theEvent) {
 		if (CGRectContainsPoint(fieldBackground.frame, [theEvent locationInWindow]) && !CGRectContainsPoint(optionsButton.frame, [theEvent locationInWindow])) {
 			filenameField.enabled = YES;
 			[filenameField becomeFirstResponder];
@@ -220,6 +239,8 @@
 			filenameField.enabled = NO;
 			[filenameField resignFirstResponder];
 			
+			[scrollView.documentView setEnabled:YES];
+
 			historySeparatorShadow.alphaValue = 0.f;
 			fieldBackground.backgroundColor = [NSColor colorWithCalibratedRed:0.850 green:0.888 blue:0.907 alpha:1.000];
 			fieldBackground.layer.borderColor = [NSColor colorWithCalibratedRed:0.850 green:0.888 blue:0.907 alpha:1.000].dsp_CGColor;
@@ -233,9 +254,11 @@
 				[NSAnimationContext beginGrouping];
 				[scrollView.animator setFrame:(NSRect){ .origin.y = 0, .size = { 400, 44 } }];
 				[scrollView.animator setAlphaValue:0.f];
-				[NSAnimationContext.currentContext setCompletionHandler:^{
-					[(DSPMainWindow *)view.window setFrame:(NSRect){ .origin.x = view.window.frame.origin.x, .origin.y = NSMaxY(view.window.screen.frame) - 246, .size = { 400, 224 } } display:YES animate:NO];
-				}];
+//				[NSAnimationContext.currentContext setCompletionHandler:^{
+					NSRect rect = (NSRect){ .size = { 400, 214 } };
+					rect.origin = [(DSPMainWindow *)view.window originForNewFrame:rect];
+					[(DSPMainWindow *)view.window setFrame:rect display:YES animate:YES];
+//				}];
 				[NSAnimationContext endGrouping];
 			}
 		}

@@ -90,7 +90,7 @@
         [self _updateBackground];
         
         // Add view as subview of our contentView.
-        [[self contentView] addSubview:_view];
+        self.contentView = _view;
         
         // Subscribe to notifications for when we change size.
         [[NSNotificationCenter defaultCenter] addObserver:self 
@@ -553,17 +553,18 @@
     // Call NSWindow's implementation of -setBackgroundColor: because we override 
     // it in this class to let us set the entire background image of the window 
     // as an NSColor patternImage.
-	if (!_resizing) {
-		NSDisableScreenUpdates();
-	}
-    [super setBackgroundColor:[self _backgroundColorPatternImage]];
+//	if (!_resizing) {
+//		NSDisableScreenUpdates();
+//	}
+	[super setBackgroundColor:[NSColor clearColor]];
     if ([self isVisible]) {
         [self display];
-        [self invalidateShadow];
+		[self setHasShadow:NO];
+        [self setHasShadow:YES];
     }
-	if (!_resizing) {
-    	NSEnableScreenUpdates();
-	}
+//	if (!_resizing) {
+//    	NSEnableScreenUpdates();
+//	}
 }
 
 

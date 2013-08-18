@@ -8,59 +8,46 @@
 
 #import "DSPMainView.h"
 
-@implementation DSPMainView
+@implementation DSPMainView {
+	BOOL showingPentagon;
+}
 
-- (id)initWithFrame:(NSRect)frame {
-	self = [super initWithFrame:frame];
-
-	self.layer = CALayer.layer;
-	self.layer.doubleSided = YES;
-	self.wantsLayer = YES;
+- (void)drawRect:(NSRect)dirtyRect {
+	CGRect slice, remainder;
+	CGRectDivide(self.bounds, &slice, &remainder, 10, CGRectMaxYEdge);
 	
-	return self;
-}
+	[[NSColor clearColor] set];
+	NSRectFill(slice);
 
-- (void)setBackgroundColor:(NSColor *)backgroundColor {
-	self.layer.backgroundColor = backgroundColor.dsp_CGColor;
-	[self.layer setNeedsDisplay];
-}
-
-@end
-
-@implementation DSPBackgroundView {
-	NSTrackingArea *trackingArea;
-}
-
-- (id)initWithFrame:(NSRect)frame {
-	self = [super initWithFrame:frame];
+	[[NSColor colorWithCalibratedRed:0.357 green:0.787 blue:0.572 alpha:1.000] set];
+	slice.size.height = 1;
+	slice.origin.y = NSHeight(self.bounds) - 9;
+	NSRectFill(slice);
 	
-	self.backgroundColor = [NSColor colorWithCalibratedRed:0.260 green:0.663 blue:0.455 alpha:1.000];
+	[[NSColor colorWithCalibratedRed:0.260 green:0.663 blue:0.455 alpha:1.000] set];
+	slice.size.height = 1;
+	slice.origin.y = NSHeight(self.bounds) - 10;
+	NSRectFill(slice);
 	
-	return self;
-}
+	[[NSColor whiteColor] set];
+	NSRectFill(remainder);
+	
+	BOOL shouldDisplayWindow = NO;
 
-- (void)mouseEntered:(NSEvent *)theEvent {
-	self.backgroundColor = [NSColor colorWithCalibratedRed:0.231 green:0.682 blue:0.478 alpha:1.000];
-	[self.window.nextResponder mouseEntered:theEvent];
-}
-
-- (void)mouseExited:(NSEvent *)theEvent {
-	self.backgroundColor = [NSColor colorWithCalibratedRed:0.260 green:0.663 blue:0.455 alpha:1.000];
-	[self.window.nextResponder mouseExited:theEvent];
-}
-
-- (void)ensureTrackingArea {
-	if (!trackingArea) {
-		trackingArea = [[NSTrackingArea alloc] initWithRect:NSZeroRect options:NSTrackingInVisibleRect | NSTrackingActiveAlways | NSTrackingMouseEnteredAndExited owner:self userInfo:nil];
+	[[NSImage imageNamed:@"TopPartArrow"]drawAtPoint:NSMakePoint((NSWidth(self.bounds) - 400)/2, NSHeight(self.bounds) - 10) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.f];
+	
+	if (shouldDisplayWindow) {
+		shouldDisplayWindow = (showingPentagon == YES);
+//		[[self window] display];
+		[[self window] setHasShadow:NO];
+		[[self window] setHasShadow:YES];
 	}
 }
 
-- (void)updateTrackingAreas {
-	[super updateTrackingAreas];
-	[self ensureTrackingArea];
-	if (![[self trackingAreas] containsObject:trackingArea]) {
-		[self addTrackingArea:trackingArea];
-	}
+- (CGRect)contentRect {
+	CGRect rect = self.bounds;
+	rect.size.height -= 10;
+	return rect;
 }
 
 @end

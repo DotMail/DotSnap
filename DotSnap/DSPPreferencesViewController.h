@@ -15,5 +15,6 @@
 - (id)initWithContentRect:(CGRect)rect;
 
 @property (nonatomic, weak) NSWindow *presentingWindow;
+@property (nonatomic) BOOL exemptForAnimation;
 
 @end

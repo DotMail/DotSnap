@@ -19,14 +19,14 @@
 - (id)init {
 	self = [super init];
 	
-	_viewController = [[DSPMainViewController alloc]initWithContentRect:(NSRect){ .size = { 400, 210 } }];
+	_viewController = [[DSPMainViewController alloc]initWithContentRect:(NSRect){ .size = { 400, 196 } }];
 	[self setNextResponder:_viewController];
 
 	self.window = [[DSPMainWindow alloc]initWithView:self.viewController.view attachedToPoint:(NSPoint){ } inWindow:nil onSide:MAPositionBottom atDistance:5.0 mainWindow:YES];
 	self.window.cornerRadius = 0.f;
 	self.window.arrowHeight = 12.f;
 	self.window.borderWidth = 0.f;
-	self.window.backgroundColor = [NSColor colorWithCalibratedRed:0.260 green:0.663 blue:0.455 alpha:1.0];
+	self.window.backgroundColor = NSColor.clearColor;
 	self.window.arrowBaseWidth = 20.f;
 	self.window.menuBarIcon = [NSImage imageNamed:@"MenubarIcon"];
 	self.window.highlightedMenuBarIcon = [NSImage imageNamed:@"MenubarIcon_Highlighted"];
