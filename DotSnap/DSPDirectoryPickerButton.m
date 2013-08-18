@@ -40,16 +40,18 @@
 	self.bordered = NO;
 	self.buttonType = NSMomentaryChangeButton;
 	
+	@weakify(self);
 	self.redrawBlock = ^(BOOL highlighted, BOOL hovering, NSEvent *event) {
+		@strongify(self);
 		if (hovering) {
 			browseCircleLayer.contents = [NSImage imageNamed:@"BrowseCircle_Hover"];
 			arrowLayer.contents = [NSImage imageNamed:@"Browse_Arrow_Hover"];
 			arrowLayer.frame = CGRectOffset(arrowLayer.frame, NSWidth(browseCircleLayer.frame)/2 + 10, 0);
-			hoverArrowLayer.frame = CGRectOffset(hoverArrowLayer.frame, NSWidth(browseCircleLayer.frame)/2 + 10, 0);
+			hoverArrowLayer.frame = self.bounds;
 		} else {
 			browseCircleLayer.contents = [NSImage imageNamed:@"BrowseCircle"];
 			arrowLayer.contents = [NSImage imageNamed:@"Browse_Arrow"];
-			arrowLayer.frame = CGRectOffset(arrowLayer.frame, -(NSWidth(browseCircleLayer.frame)/2) - 10, 0);
+			arrowLayer.frame = self.bounds;
 			hoverArrowLayer.frame = CGRectOffset(hoverArrowLayer.frame, -(NSWidth(browseCircleLayer.frame)/2) - 10, 0);
 
 		}

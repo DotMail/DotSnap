@@ -27,7 +27,7 @@
 	if ([string hasPrefix:@".png"]) {
 		stringToAttribute = [string stringByAppendingPathExtension:@"png"];
 	}
-	NSAttributedString *attributedString = [[NSAttributedString alloc]initWithString:string attributes:nil];
+	NSAttributedString *attributedString = [[NSAttributedString alloc]initWithString:stringToAttribute attributes:nil];
 	
 	return attributedString;
 }

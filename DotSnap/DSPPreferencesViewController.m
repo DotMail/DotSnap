@@ -36,6 +36,9 @@
 }
 
 - (void)loadView {
+	
+	CTFontRef helveticaNeue = CTFontCreateWithName(CFSTR("HelveticaNeue"), 18.f, NULL);
+	
 	DSPMainView *realView = [[DSPMainView alloc]initWithFrame:_contentRect];
 	realView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
 	
@@ -74,7 +77,7 @@
 	CATextLayer *versionTextLayer = [[CATextLayer alloc]init];
 	versionTextLayer.frame = (NSRect){ NSMidX(_contentRect) - 100, .origin.y = NSHeight(_contentRect) - 104, .size.width = 200, .size.height = 24 };
 	versionTextLayer.foregroundColor = [NSColor colorWithCalibratedRed:0.136 green:0.407 blue:0.264 alpha:1.000].dsp_CGColor;
-	versionTextLayer.font = CTFontCreateWithName(CFSTR("HelveticaNeue"), 16.f, NULL);
+	versionTextLayer.font = helveticaNeue;
 	versionTextLayer.fontSize = 16.f;
 	versionTextLayer.alignmentMode = @"center";
 	versionTextLayer.string = [NSString stringWithFormat:@"Version %@", [NSBundle.mainBundle.infoDictionary objectForKey:@"CFBundleShortVersionString"]];
@@ -119,7 +122,7 @@
 	CATextLayer *gistTextLayer = [[CATextLayer alloc]init];
 	gistTextLayer.frame = (NSRect){ .origin = { 36, NSHeight(fieldBackground.frame) + 70 }, .size.width = NSWidth(_contentRect) - 72, .size.height = 24 };
 	gistTextLayer.foregroundColor = NSColor.whiteColor.dsp_CGColor;
-	gistTextLayer.font = CTFontCreateWithName(CFSTR("HelveticaNeue"), 18.f, NULL);
+	gistTextLayer.font = helveticaNeue;
 	gistTextLayer.fontSize = 18.f;
 	gistTextLayer.alignmentMode = @"center";
 	gistTextLayer.string = @"          is brought to you by";
@@ -133,7 +136,7 @@
 	CATextLayer *andTextLayer = [[CATextLayer alloc]init];
 	andTextLayer.frame = (NSRect){ .origin = { 152, NSHeight(fieldBackground.frame) + 50 }, .size.width = 36, .size.height = 24 };
 	andTextLayer.foregroundColor = NSColor.whiteColor.dsp_CGColor;
-	andTextLayer.font = CTFontCreateWithName(CFSTR("HelveticaNeue"), 18.f, NULL);
+	andTextLayer.font = helveticaNeue;
 	andTextLayer.fontSize = 18.f;
 	andTextLayer.alignmentMode = @"left";
 	andTextLayer.string = @"and";
@@ -176,6 +179,8 @@
 	[view addSubview:underSeparatorShadow];
 	
 	self.view = realView;
+	
+	CFRelease(helveticaNeue);
 }
 
 - (void)openCodafi:(id)sender {

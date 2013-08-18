@@ -8,9 +8,7 @@
 
 #import "DSPMainView.h"
 
-@implementation DSPMainView {
-	BOOL showingPentagon;
-}
+@implementation DSPMainView 
 
 - (void)drawRect:(NSRect)dirtyRect {
 	CGRect slice, remainder;
@@ -32,16 +30,7 @@
 	[[NSColor whiteColor] set];
 	NSRectFill(remainder);
 	
-	BOOL shouldDisplayWindow = NO;
-
 	[[NSImage imageNamed:@"TopPartArrow"]drawAtPoint:NSMakePoint(((NSWidth(self.bounds) - 400)/2) - 6, NSHeight(self.bounds) - 10) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.f];
-	
-	if (shouldDisplayWindow) {
-		shouldDisplayWindow = (showingPentagon == YES);
-//		[[self window] display];
-		[[self window] setHasShadow:NO];
-		[[self window] setHasShadow:YES];
-	}
 }
 
 - (CGRect)contentRect {

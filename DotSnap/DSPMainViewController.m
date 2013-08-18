@@ -223,11 +223,10 @@
 		[NSAnimationContext beginGrouping];
 		[scrollView.animator setFrame:(NSRect){ .origin.y = 0, .size = { 400, 44 } }];
 		[scrollView.animator setAlphaValue:0.f];
-//		[NSAnimationContext.currentContext setCompletionHandler:^{
-			NSRect rect = (NSRect){ .size = { 400, 214 } };
-			rect.origin = [(DSPMainWindow *)view.window originForNewFrame:rect];
-			[(DSPMainWindow *)view.window setFrame:rect display:YES animate:YES];
-//		}];
+		
+		NSRect rect = (NSRect){ .size = { 400, 214 } };
+		rect.origin = [(DSPMainWindow *)view.window originForNewFrame:rect];
+		[(DSPMainWindow *)view.window setFrame:rect display:YES animate:YES];
 		[NSAnimationContext endGrouping];
 	};
 	
@@ -255,11 +254,10 @@
 				[NSAnimationContext beginGrouping];
 				[scrollView.animator setFrame:(NSRect){ .origin.y = NSMinY(fieldBackground.frame) - 44, .size = { 400, 44 } }];
 				[scrollView.animator setAlphaValue:0.f];
-//				[NSAnimationContext.currentContext setCompletionHandler:^{
-					NSRect rect = (NSRect){ .size = { 400, 214 } };
-					rect.origin = [(DSPMainWindow *)view.window originForNewFrame:rect];
-					[(DSPMainWindow *)view.window setFrame:rect display:YES animate:YES];
-//				}];
+				
+				NSRect rect = (NSRect){ .size = { 400, 214 } };
+				rect.origin = [(DSPMainWindow *)view.window originForNewFrame:rect];
+				[(DSPMainWindow *)view.window setFrame:rect display:YES animate:YES];
 				[NSAnimationContext endGrouping];
 			}
 		}
