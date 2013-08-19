@@ -10,6 +10,8 @@
 	<false/>
 	<key>DSPAutosaveInputField</key>
 	<true/>
+	<key>DSPDefaultFilePathKey</key>
+	<string>@default</string>
 	<key>DSPFilenameHistory</key>
 	<array/>
 </dict>

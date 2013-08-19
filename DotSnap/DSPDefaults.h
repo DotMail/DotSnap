@@ -27,4 +27,6 @@ DOTSNAP_EXPORT NSString *const DSPFilenameHistoryKey;
 
 DOTSNAP_EXPORT NSString *const DSPAutosaveInputFieldKey;
 
+DOTSNAP_EXPORT NSString *const DSPDefaultFilePathKey;
+
 #endif

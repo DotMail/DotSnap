@@ -17,3 +17,5 @@ NSString *const DSPAddsTimestampKey = @"DSPAddsTimestamp";
 NSString *const DSPFilenameHistoryKey = @"DSPFilenameHistory";
 
 NSString *const DSPAutosaveInputFieldKey = @"DSPAutosaveInputField";
+
+NSString *const DSPDefaultFilePathKey = @"DSPDefaultFilePathKey";

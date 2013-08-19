@@ -24,8 +24,8 @@
 
 static NSString *DSPScrubString(NSString *string) {
 	NSString *cleanedString = string.stringByStandardizingPath.stringByAbbreviatingWithTildeInPath;
-	if (cleanedString.pathComponents.count >= 3) {
-		cleanedString = [[cleanedString.pathComponents objectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 3)]]componentsJoinedByString:@"/"];
+	if (cleanedString.pathComponents.count >= 2) {
+		cleanedString = [[cleanedString.pathComponents objectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(cleanedString.pathComponents.count - 2, 2)]]componentsJoinedByString:@"/"];
 	}
 	
 	return cleanedString;
@@ -132,7 +132,10 @@ static NSString *DSPScrubString(NSString *string) {
 	saveToLabel.autoresizingMask = NSViewMinYMargin;
 	saveToLabel.font = [NSFont fontWithName:@"HelveticaNeue-Bold" size:11.f];
 	saveToLabel.textColor = [NSColor colorWithCalibratedRed:0.171 green:0.489 blue:0.326 alpha:1.000];
-	NSString *desktopPath = [NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+	NSString *desktopPath = [NSUserDefaults.standardUserDefaults stringForKey:DSPDefaultFilePathKey];
+	if ([desktopPath isEqualToString:@"@default"]) {
+		desktopPath = [NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+	}
 	self.viewModel.filepath = desktopPath;
 	saveToLabel.stringValue = [NSString stringWithFormat:@"SAVE TO: %@", DSPScrubString(desktopPath)];
 	[backgroundView addSubview:saveToLabel];
@@ -206,7 +209,6 @@ static NSString *DSPScrubString(NSString *string) {
 				rect.origin = [(DSPMainWindow *)view.window originForNewFrame:rect];
 				[(DSPMainWindow *)view.window setFrame:rect display:YES animate:YES];
 				_exemptFlagForAnimation = YES;
-		
 			}];
 			[NSAnimationContext endGrouping];
 		}

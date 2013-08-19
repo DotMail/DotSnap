@@ -58,6 +58,11 @@ static NSUInteger const DPSUniqueFilenameDepthLimit = 500;
 	[NSUserDefaults.standardUserDefaults setObject:self.filenameHistory forKey:DSPFilenameHistoryKey];
 }
 
+- (void)setFilepath:(NSString *)filepath {
+	_filepath = filepath;
+	[NSUserDefaults.standardUserDefaults setObject:filepath forKey:DSPDefaultFilePathKey];
+}
+
 #pragma mark - NSTableViewDatasource
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
