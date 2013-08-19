@@ -58,4 +58,8 @@
 	}
 }
 
+- (void)resetCursorRects {
+	[self addCursorRect:self.bounds cursor:NSCursor.pointingHandCursor];
+}
+
 @end

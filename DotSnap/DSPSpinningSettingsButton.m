@@ -32,6 +32,12 @@
 	gearLayer.frame = self.bounds;
 	[self.layer addSublayer:gearLayer];
 	
+	CALayer *checkmarkLayer = CALayer.layer;
+	checkmarkLayer.contents = [NSImage imageNamed:@"Checkmark"];
+	checkmarkLayer.frame = self.bounds;
+	checkmarkLayer.opacity = 0.f;
+	[self.layer addSublayer:checkmarkLayer];
+	
 	self.autoresizingMask = NSViewMinYMargin;
 	self.bordered = NO;
 	self.buttonType = NSMomentaryChangeButton;
@@ -66,13 +72,17 @@
 		spinningAnimation.toValue = @(M_PI);
 		spinningAnimation.duration = 0.5;
 		
+		CABasicAnimation *gearopacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+		gearopacityAnimation.toValue = @0;
+		gearopacityAnimation.duration = 0.6;
+		
 		CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
-		opacityAnimation.toValue = @0;
+		opacityAnimation.toValue = @1;
 		opacityAnimation.duration = 0.6;
 		spinningAnimation.delegate = self;
 
 		[[self rac_signalForSelector:@selector(animationDidStop:finished:)]subscribeNext:^(id x) {
-			gearLayer.contents = [NSImage imageNamed:@"Checkmark"];
+			
 			double delayInSeconds = 0.5;
 			dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
 			dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
@@ -84,7 +94,8 @@
 			});
 		}];
 		[gearLayer addAnimation:spinningAnimation forKey:nil];
-		[gearLayer addAnimation:opacityAnimation forKey:nil];
+		[gearLayer addAnimation:gearopacityAnimation forKey:nil];
+		[checkmarkLayer addAnimation:opacityAnimation forKey:nil];
 	};
 	
 	return self;

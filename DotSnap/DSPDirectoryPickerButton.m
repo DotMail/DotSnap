@@ -60,10 +60,6 @@
 	return self;
 }
 
-- (void)resetCursorRects {
-	[self addCursorRect:self.bounds cursor:NSCursor.pointingHandCursor];
-}
-
 - (void)mouseEntered:(NSEvent *)theEvent {
 	self.redrawBlock(NO, YES, theEvent);
 }
