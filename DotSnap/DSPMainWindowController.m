@@ -32,6 +32,10 @@
 	self.window.highlightedMenuBarIcon = [NSImage imageNamed:@"MenubarIcon_Highlighted"];
 	self.window.acceptsMouseMovedEvents = YES;
 	
+	NSRect rect = (NSRect){ .size = { 400, 214 } };
+	rect.origin = [(DSPMainWindow *)self.window originForNewFrame:rect];
+	[(DSPMainWindow *)self.window setFrame:rect display:YES animate:YES];
+	
 	return self;
 }
 
