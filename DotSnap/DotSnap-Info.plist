@@ -8,8 +8,6 @@
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
 	<string>DotSnap</string>
-	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2013 Tobias van Schneider</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.vanschneider.${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -28,8 +26,12 @@
 	<string>public.app-category.utilities</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>${MACOSX_DEPLOYMENT_TARGET}</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2013 Tobias van Schneider</string>
 	<key>NSMainNibFile</key>
-	<string>MainMenu.xib</string>
+	<string>MainMenu</string>
+	<key>LSUIElement</key>
+	<true/>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 </dict>
