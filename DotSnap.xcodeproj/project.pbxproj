@@ -75,6 +75,7 @@
 		84808ECD17CA6898002A6288 /* DotSnap.icns in Resources */ = {isa = PBXBuildFile; fileRef = 842B008E17B583CA00EB9672 /* DotSnap.icns */; };
 		84808ECE17CA6D7E002A6288 /* MainMenu.xib in Sources */ = {isa = PBXBuildFile; fileRef = DD4F7C1D13C30F9F00825C6E /* MainMenu.xib */; };
 		84808ECF17CA6F31002A6288 /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8478363117A19D2B0050EBA6 /* Defaults.plist */; };
+		84808ED117CA6F63002A6288 /* ReactiveCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 847835E217A0E3AA0050EBA6 /* ReactiveCocoa.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +136,19 @@
 			remoteInfo = ReactiveCocoa;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		84808ED017CA6F5E002A6288 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				84808ED117CA6F63002A6288 /* ReactiveCocoa.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		8405D57E17A5A8D700D7990E /* SettingsWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SettingsWhite.png; path = Artwork/SettingsWhite.png; sourceTree = "<group>"; };
@@ -552,6 +566,7 @@
 				84808E5717CA67C9002A6288 /* Sources */,
 				84808E5817CA67C9002A6288 /* Frameworks */,
 				84808E5917CA67C9002A6288 /* Resources */,
+				84808ED017CA6F5E002A6288 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -826,7 +841,8 @@
 				);
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				INFOPLIST_FILE = "DotSnap/DotSnap-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
@@ -851,7 +867,8 @@
 				GCC_PREFIX_HEADER = "DotSnap/DotSnap-Prefix.pch";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				INFOPLIST_FILE = "DotSnap/DotSnap-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
