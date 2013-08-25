@@ -1,13 +1,13 @@
 //
 //  main.m
-//  Popup
+//  DotSnap
 //
-//  Created by Vadim Shpakovski on 7/5/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Created by Robert Widmann on 8/25/13.
+//
 //
 
 #import <Cocoa/Cocoa.h>
 
-int main(int argc, char *argv[]) {
-    return NSApplicationMain(argc, (const char **)argv);
+int main(int argc, const char * argv[]) {
+	return NSApplicationMain(argc, argv);
 }

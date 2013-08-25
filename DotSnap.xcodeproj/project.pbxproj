@@ -7,72 +7,72 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8405D58017A5A8D700D7990E /* SettingsWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 8405D57E17A5A8D700D7990E /* SettingsWhite.png */; };
-		8405D58117A5A8D700D7990E /* SettingsWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8405D57F17A5A8D700D7990E /* SettingsWhite@2x.png */; };
-		8405D58417A5C4D500D7990E /* DSPPreferencesWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 8405D58317A5C4D500D7990E /* DSPPreferencesWindow.m */; };
-		8405D58717A5D60000D7990E /* DSPPNGFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8405D58617A5D60000D7990E /* DSPPNGFormatter.m */; };
-		8405D58C17A5E06D00D7990E /* LIEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 8405D58917A5E06D00D7990E /* LIEffect.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		8405D58D17A5E06D00D7990E /* LIFlipEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 8405D58B17A5E06D00D7990E /* LIFlipEffect.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		842B007717B47AEC00EB9672 /* DSPShadowBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 842B007617B47AEC00EB9672 /* DSPShadowBox.m */; };
-		842B007F17B47B6900EB9672 /* DSPLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 842B007E17B47B6900EB9672 /* DSPLabel.m */; };
-		842B008217B47C0C00EB9672 /* DSPFilenameTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 842B008117B47C0C00EB9672 /* DSPFilenameTextField.m */; };
-		842B008B17B489A600EB9672 /* DSPGlowingNameButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 842B008A17B489A600EB9672 /* DSPGlowingNameButton.m */; };
-		842B008F17B583CA00EB9672 /* DotSnap.icns in Resources */ = {isa = PBXBuildFile; fileRef = 842B008E17B583CA00EB9672 /* DotSnap.icns */; };
-		842B009417B58C3A00EB9672 /* BrowseCircle_Hover.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B009017B58C0000EB9672 /* BrowseCircle_Hover.png */; };
-		842B009517B58C3A00EB9672 /* BrowseCircle_Hover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B009117B58C0000EB9672 /* BrowseCircle_Hover@2x.png */; };
-		842B009A17B58D5F00EB9672 /* Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B009617B58D3D00EB9672 /* Checkmark.png */; };
-		842B009B17B58D5F00EB9672 /* Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B009717B58D3D00EB9672 /* Checkmark@2x.png */; };
-		842B009E17B5915900EB9672 /* DSPMenuBarWindowIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 842B009D17B5915900EB9672 /* DSPMenuBarWindowIconView.m */; };
-		842B00A117B5F40500EB9672 /* PreferencesLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B009F17B5F40500EB9672 /* PreferencesLogo.png */; };
-		842B00A217B5F40500EB9672 /* PreferencesLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B00A017B5F40500EB9672 /* PreferencesLogo@2x.png */; };
-		842B027917B7612600EB9672 /* SwitchCheckmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B027517B7612600EB9672 /* SwitchCheckmark.png */; };
-		842B027A17B7612600EB9672 /* SwitchCheckmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B027617B7612600EB9672 /* SwitchCheckmark@2x.png */; };
-		842B027B17B7612600EB9672 /* SwitchXMark.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B027717B7612600EB9672 /* SwitchXMark.png */; };
-		842B027C17B7612600EB9672 /* SwitchXMark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B027817B7612600EB9672 /* SwitchXMark@2x.png */; };
-		842B028A17B8256800EB9672 /* DSPBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 842B028917B8256800EB9672 /* DSPBackgroundView.m */; };
-		84600B4517A31CB500D3E8FE /* MAAttachedWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 84600B4417A31CB500D3E8FE /* MAAttachedWindow.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		84600B4E17A34A8400D3E8FE /* DSPHistoryRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84600B4D17A34A8400D3E8FE /* DSPHistoryRowView.m */; };
-		84600B5D17A354D300D3E8FE /* DSPHistoryTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84600B5C17A354D300D3E8FE /* DSPHistoryTableView.m */; };
-		847835C517A0D2750050EBA6 /* DSPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 847835C417A0D2750050EBA6 /* DSPAppDelegate.m */; };
-		847835C817A0D3590050EBA6 /* DSPMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847835C717A0D3590050EBA6 /* DSPMainWindowController.m */; };
-		847835CB17A0D3650050EBA6 /* DSPMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847835CA17A0D3650050EBA6 /* DSPMainViewController.m */; };
-		847835D617A0DB670050EBA6 /* DSPMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 847835D517A0DB670050EBA6 /* DSPMainView.m */; };
-		847835EA17A0E3E30050EBA6 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847835E217A0E3AA0050EBA6 /* ReactiveCocoa.framework */; };
-		847835EF17A0EABD0050EBA6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847835EE17A0EABD0050EBA6 /* QuartzCore.framework */; };
-		8478360817A0F5560050EBA6 /* DSPMainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478360717A0F5560050EBA6 /* DSPMainWindow.m */; };
-		8478361717A0F6A10050EBA6 /* JNWAnimatableWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478361617A0F6A10050EBA6 /* JNWAnimatableWindow.m */; };
-		8478361E17A1001F0050EBA6 /* DSPMainViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478361D17A1001F0050EBA6 /* DSPMainViewModel.m */; };
-		8478362C17A198860050EBA6 /* DSPPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478362B17A198860050EBA6 /* DSPPreferencesViewController.m */; };
-		8478363217A19D2B0050EBA6 /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8478363117A19D2B0050EBA6 /* Defaults.plist */; };
-		8478363517A19E410050EBA6 /* DSPDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478363417A19E410050EBA6 /* DSPDefaults.m */; };
-		8478364217A1FAE00050EBA6 /* DSPSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478364117A1FAE00050EBA6 /* DSPSwitch.m */; };
-		8478364917A205D50050EBA6 /* DSPLaunchServicesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478364817A205D50050EBA6 /* DSPLaunchServicesManager.m */; };
-		8478365D17A221490050EBA6 /* NSColor+DSPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478365C17A221490050EBA6 /* NSColor+DSPExtensions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		84955B7D17C1425B00095106 /* DSPLogoButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84955B7C17C1425B00095106 /* DSPLogoButton.m */; };
-		84BC7E5B17A4D1D00091C0DB /* MenubarIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E5717A4D1D00091C0DB /* MenubarIcon.png */; };
-		84BC7E5C17A4D1D00091C0DB /* MenubarIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E5817A4D1D00091C0DB /* MenubarIcon@2x.png */; };
-		84BC7E5D17A4D1D00091C0DB /* MenubarIcon_Highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E5917A4D1D00091C0DB /* MenubarIcon_Highlighted.png */; };
-		84BC7E5E17A4D1D00091C0DB /* MenubarIcon_Highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E5A17A4D1D00091C0DB /* MenubarIcon_Highlighted@2x.png */; };
-		84BC7E6717A4D8820091C0DB /* Browse_Arrow_Hover.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E5F17A4D8820091C0DB /* Browse_Arrow_Hover.png */; };
-		84BC7E6817A4D8820091C0DB /* Browse_Arrow_Hover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E6017A4D8820091C0DB /* Browse_Arrow_Hover@2x.png */; };
-		84BC7E6917A4D8820091C0DB /* Browse_Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E6117A4D8820091C0DB /* Browse_Arrow.png */; };
-		84BC7E6A17A4D8820091C0DB /* Browse_Arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E6217A4D8820091C0DB /* Browse_Arrow@2x.png */; };
-		84BC7E6D17A4D8820091C0DB /* BrowseCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E6517A4D8820091C0DB /* BrowseCircle.png */; };
-		84BC7E6E17A4D8820091C0DB /* BrowseCircle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E6617A4D8820091C0DB /* BrowseCircle@2x.png */; };
-		84BC7E7117A4D8BA0091C0DB /* DSPDirectoryPickerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BC7E7017A4D8BA0091C0DB /* DSPDirectoryPickerButton.m */; };
-		84BC7E7617A4DC750091C0DB /* Settings_DarkHover.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E7217A4DC750091C0DB /* Settings_DarkHover.png */; };
-		84BC7E7717A4DC750091C0DB /* Settings_DarkHover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E7317A4DC750091C0DB /* Settings_DarkHover@2x.png */; };
-		84BC7E7817A4DC750091C0DB /* Settings_Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E7417A4DC750091C0DB /* Settings_Normal.png */; };
-		84BC7E7917A4DC750091C0DB /* Settings_Normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E7517A4DC750091C0DB /* Settings_Normal@2x.png */; };
-		84BC7E7C17A4DC9E0091C0DB /* DSPSpinningSettingsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BC7E7B17A4DC9E0091C0DB /* DSPSpinningSettingsButton.m */; };
-		84D11E5117A769650053890B /* ReactiveCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 847835E217A0E3AA0050EBA6 /* ReactiveCocoa.framework */; };
-		84D3475517BC8EA30060A937 /* DSPPreferencesShadowBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D3475417BC8EA30060A937 /* DSPPreferencesShadowBox.m */; };
-		84D3475817BC96CB0060A937 /* DSPPreferencesFieldBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D3475717BC96CB0060A937 /* DSPPreferencesFieldBackgroundView.m */; };
-		84D3475D17BD3D1E0060A937 /* TopPartArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D3475B17BD3D1E0060A937 /* TopPartArrow.png */; };
-		84D3475E17BD3D1E0060A937 /* TopPartArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D3475C17BD3D1E0060A937 /* TopPartArrow@2x.png */; };
-		DD4F7C0913C30F9F00825C6E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4F7C0813C30F9F00825C6E /* Cocoa.framework */; };
-		DD4F7C1513C30F9F00825C6E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4F7C1413C30F9F00825C6E /* main.m */; };
-		DD4F7C1F13C30F9F00825C6E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD4F7C1D13C30F9F00825C6E /* MainMenu.xib */; };
+		84808E5C17CA67C9002A6288 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4F7C0813C30F9F00825C6E /* Cocoa.framework */; };
+		84808E7B17CA67C9002A6288 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84808E7A17CA67C9002A6288 /* XCTest.framework */; };
+		84808E7C17CA67C9002A6288 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4F7C0813C30F9F00825C6E /* Cocoa.framework */; };
+		84808E8417CA67C9002A6288 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84808E8217CA67C9002A6288 /* InfoPlist.strings */; };
+		84808E8617CA67C9002A6288 /* DotSnapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84808E8517CA67C9002A6288 /* DotSnapTests.m */; };
+		84808E8D17CA6826002A6288 /* DSPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 847835C417A0D2750050EBA6 /* DSPAppDelegate.m */; };
+		84808E8E17CA6826002A6288 /* DSPPreferencesWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 8405D58317A5C4D500D7990E /* DSPPreferencesWindow.m */; };
+		84808E8F17CA6826002A6288 /* DSPPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478362B17A198860050EBA6 /* DSPPreferencesViewController.m */; };
+		84808E9017CA6826002A6288 /* DSPLaunchServicesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478364817A205D50050EBA6 /* DSPLaunchServicesManager.m */; };
+		84808E9117CA6826002A6288 /* DSPPreferencesFieldBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D3475717BC96CB0060A937 /* DSPPreferencesFieldBackgroundView.m */; };
+		84808E9217CA6826002A6288 /* DSPPreferencesShadowBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D3475417BC8EA30060A937 /* DSPPreferencesShadowBox.m */; };
+		84808E9317CA6826002A6288 /* DSPMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847835C717A0D3590050EBA6 /* DSPMainWindowController.m */; };
+		84808E9417CA6826002A6288 /* DSPMainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478360717A0F5560050EBA6 /* DSPMainWindow.m */; };
+		84808E9517CA6826002A6288 /* DSPMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847835CA17A0D3650050EBA6 /* DSPMainViewController.m */; };
+		84808E9617CA6826002A6288 /* DSPMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 847835D517A0DB670050EBA6 /* DSPMainView.m */; };
+		84808E9717CA6826002A6288 /* DSPBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 842B028917B8256800EB9672 /* DSPBackgroundView.m */; };
+		84808E9817CA6826002A6288 /* DSPMainViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478361D17A1001F0050EBA6 /* DSPMainViewModel.m */; };
+		84808E9917CA6826002A6288 /* DSPDirectoryPickerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BC7E7017A4D8BA0091C0DB /* DSPDirectoryPickerButton.m */; };
+		84808E9A17CA6826002A6288 /* DSPFilenameTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 842B008117B47C0C00EB9672 /* DSPFilenameTextField.m */; };
+		84808E9B17CA6826002A6288 /* DSPGlowingNameButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 842B008A17B489A600EB9672 /* DSPGlowingNameButton.m */; };
+		84808E9C17CA6826002A6288 /* DSPLogoButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84955B7C17C1425B00095106 /* DSPLogoButton.m */; };
+		84808E9D17CA6826002A6288 /* DSPHistoryRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84600B4D17A34A8400D3E8FE /* DSPHistoryRowView.m */; };
+		84808E9E17CA6826002A6288 /* DSPHistoryTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84600B5C17A354D300D3E8FE /* DSPHistoryTableView.m */; };
+		84808E9F17CA6826002A6288 /* DSPLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 842B007E17B47B6900EB9672 /* DSPLabel.m */; };
+		84808EA017CA6826002A6288 /* DSPMenuBarWindowIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 842B009D17B5915900EB9672 /* DSPMenuBarWindowIconView.m */; };
+		84808EA117CA6826002A6288 /* DSPPNGFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8405D58617A5D60000D7990E /* DSPPNGFormatter.m */; };
+		84808EA217CA6826002A6288 /* DSPShadowBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 842B007617B47AEC00EB9672 /* DSPShadowBox.m */; };
+		84808EA317CA6826002A6288 /* DSPSpinningSettingsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BC7E7B17A4DC9E0091C0DB /* DSPSpinningSettingsButton.m */; };
+		84808EA417CA6826002A6288 /* DSPSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478364117A1FAE00050EBA6 /* DSPSwitch.m */; };
+		84808EA517CA6826002A6288 /* NSColor+DSPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478365C17A221490050EBA6 /* NSColor+DSPExtensions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		84808EA617CA6826002A6288 /* LIEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 8405D58917A5E06D00D7990E /* LIEffect.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		84808EA717CA6826002A6288 /* LIFlipEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 8405D58B17A5E06D00D7990E /* LIFlipEffect.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		84808EA817CA6826002A6288 /* MAAttachedWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 84600B4417A31CB500D3E8FE /* MAAttachedWindow.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		84808EA917CA6826002A6288 /* JNWAnimatableWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478361617A0F6A10050EBA6 /* JNWAnimatableWindow.m */; };
+		84808EAA17CA6826002A6288 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4F7C1413C30F9F00825C6E /* main.m */; };
+		84808EAB17CA6826002A6288 /* DSPDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478363417A19E410050EBA6 /* DSPDefaults.m */; };
+		84808EB017CA6841002A6288 /* TopPartArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D3475B17BD3D1E0060A937 /* TopPartArrow.png */; };
+		84808EB117CA6841002A6288 /* TopPartArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D3475C17BD3D1E0060A937 /* TopPartArrow@2x.png */; };
+		84808EB217CA6841002A6288 /* Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B009617B58D3D00EB9672 /* Checkmark.png */; };
+		84808EB317CA6841002A6288 /* Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B009717B58D3D00EB9672 /* Checkmark@2x.png */; };
+		84808EB417CA6841002A6288 /* MenubarIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E5717A4D1D00091C0DB /* MenubarIcon.png */; };
+		84808EB517CA6841002A6288 /* MenubarIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E5817A4D1D00091C0DB /* MenubarIcon@2x.png */; };
+		84808EB617CA6841002A6288 /* MenubarIcon_Highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E5917A4D1D00091C0DB /* MenubarIcon_Highlighted.png */; };
+		84808EB717CA6841002A6288 /* MenubarIcon_Highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E5A17A4D1D00091C0DB /* MenubarIcon_Highlighted@2x.png */; };
+		84808EB817CA6841002A6288 /* Browse_Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E6117A4D8820091C0DB /* Browse_Arrow.png */; };
+		84808EB917CA6841002A6288 /* Browse_Arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E6217A4D8820091C0DB /* Browse_Arrow@2x.png */; };
+		84808EBA17CA6841002A6288 /* Browse_Arrow_Hover.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E5F17A4D8820091C0DB /* Browse_Arrow_Hover.png */; };
+		84808EBB17CA6841002A6288 /* Browse_Arrow_Hover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E6017A4D8820091C0DB /* Browse_Arrow_Hover@2x.png */; };
+		84808EBC17CA6841002A6288 /* BrowseCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E6517A4D8820091C0DB /* BrowseCircle.png */; };
+		84808EBD17CA6841002A6288 /* BrowseCircle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E6617A4D8820091C0DB /* BrowseCircle@2x.png */; };
+		84808EBE17CA6841002A6288 /* BrowseCircle_Hover.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B009017B58C0000EB9672 /* BrowseCircle_Hover.png */; };
+		84808EBF17CA6841002A6288 /* BrowseCircle_Hover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B009117B58C0000EB9672 /* BrowseCircle_Hover@2x.png */; };
+		84808EC017CA6841002A6288 /* PreferencesLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B009F17B5F40500EB9672 /* PreferencesLogo.png */; };
+		84808EC117CA6841002A6288 /* PreferencesLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B00A017B5F40500EB9672 /* PreferencesLogo@2x.png */; };
+		84808EC217CA6841002A6288 /* SettingsWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 8405D57E17A5A8D700D7990E /* SettingsWhite.png */; };
+		84808EC317CA6841002A6288 /* SettingsWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8405D57F17A5A8D700D7990E /* SettingsWhite@2x.png */; };
+		84808EC417CA6841002A6288 /* Settings_DarkHover.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E7217A4DC750091C0DB /* Settings_DarkHover.png */; };
+		84808EC517CA6841002A6288 /* Settings_DarkHover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E7317A4DC750091C0DB /* Settings_DarkHover@2x.png */; };
+		84808EC617CA6841002A6288 /* Settings_Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E7417A4DC750091C0DB /* Settings_Normal.png */; };
+		84808EC717CA6841002A6288 /* Settings_Normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E7517A4DC750091C0DB /* Settings_Normal@2x.png */; };
+		84808EC817CA6841002A6288 /* SwitchCheckmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B027517B7612600EB9672 /* SwitchCheckmark.png */; };
+		84808EC917CA6841002A6288 /* SwitchCheckmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B027617B7612600EB9672 /* SwitchCheckmark@2x.png */; };
+		84808ECA17CA6841002A6288 /* SwitchXMark.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B027717B7612600EB9672 /* SwitchXMark.png */; };
+		84808ECB17CA6841002A6288 /* SwitchXMark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B027817B7612600EB9672 /* SwitchXMark@2x.png */; };
+		84808ECC17CA684A002A6288 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847835E217A0E3AA0050EBA6 /* ReactiveCocoa.framework */; };
+		84808ECD17CA6898002A6288 /* DotSnap.icns in Resources */ = {isa = PBXBuildFile; fileRef = 842B008E17B583CA00EB9672 /* DotSnap.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,13 +97,6 @@
 			remoteGlobalIDString = 88CDF7DC15000FCF00163A9F;
 			remoteInfo = ReactiveCocoaTests;
 		};
-		847835E717A0E3CD0050EBA6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 847835D917A0E3AA0050EBA6 /* ReactiveCocoa.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 88037F8215056328001A5B19;
-			remoteInfo = ReactiveCocoa;
-		};
 		8478360E17A0F5560050EBA6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 847835D917A0E3AA0050EBA6 /* ReactiveCocoa.xcodeproj */;
@@ -125,29 +118,21 @@
 			remoteGlobalIDString = 1860F430177C91B500C7B3C9;
 			remoteInfo = "ReactiveCocoa-iOS-UIKitTestHostTests";
 		};
+		84808E7D17CA67C9002A6288 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DD4F7BFB13C30F9F00825C6E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 84808E5A17CA67C9002A6288;
+			remoteInfo = DotSnap;
+		};
+		84808EAE17CA6831002A6288 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 847835D917A0E3AA0050EBA6 /* ReactiveCocoa.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 88037F8215056328001A5B19;
+			remoteInfo = ReactiveCocoa;
+		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		84BA5AD317A0C3BE00A45952 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				84D11E5117A769650053890B /* ReactiveCocoa.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		84EC51E617C1C7B30043D1C8 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		8405D57E17A5A8D700D7990E /* SettingsWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SettingsWhite.png; path = Artwork/SettingsWhite.png; sourceTree = "<group>"; };
@@ -219,6 +204,15 @@
 		8478364817A205D50050EBA6 /* DSPLaunchServicesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPLaunchServicesManager.m; sourceTree = "<group>"; };
 		8478365B17A221490050EBA6 /* NSColor+DSPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+DSPExtensions.h"; sourceTree = "<group>"; };
 		8478365C17A221490050EBA6 /* NSColor+DSPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+DSPExtensions.m"; sourceTree = "<group>"; };
+		84808E5B17CA67C9002A6288 /* DotSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DotSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		84808E5E17CA67C9002A6288 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		84808E5F17CA67C9002A6288 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		84808E6017CA67C9002A6288 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		84808E7917CA67C9002A6288 /* DotSnapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DotSnapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		84808E7A17CA67C9002A6288 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		84808E8117CA67C9002A6288 /* DotSnapTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DotSnapTests-Info.plist"; sourceTree = "<group>"; };
+		84808E8317CA67C9002A6288 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		84808E8517CA67C9002A6288 /* DotSnapTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DotSnapTests.m; sourceTree = "<group>"; };
 		84955B7B17C1425B00095106 /* DSPLogoButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPLogoButton.h; sourceTree = "<group>"; };
 		84955B7C17C1425B00095106 /* DSPLogoButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPLogoButton.m; sourceTree = "<group>"; };
 		84BC7E5717A4D1D00091C0DB /* MenubarIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MenubarIcon.png; path = Artwork/MenubarIcon.png; sourceTree = "<group>"; };
@@ -246,7 +240,6 @@
 		84D3475B17BD3D1E0060A937 /* TopPartArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TopPartArrow.png; path = Artwork/TopPartArrow.png; sourceTree = "<group>"; };
 		84D3475C17BD3D1E0060A937 /* TopPartArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TopPartArrow@2x.png"; path = "Artwork/TopPartArrow@2x.png"; sourceTree = "<group>"; };
 		84EC512417C181500043D1C8 /* DotSnap.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = DotSnap.entitlements; sourceTree = "<group>"; };
-		DD4F7C0413C30F9F00825C6E /* DotSnap. */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DotSnap.; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD4F7C0813C30F9F00825C6E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		DD4F7C0B13C30F9F00825C6E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		DD4F7C0C13C30F9F00825C6E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -258,13 +251,21 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		DD4F7C0113C30F9F00825C6E /* Frameworks */ = {
+		84808E5817CA67C9002A6288 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				847835EF17A0EABD0050EBA6 /* QuartzCore.framework in Frameworks */,
-				DD4F7C0913C30F9F00825C6E /* Cocoa.framework in Frameworks */,
-				847835EA17A0E3E30050EBA6 /* ReactiveCocoa.framework in Frameworks */,
+				84808ECC17CA684A002A6288 /* ReactiveCocoa.framework in Frameworks */,
+				84808E5C17CA67C9002A6288 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84808E7617CA67C9002A6288 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84808E7C17CA67C9002A6288 /* Cocoa.framework in Frameworks */,
+				84808E7B17CA67C9002A6288 /* XCTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +382,34 @@
 			name = External;
 			sourceTree = "<group>";
 		};
+		84808E5D17CA67C9002A6288 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				84808E5E17CA67C9002A6288 /* AppKit.framework */,
+				84808E5F17CA67C9002A6288 /* CoreData.framework */,
+				84808E6017CA67C9002A6288 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		84808E7F17CA67C9002A6288 /* DotSnapTests */ = {
+			isa = PBXGroup;
+			children = (
+				84808E8517CA67C9002A6288 /* DotSnapTests.m */,
+				84808E8017CA67C9002A6288 /* Supporting Files */,
+			);
+			path = DotSnapTests;
+			sourceTree = "<group>";
+		};
+		84808E8017CA67C9002A6288 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				84808E8117CA67C9002A6288 /* DotSnapTests-Info.plist */,
+				84808E8217CA67C9002A6288 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		84D3475217BC82F80060A937 /* LIFlipEffect */ = {
 			isa = PBXGroup;
 			children = (
@@ -398,6 +427,7 @@
 				847835D917A0E3AA0050EBA6 /* ReactiveCocoa.xcodeproj */,
 				DD4F7C0E13C30F9F00825C6E /* DotSnap */,
 				DD4F7C2813C3123E00825C6E /* User Interface */,
+				84808E7F17CA67C9002A6288 /* DotSnapTests */,
 				DD4F7C0713C30F9F00825C6E /* Frameworks */,
 				DD4F7C0513C30F9F00825C6E /* Products */,
 			);
@@ -406,7 +436,8 @@
 		DD4F7C0513C30F9F00825C6E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DD4F7C0413C30F9F00825C6E /* DotSnap. */,
+				84808E5B17CA67C9002A6288 /* DotSnap.app */,
+				84808E7917CA67C9002A6288 /* DotSnapTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -422,6 +453,8 @@
 				DD4F7C0C13C30F9F00825C6E /* CoreData.framework */,
 				DD4F7C0D13C30F9F00825C6E /* Foundation.framework */,
 				DD4F7C0813C30F9F00825C6E /* Cocoa.framework */,
+				84808E7A17CA67C9002A6288 /* XCTest.framework */,
+				84808E5D17CA67C9002A6288 /* Other Frameworks */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -510,25 +543,41 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DD4F7C0313C30F9F00825C6E /* DotSnap */ = {
+		84808E5A17CA67C9002A6288 /* DotSnap */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DD4F7C2213C30F9F00825C6E /* Build configuration list for PBXNativeTarget "DotSnap" */;
+			buildConfigurationList = 84808E8717CA67C9002A6288 /* Build configuration list for PBXNativeTarget "DotSnap" */;
 			buildPhases = (
-				DD4F7C0013C30F9F00825C6E /* Sources */,
-				DD4F7C0113C30F9F00825C6E /* Frameworks */,
-				DD4F7C0213C30F9F00825C6E /* Resources */,
-				84BA5AD317A0C3BE00A45952 /* CopyFiles */,
-				84EC51E617C1C7B30043D1C8 /* CopyFiles */,
+				84808E5717CA67C9002A6288 /* Sources */,
+				84808E5817CA67C9002A6288 /* Frameworks */,
+				84808E5917CA67C9002A6288 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				847835E817A0E3CD0050EBA6 /* PBXTargetDependency */,
+				84808EAF17CA6831002A6288 /* PBXTargetDependency */,
 			);
 			name = DotSnap;
 			productName = DotSnap;
-			productReference = DD4F7C0413C30F9F00825C6E /* DotSnap. */;
+			productReference = 84808E5B17CA67C9002A6288 /* DotSnap.app */;
 			productType = "com.apple.product-type.application";
+		};
+		84808E7817CA67C9002A6288 /* DotSnapTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84808E8A17CA67C9002A6288 /* Build configuration list for PBXNativeTarget "DotSnapTests" */;
+			buildPhases = (
+				84808E7517CA67C9002A6288 /* Sources */,
+				84808E7617CA67C9002A6288 /* Frameworks */,
+				84808E7717CA67C9002A6288 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				84808E7E17CA67C9002A6288 /* PBXTargetDependency */,
+			);
+			name = DotSnapTests;
+			productName = DotSnapTests;
+			productReference = 84808E7917CA67C9002A6288 /* DotSnapTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -539,13 +588,16 @@
 				CLASSPREFIX = DSP;
 				LastUpgradeCheck = 0500;
 				TargetAttributes = {
-					DD4F7C0313C30F9F00825C6E = {
+					84808E5A17CA67C9002A6288 = {
 						DevelopmentTeam = JMX758PAJB;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 1;
 							};
 						};
+					};
+					84808E7817CA67C9002A6288 = {
+						TestTargetID = 84808E5A17CA67C9002A6288;
 					};
 				};
 			};
@@ -555,6 +607,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = DD4F7BF913C30F9F00825C6E;
 			productRefGroup = DD4F7C0513C30F9F00825C6E /* Products */;
@@ -567,7 +620,8 @@
 			);
 			projectRoot = "";
 			targets = (
-				DD4F7C0313C30F9F00825C6E /* DotSnap */,
+				84808E5A17CA67C9002A6288 /* DotSnap */,
+				84808E7817CA67C9002A6288 /* DotSnapTests */,
 			);
 		};
 /* End PBXProject section */
@@ -618,96 +672,123 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
-		DD4F7C0213C30F9F00825C6E /* Resources */ = {
+		84808E5917CA67C9002A6288 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD4F7C1F13C30F9F00825C6E /* MainMenu.xib in Resources */,
-				842B027917B7612600EB9672 /* SwitchCheckmark.png in Resources */,
-				842B009A17B58D5F00EB9672 /* Checkmark.png in Resources */,
-				842B009B17B58D5F00EB9672 /* Checkmark@2x.png in Resources */,
-				84BC7E7717A4DC750091C0DB /* Settings_DarkHover@2x.png in Resources */,
-				84D3475E17BD3D1E0060A937 /* TopPartArrow@2x.png in Resources */,
-				842B009417B58C3A00EB9672 /* BrowseCircle_Hover.png in Resources */,
-				842B009517B58C3A00EB9672 /* BrowseCircle_Hover@2x.png in Resources */,
-				84D3475D17BD3D1E0060A937 /* TopPartArrow.png in Resources */,
-				8405D58017A5A8D700D7990E /* SettingsWhite.png in Resources */,
-				842B00A117B5F40500EB9672 /* PreferencesLogo.png in Resources */,
-				84BC7E6D17A4D8820091C0DB /* BrowseCircle.png in Resources */,
-				842B00A217B5F40500EB9672 /* PreferencesLogo@2x.png in Resources */,
-				84BC7E5B17A4D1D00091C0DB /* MenubarIcon.png in Resources */,
-				84BC7E7917A4DC750091C0DB /* Settings_Normal@2x.png in Resources */,
-				84BC7E7817A4DC750091C0DB /* Settings_Normal.png in Resources */,
-				842B027C17B7612600EB9672 /* SwitchXMark@2x.png in Resources */,
-				84BC7E7617A4DC750091C0DB /* Settings_DarkHover.png in Resources */,
-				842B027B17B7612600EB9672 /* SwitchXMark.png in Resources */,
-				84BC7E6817A4D8820091C0DB /* Browse_Arrow_Hover@2x.png in Resources */,
-				84BC7E5C17A4D1D00091C0DB /* MenubarIcon@2x.png in Resources */,
-				84BC7E5D17A4D1D00091C0DB /* MenubarIcon_Highlighted.png in Resources */,
-				84BC7E5E17A4D1D00091C0DB /* MenubarIcon_Highlighted@2x.png in Resources */,
-				84BC7E6717A4D8820091C0DB /* Browse_Arrow_Hover.png in Resources */,
-				84BC7E6A17A4D8820091C0DB /* Browse_Arrow@2x.png in Resources */,
-				8405D58117A5A8D700D7990E /* SettingsWhite@2x.png in Resources */,
-				842B008F17B583CA00EB9672 /* DotSnap.icns in Resources */,
-				84BC7E6E17A4D8820091C0DB /* BrowseCircle@2x.png in Resources */,
-				8478363217A19D2B0050EBA6 /* Defaults.plist in Resources */,
-				84BC7E6917A4D8820091C0DB /* Browse_Arrow.png in Resources */,
-				842B027A17B7612600EB9672 /* SwitchCheckmark@2x.png in Resources */,
+				84808EB017CA6841002A6288 /* TopPartArrow.png in Resources */,
+				84808EB117CA6841002A6288 /* TopPartArrow@2x.png in Resources */,
+				84808EB217CA6841002A6288 /* Checkmark.png in Resources */,
+				84808EB317CA6841002A6288 /* Checkmark@2x.png in Resources */,
+				84808EB417CA6841002A6288 /* MenubarIcon.png in Resources */,
+				84808EB517CA6841002A6288 /* MenubarIcon@2x.png in Resources */,
+				84808EB617CA6841002A6288 /* MenubarIcon_Highlighted.png in Resources */,
+				84808EB717CA6841002A6288 /* MenubarIcon_Highlighted@2x.png in Resources */,
+				84808ECD17CA6898002A6288 /* DotSnap.icns in Resources */,
+				84808EB817CA6841002A6288 /* Browse_Arrow.png in Resources */,
+				84808EB917CA6841002A6288 /* Browse_Arrow@2x.png in Resources */,
+				84808EBA17CA6841002A6288 /* Browse_Arrow_Hover.png in Resources */,
+				84808EBB17CA6841002A6288 /* Browse_Arrow_Hover@2x.png in Resources */,
+				84808EBC17CA6841002A6288 /* BrowseCircle.png in Resources */,
+				84808EBD17CA6841002A6288 /* BrowseCircle@2x.png in Resources */,
+				84808EBE17CA6841002A6288 /* BrowseCircle_Hover.png in Resources */,
+				84808EBF17CA6841002A6288 /* BrowseCircle_Hover@2x.png in Resources */,
+				84808EC017CA6841002A6288 /* PreferencesLogo.png in Resources */,
+				84808EC117CA6841002A6288 /* PreferencesLogo@2x.png in Resources */,
+				84808EC217CA6841002A6288 /* SettingsWhite.png in Resources */,
+				84808EC317CA6841002A6288 /* SettingsWhite@2x.png in Resources */,
+				84808EC417CA6841002A6288 /* Settings_DarkHover.png in Resources */,
+				84808EC517CA6841002A6288 /* Settings_DarkHover@2x.png in Resources */,
+				84808EC617CA6841002A6288 /* Settings_Normal.png in Resources */,
+				84808EC717CA6841002A6288 /* Settings_Normal@2x.png in Resources */,
+				84808EC817CA6841002A6288 /* SwitchCheckmark.png in Resources */,
+				84808EC917CA6841002A6288 /* SwitchCheckmark@2x.png in Resources */,
+				84808ECA17CA6841002A6288 /* SwitchXMark.png in Resources */,
+				84808ECB17CA6841002A6288 /* SwitchXMark@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84808E7717CA67C9002A6288 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84808E8417CA67C9002A6288 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		DD4F7C0013C30F9F00825C6E /* Sources */ = {
+		84808E5717CA67C9002A6288 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8405D58417A5C4D500D7990E /* DSPPreferencesWindow.m in Sources */,
-				84D3475517BC8EA30060A937 /* DSPPreferencesShadowBox.m in Sources */,
-				84600B4E17A34A8400D3E8FE /* DSPHistoryRowView.m in Sources */,
-				DD4F7C1513C30F9F00825C6E /* main.m in Sources */,
-				847835C517A0D2750050EBA6 /* DSPAppDelegate.m in Sources */,
-				8405D58717A5D60000D7990E /* DSPPNGFormatter.m in Sources */,
-				84955B7D17C1425B00095106 /* DSPLogoButton.m in Sources */,
-				847835C817A0D3590050EBA6 /* DSPMainWindowController.m in Sources */,
-				84BC7E7117A4D8BA0091C0DB /* DSPDirectoryPickerButton.m in Sources */,
-				847835CB17A0D3650050EBA6 /* DSPMainViewController.m in Sources */,
-				847835D617A0DB670050EBA6 /* DSPMainView.m in Sources */,
-				842B007717B47AEC00EB9672 /* DSPShadowBox.m in Sources */,
-				8478360817A0F5560050EBA6 /* DSPMainWindow.m in Sources */,
-				84BC7E7C17A4DC9E0091C0DB /* DSPSpinningSettingsButton.m in Sources */,
-				842B007F17B47B6900EB9672 /* DSPLabel.m in Sources */,
-				8478361717A0F6A10050EBA6 /* JNWAnimatableWindow.m in Sources */,
-				842B009E17B5915900EB9672 /* DSPMenuBarWindowIconView.m in Sources */,
-				8478361E17A1001F0050EBA6 /* DSPMainViewModel.m in Sources */,
-				8478362C17A198860050EBA6 /* DSPPreferencesViewController.m in Sources */,
-				84600B4517A31CB500D3E8FE /* MAAttachedWindow.m in Sources */,
-				8478363517A19E410050EBA6 /* DSPDefaults.m in Sources */,
-				842B008217B47C0C00EB9672 /* DSPFilenameTextField.m in Sources */,
-				842B028A17B8256800EB9672 /* DSPBackgroundView.m in Sources */,
-				84600B5D17A354D300D3E8FE /* DSPHistoryTableView.m in Sources */,
-				8478364217A1FAE00050EBA6 /* DSPSwitch.m in Sources */,
-				84D3475817BC96CB0060A937 /* DSPPreferencesFieldBackgroundView.m in Sources */,
-				8478364917A205D50050EBA6 /* DSPLaunchServicesManager.m in Sources */,
-				842B008B17B489A600EB9672 /* DSPGlowingNameButton.m in Sources */,
-				8405D58D17A5E06D00D7990E /* LIFlipEffect.m in Sources */,
-				8405D58C17A5E06D00D7990E /* LIEffect.m in Sources */,
-				8478365D17A221490050EBA6 /* NSColor+DSPExtensions.m in Sources */,
+				84808E8D17CA6826002A6288 /* DSPAppDelegate.m in Sources */,
+				84808E8E17CA6826002A6288 /* DSPPreferencesWindow.m in Sources */,
+				84808E8F17CA6826002A6288 /* DSPPreferencesViewController.m in Sources */,
+				84808E9017CA6826002A6288 /* DSPLaunchServicesManager.m in Sources */,
+				84808E9117CA6826002A6288 /* DSPPreferencesFieldBackgroundView.m in Sources */,
+				84808E9217CA6826002A6288 /* DSPPreferencesShadowBox.m in Sources */,
+				84808E9317CA6826002A6288 /* DSPMainWindowController.m in Sources */,
+				84808E9417CA6826002A6288 /* DSPMainWindow.m in Sources */,
+				84808E9517CA6826002A6288 /* DSPMainViewController.m in Sources */,
+				84808E9617CA6826002A6288 /* DSPMainView.m in Sources */,
+				84808E9717CA6826002A6288 /* DSPBackgroundView.m in Sources */,
+				84808E9817CA6826002A6288 /* DSPMainViewModel.m in Sources */,
+				84808E9917CA6826002A6288 /* DSPDirectoryPickerButton.m in Sources */,
+				84808E9A17CA6826002A6288 /* DSPFilenameTextField.m in Sources */,
+				84808E9B17CA6826002A6288 /* DSPGlowingNameButton.m in Sources */,
+				84808E9C17CA6826002A6288 /* DSPLogoButton.m in Sources */,
+				84808E9D17CA6826002A6288 /* DSPHistoryRowView.m in Sources */,
+				84808E9E17CA6826002A6288 /* DSPHistoryTableView.m in Sources */,
+				84808E9F17CA6826002A6288 /* DSPLabel.m in Sources */,
+				84808EA017CA6826002A6288 /* DSPMenuBarWindowIconView.m in Sources */,
+				84808EA117CA6826002A6288 /* DSPPNGFormatter.m in Sources */,
+				84808EA217CA6826002A6288 /* DSPShadowBox.m in Sources */,
+				84808EA317CA6826002A6288 /* DSPSpinningSettingsButton.m in Sources */,
+				84808EA417CA6826002A6288 /* DSPSwitch.m in Sources */,
+				84808EA517CA6826002A6288 /* NSColor+DSPExtensions.m in Sources */,
+				84808EA617CA6826002A6288 /* LIEffect.m in Sources */,
+				84808EA717CA6826002A6288 /* LIFlipEffect.m in Sources */,
+				84808EA817CA6826002A6288 /* MAAttachedWindow.m in Sources */,
+				84808EA917CA6826002A6288 /* JNWAnimatableWindow.m in Sources */,
+				84808EAA17CA6826002A6288 /* main.m in Sources */,
+				84808EAB17CA6826002A6288 /* DSPDefaults.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84808E7517CA67C9002A6288 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84808E8617CA67C9002A6288 /* DotSnapTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		847835E817A0E3CD0050EBA6 /* PBXTargetDependency */ = {
+		84808E7E17CA67C9002A6288 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 84808E5A17CA67C9002A6288 /* DotSnap */;
+			targetProxy = 84808E7D17CA67C9002A6288 /* PBXContainerItemProxy */;
+		};
+		84808EAF17CA6831002A6288 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ReactiveCocoa;
-			targetProxy = 847835E717A0E3CD0050EBA6 /* PBXContainerItemProxy */;
+			targetProxy = 84808EAE17CA6831002A6288 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		84808E8217CA67C9002A6288 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84808E8317CA67C9002A6288 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		DD4F7C1D13C30F9F00825C6E /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -720,6 +801,116 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		84808E8817CA67C9002A6288 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CODE_SIGN_ENTITLEMENTS = DotSnap/DotSnap.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DotSnap/DotSnap-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				INFOPLIST_FILE = "DotSnap/DotSnap-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		84808E8917CA67C9002A6288 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CODE_SIGN_ENTITLEMENTS = DotSnap/DotSnap.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DotSnap/DotSnap-Prefix.pch";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				INFOPLIST_FILE = "DotSnap/DotSnap-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		84808E8B17CA67C9002A6288 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DotSnap.app/Contents/MacOS/DotSnap";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DotSnap/DotSnap-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				INFOPLIST_FILE = "DotSnapTests/DotSnapTests-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		84808E8C17CA67C9002A6288 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DotSnap.app/Contents/MacOS/DotSnap";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DotSnap/DotSnap-Prefix.pch";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				INFOPLIST_FILE = "DotSnapTests/DotSnapTests-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
 		DD4F7C2013C30F9F00825C6E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -781,65 +972,30 @@
 			};
 			name = Release;
 		};
-		DD4F7C2313C30F9F00825C6E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_ENTITLEMENTS = DotSnap/DotSnap.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer: Tobias Schneider (C3E8NN4T3G)";
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DotSnap/DotSnap-Prefix.pch";
-				INFOPLIST_FILE = "DotSnap/DotSnap-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				OTHER_CODE_SIGN_FLAGS = "--deep";
-				PRODUCT_NAME = DotSnap;
-				PROVISIONING_PROFILE = "";
-				SDKROOT = macosx;
-				WRAPPER_EXTENSION = "";
-			};
-			name = Debug;
-		};
-		DD4F7C2413C30F9F00825C6E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_ENTITLEMENTS = DotSnap/DotSnap.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer: Tobias Schneider (C3E8NN4T3G)";
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DotSnap/DotSnap-Prefix.pch";
-				INFOPLIST_FILE = "DotSnap/DotSnap-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				OTHER_CODE_SIGN_FLAGS = "--deep";
-				PRODUCT_NAME = DotSnap;
-				PROVISIONING_PROFILE = "";
-				SDKROOT = macosx;
-				WRAPPER_EXTENSION = "";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		84808E8717CA67C9002A6288 /* Build configuration list for PBXNativeTarget "DotSnap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84808E8817CA67C9002A6288 /* Debug */,
+				84808E8917CA67C9002A6288 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		84808E8A17CA67C9002A6288 /* Build configuration list for PBXNativeTarget "DotSnapTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84808E8B17CA67C9002A6288 /* Debug */,
+				84808E8C17CA67C9002A6288 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		DD4F7BFE13C30F9F00825C6E /* Build configuration list for PBXProject "DotSnap" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DD4F7C2013C30F9F00825C6E /* Debug */,
 				DD4F7C2113C30F9F00825C6E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DD4F7C2213C30F9F00825C6E /* Build configuration list for PBXNativeTarget "DotSnap" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DD4F7C2313C30F9F00825C6E /* Debug */,
-				DD4F7C2413C30F9F00825C6E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
