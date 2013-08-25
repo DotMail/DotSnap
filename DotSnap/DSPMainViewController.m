@@ -212,13 +212,11 @@ static NSString *DSPScrubString(NSString *string) {
 			}];
 			[NSAnimationContext endGrouping];
 		}
-		if (filenameField.stringValue.length == 0) {
-			self.viewModel.filename = @"Screen Shot";
-		}
-		self.viewModel.filename = filenameField.stringValue;
 	}];
 	
 	self.carriageReturnBlock = ^{
+		@strongify(self);
+		
 		[tableView reloadData];
 		
 		historySeparatorShadow.alphaValue = 1.f;
@@ -240,6 +238,8 @@ static NSString *DSPScrubString(NSString *string) {
 		rect.origin = [(DSPMainWindow *)view.window originForNewFrame:rect];
 		[(DSPMainWindow *)view.window setFrame:rect display:YES animate:YES];
 		[NSAnimationContext endGrouping];
+		
+		self.viewModel.filename = filenameField.stringValue;
 	};
 	
 	self.mouseDownBlock = ^(NSEvent *theEvent) {
