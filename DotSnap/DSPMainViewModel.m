@@ -26,6 +26,7 @@ static NSUInteger const DPSUniqueFilenameDepthLimit = 500;
 - (id)init {
 	self = [super init];
 	
+	_filenameHistory = [NSUserDefaults.standardUserDefaults arrayForKey:DSPFilenameHistoryKey].mutableCopy;
 	_startDate = NSDate.date;
 	
 	_metadataQuery = [[NSMetadataQuery alloc] init];
@@ -66,24 +67,6 @@ static NSUInteger const DPSUniqueFilenameDepthLimit = 500;
 - (void)dealloc {
 	[_metadataQuery stopQuery];
 }
-
-static NSString *DSPScreenCaptureLocation(void) {
-	NSString *screenCapturePrefs = [DSPScreenCapturePrefs() objectForKey:@"location"];
-	if (screenCapturePrefs) {
-		if ([screenCapturePrefs.stringByExpandingTildeInPath hasSuffix:@"/"]) {
-			return screenCapturePrefs;
-		}
-		return [screenCapturePrefs stringByAppendingString:@"/"];
-	}
-	return [[@"~/Desktop" stringByExpandingTildeInPath] stringByAppendingString:@"/"];
-}
-
-static NSDictionary *DSPScreenCapturePrefs(void) {
-	return [NSUserDefaults.standardUserDefaults persistentDomainForName:@"com.apple.screencapture"];
-}
-
-
-
 
 - (void)addFilenameToHistory:(NSString *)filename {
 	if (self.filenameHistory.count == 5) {
@@ -140,6 +123,21 @@ static NSString *DPSUniqueFilenameForDirectory(NSString *relativePath, NSString 
 		}
 	}
 	return [relativePath stringByAppendingPathComponent:retVal];
+}
+
+static NSString *DSPScreenCaptureLocation(void) {
+	NSString *screenCapturePrefs = [DSPScreenCapturePrefs() objectForKey:@"location"];
+	if (screenCapturePrefs) {
+		if ([screenCapturePrefs.stringByExpandingTildeInPath hasSuffix:@"/"]) {
+			return screenCapturePrefs;
+		}
+		return [screenCapturePrefs stringByAppendingString:@"/"];
+	}
+	return [[@"~/Desktop" stringByExpandingTildeInPath] stringByAppendingString:@"/"];
+}
+
+static NSDictionary *DSPScreenCapturePrefs(void) {
+	return [NSUserDefaults.standardUserDefaults persistentDomainForName:@"com.apple.screencapture"];
 }
 
 @end
