@@ -19,11 +19,9 @@
 #import "DSPLogoButton.h"
 #import "LIFlipEffect.h"
 
-@interface DSPPreferencesViewController ()
-@end
-
 @implementation DSPPreferencesViewController {
 	BOOL _showingVersion;
+	CGRect _contentRect;
 }
 
 - (id)initWithContentRect:(CGRect)rect {
@@ -127,13 +125,13 @@
 	gistTextLayer.string = @"          is brought to you by";
 	[view.layer addSublayer:gistTextLayer];
 	
-	DSPGlowingNameButton *codafiNameButton = [[DSPGlowingNameButton alloc]initWithFrame:(NSRect){ .origin = { 88, NSHeight(fieldBackground.frame) + 34 }, .size.width =  72, .size.height = 24 } name:@"CodaFi"];
-	codafiNameButton.target = self;
-	codafiNameButton.action = @selector(openCodafi:);
-	[view addSubview:codafiNameButton];
+	DSPGlowingNameButton *tobiasNameButton = [[DSPGlowingNameButton alloc]initWithFrame:(NSRect){ .origin = { 76, NSHeight(fieldBackground.frame) + 34 }, .size.width =  200, .size.height = 24 } name:@"Tobias van Schneider"];
+	tobiasNameButton.target = self;
+	tobiasNameButton.action = @selector(openVanSchneider:);
+	[view addSubview:tobiasNameButton];
 	
 	CATextLayer *andTextLayer = [[CATextLayer alloc]init];
-	andTextLayer.frame = (NSRect){ .origin = { 152, NSHeight(fieldBackground.frame) + 50 }, .size.width = 36, .size.height = 24 };
+	andTextLayer.frame = (NSRect){ .origin = { 252, NSHeight(fieldBackground.frame) + 50 }, .size.width = 36, .size.height = 24 };
 	andTextLayer.foregroundColor = NSColor.whiteColor.dsp_CGColor;
 	andTextLayer.font = helveticaNeue;
 	andTextLayer.fontSize = 18.f;
@@ -141,10 +139,10 @@
 	andTextLayer.string = @"and";
 	[view.layer addSublayer:andTextLayer];
 	
-	DSPGlowingNameButton *tobiasNameButton = [[DSPGlowingNameButton alloc]initWithFrame:(NSRect){ .origin = { 186, NSHeight(fieldBackground.frame) + 34 }, .size.width =  200, .size.height = 24 } name:@"Tobias van Schneider"];
-	tobiasNameButton.target = self;
-	tobiasNameButton.action = @selector(openVanSchneider:);
-	[view addSubview:tobiasNameButton];
+	DSPGlowingNameButton *codafiNameButton = [[DSPGlowingNameButton alloc]initWithFrame:(NSRect){ .origin = { 288, NSHeight(fieldBackground.frame) + 34 }, .size.width =  72, .size.height = 24 } name:@"CodaFi"];
+	codafiNameButton.target = self;
+	codafiNameButton.action = @selector(openCodafi:);
+	[view addSubview:codafiNameButton];
 	
 	DSPSwitch *firstSwitch = [[DSPSwitch alloc]initWithFrame:(NSRect){ .origin.x = NSWidth(_contentRect) - 102, .origin.y = NSMaxY(separatorShadow.frame) + 28, .size = { 84, 30 } }];
 	firstSwitch.on = [NSUserDefaults.standardUserDefaults boolForKey:DSPAddsTimestampKey];

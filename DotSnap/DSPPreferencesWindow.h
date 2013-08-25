@@ -8,6 +8,9 @@
 
 #import "DSPMainWindow.h"
 
-@interface DSPPreferencesWindow : DSPMainWindow
 
+/**
+ * The preferences window for DotSnap 
+ */
+@interface DSPPreferencesWindow : DSPMainWindow
 @end

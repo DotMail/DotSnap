@@ -6,14 +6,14 @@
 //
 //
 
-#import "DSPAppDelegate.h"
+#import "DSPApplicationDelegate.h"
 #import "DSPMainWindowController.h"
 
-@interface DSPAppDelegate ()
+@interface DSPApplicationDelegate ()
 @property (nonatomic, strong) DSPMainWindowController *windowController;
 @end
 
-@implementation DSPAppDelegate
+@implementation DSPApplicationDelegate
 
 + (void)load {
 	[NSUserDefaults.standardUserDefaults registerDefaults:[NSDictionary dictionaryWithContentsOfFile:[NSBundle.mainBundle pathForResource:@"Defaults" ofType:@"plist"]]];

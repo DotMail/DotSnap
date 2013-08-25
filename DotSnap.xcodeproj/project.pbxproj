@@ -12,7 +12,7 @@
 		84808E7C17CA67C9002A6288 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4F7C0813C30F9F00825C6E /* Cocoa.framework */; };
 		84808E8417CA67C9002A6288 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84808E8217CA67C9002A6288 /* InfoPlist.strings */; };
 		84808E8617CA67C9002A6288 /* DotSnapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84808E8517CA67C9002A6288 /* DotSnapTests.m */; };
-		84808E8D17CA6826002A6288 /* DSPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 847835C417A0D2750050EBA6 /* DSPAppDelegate.m */; };
+		84808E8D17CA6826002A6288 /* DSPApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 847835C417A0D2750050EBA6 /* DSPApplicationDelegate.m */; };
 		84808E8E17CA6826002A6288 /* DSPPreferencesWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 8405D58317A5C4D500D7990E /* DSPPreferencesWindow.m */; };
 		84808E8F17CA6826002A6288 /* DSPPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478362B17A198860050EBA6 /* DSPPreferencesViewController.m */; };
 		84808E9017CA6826002A6288 /* DSPLaunchServicesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478364817A205D50050EBA6 /* DSPLaunchServicesManager.m */; };
@@ -190,8 +190,8 @@
 		84600B4D17A34A8400D3E8FE /* DSPHistoryRowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPHistoryRowView.m; sourceTree = "<group>"; };
 		84600B5B17A354D300D3E8FE /* DSPHistoryTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPHistoryTableView.h; sourceTree = "<group>"; };
 		84600B5C17A354D300D3E8FE /* DSPHistoryTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPHistoryTableView.m; sourceTree = "<group>"; };
-		847835C317A0D2750050EBA6 /* DSPAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPAppDelegate.h; sourceTree = "<group>"; };
-		847835C417A0D2750050EBA6 /* DSPAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPAppDelegate.m; sourceTree = "<group>"; };
+		847835C317A0D2750050EBA6 /* DSPApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPApplicationDelegate.h; sourceTree = "<group>"; };
+		847835C417A0D2750050EBA6 /* DSPApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPApplicationDelegate.m; sourceTree = "<group>"; };
 		847835C617A0D3590050EBA6 /* DSPMainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPMainWindowController.h; sourceTree = "<group>"; };
 		847835C717A0D3590050EBA6 /* DSPMainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPMainWindowController.m; sourceTree = "<group>"; };
 		847835C917A0D3650050EBA6 /* DSPMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPMainViewController.h; sourceTree = "<group>"; };
@@ -478,8 +478,8 @@
 		DD4F7C0E13C30F9F00825C6E /* DotSnap */ = {
 			isa = PBXGroup;
 			children = (
-				847835C317A0D2750050EBA6 /* DSPAppDelegate.h */,
-				847835C417A0D2750050EBA6 /* DSPAppDelegate.m */,
+				847835C317A0D2750050EBA6 /* DSPApplicationDelegate.h */,
+				847835C417A0D2750050EBA6 /* DSPApplicationDelegate.m */,
 				8478362017A18FF50050EBA6 /* Preferences */,
 				8478361F17A18FEB0050EBA6 /* Main Window */,
 				842B008317B47F1A00EB9672 /* Controls */,
@@ -742,7 +742,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84808ECE17CA6D7E002A6288 /* MainMenu.xib in Sources */,
-				84808E8D17CA6826002A6288 /* DSPAppDelegate.m in Sources */,
+				84808E8D17CA6826002A6288 /* DSPApplicationDelegate.m in Sources */,
 				84808E8E17CA6826002A6288 /* DSPPreferencesWindow.m in Sources */,
 				84808E8F17CA6826002A6288 /* DSPPreferencesViewController.m in Sources */,
 				84808E9017CA6826002A6288 /* DSPLaunchServicesManager.m in Sources */,

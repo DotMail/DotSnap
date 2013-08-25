@@ -8,9 +8,7 @@
 
 @class RACSubject;
 
-@interface DSPPreferencesViewController : NSViewController {
-	CGRect _contentRect;
-}
+@interface DSPPreferencesViewController : NSViewController
 
 - (id)initWithContentRect:(CGRect)rect;
 

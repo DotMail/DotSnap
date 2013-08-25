@@ -11,6 +11,9 @@
 @implementation DSPPNGFormatter
 
 - (NSString *)stringForObjectValue:(NSString *)string {
+	if (string.length == 0) {
+		string = @"Screen Shot";
+	}
 	NSString *stringToAttribute = string;
 	if (![string hasSuffix:@".png"]) {
 		stringToAttribute = [string stringByAppendingPathExtension:@"png"];
@@ -23,6 +26,9 @@
 }
 
 - (NSAttributedString *)attributedStringForObjectValue:(NSString *)string withDefaultAttributes:(NSDictionary *)attrs {
+	if (string.length == 0) {
+		string = @"Screen Shot";
+	}
 	NSString *stringToAttribute = string;
 	if ([string hasPrefix:@".png"]) {
 		stringToAttribute = [string stringByAppendingPathExtension:@"png"];

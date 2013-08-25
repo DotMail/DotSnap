@@ -318,6 +318,7 @@ static NSString *DSPScrubString(NSString *string) {
 
 - (BOOL)control:(NSControl *)control textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector {
 	if (commandSelector == @selector(insertNewline:)) {
+		control.stringValue = textView.string ?: @"Screen Shot";
 		[self.viewModel addFilenameToHistory:textView.string.length ? textView.string : @"Screen Shot"];
 		self.carriageReturnBlock();
 		return YES;

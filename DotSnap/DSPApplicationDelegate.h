@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DSPAppDelegate : NSObject <NSApplicationDelegate>
-
+/**
+ * The application delegate for DotSnap.
+ */
+@interface DSPApplicationDelegate : NSObject <NSApplicationDelegate>
 @end
