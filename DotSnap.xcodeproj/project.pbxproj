@@ -1003,6 +1003,7 @@
 				84808E8917CA67C9002A6288 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		84808E8A17CA67C9002A6288 /* Build configuration list for PBXNativeTarget "DotSnapTests" */ = {
 			isa = XCConfigurationList;
@@ -1011,6 +1012,7 @@
 				84808E8C17CA67C9002A6288 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DD4F7BFE13C30F9F00825C6E /* Build configuration list for PBXProject "DotSnap" */ = {
 			isa = XCConfigurationList;

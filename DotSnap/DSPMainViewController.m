@@ -189,7 +189,7 @@ static NSString *DSPScrubString(NSString *string) {
 		
 	self.view = realView;
 
-	@weakify(self);
+	@unsafeify(self);
 	[NSNotificationCenter.defaultCenter addObserverForName:NSControlTextDidChangeNotification object:filenameField queue:nil usingBlock:^(NSNotification *note) {
 		@strongify(self);
 		historySeparatorShadow.alphaValue = 0.f;
