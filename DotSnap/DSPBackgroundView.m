@@ -28,6 +28,11 @@
 	[self setNeedsDisplay:YES];
 }
 
+- (void)viewDidMoveToWindow {
+	[super viewDidMoveToWindow];
+	self.layer.contentsScale = self.window.backingScaleFactor;
+}
+
 @end
 
 @implementation DSPBackgroundTrackingView {

@@ -39,4 +39,11 @@
 	return rect;
 }
 
+- (void)viewDidMoveToWindow {
+	[super viewDidMoveToWindow];
+	if (self.viewDidMoveToWindowBlock != NULL) {
+		self.viewDidMoveToWindowBlock();
+	}
+}
+
 @end

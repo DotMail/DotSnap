@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DSPMainViewModel : NSObject <NSTableViewDataSource>
+@interface DSPMainViewModel : NSObject <NSTableViewDataSource, NSMetadataQueryDelegate>
 
 @property (nonatomic, copy) NSString *filename;
 @property (nonatomic, copy) NSString *filepath;

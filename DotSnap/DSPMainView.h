@@ -9,5 +9,6 @@
 @interface DSPMainView : NSView
 
 @property (nonatomic, readonly) CGRect contentRect;
+@property (nonatomic, copy) void(^viewDidMoveToWindowBlock)();
 
 @end

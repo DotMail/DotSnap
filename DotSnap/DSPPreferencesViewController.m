@@ -20,7 +20,6 @@
 #import "LIFlipEffect.h"
 
 @interface DSPPreferencesViewController ()
-
 @end
 
 @implementation DSPPreferencesViewController {
@@ -178,6 +177,15 @@
 	underSeparatorShadow.fillColor = [NSColor colorWithCalibratedRed:0.181 green:0.455 blue:0.315 alpha:1.000];
 	[view addSubview:underSeparatorShadow];
 	
+	@weakify(realView);
+	realView.viewDidMoveToWindowBlock = ^{
+		@strongify(realView);
+		CGFloat scaleFactor = realView.window.backingScaleFactor;
+		versionTextLayer.contentsScale = scaleFactor;
+		gistTextLayer.contentsScale = scaleFactor;
+		andTextLayer.contentsScale = scaleFactor;
+	};
+	
 	self.view = realView;
 	
 	CFRelease(helveticaNeue);
@@ -194,5 +202,6 @@
 - (void)openDotSnap:(id)semder {
 	[NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:@"http://www.dotsnapapp.com/"]];
 }
+
 
 @end

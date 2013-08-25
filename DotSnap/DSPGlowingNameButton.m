@@ -10,6 +10,7 @@
 
 @interface DSPGlowingNameButton ()
 @property (nonatomic, copy) void (^redrawBlock)(BOOL highlighted, BOOL hovering, NSEvent *event);
+@property (nonatomic, copy) void (^viewDidMoveToWindowBlock)();
 @end
 
 @implementation DSPGlowingNameButton {
@@ -45,6 +46,12 @@
 		}
 	};
 	
+	@weakify(self);
+	self.viewDidMoveToWindowBlock = ^{
+		@strongify(self);
+		nameLayer.contentsScale = self.window.backingScaleFactor;
+	};
+	
 	CFRelease(font);
 	
 	return self;
@@ -76,5 +83,9 @@
 	self.redrawBlock(NO, NO, theEvent);
 }
 
+- (void)viewDidMoveToWindow {
+	[super viewDidMoveToWindow];
+	self.viewDidMoveToWindowBlock();
+}
 
 @end

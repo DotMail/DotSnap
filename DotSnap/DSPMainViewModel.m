@@ -12,43 +12,78 @@
 static NSUInteger const DPSUniqueFilenameDepthLimit = 500;
 
 @interface DSPMainViewModel ()
-@property (nonatomic, strong) NSMetadataQuery *screenshotQuery;
 @property (nonatomic, strong) NSMutableArray *filenameHistory;
+@property (nonatomic, strong) NSDate *startDate;
+@property (nonatomic, strong) NSMetadataQuery *metadataQuery;
 @end
 
-@implementation DSPMainViewModel
+@implementation DSPMainViewModel {
+	NSUInteger previousChangeCount;
+}
 
 #pragma mark - Lifecycle
 
 - (id)init {
 	self = [super init];
 	
-	_filenameHistory = [NSUserDefaults.standardUserDefaults arrayForKey:DSPFilenameHistoryKey].mutableCopy;
+	_startDate = NSDate.date;
 	
-	_screenshotQuery = [[NSMetadataQuery alloc] init];
-	_screenshotQuery.predicate = [NSPredicate predicateWithFormat:@"kMDItemIsScreenCapture = 1"];
-	NSString *desktopPath = [NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-	_screenshotQuery.searchScopes = @[ [NSURL fileURLWithPath:desktopPath] ];
-	
-	[NSNotificationCenter.defaultCenter addObserverForName:NSMetadataQueryDidUpdateNotification object:_screenshotQuery queue:nil usingBlock:^(NSNotification *note) {
-		for (NSMetadataItem *item in [note.userInfo objectForKey:(NSString *)kMDQueryUpdateAddedItems]) {
-			NSString *screenShotPath = [item valueForAttribute:NSMetadataItemPathKey];
-			NSURL *oldURL = [NSURL fileURLWithPath:screenShotPath];
-			
-			__strong id args[1];
-			args[0] = screenShotPath;
-			NSTask *task = [NSTask launchedTaskWithLaunchPath:@"/sbin/lsof" arguments:[NSArray arrayWithObjects:(__strong id*)args count:1]];
-			[task waitUntilExit];
-			
-			NSURL *newURL = [NSURL fileURLWithPath:DPSUniqueFilenameForDirectory(self.filepath, self.filename.stringByDeletingPathExtension, [NSUserDefaults.standardUserDefaults boolForKey:DSPAddsTimestampKey])];
-			[NSFileManager.defaultManager moveItemAtURL:oldURL toURL:newURL error:nil];
-		}
-	}];
-	
-	[_screenshotQuery startQuery];
+	_metadataQuery = [[NSMetadataQuery alloc] init];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"kMDItemIsScreenCapture = YES"];
+	_metadataQuery.predicate = predicate;
+	_metadataQuery.searchScopes = @[ DSPScreenCaptureLocation() ];
+	_metadataQuery.notificationBatchingInterval = 0.1f;
+	_metadataQuery.delegate = self;
+	[_metadataQuery startQuery];
 	
 	return self;
 }
+
+- (id)metadataQuery:(NSMetadataQuery *)query replacementObjectForResultObject:(NSMetadataItem *)result {
+	if (!result) return result;
+	NSDate *fsCreationDate = [result valueForAttribute:(__bridge NSString *)kMDItemFSCreationDate];
+	NSDate *itemLastUseDate = [result valueForAttribute:(__bridge NSString *)kMDItemLastUsedDate];
+	if ([fsCreationDate timeIntervalSinceDate:_startDate] < 0.0f || itemLastUseDate != nil) {
+		return result;
+	}
+	if (itemLastUseDate != nil) return result;
+	NSString *name = [result valueForAttribute:@"kMDItemDisplayName"];
+	if (!name) return result;
+	NSString *filePath = [result valueForAttribute:(__bridge NSString *)kMDItemPath];
+	if (!filePath) return result;
+	if (![NSFileManager.defaultManager fileExistsAtPath:filePath]) {
+		return result;
+	}
+	
+	NSURL *newURL = [NSURL fileURLWithPath:DPSUniqueFilenameForDirectory(self.filepath, self.filename.stringByDeletingPathExtension, [NSUserDefaults.standardUserDefaults boolForKey:DSPAddsTimestampKey])];
+	NSURL *oldURL = [NSURL fileURLWithPath:filePath];
+	NSError *err = nil;
+	[NSFileManager.defaultManager moveItemAtURL:oldURL toURL:newURL error:&err];
+	
+	return result;
+}
+
+- (void)dealloc {
+	[_metadataQuery stopQuery];
+}
+
+static NSString *DSPScreenCaptureLocation(void) {
+	NSString *screenCapturePrefs = [DSPScreenCapturePrefs() objectForKey:@"location"];
+	if (screenCapturePrefs) {
+		if ([screenCapturePrefs.stringByExpandingTildeInPath hasSuffix:@"/"]) {
+			return screenCapturePrefs;
+		}
+		return [screenCapturePrefs stringByAppendingString:@"/"];
+	}
+	return [[@"~/Desktop" stringByExpandingTildeInPath] stringByAppendingString:@"/"];
+}
+
+static NSDictionary *DSPScreenCapturePrefs(void) {
+	return [NSUserDefaults.standardUserDefaults persistentDomainForName:@"com.apple.screencapture"];
+}
+
+
+
 
 - (void)addFilenameToHistory:(NSString *)filename {
 	if (self.filenameHistory.count == 5) {

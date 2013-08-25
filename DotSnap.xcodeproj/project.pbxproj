@@ -138,6 +138,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		84EC51E617C1C7B30043D1C8 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -237,7 +246,7 @@
 		84D3475B17BD3D1E0060A937 /* TopPartArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TopPartArrow.png; path = Artwork/TopPartArrow.png; sourceTree = "<group>"; };
 		84D3475C17BD3D1E0060A937 /* TopPartArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TopPartArrow@2x.png"; path = "Artwork/TopPartArrow@2x.png"; sourceTree = "<group>"; };
 		84EC512417C181500043D1C8 /* DotSnap.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = DotSnap.entitlements; sourceTree = "<group>"; };
-		DD4F7C0413C30F9F00825C6E /* DotSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DotSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD4F7C0413C30F9F00825C6E /* DotSnap. */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DotSnap.; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD4F7C0813C30F9F00825C6E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		DD4F7C0B13C30F9F00825C6E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		DD4F7C0C13C30F9F00825C6E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -397,7 +406,7 @@
 		DD4F7C0513C30F9F00825C6E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DD4F7C0413C30F9F00825C6E /* DotSnap.app */,
+				DD4F7C0413C30F9F00825C6E /* DotSnap. */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -509,6 +518,7 @@
 				DD4F7C0113C30F9F00825C6E /* Frameworks */,
 				DD4F7C0213C30F9F00825C6E /* Resources */,
 				84BA5AD317A0C3BE00A45952 /* CopyFiles */,
+				84EC51E617C1C7B30043D1C8 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -517,7 +527,7 @@
 			);
 			name = DotSnap;
 			productName = DotSnap;
-			productReference = DD4F7C0413C30F9F00825C6E /* DotSnap.app */;
+			productReference = DD4F7C0413C30F9F00825C6E /* DotSnap. */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -788,7 +798,7 @@
 				PRODUCT_NAME = DotSnap;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
-				WRAPPER_EXTENSION = app;
+				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
 		};
@@ -809,7 +819,7 @@
 				PRODUCT_NAME = DotSnap;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
-				WRAPPER_EXTENSION = app;
+				WRAPPER_EXTENSION = "";
 			};
 			name = Release;
 		};

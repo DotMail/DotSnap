@@ -10,6 +10,7 @@
 
 @interface DSPDirectoryPickerButton ()
 @property (nonatomic, copy) void(^redrawBlock)(BOOL highlighted, BOOL hovering, NSEvent *event);
+@property (nonatomic, copy) void (^viewDidMoveToWindowBlock)();
 @end
 
 @implementation DSPDirectoryPickerButton
@@ -57,6 +58,14 @@
 		}
 	};
 	
+	self.viewDidMoveToWindowBlock = ^{
+		@strongify(self);
+		CGFloat scaleFactor = self.window.backingScaleFactor;
+		browseCircleLayer.contentsScale = scaleFactor;
+		arrowLayer.contentsScale = scaleFactor;
+		hoverArrowLayer.contentsScale = scaleFactor;
+	};
+	
 	return self;
 }
 
@@ -66,6 +75,11 @@
 
 - (void)mouseExited:(NSEvent *)theEvent {
 	self.redrawBlock(NO, NO, theEvent);
+}
+
+- (void)viewDidMoveToWindow {
+	[super viewDidMoveToWindow];
+	self.viewDidMoveToWindowBlock();
 }
 
 @end

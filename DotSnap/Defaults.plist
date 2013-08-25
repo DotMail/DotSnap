@@ -5,7 +5,7 @@
 	<key>DSPDefaultFilenameTemplate</key>
 	<string>MyScreenShotName</string>
 	<key>DSPLoadDotSnapAtStart</key>
-	<true/>
+	<false/>
 	<key>DSPAddsTimestamp</key>
 	<false/>
 	<key>DSPAutosaveInputField</key>
