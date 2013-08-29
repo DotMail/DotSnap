@@ -7,6 +7,7 @@
 //
 
 #import "DSPPreferencesWindow.h"
+#import "DSPMenuBarWindowIconView.h"
 
 @interface DSPPreferencesWindow ()
 
@@ -26,6 +27,7 @@
 			layer.transform = CATransform3DMakeTranslation(0.f, -50.f, 0.f);
 			layer.opacity = 0.f;
 		}];
+		self.statusItemView.highlighted = NO;
 	}];
 	
 	return self;

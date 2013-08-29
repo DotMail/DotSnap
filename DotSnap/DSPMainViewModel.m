@@ -72,7 +72,14 @@ static NSUInteger const DPSUniqueFilenameDepthLimit = 500;
 	if (self.filenameHistory.count == 5) {
 		[self.filenameHistory removeLastObject];
 	}
-	[self.filenameHistory insertObject:filename.copy atIndex:0];
+	__block NSUInteger c = NSUIntegerMax;
+	[self.filenameHistory enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop) {
+		if ([filename isEqualToString:obj]) {
+			*stop = YES;
+			c = idx;
+		}
+	}];
+	if (c == NSUIntegerMax) [self.filenameHistory insertObject:filename.copy atIndex:0];
 	[NSUserDefaults.standardUserDefaults setObject:self.filenameHistory forKey:DSPFilenameHistoryKey];
 }
 

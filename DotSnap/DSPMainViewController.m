@@ -171,14 +171,8 @@ static NSString *DSPScrubString(NSString *string) {
 	[backgroundView addSubview:directoryButton];
 
 	DSPSpinningSettingsButton *optionsButton = [[DSPSpinningSettingsButton alloc]initWithFrame:(NSRect){ .origin.x = NSWidth(_contentFrame) - 45, .origin.y = 8, .size = { 17, 17 } } style:0];
-	optionsButton.rac_command = [RACCommand command];
-	[optionsButton.rac_command subscribeNext:^(NSButton *_) {
-		[(DSPMainWindow *)view.window setIsFlipping:YES];
-		self.preferencesViewController.presentingWindow = view.window;
-		self.preferencesViewController.exemptForAnimation = _exemptFlagForAnimation;
-		[[[LIFlipEffect alloc] initFromWindow:view.window toWindow:self.preferencesWindow flag:_exemptFlagForAnimation] run];
-		[(DSPMainWindow *)view.window setIsFlipping:NO];
-	}];
+	[optionsButton setTarget:self];
+	[optionsButton setAction:@selector(flipToSettingsView:)];
 	[view addSubview:optionsButton];
 	
 	DSPShadowBox *historySeparatorShadow = [[DSPShadowBox alloc]initWithFrame:(NSRect){ .origin.y = -12, .size = { NSWidth(_contentFrame), 2 } }];
@@ -312,6 +306,14 @@ static NSString *DSPScrubString(NSString *string) {
 		}];
 	}
 	_exemptOpenPanelCancellation = NO;
+}
+
+- (void)flipToSettingsView:(id)sender {
+	[(DSPMainWindow *)self.view.window setIsFlipping:YES];
+	self.preferencesViewController.presentingWindow = self.view.window;
+	self.preferencesViewController.exemptForAnimation = _exemptFlagForAnimation;
+	[[[LIFlipEffect alloc] initFromWindow:self.view.window toWindow:self.preferencesWindow flag:_exemptFlagForAnimation] run];
+	[(DSPMainWindow *)self.view.window setIsFlipping:NO];
 }
 
 #pragma mark - NSControlTextEditingDelegate

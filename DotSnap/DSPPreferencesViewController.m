@@ -32,6 +32,10 @@
 	return self;
 }
 
+- (void)dealloc {
+	self.presentingWindow = nil;
+}
+
 - (void)loadView {
 	
 	CTFontRef helveticaNeue = CTFontCreateWithName(CFSTR("HelveticaNeue"), 18.f, NULL);
@@ -101,14 +105,11 @@
 	[view addSubview:logoButton];
 
 	DSPSpinningSettingsButton *optionsButton = [[DSPSpinningSettingsButton alloc]initWithFrame:(NSRect){ .origin.x = NSWidth(_contentRect) - 28, .origin.y = NSHeight(_contentRect) - 38, .size = { 17, 17 } } style:1];
-	optionsButton.rac_command = [RACCommand command];
 	optionsButton.bordered = NO;
 	optionsButton.buttonType = NSMomentaryChangeButton;
 	optionsButton.image = [NSImage imageNamed:@"OptionsGearWhite"];
-	
-	[optionsButton.rac_command subscribeNext:^(NSButton *_) {
-		[[[LIFlipEffect alloc] initFromWindow:view.window toWindow:self.presentingWindow flag:_exemptForAnimation ? -1 : 0] run];
-	}];
+	[optionsButton setTarget:self];
+	[optionsButton setAction:@selector(flipToMainView:)];
 	[view addSubview:optionsButton];
 	
 	DSPGlowingNameButton *dotsnapNameButton = [[DSPGlowingNameButton alloc]initWithFrame:(NSRect){ .origin = { 114, NSHeight(fieldBackground.frame) + 54 }, .size.width =  72, .size.height = 24 } name:@".Snap"];
@@ -187,6 +188,11 @@
 	self.view = realView;
 	
 	CFRelease(helveticaNeue);
+}
+
+
+- (void)flipToMainView:(id)sender {
+	[[[LIFlipEffect alloc] initFromWindow:self.view.window toWindow:self.presentingWindow flag:_exemptForAnimation ? -1 : 0] run];
 }
 
 - (void)openCodafi:(id)sender {

@@ -15,7 +15,6 @@ static CGFloat const DPSMenuBarWindowArrowHeight = 10.0;
 static CGFloat const DPSMenuBarWindowArrowWidth = 20.0;
 
 @implementation DSPMainWindow {
-	DSPMenuBarWindowIconView *statusItemView;
 	BOOL _resized;
 }
 
@@ -27,9 +26,9 @@ static CGFloat const DPSMenuBarWindowArrowWidth = 20.0;
 	if (flag) {
 		_statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
 		CGFloat thickness = [[NSStatusBar systemStatusBar] thickness];
-		statusItemView = [[DSPMenuBarWindowIconView alloc] initWithFrame:NSMakeRect(0, 0, (self.menuBarIcon ? self.menuBarIcon.size.width : thickness) + 6, thickness)];
-		statusItemView.menuBarWindow = self;
-		_statusItem.view = statusItemView;
+		_statusItemView = [[DSPMenuBarWindowIconView alloc] initWithFrame:NSMakeRect(0, 0, (self.menuBarIcon ? self.menuBarIcon.size.width : thickness) + 6, thickness)];
+		_statusItemView.menuBarWindow = self;
+		_statusItem.view = _statusItemView;
 		[NSNotificationCenter.defaultCenter addObserverForName:NSWindowDidMoveNotification object:_statusItem.view.window queue:nil usingBlock:^(NSNotification *note) {
 			self.frameOrigin = self.originForAttachedState;
 		}];
@@ -39,6 +38,7 @@ static CGFloat const DPSMenuBarWindowArrowWidth = 20.0;
 					layer.transform = CATransform3DMakeTranslation(0.f, -50.f, 0.f);
 					layer.opacity = 0.f;
 				}];
+				_statusItemView.highlighted = NO;
 			}
 		}];
 	}
@@ -47,8 +47,8 @@ static CGFloat const DPSMenuBarWindowArrowWidth = 20.0;
 }
 
 - (NSPoint)originForAttachedState {
-	if (statusItemView) {
-		NSRect statusItemFrame = statusItemView.window.frame;
+	if (_statusItemView) {
+		NSRect statusItemFrame = _statusItemView.window.frame;
 		NSPoint midPoint = (NSPoint){ NSMidX(statusItemFrame), NSMinY(statusItemFrame) };
 		return (NSPoint){ midPoint.x - (NSWidth(self.frame) / 2) + 1, midPoint.y - NSHeight(self.frame) + ((_resized) ? -2 : 10) };
 	}
@@ -56,8 +56,8 @@ static CGFloat const DPSMenuBarWindowArrowWidth = 20.0;
 }
 
 - (NSPoint)originForNewFrame:(NSRect)rect {
-	if (statusItemView) {
-		NSRect statusItemFrame = statusItemView.window.frame;
+	if (_statusItemView) {
+		NSRect statusItemFrame = _statusItemView.window.frame;
 		NSPoint midPoint = (NSPoint){ NSMidX(statusItemFrame), NSMinY(statusItemFrame) };
 		return (NSPoint){ midPoint.x - (NSWidth(rect) / 2) + 1, midPoint.y - NSHeight(rect) - 2 };
 	}
@@ -89,17 +89,17 @@ static CGFloat const DPSMenuBarWindowArrowWidth = 20.0;
 
 - (void)setMenuBarIcon:(NSImage *)image {
 	_menuBarIcon = image;
-	if (statusItemView) {
-		[statusItemView setFrameSize:NSMakeSize(image.size.width + 6, statusItemView.frame.size.height)];
-		[statusItemView setNeedsDisplay:YES];
+	if (_statusItemView) {
+		[_statusItemView setFrameSize:NSMakeSize(image.size.width + 6, _statusItemView.frame.size.height)];
+		[_statusItemView setNeedsDisplay:YES];
 	}
 }
 
 - (void)setHighlightedMenuBarIcon:(NSImage *)image {
 	_highlightedMenuBarIcon = image;
-	if (statusItemView)
+	if (_statusItemView)
 	{
-		[statusItemView setNeedsDisplay:YES];
+		[_statusItemView setNeedsDisplay:YES];
 	}
 }
 
