@@ -68,6 +68,8 @@ static NSUInteger const DPSUniqueFilenameDepthLimit = 500;
 	[_metadataQuery stopQuery];
 }
 
+#pragma mark - Actions
+
 - (void)addFilenameToHistory:(NSString *)filename {
 	if (self.filenameHistory.count == 5) {
 		[self.filenameHistory removeLastObject];
@@ -82,6 +84,8 @@ static NSUInteger const DPSUniqueFilenameDepthLimit = 500;
 	if (c == NSUIntegerMax) [self.filenameHistory insertObject:filename.copy atIndex:0];
 	[NSUserDefaults.standardUserDefaults setObject:self.filenameHistory forKey:DSPFilenameHistoryKey];
 }
+
+#pragma mark - Overrides
 
 - (void)setFilepath:(NSString *)filepath {
 	_filepath = filepath;
