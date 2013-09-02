@@ -540,8 +540,8 @@
 				84BC7E6617A4D8820091C0DB /* BrowseCircle@2x.png */,
 				842B009017B58C0000EB9672 /* BrowseCircle_Hover.png */,
 				842B009117B58C0000EB9672 /* BrowseCircle_Hover@2x.png */,
-				842B009F17B5F40500EB9672 /* PreferencesLogo@2x.png */,
 				842B00A017B5F40500EB9672 /* PreferencesLogo.png */,
+				842B009F17B5F40500EB9672 /* PreferencesLogo@2x.png */,
 				8405D57E17A5A8D700D7990E /* SettingsWhite.png */,
 				8405D57F17A5A8D700D7990E /* SettingsWhite@2x.png */,
 				84BC7E7217A4DC750091C0DB /* Settings_DarkHover.png */,
@@ -842,7 +842,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				INFOPLIST_FILE = "DotSnap/DotSnap-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
@@ -868,7 +868,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				INFOPLIST_FILE = "DotSnap/DotSnap-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;

@@ -38,6 +38,11 @@
 	underLayer.backgroundColor = [NSColor colorWithCalibratedRed:0.729 green:0.779 blue:0.811 alpha:1.000].dsp_CGColor;
 	[self.layer addSublayer:underLayer];
 	
+	CALayer *underLayer2 = CALayer.layer;
+	underLayer2.frame = (NSRect){ .origin = NSMidX(self.layer.bounds) - 10, .size = { 20, 2} };
+	underLayer2.backgroundColor = [NSColor colorWithCalibratedRed:0.605 green:0.692 blue:0.737 alpha:1.000].dsp_CGColor;
+	[self.layer addSublayer:underLayer2];
+	
 	self.offLayer = CALayer.layer;
 	self.offLayer.contents = [NSImage imageNamed:@"SwitchXMark"];
 	self.offLayer.frame = (NSRect){ .size = { CGRectGetWidth(frame)/2, CGRectGetHeight(frame) } };
