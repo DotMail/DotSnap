@@ -37,7 +37,6 @@
 }
 
 - (void)loadView {
-	
 	CTFontRef helveticaNeue = CTFontCreateWithName(CFSTR("HelveticaNeue"), 18.f, NULL);
 	
 	DSPMainView *realView = [[DSPMainView alloc]initWithFrame:_contentRect];
@@ -183,6 +182,9 @@
 		versionTextLayer.contentsScale = scaleFactor;
 		gistTextLayer.contentsScale = scaleFactor;
 		andTextLayer.contentsScale = scaleFactor;
+		[versionTextLayer setNeedsDisplay];
+		[gistTextLayer setNeedsDisplay];
+		[andTextLayer setNeedsDisplay];
 	};
 	
 	self.view = realView;

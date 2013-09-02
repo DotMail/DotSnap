@@ -33,6 +33,11 @@
 	self.layer.masksToBounds = YES;
 	self.wantsLayer = YES;
 	
+	CALayer *underLayer = CALayer.layer;
+	underLayer.frame = self.layer.bounds;
+	underLayer.backgroundColor = [NSColor colorWithCalibratedRed:0.729 green:0.779 blue:0.811 alpha:1.000].dsp_CGColor;
+	[self.layer addSublayer:underLayer];
+	
 	self.offLayer = CALayer.layer;
 	self.offLayer.contents = [NSImage imageNamed:@"SwitchXMark"];
 	self.offLayer.frame = (NSRect){ .size = { CGRectGetWidth(frame)/2, CGRectGetHeight(frame) } };
@@ -44,6 +49,11 @@
 	self.onLayer.frame = (NSRect){ .origin.x = CGRectGetWidth(frame)/2, .size = { CGRectGetWidth(frame)/2, CGRectGetHeight(frame) } };
 	[self.layer addSublayer:self.onLayer];
 	
+	CALayer *topShadowLayer = CALayer.layer;
+	topShadowLayer.frame = (NSRect){ .origin.y = CGRectGetHeight(frame) - 2, .size = { (CGRectGetWidth(frame)/2) + 1, 3 } };
+	topShadowLayer.backgroundColor = [NSColor colorWithCalibratedRed:0.762 green:0.821 blue:0.849 alpha:1.000].dsp_CGColor;
+	[self.switchCover addSublayer:topShadowLayer];
+	
 	self.switchCover = CALayer.layer;
 	self.switchCover.backgroundColor = [NSColor colorWithCalibratedRed:0.730 green:0.793 blue:0.825 alpha:1.000].dsp_CGColor;
 	self.switchCover.frame = (NSRect){ .size = { CGRectGetWidth(frame)/2, CGRectGetHeight(frame) } };
@@ -51,14 +61,10 @@
 	[self.layer addSublayer:self.switchCover];
 	
 	CALayer *shadowLayer = CALayer.layer;
-	shadowLayer.frame = (NSRect){ .size = { CGRectGetWidth(frame), 2 } };
+	shadowLayer.frame = (NSRect){ .size = { CGRectGetWidth(self.switchCover.bounds), 2 } };
 	shadowLayer.backgroundColor = [NSColor colorWithCalibratedRed:0.575 green:0.665 blue:0.709 alpha:1.000].dsp_CGColor;
-	[self.layer addSublayer:shadowLayer];
+	[self.switchCover addSublayer:shadowLayer];
 	
-	CALayer *topShadowLayer = CALayer.layer;
-	topShadowLayer.frame = (NSRect){ .origin.y = CGRectGetHeight(frame) - 2, .size = { (CGRectGetWidth(frame)/2) + 1, 3 } };
-	topShadowLayer.backgroundColor = [NSColor colorWithCalibratedRed:0.762 green:0.821 blue:0.849 alpha:1.000].dsp_CGColor;
-	[self.switchCover addSublayer:topShadowLayer];
 	
 	return self;
 }
@@ -109,7 +115,7 @@
 			frame.origin.x = frameX;
 		}
 		self.offLayer.opacity = frameX / CGRectGetWidth(frame);
-		self.onLayer.opacity = 1 - (frameX / CGRectGetWidth(frame));
+		self.onLayer.opacity = 1 - ((2 * frameX) / CGRectGetWidth(frame));
 		self.switchCover.frame = frame;
 	}
 }
