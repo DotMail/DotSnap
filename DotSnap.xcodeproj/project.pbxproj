@@ -59,8 +59,8 @@
 		84808EBD17CA6841002A6288 /* BrowseCircle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E6617A4D8820091C0DB /* BrowseCircle@2x.png */; };
 		84808EBE17CA6841002A6288 /* BrowseCircle_Hover.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B009017B58C0000EB9672 /* BrowseCircle_Hover.png */; };
 		84808EBF17CA6841002A6288 /* BrowseCircle_Hover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B009117B58C0000EB9672 /* BrowseCircle_Hover@2x.png */; };
-		84808EC017CA6841002A6288 /* PreferencesLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B009F17B5F40500EB9672 /* PreferencesLogo.png */; };
-		84808EC117CA6841002A6288 /* PreferencesLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B00A017B5F40500EB9672 /* PreferencesLogo@2x.png */; };
+		84808EC017CA6841002A6288 /* PreferencesLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B009F17B5F40500EB9672 /* PreferencesLogo@2x.png */; };
+		84808EC117CA6841002A6288 /* PreferencesLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B00A017B5F40500EB9672 /* PreferencesLogo.png */; };
 		84808EC217CA6841002A6288 /* SettingsWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 8405D57E17A5A8D700D7990E /* SettingsWhite.png */; };
 		84808EC317CA6841002A6288 /* SettingsWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8405D57F17A5A8D700D7990E /* SettingsWhite@2x.png */; };
 		84808EC417CA6841002A6288 /* Settings_DarkHover.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E7217A4DC750091C0DB /* Settings_DarkHover.png */; };
@@ -176,8 +176,8 @@
 		842B009717B58D3D00EB9672 /* Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Checkmark@2x.png"; path = "Artwork/Checkmark@2x.png"; sourceTree = "<group>"; };
 		842B009C17B5915900EB9672 /* DSPMenuBarWindowIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPMenuBarWindowIconView.h; sourceTree = "<group>"; };
 		842B009D17B5915900EB9672 /* DSPMenuBarWindowIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPMenuBarWindowIconView.m; sourceTree = "<group>"; };
-		842B009F17B5F40500EB9672 /* PreferencesLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PreferencesLogo.png; path = Artwork/PreferencesLogo.png; sourceTree = "<group>"; };
-		842B00A017B5F40500EB9672 /* PreferencesLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PreferencesLogo@2x.png"; path = "Artwork/PreferencesLogo@2x.png"; sourceTree = "<group>"; };
+		842B009F17B5F40500EB9672 /* PreferencesLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PreferencesLogo@2x.png"; path = "Artwork/PreferencesLogo@2x.png"; sourceTree = "<group>"; };
+		842B00A017B5F40500EB9672 /* PreferencesLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PreferencesLogo.png; path = Artwork/PreferencesLogo.png; sourceTree = "<group>"; };
 		842B027517B7612600EB9672 /* SwitchCheckmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SwitchCheckmark.png; path = Artwork/SwitchCheckmark.png; sourceTree = "<group>"; };
 		842B027617B7612600EB9672 /* SwitchCheckmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SwitchCheckmark@2x.png"; path = "Artwork/SwitchCheckmark@2x.png"; sourceTree = "<group>"; };
 		842B027717B7612600EB9672 /* SwitchXMark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SwitchXMark.png; path = Artwork/SwitchXMark.png; sourceTree = "<group>"; };
@@ -540,8 +540,8 @@
 				84BC7E6617A4D8820091C0DB /* BrowseCircle@2x.png */,
 				842B009017B58C0000EB9672 /* BrowseCircle_Hover.png */,
 				842B009117B58C0000EB9672 /* BrowseCircle_Hover@2x.png */,
-				842B009F17B5F40500EB9672 /* PreferencesLogo.png */,
-				842B00A017B5F40500EB9672 /* PreferencesLogo@2x.png */,
+				842B009F17B5F40500EB9672 /* PreferencesLogo@2x.png */,
+				842B00A017B5F40500EB9672 /* PreferencesLogo.png */,
 				8405D57E17A5A8D700D7990E /* SettingsWhite.png */,
 				8405D57F17A5A8D700D7990E /* SettingsWhite@2x.png */,
 				84BC7E7217A4DC750091C0DB /* Settings_DarkHover.png */,
@@ -711,8 +711,8 @@
 				84808EBD17CA6841002A6288 /* BrowseCircle@2x.png in Resources */,
 				84808EBE17CA6841002A6288 /* BrowseCircle_Hover.png in Resources */,
 				84808EBF17CA6841002A6288 /* BrowseCircle_Hover@2x.png in Resources */,
-				84808EC017CA6841002A6288 /* PreferencesLogo.png in Resources */,
-				84808EC117CA6841002A6288 /* PreferencesLogo@2x.png in Resources */,
+				84808EC017CA6841002A6288 /* PreferencesLogo@2x.png in Resources */,
+				84808EC117CA6841002A6288 /* PreferencesLogo.png in Resources */,
 				84808EC217CA6841002A6288 /* SettingsWhite.png in Resources */,
 				84808EC317CA6841002A6288 /* SettingsWhite@2x.png in Resources */,
 				84808EC417CA6841002A6288 /* Settings_DarkHover.png in Resources */,
