@@ -24,7 +24,6 @@
 	self.buttonType = NSMomentaryChangeButton;
 	
 	CALayer *logoLayer = CALayer.layer;
-	logoLayer.contents = [NSImage imageNamed:@"PreferencesLogo"];
 	logoLayer.frame = self.bounds;
 	[self.layer addSublayer:logoLayer];
 	
@@ -35,9 +34,7 @@
 		@strongify(self);
 		CGFloat scaleFactor = self.window.backingScaleFactor;
 		logoLayer.contentsScale = scaleFactor;
-		if (scaleFactor > 1) {
-			logoLayer.contents = [NSImage imageNamed:@"PreferencesLogo@2x"];
-		}
+		logoLayer.contents = [NSImage imageNamed:@"PreferencesLogo"];
 	};
 	
 	return self;

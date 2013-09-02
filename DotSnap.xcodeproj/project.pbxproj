@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8455744B17D54CC3007CA2AB /* PreferencesLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B00A017B5F40500EB9672 /* PreferencesLogo.png */; };
+		8455744C17D54CC3007CA2AB /* PreferencesLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B009F17B5F40500EB9672 /* PreferencesLogo@2x.png */; };
 		84808E5C17CA67C9002A6288 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4F7C0813C30F9F00825C6E /* Cocoa.framework */; };
 		84808E7B17CA67C9002A6288 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84808E7A17CA67C9002A6288 /* XCTest.framework */; };
 		84808E7C17CA67C9002A6288 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4F7C0813C30F9F00825C6E /* Cocoa.framework */; };
@@ -59,8 +61,6 @@
 		84808EBD17CA6841002A6288 /* BrowseCircle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E6617A4D8820091C0DB /* BrowseCircle@2x.png */; };
 		84808EBE17CA6841002A6288 /* BrowseCircle_Hover.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B009017B58C0000EB9672 /* BrowseCircle_Hover.png */; };
 		84808EBF17CA6841002A6288 /* BrowseCircle_Hover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B009117B58C0000EB9672 /* BrowseCircle_Hover@2x.png */; };
-		84808EC017CA6841002A6288 /* PreferencesLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B009F17B5F40500EB9672 /* PreferencesLogo@2x.png */; };
-		84808EC117CA6841002A6288 /* PreferencesLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B00A017B5F40500EB9672 /* PreferencesLogo.png */; };
 		84808EC217CA6841002A6288 /* SettingsWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 8405D57E17A5A8D700D7990E /* SettingsWhite.png */; };
 		84808EC317CA6841002A6288 /* SettingsWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8405D57F17A5A8D700D7990E /* SettingsWhite@2x.png */; };
 		84808EC417CA6841002A6288 /* Settings_DarkHover.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BC7E7217A4DC750091C0DB /* Settings_DarkHover.png */; };
@@ -711,8 +711,8 @@
 				84808EBD17CA6841002A6288 /* BrowseCircle@2x.png in Resources */,
 				84808EBE17CA6841002A6288 /* BrowseCircle_Hover.png in Resources */,
 				84808EBF17CA6841002A6288 /* BrowseCircle_Hover@2x.png in Resources */,
-				84808EC017CA6841002A6288 /* PreferencesLogo@2x.png in Resources */,
-				84808EC117CA6841002A6288 /* PreferencesLogo.png in Resources */,
+				8455744B17D54CC3007CA2AB /* PreferencesLogo.png in Resources */,
+				8455744C17D54CC3007CA2AB /* PreferencesLogo@2x.png in Resources */,
 				84808EC217CA6841002A6288 /* SettingsWhite.png in Resources */,
 				84808EC317CA6841002A6288 /* SettingsWhite@2x.png in Resources */,
 				84808EC417CA6841002A6288 /* Settings_DarkHover.png in Resources */,
