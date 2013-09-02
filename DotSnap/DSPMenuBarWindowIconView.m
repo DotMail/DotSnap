@@ -96,7 +96,7 @@ static NSMenu *contextMenu(id delegate) {
 		NSRectFill(b);
 	}
 	if (self.menuBarWindow && self.menuBarWindow.menuBarIcon) {
-		NSRect rect = (NSRect){ .origin = { NSMinX(b) + 3, NSMinY(b) + 4 }, .size = { NSWidth(b) - 6, NSHeight(b) - 6 } };
+		NSRect rect = (NSRect){ .origin = { NSMinX(b) + 3, NSMinY(b) + 3 }, .size = { NSWidth(b) - 6, NSHeight(b) - 6 } };
 		if (self.highlighted && self.menuBarWindow.highlightedMenuBarIcon) {
 			[self.menuBarWindow.highlightedMenuBarIcon drawInRect:rect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
 		} else {
