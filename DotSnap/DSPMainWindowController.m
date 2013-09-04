@@ -37,6 +37,12 @@
 	rect.origin = [(DSPMainWindow *)self.window originForNewFrame:rect];
 	[(DSPMainWindow *)self.window setFrame:rect display:YES animate:YES];
 	
+	[NSNotificationCenter.defaultCenter addObserverForName:NSWindowDidResignKeyNotification object:self.window queue:nil usingBlock:^(NSNotification *note) {
+		if (![NSUserDefaults.standardUserDefaults boolForKey:DSPAutosaveInputFieldKey]) {
+			[self.viewController reset];
+		}
+	}];
+	
 	return self;
 }
 

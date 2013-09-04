@@ -317,6 +317,12 @@ static NSString *DSPScrubString(NSString *string) {
 	[(DSPMainWindow *)self.view.window setIsFlipping:NO];
 }
 
+- (void)reset {
+	if (![(DSPMainWindow *)self.view.window isFlipping]) {
+		self.mouseDownBlock(nil);
+	}
+}
+
 #pragma mark - NSControlTextEditingDelegate
 
 - (BOOL)control:(NSControl *)control textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector {

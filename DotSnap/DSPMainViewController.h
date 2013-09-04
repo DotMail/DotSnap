@@ -11,5 +11,6 @@
 }
 
 - (id)initWithContentRect:(CGRect)rect;
+- (void)reset;
 
 @end

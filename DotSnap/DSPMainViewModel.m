@@ -116,6 +116,9 @@ static NSUInteger const DPSUniqueFilenameDepthLimit = 500;
 
 static NSString *DPSUniqueFilenameForDirectory(NSString *relativePath, NSString *filename, BOOL timestamp) {
 	NSError *error;
+	BOOL directory;
+	BOOL fileExists = [NSFileManager.defaultManager fileExistsAtPath:relativePath isDirectory:&directory];
+	if (!fileExists) [NSFileManager.defaultManager createDirectoryAtPath:relativePath withIntermediateDirectories:YES attributes:nil error:nil];
 	NSSet *allURLs = [NSSet setWithArray:[NSFileManager.defaultManager contentsOfDirectoryAtPath:relativePath error:&error]];
 	if (error) return nil;
 	
