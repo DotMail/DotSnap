@@ -196,7 +196,8 @@ static NSString *DSPScrubString(NSString *string) {
 			[NSAnimationContext beginGrouping];
 			
 			BOOL atMax = (self.viewModel.filenameHistory.count == 5);
-			NSRect scrollViewFrame = (NSRect){ .origin.y = NSMinY(fieldBackground.frame) - (62 * self.viewModel.filenameHistory.count), .size = { 400, (60 * self.viewModel.filenameHistory.count) + (atMax ? 10 : 0) } };
+			CGFloat multiplicand = (self.viewModel.filenameHistory.count == 5) ? 62 : 60;
+			NSRect scrollViewFrame = (NSRect){ .origin.y = NSMinY(fieldBackground.frame) - (multiplicand * self.viewModel.filenameHistory.count), .size = { 400, (60 * self.viewModel.filenameHistory.count) + (atMax ? 10 : 0) } };
 			[scrollView.animator setFrame:scrollViewFrame];
 			[scrollView.animator setAlphaValue:self.viewModel.filenameHistory.count ? 1.f : 0.f];
 			[NSAnimationContext.currentContext setCompletionHandler:^{

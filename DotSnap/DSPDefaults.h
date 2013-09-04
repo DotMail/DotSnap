@@ -29,4 +29,6 @@ DOTSNAP_EXPORT NSString *const DSPAutosaveInputFieldKey;
 
 DOTSNAP_EXPORT NSString *const DSPDefaultFilePathKey;
 
+DOTSNAP_EXPORT NSString *const DSPHasShownPanelAtFirstLaunchKey;
+
 #endif

@@ -7,6 +7,7 @@
 //
 
 #import "DSPLaunchServicesManager.h"
+#import <ServiceManagement/ServiceManagement.h>
 
 #if MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_6
 static NSString * const kLSSharedFileListLoginItemHidden = @"com.apple.loginitem.HideOnLaunch";
@@ -38,37 +39,11 @@ static NSString * const kLSSharedFileListLoginItemHidden = @"com.apple.loginitem
 }
 
 - (void)insertCurrentApplicationInStartupItems:(BOOL)hideAtLaunch {
-	CFURLRef url = (__bridge CFURLRef)[NSURL fileURLWithPath:_bundlePath];
-	LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
-	if (loginItems != NULL) {
-		NSDictionary *propertiesToSet = @{ (__bridge id)kLSSharedFileListLoginItemHidden : @(hideAtLaunch) };
-		LSSharedFileListItemRef item = LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemLast, NULL, NULL, url, (__bridge CFDictionaryRef)propertiesToSet, NULL);
-		if (item){
-			CFRelease(item);
-		}
-		CFRelease(loginItems);
-	}
+	SMLoginItemSetEnabled((__bridge CFStringRef)(NSBundle.mainBundle.bundleIdentifier), true);
 }
 
 - (void)removeCurrentApplicationFromStartupItems {
-	CFURLRef url = (__bridge CFURLRef)[NSURL fileURLWithPath:_bundlePath];
-	LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
-	
-	if (loginItems != NULL) {
-		UInt32 seedValue;
-		CFArrayRef loginItemsArray = LSSharedFileListCopySnapshot(loginItems, &seedValue);
-		for(int i = 0; i< CFArrayGetCount(loginItemsArray); i++){
-			LSSharedFileListItemRef itemRef = (LSSharedFileListItemRef)CFArrayGetValueAtIndex(loginItemsArray, i);
-			if (LSSharedFileListItemResolve(itemRef, 0, (CFURLRef*) &url, NULL) == noErr) {
-				NSString * urlPath = [(__bridge NSURL *)url path];
-				if ([urlPath compare:_bundlePath] == NSOrderedSame){
-					LSSharedFileListItemRemove(loginItems,itemRef);
-				}
-			}
-		}
-		CFRelease(loginItems);
-		CFRelease(loginItemsArray);
-	}
+	SMLoginItemSetEnabled((__bridge CFStringRef)(NSBundle.mainBundle.bundleIdentifier), false);
 }
 
 @end

@@ -8,6 +8,7 @@
 
 #import "DSPApplicationDelegate.h"
 #import "DSPMainWindowController.h"
+#import "DSPLaunchServicesManager.h"
 
 @interface DSPApplicationDelegate ()
 @property (nonatomic, strong) DSPMainWindowController *windowController;
@@ -20,6 +21,14 @@
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
+	if (![NSUserDefaults.standardUserDefaults boolForKey:DSPHasShownPanelAtFirstLaunchKey]) {
+		NSInteger result = NSRunAlertPanel(@"DotSnap", @"Let DotSnap help you organize your desktop. Do you want to open DotSnap automatically when you login?", @"Yes, please", @"No", nil);
+		if (result == NSAlertDefaultReturn) {
+			[DSPLaunchServicesManager.defaultManager insertCurrentApplicationInStartupItems:NO];
+			[NSUserDefaults.standardUserDefaults setBool:YES forKey:DSPLoadDotSnapAtStartKey];
+		}
+		[NSUserDefaults.standardUserDefaults setBool:YES forKey:DSPHasShownPanelAtFirstLaunchKey];
+	}
 	self.windowController = [[DSPMainWindowController alloc]init];
 	[self.windowController close];
 }

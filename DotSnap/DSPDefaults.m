@@ -19,3 +19,5 @@ NSString *const DSPFilenameHistoryKey = @"DSPFilenameHistory";
 NSString *const DSPAutosaveInputFieldKey = @"DSPAutosaveInputField";
 
 NSString *const DSPDefaultFilePathKey = @"DSPDefaultFilePathKey";
+
+NSString *const DSPHasShownPanelAtFirstLaunchKey = @"DSPLaunchAtHotNoon";

@@ -12,6 +12,8 @@
 	<string>@default</string>
 	<key>DSPDefaultFilenameTemplate</key>
 	<string>MyScreenShotName</string>
+	<key>DSPLaunchAtHotNoon</key>
+	<false/>
 	<key>DSPFilenameHistory</key>
 	<array/>
 </dict>

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8455744B17D54CC3007CA2AB /* PreferencesLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B00A017B5F40500EB9672 /* PreferencesLogo.png */; };
 		8455744C17D54CC3007CA2AB /* PreferencesLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B009F17B5F40500EB9672 /* PreferencesLogo@2x.png */; };
+		8455745617D6C540007CA2AB /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8455745517D6C540007CA2AB /* ServiceManagement.framework */; };
 		84808E5C17CA67C9002A6288 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4F7C0813C30F9F00825C6E /* Cocoa.framework */; };
 		84808E7B17CA67C9002A6288 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84808E7A17CA67C9002A6288 /* XCTest.framework */; };
 		84808E7C17CA67C9002A6288 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4F7C0813C30F9F00825C6E /* Cocoa.framework */; };
@@ -184,6 +185,7 @@
 		842B027817B7612600EB9672 /* SwitchXMark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SwitchXMark@2x.png"; path = "Artwork/SwitchXMark@2x.png"; sourceTree = "<group>"; };
 		842B028817B8256800EB9672 /* DSPBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPBackgroundView.h; sourceTree = "<group>"; };
 		842B028917B8256800EB9672 /* DSPBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPBackgroundView.m; sourceTree = "<group>"; };
+		8455745517D6C540007CA2AB /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		84600B4317A31CB500D3E8FE /* MAAttachedWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAAttachedWindow.h; sourceTree = "<group>"; };
 		84600B4417A31CB500D3E8FE /* MAAttachedWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAAttachedWindow.m; sourceTree = "<group>"; };
 		84600B4C17A34A8400D3E8FE /* DSPHistoryRowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPHistoryRowView.h; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8455745617D6C540007CA2AB /* ServiceManagement.framework in Frameworks */,
 				84808ECC17CA684A002A6288 /* ReactiveCocoa.framework in Frameworks */,
 				84808E5C17CA67C9002A6288 /* Cocoa.framework in Frameworks */,
 			);
@@ -461,6 +464,7 @@
 		DD4F7C0713C30F9F00825C6E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8455745517D6C540007CA2AB /* ServiceManagement.framework */,
 				8478363E17A1F9B20050EBA6 /* CoreGraphics.framework */,
 				8478363C17A1F9AB0050EBA6 /* CoreServices.framework */,
 				8478363817A1F93D0050EBA6 /* CoreText.framework */,
