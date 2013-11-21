@@ -52,7 +52,7 @@
 	
 	NSRect animationFrame;
 	animationFrame.origin.x = NSMidX(w1.frame) - (maxWidth / 2);
-	animationFrame.origin.y = NSMidY(w1.frame) - (maxHeight / 2);
+	animationFrame.origin.y = NSMidY(w1.frame) - (maxHeight / 2) + (flag ? -100 : -200);
 	animationFrame.size.width = maxWidth;
 	animationFrame.size.height = maxHeight;
 	
@@ -66,7 +66,7 @@
 		NSRect toFrame = toWindow.frame;
 		
 		toFrame.origin.x = NSMidX(fromFrame) - (NSWidth(toFrame) / 2);
-		toFrame.origin.y = NSMaxY(fromFrame) - NSHeight(toFrame) + 200;
+		toFrame.origin.y = NSMaxY(fromFrame) - NSHeight(toFrame);
 		
 		[toWindow setFrame:toFrame display:flag];
 	}

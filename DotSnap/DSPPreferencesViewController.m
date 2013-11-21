@@ -186,7 +186,7 @@
 
 
 - (void)flipToMainView:(id)sender {
-	[[[LIFlipEffect alloc] initFromWindow:self.view.window toWindow:self.presentingWindow flag:_exemptForAnimation] run];
+	[[[LIFlipEffect alloc] initFromWindow:self.view.window toWindow:self.presentingWindow flag:!_exemptForAnimation] run];
 }
 
 - (void)openCodafi:(id)sender {
