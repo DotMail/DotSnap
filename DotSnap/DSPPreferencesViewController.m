@@ -186,11 +186,11 @@
 
 
 - (void)flipToMainView:(id)sender {
-	[[[LIFlipEffect alloc] initFromWindow:self.view.window toWindow:self.presentingWindow flag:_exemptForAnimation ? -1 : 0] run];
+	[[[LIFlipEffect alloc] initFromWindow:self.view.window toWindow:self.presentingWindow flag:_exemptForAnimation] run];
 }
 
 - (void)openCodafi:(id)sender {
-	[NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:@"https://github.com/CodaFi"]];
+	[NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:@"http://www.codafi.me/"]];
 }
 
 - (void)openVanSchneider:(id)sender {

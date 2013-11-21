@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		840097E017D6F9840085001E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840097DE17D6F9840085001E /* MainMenu.xib */; };
+		840BF861183D7CB00061E528 /* LIEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 840BF85E183D7CB00061E528 /* LIEffect.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		840BF862183D7CB00061E528 /* LIFlipEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 840BF860183D7CB00061E528 /* LIFlipEffect.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		84110A3D17FCE155009EED29 /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 84110A3C17FCE155009EED29 /* PFMoveApplication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		84110A4617FCE1B0009EED29 /* NSString+SymlinksAndAliases.m in Sources */ = {isa = PBXBuildFile; fileRef = 84110A4517FCE1B0009EED29 /* NSString+SymlinksAndAliases.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		84110A4817FCE1F7009EED29 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84110A4717FCE1F7009EED29 /* Security.framework */; };
+		844C321B17D6CBF8008EC5D4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847835EE17A0EABD0050EBA6 /* QuartzCore.framework */; };
 		8455744B17D54CC3007CA2AB /* PreferencesLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B00A017B5F40500EB9672 /* PreferencesLogo.png */; };
 		8455744C17D54CC3007CA2AB /* PreferencesLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B009F17B5F40500EB9672 /* PreferencesLogo@2x.png */; };
 		8455745617D6C540007CA2AB /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8455745517D6C540007CA2AB /* ServiceManagement.framework */; };
@@ -40,8 +47,6 @@
 		84808EA317CA6826002A6288 /* DSPSpinningSettingsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BC7E7B17A4DC9E0091C0DB /* DSPSpinningSettingsButton.m */; };
 		84808EA417CA6826002A6288 /* DSPSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478364117A1FAE00050EBA6 /* DSPSwitch.m */; };
 		84808EA517CA6826002A6288 /* NSColor+DSPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478365C17A221490050EBA6 /* NSColor+DSPExtensions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		84808EA617CA6826002A6288 /* LIEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 8405D58917A5E06D00D7990E /* LIEffect.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		84808EA717CA6826002A6288 /* LIFlipEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 8405D58B17A5E06D00D7990E /* LIFlipEffect.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		84808EA817CA6826002A6288 /* MAAttachedWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 84600B4417A31CB500D3E8FE /* MAAttachedWindow.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		84808EA917CA6826002A6288 /* JNWAnimatableWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478361617A0F6A10050EBA6 /* JNWAnimatableWindow.m */; };
 		84808EAA17CA6826002A6288 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4F7C1413C30F9F00825C6E /* main.m */; };
@@ -74,7 +79,6 @@
 		84808ECB17CA6841002A6288 /* SwitchXMark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 842B027817B7612600EB9672 /* SwitchXMark@2x.png */; };
 		84808ECC17CA684A002A6288 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847835E217A0E3AA0050EBA6 /* ReactiveCocoa.framework */; };
 		84808ECD17CA6898002A6288 /* DotSnap.icns in Resources */ = {isa = PBXBuildFile; fileRef = 842B008E17B583CA00EB9672 /* DotSnap.icns */; };
-		84808ECE17CA6D7E002A6288 /* MainMenu.xib in Sources */ = {isa = PBXBuildFile; fileRef = DD4F7C1D13C30F9F00825C6E /* MainMenu.xib */; };
 		84808ECF17CA6F31002A6288 /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8478363117A19D2B0050EBA6 /* Defaults.plist */; };
 		84808ED117CA6F63002A6288 /* ReactiveCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 847835E217A0E3AA0050EBA6 /* ReactiveCocoa.framework */; };
 /* End PBXBuildFile section */
@@ -152,16 +156,22 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		840097DF17D6F9840085001E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = DotSnap/Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		8405D57E17A5A8D700D7990E /* SettingsWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SettingsWhite.png; path = Artwork/SettingsWhite.png; sourceTree = "<group>"; };
 		8405D57F17A5A8D700D7990E /* SettingsWhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SettingsWhite@2x.png"; path = "Artwork/SettingsWhite@2x.png"; sourceTree = "<group>"; };
 		8405D58217A5C4D500D7990E /* DSPPreferencesWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPPreferencesWindow.h; sourceTree = "<group>"; };
 		8405D58317A5C4D500D7990E /* DSPPreferencesWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPPreferencesWindow.m; sourceTree = "<group>"; };
 		8405D58517A5D60000D7990E /* DSPPNGFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPPNGFormatter.h; sourceTree = "<group>"; };
 		8405D58617A5D60000D7990E /* DSPPNGFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPPNGFormatter.m; sourceTree = "<group>"; };
-		8405D58817A5E06D00D7990E /* LIEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LIEffect.h; path = "../../../Downloads/LIFlipEffect-master/LIEffect.h"; sourceTree = "<group>"; };
-		8405D58917A5E06D00D7990E /* LIEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LIEffect.m; path = "../../../Downloads/LIFlipEffect-master/LIEffect.m"; sourceTree = "<group>"; };
-		8405D58A17A5E06D00D7990E /* LIFlipEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LIFlipEffect.h; path = "../../../Downloads/LIFlipEffect-master/LIFlipEffect.h"; sourceTree = "<group>"; };
-		8405D58B17A5E06D00D7990E /* LIFlipEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LIFlipEffect.m; path = "../../../Downloads/LIFlipEffect-master/LIFlipEffect.m"; sourceTree = "<group>"; };
+		840BF85D183D7CB00061E528 /* LIEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIEffect.h; sourceTree = "<group>"; };
+		840BF85E183D7CB00061E528 /* LIEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIEffect.m; sourceTree = "<group>"; };
+		840BF85F183D7CB00061E528 /* LIFlipEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIFlipEffect.h; sourceTree = "<group>"; };
+		840BF860183D7CB00061E528 /* LIFlipEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIFlipEffect.m; sourceTree = "<group>"; };
+		84110A3B17FCE155009EED29 /* PFMoveApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFMoveApplication.h; sourceTree = "<group>"; };
+		84110A3C17FCE155009EED29 /* PFMoveApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFMoveApplication.m; sourceTree = "<group>"; };
+		84110A4417FCE1B0009EED29 /* NSString+SymlinksAndAliases.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SymlinksAndAliases.h"; sourceTree = "<group>"; };
+		84110A4517FCE1B0009EED29 /* NSString+SymlinksAndAliases.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SymlinksAndAliases.m"; sourceTree = "<group>"; };
+		84110A4717FCE1F7009EED29 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		842B007517B47AEC00EB9672 /* DSPShadowBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPShadowBox.h; sourceTree = "<group>"; };
 		842B007617B47AEC00EB9672 /* DSPShadowBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPShadowBox.m; sourceTree = "<group>"; };
 		842B007D17B47B6900EB9672 /* DSPLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPLabel.h; sourceTree = "<group>"; };
@@ -257,7 +267,6 @@
 		84D3475717BC96CB0060A937 /* DSPPreferencesFieldBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPPreferencesFieldBackgroundView.m; sourceTree = "<group>"; };
 		84D3475B17BD3D1E0060A937 /* TopPartArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TopPartArrow.png; path = Artwork/TopPartArrow.png; sourceTree = "<group>"; };
 		84D3475C17BD3D1E0060A937 /* TopPartArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TopPartArrow@2x.png"; path = "Artwork/TopPartArrow@2x.png"; sourceTree = "<group>"; };
-		84EC512417C181500043D1C8 /* DotSnap.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = DotSnap.entitlements; sourceTree = "<group>"; };
 		DD4F7C0813C30F9F00825C6E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		DD4F7C0B13C30F9F00825C6E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		DD4F7C0C13C30F9F00825C6E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -265,7 +274,6 @@
 		DD4F7C1013C30F9F00825C6E /* DotSnap-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DotSnap-Info.plist"; sourceTree = "<group>"; };
 		DD4F7C1413C30F9F00825C6E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DD4F7C1613C30F9F00825C6E /* DotSnap-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DotSnap-Prefix.pch"; sourceTree = "<group>"; };
-		DD4F7C1E13C30F9F00825C6E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,6 +281,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84110A4817FCE1F7009EED29 /* Security.framework in Frameworks */,
+				844C321B17D6CBF8008EC5D4 /* QuartzCore.framework in Frameworks */,
 				8455745617D6C540007CA2AB /* ServiceManagement.framework in Frameworks */,
 				84808ECC17CA684A002A6288 /* ReactiveCocoa.framework in Frameworks */,
 				84808E5C17CA67C9002A6288 /* Cocoa.framework in Frameworks */,
@@ -291,6 +301,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84110A4317FCE160009EED29 /* PFMoveApplication */ = {
+			isa = PBXGroup;
+			children = (
+				84110A4417FCE1B0009EED29 /* NSString+SymlinksAndAliases.h */,
+				84110A4517FCE1B0009EED29 /* NSString+SymlinksAndAliases.m */,
+				84110A3B17FCE155009EED29 /* PFMoveApplication.h */,
+				84110A3C17FCE155009EED29 /* PFMoveApplication.m */,
+			);
+			name = PFMoveApplication;
+			sourceTree = "<group>";
+		};
 		842B008317B47F1A00EB9672 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
@@ -394,6 +415,7 @@
 		8478363717A19FDB0050EBA6 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				84110A4317FCE160009EED29 /* PFMoveApplication */,
 				84D3475217BC82F80060A937 /* LIFlipEffect */,
 				84600B4B17A31CB900D3E8FE /* MAAttachedWindow */,
 				8478363617A19FCE0050EBA6 /* JNWAnimatableWIndow */,
@@ -432,10 +454,10 @@
 		84D3475217BC82F80060A937 /* LIFlipEffect */ = {
 			isa = PBXGroup;
 			children = (
-				8405D58817A5E06D00D7990E /* LIEffect.h */,
-				8405D58917A5E06D00D7990E /* LIEffect.m */,
-				8405D58A17A5E06D00D7990E /* LIFlipEffect.h */,
-				8405D58B17A5E06D00D7990E /* LIFlipEffect.m */,
+				840BF85D183D7CB00061E528 /* LIEffect.h */,
+				840BF85E183D7CB00061E528 /* LIEffect.m */,
+				840BF85F183D7CB00061E528 /* LIFlipEffect.h */,
+				840BF860183D7CB00061E528 /* LIFlipEffect.m */,
 			);
 			name = LIFlipEffect;
 			sourceTree = "<group>";
@@ -464,6 +486,7 @@
 		DD4F7C0713C30F9F00825C6E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84110A4717FCE1F7009EED29 /* Security.framework */,
 				8455745517D6C540007CA2AB /* ServiceManagement.framework */,
 				8478363E17A1F9B20050EBA6 /* CoreGraphics.framework */,
 				8478363C17A1F9AB0050EBA6 /* CoreServices.framework */,
@@ -499,7 +522,6 @@
 				DD4F7C1413C30F9F00825C6E /* main.m */,
 				DD4F7C1613C30F9F00825C6E /* DotSnap-Prefix.pch */,
 				DD4F7C1013C30F9F00825C6E /* DotSnap-Info.plist */,
-				84EC512417C181500043D1C8 /* DotSnap.entitlements */,
 				8478363317A19D8F0050EBA6 /* DSPDefaults.h */,
 				8478363417A19E410050EBA6 /* DSPDefaults.m */,
 				8478363117A19D2B0050EBA6 /* Defaults.plist */,
@@ -520,7 +542,7 @@
 		DD4F7C2913C3124300825C6E /* XIBs */ = {
 			isa = PBXGroup;
 			children = (
-				DD4F7C1D13C30F9F00825C6E /* MainMenu.xib */,
+				840097DE17D6F9840085001E /* MainMenu.xib */,
 			);
 			name = XIBs;
 			sourceTree = "<group>";
@@ -613,7 +635,7 @@
 						DevelopmentTeam = JMX758PAJB;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -727,6 +749,7 @@
 				84808EC917CA6841002A6288 /* SwitchCheckmark@2x.png in Resources */,
 				84808ECA17CA6841002A6288 /* SwitchXMark.png in Resources */,
 				84808ECB17CA6841002A6288 /* SwitchXMark@2x.png in Resources */,
+				840097E017D6F9840085001E /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -745,7 +768,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84808ECE17CA6D7E002A6288 /* MainMenu.xib in Sources */,
 				84808E8D17CA6826002A6288 /* DSPApplicationDelegate.m in Sources */,
 				84808E8E17CA6826002A6288 /* DSPPreferencesWindow.m in Sources */,
 				84808E8F17CA6826002A6288 /* DSPPreferencesViewController.m in Sources */,
@@ -753,7 +775,9 @@
 				84808E9117CA6826002A6288 /* DSPPreferencesFieldBackgroundView.m in Sources */,
 				84808E9217CA6826002A6288 /* DSPPreferencesShadowBox.m in Sources */,
 				84808E9317CA6826002A6288 /* DSPMainWindowController.m in Sources */,
+				840BF861183D7CB00061E528 /* LIEffect.m in Sources */,
 				84808E9417CA6826002A6288 /* DSPMainWindow.m in Sources */,
+				840BF862183D7CB00061E528 /* LIFlipEffect.m in Sources */,
 				84808E9517CA6826002A6288 /* DSPMainViewController.m in Sources */,
 				84808E9617CA6826002A6288 /* DSPMainView.m in Sources */,
 				84808E9717CA6826002A6288 /* DSPBackgroundView.m in Sources */,
@@ -761,6 +785,8 @@
 				84808E9917CA6826002A6288 /* DSPDirectoryPickerButton.m in Sources */,
 				84808E9A17CA6826002A6288 /* DSPFilenameTextField.m in Sources */,
 				84808E9B17CA6826002A6288 /* DSPGlowingNameButton.m in Sources */,
+				84110A3D17FCE155009EED29 /* PFMoveApplication.m in Sources */,
+				84110A4617FCE1B0009EED29 /* NSString+SymlinksAndAliases.m in Sources */,
 				84808E9C17CA6826002A6288 /* DSPLogoButton.m in Sources */,
 				84808E9D17CA6826002A6288 /* DSPHistoryRowView.m in Sources */,
 				84808E9E17CA6826002A6288 /* DSPHistoryTableView.m in Sources */,
@@ -771,8 +797,6 @@
 				84808EA317CA6826002A6288 /* DSPSpinningSettingsButton.m in Sources */,
 				84808EA417CA6826002A6288 /* DSPSwitch.m in Sources */,
 				84808EA517CA6826002A6288 /* NSColor+DSPExtensions.m in Sources */,
-				84808EA617CA6826002A6288 /* LIEffect.m in Sources */,
-				84808EA717CA6826002A6288 /* LIFlipEffect.m in Sources */,
 				84808EA817CA6826002A6288 /* MAAttachedWindow.m in Sources */,
 				84808EA917CA6826002A6288 /* JNWAnimatableWindow.m in Sources */,
 				84808EAA17CA6826002A6288 /* main.m in Sources */,
@@ -804,6 +828,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		840097DE17D6F9840085001E /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				840097DF17D6F9840085001E /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
 		84808E8217CA67C9002A6288 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -812,30 +844,21 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		DD4F7C1D13C30F9F00825C6E /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DD4F7C1E13C30F9F00825C6E /* en */,
-			);
-			name = MainMenu.xib;
-			path = DotSnap;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		84808E8817CA67C9002A6288 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CODE_SIGN_ENTITLEMENTS = DotSnap/DotSnap.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DotSnap/DotSnap-Prefix.pch";
@@ -847,7 +870,9 @@
 				INFOPLIST_FILE = "DotSnap/DotSnap-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
@@ -856,15 +881,15 @@
 		84808E8917CA67C9002A6288 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CODE_SIGN_ENTITLEMENTS = DotSnap/DotSnap.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -873,7 +898,9 @@
 				INFOPLIST_FILE = "DotSnap/DotSnap-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};

@@ -149,6 +149,7 @@ static NSString *DSPScrubString(NSString *string) {
 	[directoryButton.rac_command subscribeNext:^(NSButton *_) {
 		((DSPMainWindow *)view.window).isInOpenPanel = YES;
 		_exemptFlagForAnimation = YES;
+		_exemptOpenPanelCancellation = YES;
 		[self.openPanel beginSheetModalForWindow:view.window completionHandler:^(NSInteger result){
 			((DSPMainWindow *)view.window).isInOpenPanel = NO;
 			if (result == NSFileHandlingPanelOKButton) {
@@ -163,6 +164,7 @@ static NSString *DSPScrubString(NSString *string) {
 					self.viewModel.filepath = urlString.stringByDeletingLastPathComponent;
 					saveToLabel.stringValue = [NSString stringWithFormat:@"SAVE TO: %@", DSPScrubString(urlString)];
 				}
+				_exemptOpenPanelCancellation = NO;
 			} else {
 				_exemptOpenPanelCancellation = YES;
 			}
@@ -307,7 +309,6 @@ static NSString *DSPScrubString(NSString *string) {
 			layer.opacity = 0.f;
 		}];
 	}
-	_exemptOpenPanelCancellation = NO;
 }
 
 - (void)flipToSettingsView:(id)sender {
