@@ -10,9 +10,9 @@
 #import "DSPMenuBarWindowIconView.h"
 #import <objc/runtime.h>
 
-static CGFloat const DPSMenuBarWindowTitleBarHeight = 0.0;
-static CGFloat const DPSMenuBarWindowArrowHeight = 10.0;
-static CGFloat const DPSMenuBarWindowArrowWidth = 20.0;
+//static CGFloat const DPSMenuBarWindowTitleBarHeight = 0.0;
+//static CGFloat const DPSMenuBarWindowArrowHeight = 10.0;
+//static CGFloat const DPSMenuBarWindowArrowWidth = 20.0;
 
 @implementation DSPMainWindow {
 	BOOL _resized;

@@ -145,8 +145,10 @@ static NSString *DSPScrubString(NSString *string) {
 	[view addSubview:filenameField];
 	
 	DSPDirectoryPickerButton *directoryButton = [[DSPDirectoryPickerButton alloc]initWithFrame:(NSRect){ .origin.x = 36, .origin.y = NSHeight(backgroundView.frame) - 96, .size = { 48, 48 } }];
-	directoryButton.rac_command = [RACCommand command];
-	[directoryButton.rac_command subscribeNext:^(NSButton *_) {
+	directoryButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+		return [RACSignal return:input];
+	}];
+	[directoryButton.rac_command.executionSignals subscribeNext:^(NSButton *_) {
 		((DSPMainWindow *)view.window).isInOpenPanel = YES;
 		_exemptFlagForAnimation = YES;
 		_exemptOpenPanelCancellation = YES;

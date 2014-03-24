@@ -87,7 +87,10 @@
 	[view.layer addSublayer:versionTextLayer];
 	
 	DSPLogoButton *logoButton = [[DSPLogoButton alloc]initWithFrame:(CGRect){ .origin.x = NSMidX(_contentRect) - 32, .origin.y = NSHeight(_contentRect) - 100, .size = { 62, 62 } }];
-	[logoButton.rac_command subscribeNext:^(id x) {
+	logoButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+		return [RACSignal return:input];
+	}];
+	[logoButton.rac_command.executionSignals subscribeNext:^(id x) {
 		if (!_showingVersion) {
 			[NSAnimationContext beginGrouping];
 			[NSAnimationContext.currentContext setDuration:0.5];
@@ -103,6 +106,7 @@
 		}
 		_showingVersion = !_showingVersion;
 	}];
+	
 	[view addSubview:logoButton];
 
 	DSPSpinningSettingsButton *optionsButton = [[DSPSpinningSettingsButton alloc]initWithFrame:(NSRect){ .origin.x = NSWidth(_contentRect) - 28, .origin.y = NSHeight(_contentRect) - 38, .size = { 17, 17 } } style:1];

@@ -1,6 +1,7 @@
 [submodule "External/ReactiveCocoa"]
 	path = External/ReactiveCocoa
 	url = https://github.com/ReactiveCocoa/ReactiveCocoa.git
+	ignore = dirty
 [submodule "External/Lagrangian"]
 	path = External/Lagrangian
 	url = https://github.com/robrix/Lagrangian.git

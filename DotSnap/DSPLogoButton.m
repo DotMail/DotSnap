@@ -27,7 +27,9 @@
 	logoLayer.frame = self.bounds;
 	[self.layer addSublayer:logoLayer];
 	
-	self.rac_command = RACCommand.command;
+	self.rac_command = [[RACCommand alloc]initWithSignalBlock:^RACSignal *(id input) {
+		return [RACSignal return:input];
+	}];
 	
 	@weakify(self);
 	self.viewDidMoveToWindowBlock = ^{

@@ -629,7 +629,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = DSP;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				TargetAttributes = {
 					84808E5A17CA67C9002A6288 = {
 						DevelopmentTeam = JMX758PAJB;
@@ -850,7 +850,6 @@
 		84808E8817CA67C9002A6288 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -881,7 +880,6 @@
 		84808E8917CA67C9002A6288 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
