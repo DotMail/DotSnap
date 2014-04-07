@@ -6,3 +6,6 @@ DotSnap helps you to finally see your beautiful desktop wallpaper again. Quickly
 - Set your default folder once, or change it as often as you want with quick access in your top bar. 
 
 - Give your screenshots a default prefix name, or change it as often as you want. We even save your 5 last used names. Optional add a date stamp to it.
+
+##Installation
+
