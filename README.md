@@ -19,5 +19,5 @@ DotSnap helps you to finally see your beautiful desktop wallpaper again. Quickly
 DotSnap works in the background and is compatible with your default Mac screenshot shortcut. It essentially just moves your files to the folder you set inside DotSnap as well as renames the file according to your setting in DotSnap. If you haven't activated the TimeStamp option, files with the same name will get a unique number added to the end.
 
 ##Contact
-If you have any questions, comments, or want to contribute, you can reach us on Twitter @CodaFi_ and @schneidertobias
+If you have any questions, comments, or want to contribute, you can reach us on Twitter [@CodaFi_](https://twitter.com/CodaFi_) and [@schneidertobias](https://twitter.com/schneidertobias)
 
