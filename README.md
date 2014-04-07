@@ -21,4 +21,3 @@ DotSnap works in the background and is compatible with your default Mac screensh
 ##Contact
 If you have any questions, comments, or want to contribute, you can reach us on Twitter @CodaFi_ and @schneidertobias
 
-##License
