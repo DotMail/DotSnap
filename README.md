@@ -7,6 +7,15 @@ DotSnap helps you to finally see your beautiful desktop wallpaper again. Quickly
 
 - Give your screenshots a default prefix name, or change it as often as you want. We even save your 5 last used names. Optional add a date stamp to it.
 
+##Installation
+
+- Open a terminal prompt and execute:
+
+`$ git clone --recursive https://github.com/DotMail/DotSnap.git ; cd DotSnap ;  git submodule update -i --recursive`
+
+- After git finishes pulling all of the project's dependencies, open the provided Xcode project and click Run.
+- Profit
+
 ##Known Issues
 
 - 1. For users using CloudApp: If CloudApp auto-upload is active, CloudApp sometimes uploads broken screenshots because DotSnap already moved the screenshot into a different folder. Since CloudApp became very slow since the past few months, this issue occurs more often than expected.
