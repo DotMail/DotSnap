@@ -30,3 +30,6 @@ DotSnap works in the background and is compatible with your default Mac screensh
 ##Contact
 If you have any questions, comments, or want to contribute, you can reach us on Twitter [@CodaFi_](https://twitter.com/CodaFi_) and [@schneidertobias](https://twitter.com/schneidertobias)
 
+##Download latest Build here (if you just want to install it)
+https://github.com/DotMail/DotSnap/releases/tag/1.0
+
